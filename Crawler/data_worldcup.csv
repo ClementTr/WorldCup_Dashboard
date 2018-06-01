@@ -1,0 +1,583 @@
+Country,Player,Post
+Russie,Igor Akinfeev ,Gardien de but
+Russie,Andrey Lunev,Gardien de but
+Russie,Soslan Dzhanaev,Gardien de but
+Russie,Vladimir Gabulov,Gardien de but
+Russie,Andrey Semenov,Défenseur central
+Russie,Roman Neustädter,Défenseur central
+Russie,Ilya Kutepov,Défenseur central
+Russie,Vladimir Granat,Défenseur central
+Russie,Sergey Ignashevich,Défenseur central
+Russie,Fedor Kudryashov,Arrière gauche
+Russie,Konstantin Rausch,Arrière gauche
+Russie,Mário Fernandes,Arrière droit
+Russie,Igor Smolnikov,Arrière droit
+Russie,Alan Dzagoev,Milieu central
+Russie,Aleksandr Golovin,Milieu central
+Russie,Roman Zobnin,Milieu central
+Russie,Daler Kuzyaev,Milieu central
+Russie,Yuri Gazinskiy,Milieu central
+Russie,Anton Miranchuk,Milieu central
+Russie,Aleksandr Tashaev,Milieu gauche
+Russie,Yuri Zhirkov,Milieu gauche
+Russie,Aleksey Miranchuk,Milieu offensif
+Russie,Aleksandr Erokhin,Milieu offensif
+Russie,Denis Cheryshev,Ailier gauche
+Russie,Aleksandr Samedov,Ailier droit
+Russie,Fedor Smolov,Avant centre
+Russie,Artem Dzyuba,Avant centre
+Russie,Fedor Chalov,Avant centre
+Arabie,Yasser Al-Mosailem,Gardien de but
+Arabie,Abdullah Al-Muaiouf,Gardien de but
+Arabie,Mohammed Al-Owais,Gardien de but
+Arabie,Assaf Al Qarni,Gardien de but
+Arabie,Motaz Hawsawi,Défenseur central
+Arabie,Osama Hawsawi,Défenseur central
+Arabie,Omar Hawsawi,Défenseur central
+Arabie,Mohammed Jahfali,Défenseur central
+Arabie,Ali Al-Boleahi,Défenseur central
+Arabie,Yasir Al-Shahrani,Arrière gauche
+Arabie,Mansour Al-Harbi,Arrière gauche
+Arabie,Mohammed Al-Burayk,Arrière droit
+Arabie,Saeed Al-Mowalad,Arrière droit
+Arabie,Abdullah Ateef,Milieu défensif
+Arabie,Abdulmalek Al-Khaibri,Milieu défensif
+Arabie,Abdullah Al-Khaibari,Milieu défensif
+Arabie,Salman Al-Faraj,Milieu central
+Arabie,Hussein Al Moghawi,Milieu central
+Arabie,Taisir Al-Jassim,Milieu central
+Arabie,Mohamed Kanu,Milieu central
+Arabie,Nawaf Al-Abed,Milieu offensif
+Arabie,Yahya Al-Shehri,Milieu offensif
+Arabie,Hattan Bahbir,Milieu offensif
+Arabie,Fahad Al-Muwallad,Ailier droit
+Arabie,Salem Al-Dawsari,Ailier droit
+Arabie,Mohammed Al-Kuwaykibi,Ailier droit
+Arabie,Mohammed Al-Sahlawi,Avant centre
+Arabie,Muhannad Asiri,Avant centre
+Portugal,Anthony Lopes,Gardien de but
+Portugal,Rui Patrício,Gardien de but
+Portugal,Beto,Gardien de but
+Portugal,Rúben Dias,Défenseur central
+Portugal,José Fonte,Défenseur central
+Portugal,Pepe,Défenseur central
+Portugal,Bruno Alves,Défenseur central
+Portugal,Raphaël Guerreiro,Arrière gauche
+Portugal,Mário Rui,Arrière gauche
+Portugal,Cédric Soares,Arrière droit
+Portugal,Ricardo Pereira,Arrière droit
+Portugal,William Carvalho,Milieu défensif
+Portugal,Adrien Silva,Milieu central
+Portugal,João Moutinho,Milieu central
+Portugal,Manuel Fernandes,Milieu central
+Portugal,João Mário,Milieu offensif
+Portugal,Bruno Fernandes,Milieu offensif
+Portugal,Gonçalo Guedes,Ailier gauche
+Portugal,Bernardo Silva,Ailier droit
+Portugal,Gelson Martins,Ailier droit
+Portugal,Ricardo Quaresma,Ailier droit
+Portugal,Cristiano Ronaldo ,Avant centre
+Portugal,André Silva,Avant centre
+Espagne,David de Gea,Gardien de but
+Espagne,Kepa Arrizabalaga,Gardien de but
+Espagne,Pepe Reina,Gardien de but
+Espagne,Gerard Piqué,Défenseur central
+Espagne,Sergio Ramos ,Défenseur central
+Espagne,César Azpilicueta,Défenseur central
+Espagne,Nacho Fernández,Défenseur central
+Espagne,Jordi Alba,Arrière gauche
+Espagne,Nacho Monreal,Arrière gauche
+Espagne,Daniel Carvajal ,Arrière droit
+Espagne,Álvaro Odriozola,Arrière droit
+Espagne,Sergio Busquets,Milieu défensif
+Espagne,Saúl Ñíguez,Milieu central
+Espagne,Koke,Milieu central
+Espagne,Thiago,Milieu central
+Espagne,Andrés Iniesta,Milieu central
+Espagne,Isco,Milieu offensif
+Espagne,David Silva,Milieu offensif
+Espagne,Marco Asensio .,Ailier gauche
+Espagne,Lucas Vázquez,Ailier droit
+Espagne,Iago Aspas,Ailier droit
+Espagne,Diego Costa .,Avant centre
+Espagne,Rodrigo,Avant centre
+France,Hugo Lloris ,Gardien de but
+France,Alphonse Areola,Gardien de but
+France,Steve Mandanda,Gardien de but
+France,Raphaël Varane,Défenseur central
+France,Samuel Umtiti,Défenseur central
+France,Benjamin Pavard,Défenseur central
+France,Presnel Kimpembe,Défenseur central
+France,Adil Rami,Défenseur central
+France,Benjamin Mendy,Arrière gauche
+France,Lucas Hernández ,Arrière gauche
+France,Djibril Sidibé,Arrière droit
+France,N'Golo Kanté,Milieu défensif
+France,Steven Nzonzi,Milieu défensif
+France,Paul Pogba,Milieu central
+France,Corentin Tolisso,Milieu central
+France,Blaise Matuidi,Milieu central
+France,Nabil Fekir,Milieu offensif
+France,Thomas Lemar,Ailier gauche
+France,Kylian Mbappé .,Ailier droit
+France,Ousmane Dembélé,Ailier droit
+France,Florian Thauvin,Ailier droit
+France,Antoine Griezmann,Avant centre
+France,Olivier Giroud,Avant centre
+Australie,Mathew Ryan,Gardien de but
+Australie,Brad Jones,Gardien de but
+Australie,Danny Vukovic,Gardien de but
+Australie,Matthew Jurman,Défenseur central
+Australie,Trent Sainsbury,Défenseur central
+Australie,Milos Degenek ,Défenseur central
+Australie,Aziz Behich,Arrière gauche
+Australie,James Meredith,Arrière gauche
+Australie,Joshua Risdon,Arrière droit
+Australie,Fran Karacic,Arrière droit
+Australie,Mile Jedinak ,Milieu défensif
+Australie,Jackson Irvine,Milieu défensif
+Australie,Mark Milligan,Milieu défensif
+Australie,Aaron Mooy,Milieu central
+Australie,Massimo Luongo,Milieu central
+Australie,Joshua Brillante,Milieu central
+Australie,Tom Rogic,Milieu offensif
+Australie,James Troisi,Milieu offensif
+Australie,Tim Cahill,Milieu offensif
+Australie,Dimitri Petratos,Milieu offensif
+Australie,Robbie Kruse,Ailier gauche
+Australie,Mathew Leckie,Ailier droit
+Australie,Nikita Rukavytsya,Ailier droit
+Australie,Andrew Nabbout ,Ailier droit
+Australie,Daniel Arzani .,Ailier droit
+Australie,Tomi Juric ,Avant centre
+Australie,Jamie Maclaren,Avant centre
+Bresil,Ederson,Gardien de but
+Bresil,Alisson,Gardien de but
+Bresil,Cássio,Gardien de but
+Bresil,Marquinhos,Défenseur central
+Bresil,Thiago Silva ,Défenseur central
+Bresil,Miranda,Défenseur central
+Bresil,Pedro Geromel,Défenseur central
+Bresil,Marcelo,Arrière gauche
+Bresil,Filipe Luís,Arrière gauche
+Bresil,Danilo,Arrière droit
+Bresil,Fágner,Arrière droit
+Bresil,Casemiro,Milieu défensif
+Bresil,Fernandinho,Milieu défensif
+Bresil,Paulinho,Milieu central
+Bresil,Fred,Milieu central
+Bresil,Renato Augusto,Milieu central
+Bresil,Neymar,Ailier gauche
+Bresil,Philippe Coutinho,Ailier gauche
+Bresil,Taison,Ailier gauche
+Bresil,Douglas Costa,Ailier droit
+Bresil,Willian,Ailier droit
+Bresil,Roberto Firmino,Avant secondaire
+Bresil,Gabriel Jesus,Avant centre
+Suisse,Yann Sommer,Gardien de but
+Suisse,Roman Bürki,Gardien de but
+Suisse,Yvon Mvogo,Gardien de but
+Suisse,Gregor Kobel,Gardien de but
+Suisse,Manuel Akanji,Défenseur central
+Suisse,Fabian Schär,Défenseur central
+Suisse,Johan Djourou,Défenseur central
+Suisse,Ricardo Rodríguez,Arrière gauche
+Suisse,François Moubandje,Arrière gauche
+Suisse,Nico Elvedi,Arrière droit
+Suisse,Silvan Widmer,Arrière droit
+Suisse,Michael Lang,Arrière droit
+Suisse,Stephan Lichtsteiner,Arrière droit
+Suisse,Granit Xhaka,Milieu défensif
+Suisse,Denis Zakaria,Milieu défensif
+Suisse,Valon Behrami,Milieu défensif
+Suisse,Gelson Fernandes ,Milieu défensif
+Suisse,Remo Freuler,Milieu central
+Suisse,Edimilson Fernandes,Milieu central
+Suisse,Blerim Dzemaili,Milieu central
+Suisse,Steven Zuber,Milieu gauche
+Suisse,Xherdan Shaqiri,Ailier droit
+Suisse,Breel Embolo,Avant centre
+Suisse,Haris Seferovic,Avant centre
+Suisse,Mario Gavranovic,Avant centre
+Suisse,Josip Drmic,Avant centre
+Tunisie,Mouez Hassen,Gardien de but
+Tunisie,Balbouli ,Gardien de but
+Tunisie,Farouk Ben Mustapha,Gardien de but
+Tunisie,Moez Ben Cherifia,Gardien de but
+Tunisie,Dylan Bronn,Défenseur central
+Tunisie,Yohan Benalouane,Défenseur central
+Tunisie,Yassine Meriah,Défenseur central
+Tunisie,Syam Ben Youssef,Défenseur central
+Tunisie,Rami Bedoui,Défenseur central
+Tunisie,Bilel Mohsni,Défenseur central
+Tunisie,Oussama Haddadi,Arrière gauche
+Tunisie,Ali Maâloul,Arrière gauche
+Tunisie,Khalil Chemmam,Arrière gauche
+Tunisie,Hamdi Nagguez,Arrière droit
+Tunisie,Ellyes Skhiri,Milieu défensif
+Tunisie,Mohamed Amine Ben Amor,Milieu défensif
+Tunisie,Ahmed Khalil,Milieu défensif
+Tunisie,Ferjani Sassi,Milieu central
+Tunisie,Karim Laribi,Milieu central
+Tunisie,Ghaylène Chaalali,Milieu central
+Tunisie,Wahbi Khazri,Milieu offensif
+Tunisie,Saîf-Eddine Khaoui,Milieu offensif
+Tunisie,Mohamed Larbi,Milieu offensif
+Tunisie,Naïm Sliti,Ailier gauche
+Tunisie,Bassem Srarfi,Ailier droit
+Tunisie,Anice Badri,Ailier droit
+Tunisie,Fakhreddine Ben Youssef,Ailier droit
+Tunisie,Ahmed Akaichi,Avant centre
+Tunisie,Saber Khalifa,Avant centre
+Angleterre,Jordan Pickford,Gardien de but
+Angleterre,Jack Butland,Gardien de but
+Angleterre,Nick Pope,Gardien de but
+Angleterre,John Stones,Défenseur central
+Angleterre,Harry Maguire,Défenseur central
+Angleterre,Phil Jones,Défenseur central
+Angleterre,Gary Cahill,Défenseur central
+Angleterre,Danny Rose,Arrière gauche
+Angleterre,Kyle Walker,Arrière droit
+Angleterre,Trent Alexander-Arnold,Arrière droit
+Angleterre,Kieran Trippier,Arrière droit
+Angleterre,Eric Dier,Milieu défensif
+Angleterre,Jordan Henderson,Milieu central
+Angleterre,Fabian Delph,Milieu central
+Angleterre,Ruben Loftus-Cheek,Milieu central
+Angleterre,Ashley Young,Milieu gauche
+Angleterre,Dele Alli,Milieu offensif
+Angleterre,Jesse Lingard,Ailier gauche
+Angleterre,Raheem Sterling,Ailier droit
+Angleterre,Harry Kane ,Avant centre
+Angleterre,Marcus Rashford,Avant centre
+Angleterre,Jamie Vardy,Avant centre
+Angleterre,Danny Welbeck,Avant centre
+Egypte,Mohamed El Shenawy,Gardien de but
+Egypte,Mohamed Awad,Gardien de but
+Egypte,Sherif Ekramy,Gardien de but
+Egypte,Essam El Hadary ,Gardien de but
+Egypte,Ahmed Hegazy,Défenseur central
+Egypte,Ali Gabr,Défenseur central
+Egypte,Saad Samir .,Défenseur central
+Egypte,Ayman Ashraf,Défenseur central
+Egypte,Mahmoud Hamdi,Défenseur central
+Egypte,Amro Tarek,Défenseur central
+Egypte,Mohamed Abdel-Shafi,Arrière gauche
+Egypte,Karim Hafez,Arrière gauche
+Egypte,Ahmed Elmohamady,Arrière droit
+Egypte,Ahmed Fathi,Arrière droit
+Egypte,Omar Gaber,Arrière droit
+Egypte,Mohamed Elneny,Milieu défensif
+Egypte,Tarek Hamed,Milieu défensif
+Egypte,Mahmoud Abdelaziz,Milieu défensif
+Egypte,Sam Morsy,Milieu central
+Egypte,Abdallah Said ,Milieu offensif
+Egypte,Ramadan Sobhi,Ailier gauche
+Egypte,Trezeguet,Ailier gauche
+Egypte,Amr Warda ,Ailier gauche
+Egypte,Kahraba,Ailier gauche
+Egypte,Mohamed Salah ,Ailier droit
+Egypte,Shikabala,Ailier droit
+Egypte,Ahmed Hassan,Avant centre
+Egypte,Marwan Mohsen,Avant centre
+Egypte,Ahmed Gomaa,Avant centre
+Iran,Alireza Beiranvand,Gardien de but
+Iran,Mohammad Rashid Mazaheri,Gardien de but
+Iran,Amir Abedzadeh,Gardien de but
+Iran,Morteza Pouraliganji .,Défenseur central
+Iran,Roozbeh Cheshmi .,Défenseur central
+Iran,Majid Hosseini,Défenseur central
+Iran,Mohammad Reza Khanzadeh,Défenseur central
+Iran,Pejman Montazeri,Défenseur central
+Iran,Milad Mohammadi .,Arrière gauche
+Iran,Ehsan Hajsafi .,Arrière gauche
+Iran,Ramin Rezaeian .,Arrière droit
+Iran,Omid Ebrahimi,Milieu défensif
+Iran,Saeid Ezatolahi ,Milieu central
+Iran,Masoud Shojaei . ,Milieu offensif
+Iran,Vahid Amiri .,Ailier gauche
+Iran,Mehdi Torabi,Ailier gauche
+Iran,Alireza Jahanbakhsh,Ailier droit
+Iran,Ashkan Dejagah .,Ailier droit
+Iran,Ali Gholizadeh .,Ailier droit
+Iran,Sardar Azmoun,Avant centre
+Iran,Karim Ansarifard,Avant centre
+Iran,Mehdi Taremi .,Avant centre
+Iran,Saman Ghoddos,Avant centre
+Iran,Reza Ghoochannejhad,Avant centre
+Perou,Pedro Gallese,Gardien de but
+Perou,Carlos Cáceda .,Gardien de but
+Perou,José Carvallo,Gardien de but
+Perou,Christian Ramos,Défenseur central
+Perou,Anderson Santamaría,Défenseur central
+Perou,Miguel Araujo,Défenseur central
+Perou,Alberto Rodríguez,Défenseur central
+Perou,Miguel Trauco,Arrière gauche
+Perou,Nilson Loyola,Arrière gauche
+Perou,Luis Advíncula,Arrière droit
+Perou,Aldo Corzo,Arrière droit
+Perou,Pedro Aquino .,Milieu défensif
+Perou,Wilder Cartagena,Milieu défensif
+Perou,Renato Tapia,Milieu central
+Perou,Yoshimar Yotún,Milieu central
+Perou,Paolo Hurtado,Milieu offensif
+Perou,Christian Cueva,Milieu offensif
+Perou,Sergio Peña,Milieu offensif
+Perou,Édison Flores,Ailier gauche
+Perou,André Carrillo,Ailier droit
+Perou,Jefferson Farfán,Ailier droit
+Perou,Andy Polo,Ailier droit
+Perou,Raúl Ruidíaz .,Avant centre
+Perou,Paolo Guerrero ,Avant centre
+Costa,Keylor Navas,Gardien de but
+Costa,Leonel Moreira,Gardien de but
+Costa,Patrick Pemberton,Gardien de but
+Costa,Giancarlo González,Défenseur central
+Costa,Óscar Duarte ,Défenseur central
+Costa,Kendall Waston,Défenseur central
+Costa,Francisco Calvo,Défenseur central
+Costa,Kenner Gutiérrez,Défenseur central
+Costa,Jhonny Acosta,Défenseur central
+Costa,Bryan Oviedo,Arrière gauche
+Costa,Ronald Matarrita,Arrière gauche
+Costa,Cristian Gamboa,Arrière droit
+Costa,Ian Smith,Arrière droit
+Costa,David Guzmán,Milieu défensif
+Costa,Yeltsin Tejeda,Milieu défensif
+Costa,Randall Azofeifa,Milieu défensif
+Costa,Celso Borges,Milieu central
+Costa,Wilmer Azofeifa,Milieu central
+Costa,Johan Venegas,Milieu droit
+Costa,Bryan Ruíz ,Milieu gauche
+Costa,Rodney Wallace,Milieu gauche
+Costa,Daniel Colindres,Ailier gauche
+Costa,Joel Campbell,Ailier droit
+Costa,Christian Bolaños,Ailier droit
+Costa,Marcos Ureña ,Avant secondaire
+Costa,David Ramírez,Avant centre
+Costa,Yendrick Ruiz,Avant centre
+Allemagne,Marc-André ter Stegen,Gardien de but
+Allemagne,Manuel Neuer ,Gardien de but
+Allemagne,Bernd Leno,Gardien de but
+Allemagne,Kevin Trapp,Gardien de but
+Allemagne,Mats Hummels,Défenseur central
+Allemagne,Jérôme Boateng ,Défenseur central
+Allemagne,Antonio Rüdiger,Défenseur central
+Allemagne,Niklas Süle,Défenseur central
+Allemagne,Jonathan Tah,Défenseur central
+Allemagne,Matthias Ginter,Défenseur central
+Allemagne,Jonas Hector .,Arrière gauche
+Allemagne,Marvin Plattenhardt,Arrière gauche
+Allemagne,Joshua Kimmich,Arrière droit
+Allemagne,Sebastian Rudy,Milieu défensif
+Allemagne,Toni Kroos,Milieu central
+Allemagne,Leon Goretzka,Milieu central
+Allemagne,Ilkay Gündogan,Milieu central
+Allemagne,Sami Khedira,Milieu central
+Allemagne,Mesut Özil ,Milieu offensif
+Allemagne,Leroy Sané,Ailier gauche
+Allemagne,Julian Draxler,Ailier gauche
+Allemagne,Marco Reus,Ailier gauche
+Allemagne,Julian Brandt,Ailier gauche
+Allemagne,Thomas Müller,Avant secondaire
+Allemagne,Timo Werner,Avant centre
+Allemagne,Nils Petersen,Avant centre
+Allemagne,Mario Gómez,Avant centre
+Suede,Karl-Johan Johnsson,Gardien de but
+Suede,Kristoffer Nordfeldt,Gardien de but
+Suede,Robin Olsen,Gardien de but
+Suede,Victor Lindelöf,Défenseur central
+Suede,Pontus Jansson,Défenseur central
+Suede,Andreas Granqvist ,Défenseur central
+Suede,Filip Helander,Défenseur central
+Suede,Ludwig Augustinsson,Arrière gauche
+Suede,Martin Olsson,Arrière gauche
+Suede,Mikael Lustig,Arrière droit
+Suede,Emil Krafth,Arrière droit
+Suede,Gustav Svensson,Milieu défensif
+Suede,Oscar Hiljemark,Milieu central
+Suede,Albin Ekdal,Milieu central
+Suede,Sebastian Larsson,Milieu central
+Suede,Marcus Rohdén,Milieu droit
+Suede,Viktor Claesson,Milieu offensif
+Suede,Emil Forsberg,Ailier gauche
+Suede,Jimmy Durmaz,Ailier gauche
+Suede,Marcus Berg,Avant centre
+Suede,John Guidetti,Avant centre
+Suede,Isaac Thelin,Avant centre
+Suede,Ola Toivonen,Avant centre
+Pologne,Wojciech Szczesny,Gardien de but
+Pologne,Lukasz Skorupski,Gardien de but
+Pologne,Lukasz Fabianski,Gardien de but
+Pologne,Bartosz Bialkowski,Gardien de but
+Pologne,Kamil Glik,Défenseur central
+Pologne,Jan Bednarek,Défenseur central
+Pologne,Michal Pazdan,Défenseur central
+Pologne,Marcin Kaminski,Défenseur central
+Pologne,Pawel Dawidowicz,Défenseur central
+Pologne,Thiago Cionek,Défenseur central
+Pologne,Bartosz Bereszynski,Arrière droit
+Pologne,Lukasz Piszczek,Arrière droit
+Pologne,Artur Jedrzejczyk,Arrière droit
+Pologne,Tomasz Kedziora,Arrière droit
+Pologne,Grzegorz Krychowiak,Milieu défensif
+Pologne,Jacek Goralski,Milieu défensif
+Pologne,Piotr Zielinski,Milieu central
+Pologne,Karol Linetty,Milieu central
+Pologne,Krzysztof Maczynski,Milieu central
+Pologne,Szymon Zurkowski,Milieu central
+Pologne,Sebastian Szymanski,Milieu central
+Pologne,Jakub Blaszczykowski,Milieu droit
+Pologne,Maciej Rybus,Milieu gauche
+Pologne,Rafal Kurzawa,Ailier gauche
+Pologne,Slawomir Peszko,Ailier gauche
+Pologne,Kamil Grosicki,Ailier droit
+Pologne,Przemyslaw Frankowski,Ailier droit
+Pologne,Robert Lewandowski ,Avant centre
+Pologne,Arkadiusz Milik,Avant centre
+Pologne,Lukasz Teodorczyk,Avant centre
+Pologne,Dawid Kownacki,Avant centre
+Pologne,Kamil Wilczek,Avant centre
+Colombie,David Ospina,Gardien de but
+Colombie,Iván Arboleda,Gardien de but
+Colombie,Camilo Vargas,Gardien de but
+Colombie,José Cuadrado,Gardien de but
+Colombie,Davinson Sánchez,Défenseur central
+Colombie,Yerry Mina,Défenseur central
+Colombie,Bernardo Espinosa,Défenseur central
+Colombie,Óscar Murillo,Défenseur central
+Colombie,Cristián Zapata,Défenseur central
+Colombie,William Tesillo,Défenseur central
+Colombie,Frank Fabra,Arrière gauche
+Colombie,Johan Mojica,Arrière gauche
+Colombie,Farid Díaz,Arrière gauche
+Colombie,Santiago Arias,Arrière droit
+Colombie,Stefan Medina,Arrière droit
+Colombie,Wilmar Barrios,Milieu défensif
+Colombie,Gustavo Cuéllar,Milieu défensif
+Colombie,Carlos Sánchez,Milieu défensif
+Colombie,Jefferson Lerma,Milieu défensif
+Colombie,Abel Aguilar,Milieu défensif
+Colombie,Sebastián Pérez,Milieu défensif
+Colombie,Mateus Uribe .,Milieu central
+Colombie,James Rodríguez,Milieu offensif
+Colombie,Giovanni Moreno,Milieu offensif
+Colombie,Juan Quintero,Milieu offensif
+Colombie,José Izquierdo,Ailier gauche
+Colombie,Edwin Cardona,Ailier gauche
+Colombie,Juan Cuadrado . ,Ailier droit
+Colombie,Yimmi Chará,Ailier droit
+Colombie,Teófilo Gutiérrez,Avant secondaire
+Colombie,Duván Zapata,Avant centre
+Colombie,Falcao ,Avant centre
+Colombie,Luis Muriel,Avant centre
+Colombie,Carlos Bacca,Avant centre
+Colombie,Miguel Borja,Avant centre
+Maroc,Bono,Gardien de but
+Maroc,Ahmed Reda Tagnaouti,Gardien de but
+Maroc,Munir ,Gardien de but
+Maroc,Medhi Benatia ,Défenseur central
+Maroc,Badr Benoun,Défenseur central
+Maroc,Manuel da Costa,Défenseur central
+Maroc,Hamza Mendyl .,Arrière gauche
+Maroc,Achraf Hakimi,Arrière droit
+Maroc,Oualid El Hajjam,Arrière droit
+Maroc,Romain Saïss,Milieu défensif
+Maroc,Sofyan Amrabat,Milieu central
+Maroc,Youssef Aït Bennasser,Milieu central
+Maroc,Karim El Ahmadi,Milieu central
+Maroc,Noussair Mazraoui,Milieu central
+Maroc,Nabil Dirar,Milieu droit
+Maroc,Amine Harit .,Milieu offensif
+Maroc,Hakim Ziyech,Milieu offensif
+Maroc,Younès Belhanda,Milieu offensif
+Maroc,Fayçal Fajr,Milieu offensif
+Maroc,Moubarak Boussoufa,Milieu offensif
+Maroc,Nordin Amrabat,Ailier droit
+Maroc,Mehdi Carcela-González,Ailier droit
+Maroc,Youssef En-Nesyri,Avant centre
+Maroc,Khalid Boutaïb,Avant centre
+Maroc,Ayoub El Kaabi,Avant centre
+Maroc,Aziz Bouhaddouz,Avant centre
+Danemark,Kasper Schmeichel,Gardien de but
+Danemark,Jonas Lössl,Gardien de but
+Danemark,Frederik Rönnow,Gardien de but
+Danemark,Andreas Christensen,Défenseur central
+Danemark,Jannik Vestergaard,Défenseur central
+Danemark,Simon Kjær ,Défenseur central
+Danemark,Zanka,Défenseur central
+Danemark,Andreas Bjelland,Défenseur central
+Danemark,Jonas Knudsen,Arrière gauche
+Danemark,Jens Stryger Larsen,Arrière droit
+Danemark,Henrik Dalsgaard,Arrière droit
+Danemark,Peter Ankersen,Arrière droit
+Danemark,Lasse Schöne,Milieu défensif
+Danemark,William Kvist,Milieu défensif
+Danemark,Thomas Delaney,Milieu central
+Danemark,Lukas Lerager,Milieu central
+Danemark,Mike Jensen,Milieu central
+Danemark,Michael Krohn-Dehli,Milieu central
+Danemark,Christian Eriksen,Milieu offensif
+Danemark,Pione Sisto,Ailier gauche
+Danemark,Viktor Fischer,Ailier gauche
+Danemark,Nicolai Jörgensen .,Avant centre
+Danemark,Kasper Dolberg,Avant centre
+Danemark,Yussuf Poulsen,Avant centre
+Danemark,Martin Braithwaite,Avant centre
+Danemark,Andreas Cornelius ,Avant centre
+Danemark,Nicklas Bendtner .,Avant centre
+Serbie,Marko Dmitrovic,Gardien de but
+Serbie,Predrag Rajkovic,Gardien de but
+Serbie,Vladimir Stojkovic,Gardien de but
+Serbie,Aleksandar Jovanovic,Gardien de but
+Serbie,Matija Nastasic,Défenseur central
+Serbie,Milos Veljkovic ,Défenseur central
+Serbie,Nikola Milenkovic,Défenseur central
+Serbie,Branislav Ivanovic,Défenseur central
+Serbie,Uros Spajic,Défenseur central
+Serbie,Dusko Tosic,Défenseur central
+Serbie,Aleksandar Kolarov ,Arrière gauche
+Serbie,Milan Rodic,Arrière gauche
+Serbie,Antonio Rukavina,Arrière droit
+Serbie,Nemanja Matic,Milieu défensif
+Serbie,Luka Milivojevic,Milieu défensif
+Serbie,Sergej Milinkovic-Savic,Milieu central
+Serbie,Marko Grujic,Milieu central
+Serbie,Nemanja Maksimovic,Milieu central
+Serbie,Dusan Tadic,Milieu offensif
+Serbie,Adem Ljajic,Milieu offensif
+Serbie,Andrija Zivkovic,Milieu offensif
+Serbie,Mijat Gacinovic,Milieu offensif
+Serbie,Filip Kostic,Ailier gauche
+Serbie,Nemanja Radonjic,Ailier gauche
+Serbie,Aleksandar Mitrovic,Avant centre
+Serbie,Aleksandar Prijovic,Avant centre
+Serbie,Luka Jovic .,Avant centre
+Belgique,Thibaut Courtois,Gardien de but
+Belgique,Simon Mignolet,Gardien de but
+Belgique,Koen Casteels,Gardien de but
+Belgique,Matz Sels,Gardien de but
+Belgique,Toby Alderweireld,Défenseur central
+Belgique,Jan Vertonghen,Défenseur central
+Belgique,Vincent Kompany,Défenseur central
+Belgique,Christian Kabasele,Défenseur central
+Belgique,Thomas Vermaelen ,Défenseur central
+Belgique,Dedryck Boyata,Défenseur central
+Belgique,Laurent Ciman,Défenseur central
+Belgique,Jordan Lukaku,Arrière gauche
+Belgique,Thomas Meunier,Arrière droit
+Belgique,Leander Dendoncker,Milieu défensif
+Belgique,Youri Tielemans,Milieu central
+Belgique,Mousa Dembélé,Milieu central
+Belgique,Axel Witsel,Milieu central
+Belgique,Marouane Fellaini ,Milieu central
+Belgique,Kevin De Bruyne,Milieu offensif
+Belgique,Eden Hazard ,Ailier gauche
+Belgique,Yannick Carrasco,Ailier gauche
+Belgique,Thorgan Hazard,Ailier gauche
+Belgique,Nacer Chadli,Ailier gauche
+Belgique,Adnan Januzaj,Ailier droit
+Belgique,Romelu Lukaku,Avant centre
+Belgique,Michy Batshuayi ,Avant centre
+Belgique,Dries Mertens,Avant centre
+Belgique,Christian Benteke,Avant centre

@@ -1,0 +1,891 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Russian World Cup - Data">
+    <meta name="author" content="DataDeer">
+    <meta name="keywords" content="Data Science Analysis Big World Cup Football">
+
+    <!-- Title Page-->
+    <title>World Cup Dashboard</title>
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="{% static 'worldcup/img/favicon.ico' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+
+    <!-- Fontfaces CSS-->
+    <link href="{% static 'worldcup/css/font-face.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'worldcup/vendor/font-awesome-4.7/css/font-awesome.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'worldcup/vendor/font-awesome-5/css/fontawesome-all.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'worldcup/vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="{% static 'worldcup/vendor/bootstrap-4.1/bootstrap.min.css' %}" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="{% static 'worldcup/vendor/animsition/animsition.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'worldcup/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'worldcup/vendor/wow/animate.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'worldcup/vendor/css-hamburgers/hamburgers.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'worldcup/vendor/slick/slick.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'worldcup/vendor/select2/select2.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'worldcup/vendor/perfect-scrollbar/perfect-scrollbar.css' %}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{% static 'worldcup/css/theme.css' %}" rel="stylesheet" media="all">
+
+    <!-- Simple Plot CSS -->
+    <link href="{% static 'worldcup/css/simple_plot.css' %}" rel="stylesheet" media="all">
+    <style>
+      .toolTip {
+      	position: absolute;
+        display: none;
+        min-width: 80px;
+        height: auto;
+        background: none repeat scroll 0 0 #ffffff;
+        border: 1px solid #6F257F;
+        padding: 14px;
+        text-align: center;
+      }
+     </style>
+
+
+</head>
+
+<body class="animsition">
+
+    <div class="page-wrapper">
+
+
+        <!-- HEADER MOBILE-->
+        <header class="header-mobile d-block d-lg-none">
+            <div class="header-mobile__bar">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                        <a class="logo" href="/">
+                            <img src="{% static 'worldcup/img/datadeer_mobile.png' %}" alt="DataDeer"/>
+                        </a>
+                        <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar-mobile">
+                <div class="container-fluid">
+                    <ul class="navbar-mobile__list list-unstyled">
+                      <li class="has-sub">
+                          <a class="js-arrow" href="#">
+                              <i class="fas fa-bar-chart-o"></i>{{hashtag}}
+                          </a>
+                          <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                              <li>
+                                  <a href="index.html">#RUSARA</a>
+                              </li>
+                              <li>
+                                  <a href="index2.html">Dashboard 2</a>
+                              </li>
+                              <li>
+                                  <a href="index3.html">Dashboard 3</a>
+                              </li>
+                              <li>
+                                  <a href="index4.html">Dashboard 4</a>
+                              </li>
+                          </ul>
+                      </li>
+                        <li>
+                            <a href="/table">
+                              <i class="fas fa-table"></i>Results and Classement
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- END HEADER MOBILE-->
+
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar d-none d-lg-block">
+            <div class="logo">
+                <a href="#">
+                     <img src="{% static 'worldcup/img/datadeer.png' %}" alt="DataDeer"/>
+                </a>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-bar-chart-o"></i>{{hashtag}}
+                            </a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <li>
+                                    <a href="index.html">#RUSARA</a>
+                                </li>
+                                <li>
+                                    <a href="index2.html">Dashboard 2</a>
+                                </li>
+                                <li>
+                                    <a href="index3.html">Dashboard 3</a>
+                                </li>
+                                <li>
+                                    <a href="index4.html">Dashboard 4</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/table">
+                                <i class="fas fa-table"></i>Results and Classement
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR-->
+
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap">
+                          <a href="/">Russian World Cup Dashboard</a>
+                            <div class="header-button">
+                                <div class="noti-wrap">
+                                  DataDeer
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- END HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+
+                      <div class="row">
+
+                        <div class="col-lg-12">
+                            <div class="au-card m-b-30" style="padding-bottom: 0px;">
+                                <center>
+                                  <h3 class="title-2 m-b-40">Match of the day - {{hashtag}}</h3>
+                                  <!-- <br>
+                                  <h5>#FRAITA</h5> -->
+                                </center>
+                            </div>
+                        </div>
+
+                          <div class="col-lg-6">
+                              <div class="au-card m-b-30">
+                                  <div class="au-card-inner">
+                                      <h3 class="title-2 m-b-40">Positivity Prediction</h3>
+                                      <div class="chart-wrapper" id="bar_plot"></div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="col-lg-6">
+                              <div class="au-card m-b-30" style="padding-left: 20px;">
+                                  <div class="au-card-inner">
+                                      <h3 class="title-2 m-b-40">Nombre de Tweets/Retwets</h3>
+                                      <!-- <canvas id="sales-chart"></canvas> -->
+                                      <div class="chart-wrapper" id="simple_plot"></div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="col-lg-9">
+                              <div class="au-card m-b-30">
+                                  <div class="au-card-inner">
+                                      <h3 class="title-2 m-b-40">Map this match</h3>
+                                      <div class="card-body" id="container1"></div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="col-lg-3">
+                                <div class="au-card au-card--bg-blue au-card-top-countries m-b-30">
+                                    <div class="au-card-inner">
+                                      <h3 class="title-3 m-b-30 text-white">top countries</h3>
+                                        <div class="table-responsive">
+                                            <table class="table table-top-countries text-white" id="data-table">
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                          <div class="col-lg-9">
+                              <div class="au-card m-b-30">
+                                  <div class="au-card-inner">
+                                      <h3 class="title-2 m-b-40">Map this match</h3>
+                                      <!-- <div class="card-body" id="pitch_plot"></div> -->
+                                      <div class="chart-wrapper" id="pitch_plot"></div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="col-lg-3">
+                              <div class="au-card au-card--bg-blue au-card-top-countries m-b-30">
+                                  <div class="au-card-inner">
+                                      <div class="table-responsive">
+                                          <table class="table table-top-countries">
+                                              <tbody>
+                                                Players
+                                                  <tr>
+                                                      <td>1. Giroud</td>
+                                                      <!-- <td class="text-right">80.000 tweets</td> -->
+                                                  </tr>
+                                                  <tr>
+                                                      <td>2. Mbappe</td>
+                                                      <!-- <td class="text-right">30.000 tweets</td> -->
+                                                  </tr>
+                                                  <tr>
+                                                      <td>3. Lloris</td>
+                                                      <!-- <td class="text-right">10.000 tweets</td> -->
+                                                  </tr>
+                                                  <tr>
+                                                      <td>4. Kante</td>
+                                                      <!-- <td class="text-right">80.000 tweets</td> -->
+                                                  </tr>
+                                                  <tr>
+                                                      <td>5. Matuidi</td>
+                                                      <!-- <td class="text-right">30.000 tweets</td> -->
+                                                  </tr>
+                                                  <tr>
+                                                      <td>6. Lemar</td>
+                                                      <!-- <td class="text-right">10.000 tweets</td> -->
+                                                  </tr>
+                                              </tbody>
+                                          </table>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+
+                          <div class="col-lg-6">
+                              <div class="au-card m-b-30">
+                                  <div class="au-card-inner">
+                                      <h3 class="title-2 m-b-40">Deertweet about a team</h3>
+                                      <blockquote class="twitter-tweet" data-lang="fr"><p lang="fr" dir="ltr">- La dernière fois, Ronaldo a dit que t&#39;étais incapable de mettre un retourné. <br>- Ah ouais ? <br>- Il a même rajouté &quot;faut le vendre ce cheval&quot;. Après c&#39;est ce que j&#39;ai entendu hein. <a href="https://twitter.com/hashtag/RMALIV?src=hash&amp;ref_src=twsrc%5Etfw">#RMALIV</a> <a href="https://t.co/OV0ajgcOC9">pic.twitter.com/OV0ajgcOC9</a></p>&mdash; Winamax Sport (@WinamaxSport) <a href="https://twitter.com/WinamaxSport/status/1000470130986508295?ref_src=twsrc%5Etfw">26 mai 2018</a></blockquote>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="col-lg-6">
+                              <div class="au-card m-b-30">
+                                  <div class="au-card-inner">
+                                      <h3 class="title-2 m-b-40">Deertweet about a player</h3>
+                                      <blockquote class="twitter-tweet" data-lang="fr"><p lang="en" dir="ltr"><a href="https://twitter.com/hashtag/PSG?src=hash&amp;ref_src=twsrc%5Etfw">#PSG</a> youngster Yacine Adli will join <a href="https://twitter.com/hashtag/Arsenal?src=hash&amp;ref_src=twsrc%5Etfw">#Arsenal</a> despite receiving lucrative contract offer from the French champions and interest from Real Madrid &amp; Bayern. Talented attacking midfielder, 17, to become Emery’s first signing (L’Equipe)</p>&mdash; Matt Spiro (@mattspiro) <a href="https://twitter.com/mattspiro/status/1001932317324128256?ref_src=twsrc%5Etfw">30 mai 2018</a></blockquote>
+                                  </div>
+                              </div>
+                          </div>
+
+                      </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- END MAIN CONTENT-->
+
+        </div>
+        <!-- END PAGE CONTAINER-->
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50px" height="50px">
+        <defs>
+            <rect id="rect" x="0px" y="0px" width="50px" height="50px" rx="50%" style="fill-opacity:0;"></rect>
+            <clippath id="clip">
+              <use xlink:href="#rect"></use>
+            </clippath>
+          </defs>
+
+          <use xlink:href="#rect"></use>
+          <image xlink:href="/static/worldcup/img/france/lloris.png" x="0px" y="0px" width="50px" height="50px" clip-path="url(#clip)"></image>
+
+        </svg>
+
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="{% static 'worldcup/vendor/jquery-3.2.1.min.js' %}"></script>
+    <!-- Bootstrap JS-->
+    <script src="{% static 'worldcup/vendor/bootstrap-4.1/popper.min.js' %}"></script>
+    <script src="{% static 'worldcup/vendor/bootstrap-4.1/bootstrap.min.js' %}"></script>
+    <!-- Vendor JS       -->
+    <script src="{% static 'worldcup/vendor/slick/slick.min.js' %}">
+    </script>
+    <script src="{% static 'worldcup/vendor/wow/wow.min.js' %}"></script>
+    <script src="{% static 'worldcup/vendor/animsition/animsition.min.js' %}"></script>
+    <script src="{% static 'worldcup/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js' %}">
+    </script>
+    <script src="{% static 'worldcup/vendor/counter-up/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'worldcup/vendor/counter-up/jquery.counterup.min.js' %}">
+    </script>
+    <script src="{% static 'worldcup/vendor/circle-progress/circle-progress.min.js' %}"></script>
+    <script src="{% static 'worldcup/vendor/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
+    <script src="{% static 'worldcup/vendor/chartjs/Chart.bundle.min.js' %}"></script>
+    <script src="{% static 'worldcup/vendor/select2/select2.min.js' %}"></script>
+
+    <!-- D3js -->
+    <script src="//d3js.org/d3.v4.min.js"></script>
+
+    <!-- Main JS-->
+    <script src="{% static 'worldcup/js/main.js' %}"></script>
+
+
+    <!-- MULTI LINES CHART -->
+    <script src="{% static 'worldcup/js/multi_lines_chart.js' %}" type="text/javascript"></script>
+    <script type="text/javascript">
+      d3v4 = d3
+      //window.d3 = null
+
+      window.addEventListener("resize", redraw)
+      const margin_plot = {
+          top: 10,
+          right: 10,
+          bottom: 60,
+          left: 60,
+      };
+      let div_plot = document.getElementById("simple_plot");
+      let svg_plot_init = d3v4.select("#simple_plot").append("svg")
+
+      let parse_time_plot = d3v4.timeParse("%m-%Y");
+      let bisect_date_plot = d3v4.bisector(d => d.date).left;
+
+      let dataset_plot = []
+      let x_plot, y_plot;
+      let svg_plot;
+
+      d3v4.csv("/static/worldcup/dept_csv/df_dept_12_months.csv")
+          /* On load les colonnes de notre csv */
+          .row(d => {
+              return {
+                  date: parse_time_plot(d.Date),
+                  deliveries: +d.Delivered,
+                  sales: +d.Sales
+              }
+          })
+          /* On les scale entre la plus petite et la plus grande valeur selon la taille de notre fenêtre */
+          .get((error, rows) => {
+              if (rows.length > 0) {
+
+                  x_plot = d3v4.scaleLinear()
+                          .domain(d3v4.extent(rows, row => row.date))
+                  y_plot = d3v4.scaleLinear()
+                          .domain([0, d3v4.max(rows, row => Math.max(row.deliveries, row.sales))])
+
+                  dataset_plot = rows
+                  redraw();
+
+              }
+          });
+    </script>
+
+    <!-- Bar Plot -->
+    <script src="{% static 'worldcup/js/barplot_chart.js' %}" type="text/javascript"></script>
+    <script type="text/javascript">
+      window.addEventListener("resize", redraw_barplot)
+      const margin_barplot = {
+          top: 10,
+          right: 10,
+          bottom: 60,
+          left: 60,
+      };
+
+      let div_barplot = document.getElementById("bar_plot");
+      let svg_barplot_init = d3v4.select("#bar_plot").append("svg")
+      let svg_barplot
+      let tooltip = d3v4.select("#bar_plot").append("div").attr("class", "toolTip");
+
+      let w = div_barplot.clientWidth;
+      let h = 250
+
+      let dataset_barplot = [
+        {"key": "France", "value": 66, "color": "blue"},
+        {"key": "Portugal", "value": 42, "color": "red"},
+      ]
+
+       var x = d3v4.scaleLinear()
+       var y = d3v4.scaleBand()
+
+       redraw_barplot()
+    </script>
+
+    <!-- PITCH -->
+    <script>
+      window.addEventListener("resize", redraw_pitch)
+
+      let div_pitchplot = document.getElementById("pitch_plot");
+      let svg_pitch_init = d3.select('#pitch_plot').append('svg')
+
+      let width_pitch = div_pitchplot.clientWidth;
+      let height_pitch = div_pitchplot.clientHeight;
+      let w_pitch
+      let h_pitch
+      let max_width_available = 0
+
+      if (width_pitch/height_pitch < 1.6) {
+        w_pitch = width_pitch;
+        h_pitch = height_pitch;
+        max_width_available = w_pitch
+      }
+      else {
+        if (max_width_available==0){
+          w_pitch = 536;
+          h_pitch = w_pitch/1.6;
+        }
+        else{
+          w_pitch = max_width_available//536;
+          h_pitch = w_pitch/1.6;
+        }
+      }
+
+      redraw_pitch()
+
+      function redraw_pitch(){
+
+        d3.select("#pitch_plot_redraw").remove();
+        svg_pitch = svg_pitch_init.attr("width", w_pitch)
+                                .attr("height", h_pitch)
+                                .attr("id", "pitch_plot")
+                                .append("g")
+                                .attr("id", "pitch_plot_redraw");
+
+
+        draw_pitch()
+
+      }
+
+      function draw_pitch(){
+        let div_pitchplot = document.getElementById("pitch_plot");
+        let width_pitch = div_pitchplot.clientWidth;
+        let height_pitch = div_pitchplot.clientHeight;
+        let w_pitch
+        let h_pitch
+
+        if (width_pitch/height_pitch < 1.6) {
+          w_pitch = width_pitch;
+          h_pitch = height_pitch;
+          max_width_available = w_pitch
+        }
+        else {
+          if (max_width_available==0){
+            w_pitch = 536;
+            h_pitch = w_pitch/1.6;
+          }
+          else{
+            w_pitch = max_width_available//536;
+            h_pitch = w_pitch/1.6;
+          }
+        }
+
+
+
+        let diff_line_pitch = 10
+
+        let footballer_img_size = h_pitch/5
+        svg_pitch.append("svg:image")
+                 .attr("xlink:href", "/static/pitch.svg")
+                 .attr('height',h_pitch)
+                 .attr('width', w_pitch);
+
+        let adjust_radius = 7
+
+        // Keeper
+        x_keeper =  w_pitch/25
+        y_keeper = h_pitch/2 - h_pitch/10
+        let defs_keeper = svg_pitch.append("defs")
+                            .attr("id", "imgdefs")
+        let clipPath_keeper = defs_keeper.append('clipPath')
+                                          .attr('id', 'clip-circle_keeper')
+                                          .append("circle")
+                                          .attr("r", (footballer_img_size/2) - adjust_radius)
+                                          .attr("cx", x_keeper + (footballer_img_size/2))
+                                          .attr("cy", y_keeper + (footballer_img_size/2));
+        svg_pitch.append("image")
+                 .attr("x", x_keeper)
+                 .attr("y", y_keeper)
+                 .attr("height", footballer_img_size)
+                 .attr("width", footballer_img_size)
+                 .attr("xlink:href", "/static/worldcup/img/france/lloris.png")
+                 .attr("clip-path", "url(#clip-circle_keeper)")
+
+
+         // CB1
+         let x_cb1 = w_pitch/6.5
+         let y_cb1 = h_pitch/1.9
+         let defs_cb1 = svg_pitch.append("defs")
+                             .attr("id", "imgdefs")
+         let clipPath_cb1 = defs_cb1.append('clipPath')
+                                     .attr('id', 'clip-circle_cb1')
+                                     .append("circle")
+                                     .attr("r", (footballer_img_size/2) - adjust_radius)
+                                     .attr("cx", x_cb1 + (footballer_img_size/2))
+                                     .attr("cy", y_cb1 + (footballer_img_size/2));
+         svg_pitch.append("image")
+                  .attr("x", x_cb1)
+                  .attr("y", y_cb1)
+                  .attr("height", footballer_img_size)
+                  .attr("width", footballer_img_size)
+                  .attr("xlink:href", "/static/worldcup/img/france/varane.png")
+                  .attr("clip-path", "url(#clip-circle_cb1)")
+
+
+
+
+           // CB2
+           let x_cb2 = w_pitch/6.5
+           let y_cb2 = h_pitch - (h_pitch/1.9) - footballer_img_size
+           let defs_cb2 = svg_pitch.append("defs")
+                               .attr("id", "imgdefs")
+           let clipPath_cb2 = defs_cb1.append('clipPath')
+                                       .attr('id', 'clip-circle_cb2')
+                                       .append("circle")
+                                       .attr("r", (footballer_img_size/2) - adjust_radius)
+                                       .attr("cx", x_cb2 + (footballer_img_size/2))
+                                       .attr("cy", y_cb2+ (footballer_img_size/2));
+           svg_pitch.append("image")
+                    .attr("x", x_cb2)
+                    .attr("y", y_cb2)
+                    .attr("height", footballer_img_size)
+                    .attr("width", footballer_img_size)
+                    .attr("xlink:href", "/static/worldcup/img/france/umtiti.png")
+                    .attr("clip-path", "url(#clip-circle_cb2)")
+
+
+
+
+           // RB
+           let x_rb = w_pitch/6
+           let y_rb = h_pitch/1.3
+           let defs_rb = svg_pitch.append("defs")
+                               .attr("id", "imgdefs")
+           let clipPath_rb = defs_rb.append('clipPath')
+                                       .attr('id', 'clip-circle_rb')
+                                       .append("circle")
+                                       .attr("r", (footballer_img_size/2) - adjust_radius)
+                                       .attr("cx", x_rb + (footballer_img_size/2))
+                                       .attr("cy", y_rb+ (footballer_img_size/2));
+           svg_pitch.append("image")
+                    .attr("x", x_rb)
+                    .attr("y", y_rb)
+                    .attr("height", footballer_img_size)
+                    .attr("width", footballer_img_size)
+                    .attr("xlink:href", "/static/worldcup/img/france/sidibe.png")
+                    .attr("clip-path", "url(#clip-circle_rb)")
+
+
+
+            // LB
+            let x_lb = w_pitch/6
+            let y_lb = h_pitch - h_pitch/1.3 - footballer_img_size
+            let defs_lb = svg_pitch.append("defs")
+                                .attr("id", "imgdefs")
+            let clipPath_lb = defs_lb.append('clipPath')
+                                        .attr('id', 'clip-circle_lb')
+                                        .append("circle")
+                                        .attr("r", (footballer_img_size/2) - adjust_radius)
+                                        .attr("cx", x_lb + (footballer_img_size/2))
+                                        .attr("cy", y_lb + (footballer_img_size/2));
+            svg_pitch.append("image")
+                     .attr("x", x_lb)
+                     .attr("y", y_lb)
+                     .attr("height", footballer_img_size)
+                     .attr("width", footballer_img_size)
+                     .attr("xlink:href", "/static/worldcup/img/france/mendy.png")
+                     .attr("clip-path", "url(#clip-circle_lb)")
+
+
+           // CM
+           let x_cm = w_pitch/2 - w_pitch/5
+           let y_cm = h_pitch/2 - h_pitch/10
+           let defs_cm = svg_pitch.append("defs")
+                               .attr("id", "imgdefs")
+           let clipPath_cm = defs_cm.append('clipPath')
+                                       .attr('id', 'clip-circle_cm')
+                                       .append("circle")
+                                       .attr("r", (footballer_img_size/2) - adjust_radius)
+                                       .attr("cx", x_cm + (footballer_img_size/2))
+                                       .attr("cy", y_cm + (footballer_img_size/2));
+           svg_pitch.append("image")
+                    .attr("x", x_cm)
+                    .attr("y", y_cm)
+                    .attr("height", footballer_img_size)
+                    .attr("width", footballer_img_size)
+                    .attr("xlink:href", "/static/worldcup/img/france/kante.png")
+                    .attr("clip-path", "url(#clip-circle_cm)")
+
+
+
+            // RM
+            let x_rm = w_pitch/2.1
+            let y_rm = h_pitch/1.6
+            let defs_rm = svg_pitch.append("defs")
+                                .attr("id", "imgdefs")
+            let clipPath_rm = defs_rm.append('clipPath')
+                                        .attr('id', 'clip-circle_rm')
+                                        .append("circle")
+                                        .attr("r", (footballer_img_size/2) - adjust_radius)
+                                        .attr("cx", x_rm + (footballer_img_size/2))
+                                        .attr("cy", y_rm + (footballer_img_size/2));
+            svg_pitch.append("image")
+                     .attr("x", x_rm)
+                     .attr("y", y_rm)
+                     .attr("height", footballer_img_size)
+                     .attr("width", footballer_img_size)
+                     .attr("xlink:href", "/static/worldcup/img/france/matuidi.png")
+                     .attr("clip-path", "url(#clip-circle_rm)")
+
+
+
+           // LM
+           let x_lm = w_pitch/2.1
+           let y_lm = h_pitch - h_pitch/1.6 - footballer_img_size
+           let defs_lm = svg_pitch.append("defs")
+                               .attr("id", "imgdefs")
+           let clipPath_lm = defs_rm.append('clipPath')
+                                       .attr('id', 'clip-circle_lm')
+                                       .append("circle")
+                                       .attr("r", (footballer_img_size/2) - adjust_radius)
+                                       .attr("cx", x_lm + (footballer_img_size/2))
+                                       .attr("cy", y_lm + (footballer_img_size/2));
+           svg_pitch.append("image")
+                    .attr("x", x_lm)
+                    .attr("y", y_lm)
+                    .attr("height", footballer_img_size)
+                    .attr("width", footballer_img_size)
+                    .attr("xlink:href", "/static/worldcup/img/france/pogba.png")
+                    .attr("clip-path", "url(#clip-circle_lm)")
+
+
+            // RW
+            let x_rw = w_pitch - w_pitch/4
+            let y_rw = h_pitch/1.4
+            let defs_rw = svg_pitch.append("defs")
+                                .attr("id", "imgdefs")
+            let clipPath_rw = defs_rw.append('clipPath')
+                                        .attr('id', 'clip-circle_rw')
+                                        .append("circle")
+                                        .attr("r", (footballer_img_size/2) - adjust_radius)
+                                        .attr("cx", x_rw + (footballer_img_size/2))
+                                        .attr("cy", y_rw + (footballer_img_size/2));
+            svg_pitch.append("image")
+                     .attr("x", x_rw)
+                     .attr("y", y_rw)
+                     .attr("height", footballer_img_size)
+                     .attr("width", footballer_img_size)
+                     .attr("xlink:href", "/static/worldcup/img/france/mbappe.png")
+                     .attr("clip-path", "url(#clip-circle_rw)")
+
+
+           // LW
+           let x_lw = w_pitch - w_pitch/4
+           let y_lw = h_pitch - h_pitch/1.4 - footballer_img_size
+           let defs_lw = svg_pitch.append("defs")
+                               .attr("id", "imgdefs")
+           let clipPath_lw = defs_rw.append('clipPath')
+                                       .attr('id', 'clip-circle_lw')
+                                       .append("circle")
+                                       .attr("r", (footballer_img_size/2) - adjust_radius)
+                                       .attr("cx", x_lw + (footballer_img_size/2))
+                                       .attr("cy", y_lw + (footballer_img_size/2));
+           svg_pitch.append("image")
+                    .attr("x", x_lw)
+                    .attr("y", y_lw)
+                    .attr("height", footballer_img_size)
+                    .attr("width", footballer_img_size)
+                    .attr("xlink:href", "/static/worldcup/img/france/griezmann.png")
+                    .attr("clip-path", "url(#clip-circle_lw)")
+
+
+            // STRIKER
+            let x_striker = w_pitch - w_pitch/5
+            let y_striker = h_pitch/2 - h_pitch/10
+            let defs_striker = svg_pitch.append("defs")
+                                .attr("id", "imgdefs")
+            let clipPath_striker = defs_striker.append('clipPath')
+                                        .attr('id', 'clip-circle_striker')
+                                        .append("circle")
+                                        .attr("r", (footballer_img_size/2) - adjust_radius)
+                                        .attr("cx", x_striker + (footballer_img_size/2))
+                                        .attr("cy", y_striker + (footballer_img_size/2));
+            svg_pitch.append("image")
+                     .attr("x", x_striker)
+                     .attr("y", y_striker)
+                     .attr("height", footballer_img_size)
+                     .attr("width", footballer_img_size)
+                     .attr("xlink:href", "/static/worldcup/img/france/giroud.png")
+                     .attr("clip-path", "url(#clip-circle_striker)")
+      }
+
+
+
+        // window.d3 = null
+
+    </script>
+
+
+    <!-- MAP -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/datamaps/0.5.8/datamaps.all.js"></script>
+    <!-- <script>
+
+
+    function loadTable(tableId, fields, data) {
+      //$('#' + tableId).empty(); //not really necessary
+      var rows = '';
+      $.each(data, function(index, item) {
+          var row = '<tr>';
+          $.each(fields, function(index, field) {
+            if(index == 0){
+              row += '<td>' + item[index] + '</td>';
+            }else{
+
+              row += '<td class=\"text-right\">' + item[index] + '</td>';
+            }
+          });
+          rows += row + '<tr>';
+      });
+      $('#' + tableId).html(rows);
+  }
+
+
+
+    var map ;
+    fetch("http://localhost:8000/datacountries", {
+      method: 'get',
+      dataType: 'json',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(response => {
+      // console.log(response);
+      var series = JSON.parse(response);
+
+
+      var top10 = series.slice(0, 10);
+
+      loadTable('data-table', ['field1', 'field2'], top10);
+
+      // console.log(series)
+
+      var dataset = {};
+
+      var onlyValues = series.map(function(obj){ return obj[1]; });
+      var minValue = Math.min.apply(null, onlyValues),
+            maxValue = Math.max.apply(null, onlyValues);
+
+      var paletteScale = d3.scale.linear()
+            .domain([minValue,maxValue])
+            .range(["#EFEFFF","#02386F"]); // blue color
+
+      series.forEach(function(item){
+          var iso = item[0],
+                  value = item[1];
+          dataset[iso] = { numberOfThings: value, fillColor: paletteScale(value) };
+      });
+
+      map = new Datamap({
+          element: document.getElementById('container1'),
+          projection: 'mercator',
+          fills: { defaultFill: '#F5F5F5' },
+          responsive: true,
+          geographyConfig: {
+            borderColor: '#DEDEDE',
+            highlightBorderWidth: 2,
+            highlightBorderColor: '#B7B7B7',
+            highlightFillColor: function(geo) {
+                return geo['fillColor'] || '#F5F5F5';
+            },
+            popupTemplate: function(geo, data) {
+                // don't show tooltip if country don't present in dataset
+                if (!data) { return ; }
+                // tooltip content
+                return ['<div class="hoverinfo">',
+                    '<strong>', geo.properties.name, '</strong>',
+                    '<br>Number of Tweets : <strong>', data.numberOfThings, '</strong>',
+                    '</div>'].join('');
+            }
+          },
+          data: dataset
+      });
+    });
+
+    setInterval(function(){
+      var series;
+      fetch("http://localhost:8000/datacountries", {
+        method: 'get',
+        dataType: 'json',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(response => {
+        // console.log(response);
+        var series = JSON.parse(response);
+
+        var top10 = series.slice(0, 10);
+
+        loadTable('data-table', ['field1', 'field2'], top10);
+
+        var onlyValues = series.map(function(obj){ return obj[1]; });
+        var minValue = Math.min.apply(null, onlyValues),
+            maxValue = Math.max.apply(null, onlyValues);
+
+        var paletteScale = d3.scale.linear()
+            .domain([minValue,maxValue])
+            .range(["#EFEFFF","#02386F"]); // blue color
+
+        // console.log(series)
+
+        var dataset = {};
+
+        series.forEach(function(item){
+            var iso = item[0],
+                    value = item[1];
+            dataset[iso] = { numberOfThings: value, fillColor: paletteScale(value)  };
+        });
+
+      map.updateChoropleth(dataset, {reset: true});
+      window.addEventListener('resize', function(event) { map.resize(); });
+    })}, 3000);
+
+  </script> -->
+
+
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+
+</body>
+
+</html>
+<!-- end document-->
