@@ -21,5 +21,9 @@ def table(request):
     return render(request, 'worldcup/table.html')
 
 def data_countries(request):
-	data = countriesCalculations()
+	data = countriesCalculations("#FRAITA")
+	return JsonResponse(data,safe=False)
+
+def data_players(request):
+	data = playersCalculations("#FRAITA")
 	return JsonResponse(data,safe=False)

@@ -5,15 +5,20 @@ from geotext import GeoText
 import pycountry
 import numpy as np
 
-def getDataFromMongo(hashtag_name):
+def getDataFromMongo(collection_name):
     client = MongoClient('localhost', 27017)
     db = client['WorldCup']
-    collection_nation = str(hashtag_name[1:]) + "_Nations"
-    collection = db[collection_nation]
+    collection = db[collection_name]
     data = pd.DataFrame(list(collection.find()))
-    data.sort_values(by="count", ascending=False, inplace=True)
+    data.sort_values(by="Count", ascending=False, inplace=True)
     return data
 
-def countriesCalculations():
-    data = getDataFromMongo()
-    return data[["Nation", "Count"]].to_json(orient='values')
+def countriesCalculations(hashtag_name):
+	collection_nation = str(hashtag_name[1:]) + "_Nations"
+	data = getDataFromMongo(collection_nation)
+	return data[["Nation", "Count"]].to_json(orient='values')
+
+def playersCalculations(hashtag_name):
+	collection_players = str(hashtag_name[1:]) + "_Players"
+	data = getDataFromMongo(collection_players)
+	return data[["Nation", "Count"]].to_json(orient='values')

@@ -12,12 +12,12 @@ import numpy as np
 
 
 #API SET UP
-CONSUMER_KEY    = '***'
-CONSUMER_SECRET = '***'
+CONSUMER_KEY    = 'Ql5aNcWRl0Gbea6p6t0M62XrA'
+CONSUMER_SECRET = 'qAPFMNHFUnvFFOlU7D9uZCJAGnLKXKtTPvH7z8B2nTIhSbA3Hi'
 
 # Access:
-ACCESS_TOKEN  = '***'
-ACCESS_SECRET = '***'
+ACCESS_TOKEN  = '405035828-z6BtUOUpYdSgG1vqMlPeF3tObONQBM8qkVVjDHaU'
+ACCESS_SECRET = 'LsJIb1dJ6sel9SVsAQhLW5Td589vO6QKPxLVjJEm3lJZt'
 
 def twitter_setup():
     """
@@ -35,8 +35,31 @@ def twitter_setup():
 api = twitter_setup()
 
 
-filters = sys.argv[1]
+#filters = sys.argv[1]
 ##joueurs = sys.argv[2]
+
+def getPays():
+    pays = {'Russie':'RUS','Arabie':'ARA', 'Portugal':'POR', 'Espagne':'SPA', 'France':'FRA', 'Australie':'AUS',
+       'Bresil':'BRA', 'Suisse':'SUI', 'Tunisie':'TUN', 'Angleterre':'ENG', 'Egypte':'EGY', 'Iran':'IRN',
+       'Perou':'PER', 'Costa':'CRI', 'Allemagne':'GER', 'Suede':'SWE', 'Pologne':'POL', 'Colombie':'COL',
+       'Maroc':'MAR', 'Danemark':'DEN', 'Serbie':'SER', 'Belgique':'BEL'}
+
+    inv_pays = {v: k for k, v in pays.items()}
+
+    team1 = inv_pays[hashtag[:3]]
+    team2 = inv_pays[hashtag[3:]]
+
+    return team1, team2
+
+def getPlayers():
+    data = pd.read_csv("WorldCup_Dashboard/Crawler/data_worldcup.csv")
+    players_team1 = data[data['Code'] == hashtag[:3]][['Player','Post']].values.tolist()
+    players_team2 = data[data['Code'] == hashtag[3:]][['Player','Post']].values.tolist()
+    if len(players_team1) == 0:
+        players_team1 = None
+    elif len(players_team2) == 0:
+        players_team2 = None
+    return players_team1,players_team2
 
 def clean_tweet(tweet):
     return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet).split())
@@ -65,7 +88,7 @@ class StreamListener(tweepy.StreamListener):
 
     def on_status(self,status):
         print("New Tweet !")
-        print(status.text)
+        #print(status.text)
         try:
             client = MongoClient('localhost', 27017)
             db = client['WorldCup']
@@ -81,7 +104,8 @@ class StreamListener(tweepy.StreamListener):
                     'text':clean,
                     'location':status.user.location,
                     'positivity':analize_sentiment(clean),
-                    'locationBis':clean_location}
+                    'locationBis':clean_location,
+                    'hashtags':status.entities['hashtags']}
 
             collection_tweets.insert_one(tweet)
             collection_nations.update_one({"Nation":clean_location}, {"$inc": {"Count":1}}, upsert=True)
@@ -104,4 +128,4 @@ class StreamListener(tweepy.StreamListener):
 
 stream_listener = StreamListener()
 stream = tweepy.Stream(auth=api.auth, listener=stream_listener)
-stream.filter(track=filters,languages=["fr"])
+stream.filter(track=["#FRAITA"],languages=["en"])
