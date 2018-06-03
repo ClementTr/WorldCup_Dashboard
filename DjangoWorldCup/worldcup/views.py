@@ -146,7 +146,7 @@ def main(request):
 #     context = {'hashtag': hashtag}
 #     return render(request, 'worldcup/porspa.html', context)
 #
-# def rusara(request):
-#     hashtag = "#RUSARA"
-#     context = {'hashtag': hashtag}
-#     return render(request, 'worldcup/rusara.html', context)
+def rusara(request):
+    hashtag = "#RUSARA"
+    context = {'hashtag': hashtag}
+    return render(request, 'worldcup/rusara.html', context)

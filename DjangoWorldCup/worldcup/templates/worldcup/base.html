@@ -1,0 +1,510 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Russian World Cup - Data">
+    <meta name="author" content="DataDeer">
+    <meta name="keywords" content="Data Science Analysis Big World Cup Football">
+
+    <!-- Title Page-->
+    <title>World Cup Dashboard</title>
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="{% static 'worldcup/img/favicon.ico' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+
+    <!-- Fontfaces CSS-->
+    <link href="{% static 'worldcup/css/font-face.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'worldcup/vendor/font-awesome-4.7/css/font-awesome.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'worldcup/vendor/font-awesome-5/css/fontawesome-all.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'worldcup/vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="{% static 'worldcup/vendor/bootstrap-4.1/bootstrap.min.css' %}" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="{% static 'worldcup/vendor/animsition/animsition.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'worldcup/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'worldcup/vendor/wow/animate.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'worldcup/vendor/css-hamburgers/hamburgers.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'worldcup/vendor/slick/slick.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'worldcup/vendor/select2/select2.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'worldcup/vendor/perfect-scrollbar/perfect-scrollbar.css' %}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{% static 'worldcup/css/theme.css' %}" rel="stylesheet" media="all">
+
+    <!-- Simple Plot CSS -->
+    <link href="{% static 'worldcup/css/simple_plot.css' %}" rel="stylesheet" media="all">
+    <style>
+      .toolTip {
+      	position: absolute;
+        display: none;
+        min-width: 80px;
+        height: auto;
+        background: none repeat scroll 0 0 #ffffff;
+        border: 1px solid #6F257F;
+        padding: 14px;
+        text-align: center;
+      }
+     </style>
+
+
+</head>
+
+<body class="animsition">
+
+    <div class="page-wrapper">
+
+
+        <!-- HEADER MOBILE-->
+        <header class="header-mobile d-block d-lg-none">
+            <div class="header-mobile__bar">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                        <a class="logo" href="/">
+                            <img src="{% static 'worldcup/img/datadeer_mobile.png' %}" alt="DataDeer"/>
+                        </a>
+                        <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar-mobile">
+                <div class="container-fluid">
+                    <ul class="navbar-mobile__list list-unstyled">
+                      <li class="has-sub">
+                          <a class="js-arrow" href="#">
+                              <i class="fas fa-bar-chart-o"></i>Matchs
+                          </a>
+                          <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                            <li>
+                                <a href="/main">{{hashtag}}</a>
+                            </li>
+                              <!--<li>
+                                  <a href="final/">final</a>
+                              </li>
+                              <li>
+                                  <a href="third/">third</a>
+                              </li>
+                              <li>
+                                  <a href="semi_final_2/">semi_final_2</a>
+                              </li>
+                              <li>
+                                  <a href="semi_final_1">semi_final_1</a>
+                              </li>
+                              <li>
+                                  <a href="quarter_final_2">quarter_final_2</a>
+                              </li>
+                              <li>
+                                  <a href="quarter_final_1">quarter_final_1</a>
+                              </li>
+                              <li>
+                                  <a href="round_16_4">round_16_4</a>
+                              </li>
+                              <li>
+                                  <a href="round_16_3">round_16_3</a>
+                              </li>
+                              <li>
+                                  <a href="final/">final</a>
+                              </li>
+                              <li>
+                                  <a href="third/">third</a>
+                              </li>
+                              <li>
+                                  <a href="semi_final_2/">semi_final_2</a>
+                              </li>
+                              <li>
+                                  <a href="semi_final_1/">semi_final_1</a>
+                              </li>
+                              <li>
+                                  <a href="quarter_final_2/">quarter_final_2</a>
+                              </li>
+                              <li>
+                                  <a href="quarter_final_1/">quarter_final_1</a>
+                              </li>
+                              <li>
+                                  <a href="round_16_4/">round_16_4</a>
+                              </li>
+                              <li>
+                                  <a href="round_16_3/">round_16_3</a>
+                              </li>
+                              <li>
+                                  <a href="round_16_2/">round_16_2</a>
+                              </li>
+                              <li>
+                                  <a href="round_16_1/">round_16_1</a>
+                              </li>
+                              <li>
+                                  <a href="engbel/">#ENGBEL</a>
+                              </li>
+                              <li>
+                                  <a href="serbra/">#SERBRA</a>
+                              </li>
+                              <li>
+                                  <a href="fraden/">#FRADEN</a>
+                              </li>
+                              <li>
+                                  <a href="spamar/">#SPAMAR</a>
+                              </li>
+                              <li>
+                                  <a href="polcol/">#POLCOL</a>
+                              </li>
+                              <li>
+                                  <a href="gerswe/">#GERSWE</a>
+                              </li>
+                              <li>
+                                  <a href="bracri/">#BRACRI</a>
+                              </li>
+                              <li>
+                                  <a href="fraper/">#FRAPER</a>
+                              </li>
+                              <li>
+                                  <a href="irnspa/">#IRNSPA</a>
+                              </li>
+                              <li>
+                                  <a href="rusegy/">#RUSEGY</a>
+                              </li>
+                              <li>
+                                  <a href="tuneng/">#TUNENG</a>
+                              </li>
+                              <li>
+                                  <a href="brasui/">#BRASUI</a>
+                              </li>
+                              <li>
+                                  <a href="fraaus/">#FRAAUS</a>
+                              </li>
+                              <li>
+                                  <a href="porspa/">#PORSPA</a>
+                              </li>-->
+                              <li>
+                                  <a href="rusara/">#RUSARA</a>
+                              </li>
+                          </ul>
+                      </li>
+                        <!-- <li>
+                            <a href="/table">
+                              <i class="fas fa-table"></i>Results and Classement
+                            </a>
+                        </li> -->
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- END HEADER MOBILE-->
+
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar d-none d-lg-block">
+            <div class="logo">
+                <a href="#">
+                     <img src="{% static 'worldcup/img/datadeer.png' %}" alt="DataDeer"/>
+                </a>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                      <li class="has-sub">
+                          <a class="js-arrow" href="#">
+                              <i class="fas fa-bar-chart-o"></i>Matchs
+                          </a>
+                          <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                            <li>
+                                <a href="/main">{{hashtag}}</a>
+                            </li>
+                              <!-- <li>
+                                  <a href="final/">final</a>
+                              </li>
+                              <li>
+                                  <a href="third/">third</a>
+                              </li>
+                              <li>
+                                  <a href="semi_final_2/">semi_final_2</a>
+                              </li>
+                              <li>
+                                  <a href="semi_final_1">semi_final_1</a>
+                              </li>
+                              <li>
+                                  <a href="quarter_final_2">quarter_final_2</a>
+                              </li>
+                              <li>
+                                  <a href="quarter_final_1">quarter_final_1</a>
+                              </li>
+                              <li>
+                                  <a href="round_16_4">round_16_4</a>
+                              </li>
+                              <li>
+                                  <a href="round_16_3">round_16_3</a>
+                              </li>
+                              <li>
+                                  <a href="final/">final</a>
+                              </li>
+                              <li>
+                                  <a href="third/">third</a>
+                              </li>
+                              <li>
+                                  <a href="semi_final_2/">semi_final_2</a>
+                              </li>
+                              <li>
+                                  <a href="semi_final_1/">semi_final_1</a>
+                              </li>
+                              <li>
+                                  <a href="quarter_final_2/">quarter_final_2</a>
+                              </li>
+                              <li>
+                                  <a href="quarter_final_1/">quarter_final_1</a>
+                              </li>
+                              <li>
+                                  <a href="round_16_4/">round_16_4</a>
+                              </li>
+                              <li>
+                                  <a href="round_16_3/">round_16_3</a>
+                              </li>
+                              <li>
+                                  <a href="round_16_2/">round_16_2</a>
+                              </li>
+                              <li>
+                                  <a href="round_16_1/">round_16_1</a>
+                              </li>
+                              <li>
+                                  <a href="engbel/">#ENGBEL</a>
+                              </li>
+                              <li>
+                                  <a href="serbra/">#SERBRA</a>
+                              </li>
+                              <li>
+                                  <a href="fraden/">#FRADEN</a>
+                              </li>
+                              <li>
+                                  <a href="spamar/">#SPAMAR</a>
+                              </li>
+                              <li>
+                                  <a href="polcol/">#POLCOL</a>
+                              </li>
+                              <li>
+                                  <a href="gerswe/">#GERSWE</a>
+                              </li>
+                              <li>
+                                  <a href="bracri/">#BRACRI</a>
+                              </li>
+                              <li>
+                                  <a href="fraper/">#FRAPER</a>
+                              </li>
+                              <li>
+                                  <a href="irnspa/">#IRNSPA</a>
+                              </li>
+                              <li>
+                                  <a href="rusegy/">#RUSEGY</a>
+                              </li>
+                              <li>
+                                  <a href="tuneng/">#TUNENG</a>
+                              </li>
+                              <li>
+                                  <a href="brasui/">#BRASUI</a>
+                              </li>
+                              <li>
+                                  <a href="fraaus/">#FRAAUS</a>
+                              </li>
+                              <li>
+                                  <a href="porspa/">#PORSPA</a>
+                              </li>-->
+                              <li>
+                                  <a href="/rusara/">#RUSARA</a>
+                              </li>
+                          </ul>
+                      </li>
+                      <!-- <li>
+                          <a href="/table">
+                              <i class="fas fa-table"></i>Results and Classement
+                          </a>
+                      </li> -->
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR-->
+
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap">
+                          <a href="/">Russian World Cup Dashboard</a>
+                            <div class="header-button">
+                                <div class="noti-wrap">
+                                  DataDeer
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- END HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+
+                      <div class="row">
+
+                        {% block title %}
+                        {% endblock title %}
+
+
+                          <div class="col-lg-6">
+                              <div class="au-card m-b-30">
+                                  <div class="au-card-inner">
+                                      <h3 class="title-2 m-b-40">Positivity Prediction</h3>
+                                      <div class="chart-wrapper" id="bar_plot"></div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="col-lg-6">
+                              <div class="au-card m-b-30" style="padding-left: 20px;">
+                                  <div class="au-card-inner">
+                                      <h3 class="title-2 m-b-40">Nombre de Tweets/Retwets</h3>
+                                      <!-- <canvas id="sales-chart"></canvas> -->
+                                      <div class="chart-wrapper" id="simple_plot"></div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="col-lg-9">
+                              <div class="au-card m-b-30">
+                                  <div class="au-card-inner">
+                                      <h3 class="title-2 m-b-40">Map this match</h3>
+                                      <div class="card-body" id="container1"></div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="col-lg-3">
+                                <div class="au-card au-card--bg-blue au-card-top-countries m-b-30">
+                                    <div class="au-card-inner">
+                                      <h3 class="title-3 m-b-30 text-white">top countries</h3>
+                                        <div class="table-responsive">
+                                            <table class="table table-top-countries text-white" id="data-table">
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                          <div class="col-lg-9">
+                              <div class="au-card m-b-30">
+                                  <div class="au-card-inner">
+                                      <h3 class="title-2 m-b-40">Map this match</h3>
+                                      <!-- <div class="card-body" id="pitch_plot"></div> -->
+                                      <div class="chart-wrapper" id="pitch_plot"></div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="col-lg-3">
+                              <div class="au-card au-card--bg-blue au-card-top-countries m-b-30">
+                                  <div class="au-card-inner">
+                                    <h3 class="title-3 m-b-30 text-white">Top Players</h3>
+                                      <div class="table-responsive">
+                                          <table class="table table-top-countries text-white" id="players-table">
+
+                                          </table>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          {% block twitter %}
+                          {% endblock twitter %}
+
+                      </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- END MAIN CONTENT-->
+
+        </div>
+        <!-- END PAGE CONTAINER-->
+
+
+
+    </div>
+
+
+</body>
+
+
+<!-- Jquery JS-->
+<script src="{% static 'worldcup/vendor/jquery-3.2.1.min.js' %}"></script>
+<!-- Bootstrap JS-->
+<script src="{% static 'worldcup/vendor/bootstrap-4.1/popper.min.js' %}"></script>
+<script src="{% static 'worldcup/vendor/bootstrap-4.1/bootstrap.min.js' %}"></script>
+<!-- Vendor JS       -->
+<script src="{% static 'worldcup/vendor/slick/slick.min.js' %}">
+</script>
+<script src="{% static 'worldcup/vendor/wow/wow.min.js' %}"></script>
+<script src="{% static 'worldcup/vendor/animsition/animsition.min.js' %}"></script>
+<script src="{% static 'worldcup/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js' %}">
+</script>
+<script src="{% static 'worldcup/vendor/counter-up/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'worldcup/vendor/counter-up/jquery.counterup.min.js' %}">
+</script>
+<script src="{% static 'worldcup/vendor/circle-progress/circle-progress.min.js' %}"></script>
+<script src="{% static 'worldcup/vendor/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
+<script src="{% static 'worldcup/vendor/chartjs/Chart.bundle.min.js' %}"></script>
+<script src="{% static 'worldcup/vendor/select2/select2.min.js' %}"></script>
+
+<!-- D3js -->
+<script src="//d3js.org/d3.v4.min.js"></script>
+
+<!-- Main JS-->
+<script src="{% static 'worldcup/js/main.js' %}"></script>
+
+
+
+<script src="{% static 'worldcup/js/multi_lines_chart.js' %}" type="text/javascript"></script>
+<!-- BAR PLOT -->
+<script src="{% static 'worldcup/js/barplot_chart.js' %}" type="text/javascript"></script>
+<!-- PITCH -->
+<script src="{% static 'worldcup/js/pitch.js' %}" type="text/javascript"></script>
+<!-- TWITTER -->
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+{% block d3v4 %}
+{% endblock d3v4 %}
+
+
+
+
+<!-- MAP -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/datamaps/0.5.8/datamaps.all.js"></script>
+
+{% block d3 %}
+{% endblock d3 %}
+
+
+
+
+</html>
+<!-- end document-->
