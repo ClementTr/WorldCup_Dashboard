@@ -1,42 +1,122 @@
 {% extends 'worldcup/base.html' %}
 {% load static %}
 
-<!-- BLOCK TITLE MODIFY TITLE -->
-{% block title %}
-<div class="col-lg-12">
-    <div class="au-card m-b-30" style="padding-bottom: 0px;">
-        <center>
-          <h3 class="title-2 m-b-40">Match of the day - {{hashtag}}</h3>
-          <!-- <br>
-          <h5>#FRAITA</h5> -->
-        </center>
-    </div>
-</div>
-{% endblock title %}
+<!-- BLOCK MAIN  -->
+{% block main %}
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
 
-<!-- BLOCK TWITTER MODIFY TWITTER -->
-{% block twitter %}
-<div class="col-lg-6">
-    <div class="au-card m-b-30">
-        <div class="au-card-inner">
-            <h3 class="title-2 m-b-40">Deertweet about a team</h3>
-            <blockquote class="twitter-tweet" data-lang="fr">
-              <p lang="und" dir="ltr">.<a href="https://twitter.com/MATUIDIBlaise?ref_src=twsrc%5Etfw">@MATUIDIBlaise</a> 👌🏽 <a href="https://twitter.com/KMbappe?ref_src=twsrc%5Etfw">@KMbappe</a> 😄 <a href="https://t.co/rof61mGHRk">pic.twitter.com/rof61mGHRk</a></p>&mdash; Equipe de France (@equipedefrance) <a href="https://twitter.com/equipedefrance/status/1003197345381564416?ref_src=twsrc%5Etfw">3 juin 2018</a>
-            </blockquote>
+          <div class="row">
+
+            <!-- BLOCK TITLE MODIFY TITLE -->
+            <div class="col-lg-12">
+                <div class="au-card m-b-30" style="padding-bottom: 0px;">
+                    <center>
+                      <h3 class="title-2 m-b-40">Match of the day - {{hashtag}}</h3>
+                      <!-- <br>
+                      <h5>#FRAITA</h5> -->
+                    </center>
+                </div>
+            </div>
+
+
+              <div class="col-lg-6">
+                  <div class="au-card m-b-30">
+                      <div class="au-card-inner">
+                          <h3 class="title-2 m-b-40">Positivity Prediction</h3>
+                          <div class="chart-wrapper" id="bar_plot"></div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-6">
+                  <div class="au-card m-b-30" style="padding-left: 20px;">
+                      <div class="au-card-inner">
+                          <h3 class="title-2 m-b-40">Nombre de Tweets/Retwets</h3>
+                          <!-- <canvas id="sales-chart"></canvas> -->
+                          <div class="chart-wrapper" id="simple_plot"></div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-9">
+                  <div class="au-card m-b-30">
+                      <div class="au-card-inner">
+                          <h3 class="title-2 m-b-40">Map this match</h3>
+                          <div class="card-body" id="container1"></div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-3">
+                    <div class="au-card au-card--bg-blue au-card-top-countries m-b-30">
+                        <div class="au-card-inner">
+                          <h3 class="title-3 m-b-30 text-white">top countries</h3>
+                            <div class="table-responsive">
+                                <table class="table table-top-countries text-white" id="data-table">
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+              <div class="col-lg-9">
+                  <div class="au-card m-b-30">
+                      <div class="au-card-inner">
+                          <h3 class="title-2 m-b-40">Map this match</h3>
+                          <!-- <div class="card-body" id="pitch_plot"></div> -->
+                          <div class="chart-wrapper" id="pitch_plot"></div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-3">
+                  <div class="au-card au-card--bg-blue au-card-top-countries m-b-30">
+                      <div class="au-card-inner">
+                        <h3 class="title-3 m-b-30 text-white">Top Players</h3>
+                          <div class="table-responsive">
+                              <table class="table table-top-countries text-white" id="players-table">
+
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-6">
+                  <div class="au-card m-b-30">
+                      <div class="au-card-inner">
+                          <h3 class="title-2 m-b-40">Deertweet about a team</h3>
+                          <blockquote class="twitter-tweet" data-lang="fr">
+                            <p lang="und" dir="ltr">.<a href="https://twitter.com/MATUIDIBlaise?ref_src=twsrc%5Etfw">@MATUIDIBlaise</a> 👌🏽 <a href="https://twitter.com/KMbappe?ref_src=twsrc%5Etfw">@KMbappe</a> 😄 <a href="https://t.co/rof61mGHRk">pic.twitter.com/rof61mGHRk</a></p>&mdash; Equipe de France (@equipedefrance) <a href="https://twitter.com/equipedefrance/status/1003197345381564416?ref_src=twsrc%5Etfw">3 juin 2018</a>
+                          </blockquote>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-6">
+                  <div class="au-card m-b-30">
+                      <div class="au-card-inner">
+                          <h3 class="title-2 m-b-40">Deertweet about a player</h3>
+                          <blockquote class="twitter-tweet" data-lang="fr"><p lang="en" dir="ltr">
+                            <a href="https://twitter.com/hashtag/PSG?src=hash&amp;ref_src=twsrc%5Etfw">#PSG</a> youngster Yacine Adli will join <a href="https://twitter.com/hashtag/Arsenal?src=hash&amp;ref_src=twsrc%5Etfw">#Arsenal</a> despite receiving lucrative contract offer from the French champions and interest from Real Madrid &amp; Bayern. Talented attacking midfielder, 17, to become Emery’s first signing (L’Equipe)</p>&mdash; Matt Spiro (@mattspiro) <a href="https://twitter.com/mattspiro/status/1001932317324128256?ref_src=twsrc%5Etfw">30 mai 2018</a>
+                          </blockquote>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+
+
         </div>
     </div>
 </div>
-
-<div class="col-lg-6">
-    <div class="au-card m-b-30">
-        <div class="au-card-inner">
-            <h3 class="title-2 m-b-40">Deertweet about a player</h3>
-            <blockquote class="twitter-tweet" data-lang="fr"><p lang="en" dir="ltr">
-              <a href="https://twitter.com/hashtag/PSG?src=hash&amp;ref_src=twsrc%5Etfw">#PSG</a> youngster Yacine Adli will join <a href="https://twitter.com/hashtag/Arsenal?src=hash&amp;ref_src=twsrc%5Etfw">#Arsenal</a> despite receiving lucrative contract offer from the French champions and interest from Real Madrid &amp; Bayern. Talented attacking midfielder, 17, to become Emery’s first signing (L’Equipe)</p>&mdash; Matt Spiro (@mattspiro) <a href="https://twitter.com/mattspiro/status/1001932317324128256?ref_src=twsrc%5Etfw">30 mai 2018</a>
-            </blockquote>
-        </div>
-    </div>
-</div>
+<!-- END MAIN CONTENT-->
 {% endblock %}
 
 
@@ -157,7 +237,7 @@
 
 <!-- BLOCK D3 MODIFY D3 VERSION V3 MAP CHARTS -->
 {% block d3 %}
-<!-- 
+<!--
 <script>
 
 function loadTable(tableId, fields, data) {
