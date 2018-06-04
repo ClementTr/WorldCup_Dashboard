@@ -100,12 +100,14 @@ def saveTimeSeries(collection_name):
 
 def removeMongoCollections(hashtag):
 	'''Remove Nations, Tweets & Joueurs collections '''
-	
+	for collect in [hashtag+"_Nations",hashtag+"_Tweets"]:
+		collection = db[collection_name]
+		collection.drop()
 
 initMongo()
 hashtag = "#FRAITA"
 collection_name = str(hashtag[1:])
 saveCountriesData(collection_name+"_Nations")
 saveTweets(collection_name+"_Tweets")
-
+#removeMongoCollections(collection_name)
 
