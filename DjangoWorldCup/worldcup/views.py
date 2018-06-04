@@ -11,6 +11,9 @@ def home(request):
         return redirect("main/")
     return render(request, 'worldcup/home.html')
 
+def table(request):
+    return render(request, 'worldcup/table.html')
+
 def data_countries(request):
 	data = countriesCalculations("#FRAITA")
 	return JsonResponse(data,safe=False)
