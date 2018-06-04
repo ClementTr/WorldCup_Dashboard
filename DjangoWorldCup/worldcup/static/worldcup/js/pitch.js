@@ -1,4 +1,4 @@
-function redraw_pitch(){
+function redraw_pitch(keeper_path, defenders_path, midfielders_path, attackers_path){
 
   d3.select("#pitch_plot_redraw").remove();
   svg_pitch = svg_pitch_init.attr("width", w_pitch)
@@ -7,10 +7,11 @@ function redraw_pitch(){
                           .append("g")
                           .attr("id", "pitch_plot_redraw");
 
-  draw_pitch();
+  draw_pitch(keeper_path, defenders_path, midfielders_path, attackers_path);
 }
 
-function draw_pitch(){
+function draw_pitch(keeper_path, defenders_path, midfielders_path, attackers_path){
+  console.log(defenders_path)
   let div_pitchplot = document.getElementById("pitch_plot");
   let width_pitch = div_pitchplot.clientWidth;
   let height_pitch = div_pitchplot.clientHeight;
@@ -48,7 +49,7 @@ function draw_pitch(){
            .attr('height',h_pitch)
            .attr('width', w_pitch);
 
-  let adjust_radius = 7
+  let adjust_radius = 0
 
   // Keeper
   x_keeper =  w_pitch/25
@@ -66,7 +67,7 @@ function draw_pitch(){
            .attr("y", y_keeper)
            .attr("height", footballer_img_size)
            .attr("width", footballer_img_size)
-           .attr("xlink:href", "/static/worldcup/img/france/lloris.png")
+           .attr("xlink:href", "/static/worldcup/img/players/" + keeper_path)
            .attr("clip-path", "url(#clip-circle_keeper)")
 
 
@@ -86,7 +87,7 @@ function draw_pitch(){
             .attr("y", y_cb1)
             .attr("height", footballer_img_size)
             .attr("width", footballer_img_size)
-            .attr("xlink:href", "/static/worldcup/img/france/varane.png")
+            .attr("xlink:href", "/static/worldcup/img/players/" + defenders_path[0])
             .attr("clip-path", "url(#clip-circle_cb1)")
 
 
@@ -108,7 +109,7 @@ function draw_pitch(){
               .attr("y", y_cb2)
               .attr("height", footballer_img_size)
               .attr("width", footballer_img_size)
-              .attr("xlink:href", "/static/worldcup/img/france/umtiti.png")
+              .attr("xlink:href", "/static/worldcup/img/players/" + defenders_path[1])
               .attr("clip-path", "url(#clip-circle_cb2)")
 
 
@@ -130,7 +131,7 @@ function draw_pitch(){
               .attr("y", y_rb)
               .attr("height", footballer_img_size)
               .attr("width", footballer_img_size)
-              .attr("xlink:href", "/static/worldcup/img/france/sidibe.png")
+              .attr("xlink:href", "/static/worldcup/img/players/" + defenders_path[2])
               .attr("clip-path", "url(#clip-circle_rb)")
 
 
@@ -151,7 +152,7 @@ function draw_pitch(){
                .attr("y", y_lb)
                .attr("height", footballer_img_size)
                .attr("width", footballer_img_size)
-               .attr("xlink:href", "/static/worldcup/img/france/mendy.png")
+               .attr("xlink:href", "/static/worldcup/img/players/" + defenders_path[3])
                .attr("clip-path", "url(#clip-circle_lb)")
 
 
@@ -171,7 +172,7 @@ function draw_pitch(){
               .attr("y", y_cm)
               .attr("height", footballer_img_size)
               .attr("width", footballer_img_size)
-              .attr("xlink:href", "/static/worldcup/img/france/kante.png")
+              .attr("xlink:href", "/static/worldcup/img/players/" + midfielders_path[0])
               .attr("clip-path", "url(#clip-circle_cm)")
 
 
@@ -192,7 +193,7 @@ function draw_pitch(){
                .attr("y", y_rm)
                .attr("height", footballer_img_size)
                .attr("width", footballer_img_size)
-               .attr("xlink:href", "/static/worldcup/img/france/matuidi.png")
+               .attr("xlink:href", "/static/worldcup/img/players/" + midfielders_path[1])
                .attr("clip-path", "url(#clip-circle_rm)")
 
 
@@ -213,7 +214,7 @@ function draw_pitch(){
               .attr("y", y_lm)
               .attr("height", footballer_img_size)
               .attr("width", footballer_img_size)
-              .attr("xlink:href", "/static/worldcup/img/france/pogba.png")
+              .attr("xlink:href", "/static/worldcup/img/players/" + midfielders_path[2])
               .attr("clip-path", "url(#clip-circle_lm)")
 
 
@@ -233,7 +234,7 @@ function draw_pitch(){
                .attr("y", y_rw)
                .attr("height", footballer_img_size)
                .attr("width", footballer_img_size)
-               .attr("xlink:href", "/static/worldcup/img/france/mbappe.png")
+               .attr("xlink:href", "/static/worldcup/img/players/" + attackers_path[0])
                .attr("clip-path", "url(#clip-circle_rw)")
 
 
@@ -253,7 +254,7 @@ function draw_pitch(){
               .attr("y", y_lw)
               .attr("height", footballer_img_size)
               .attr("width", footballer_img_size)
-              .attr("xlink:href", "/static/worldcup/img/france/griezmann.png")
+              .attr("xlink:href", "/static/worldcup/img/players/" + attackers_path[1])
               .attr("clip-path", "url(#clip-circle_lw)")
 
 
@@ -273,6 +274,6 @@ function draw_pitch(){
                .attr("y", y_striker)
                .attr("height", footballer_img_size)
                .attr("width", footballer_img_size)
-               .attr("xlink:href", "/static/worldcup/img/france/giroud.png")
+               .attr("xlink:href", "/static/worldcup/img/players/" + attackers_path[2])
                .attr("clip-path", "url(#clip-circle_striker)")
 }
