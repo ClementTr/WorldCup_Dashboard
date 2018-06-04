@@ -105,7 +105,7 @@ class StreamListener(tweepy.StreamListener):
                     'location':status.user.location,
                     'positivity':analize_sentiment(clean),
                     'locationBis':clean_location,
-                    'hashtags':status.entities['hashtags']}
+                    'hashtags':[i['text'] for i in status.entities['hashtags']]}
 
             collection_tweets.insert_one(tweet)
             collection_nations.update_one({"Nation":clean_location}, {"$inc": {"Count":1}}, upsert=True)

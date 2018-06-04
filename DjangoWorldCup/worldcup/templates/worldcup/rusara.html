@@ -157,6 +157,7 @@
 
 <!-- BLOCK D3 MODIFY D3 VERSION V3 MAP CHARTS -->
 {% block d3 %}
+<!-- 
 <script>
 
 function loadTable(tableId, fields, data) {
@@ -280,6 +281,84 @@ setInterval(function(){
   map.updateChoropleth(dataset, {reset: true});
   window.addEventListener('resize', function(event) { map.resize(); });
 })}, 3000);
+
+</script> -->
+
+<!-- STATIC -->
+<!-- BLOCK D3 MODIFY D3 VERSION V3 MAP CHARTS -->
+<script>
+
+function loadTable(tableId, fields, data) {
+  var rows = '';
+  $.each(data, function(index, item) {
+      var row = '<tr>';
+      $.each(fields, function(index, field) {
+        if(index == 0){
+          row += '<td>' + item[index] + '</td>';
+        }else{
+
+          row += '<td class=\"text-right\">' + item[index] + '</td>';
+        }
+      });
+      rows += row + '<tr>';
+  });
+  $('#' + tableId).html(rows);
+}
+
+  var series = [];
+
+  d3.csv("/static/worldcup/data/FRAITA_Nations.csv", function(data) {
+    for(var i = 0;i<data.length;i++){
+        series.push([data[i]['Nation'], data[i]['Count']]);
+    }
+
+
+  var top10_team = series.slice(0, 10);
+
+  loadTable('data-table', ['field1', 'field2'], top10_team);
+
+  var dataset = {};
+
+  var onlyValues = series.map(function(obj){ return obj[1]; });
+  var minValue = Math.min.apply(null, onlyValues),
+        maxValue = Math.max.apply(null, onlyValues);
+
+  var paletteScale = d3.scale.linear()
+        .domain([minValue,maxValue])
+        .range(["#EFEFFF","#02386F"]); // blue color
+
+  series.forEach(function(item){
+      var iso = item[0],
+              value = item[1];
+      dataset[iso] = { numberOfThings: value, fillColor: paletteScale(value) };
+  });
+
+  map = new Datamap({
+      element: document.getElementById('container1'),
+      projection: 'mercator',
+      fills: { defaultFill: '#F5F5F5' },
+      responsive: true,
+      geographyConfig: {
+        borderColor: '#DEDEDE',
+        highlightBorderWidth: 2,
+        highlightBorderColor: '#B7B7B7',
+        highlightFillColor: function(geo) {
+            return geo['fillColor'] || '#F5F5F5';
+        },
+        popupTemplate: function(geo, data) {
+            // don't show tooltip if country don't present in dataset
+            if (!data) { return ; }
+            // tooltip content
+            return ['<div class="hoverinfo">',
+                '<strong>', geo.properties.name, '</strong>',
+                '<br>Number of Tweets : <strong>', data.numberOfThings, '</strong>',
+                '</div>'].join('');
+        }
+      },
+      data: dataset
+  });
+  window.addEventListener('resize', function(event) { map.resize(); });
+});
 
 </script>
 
