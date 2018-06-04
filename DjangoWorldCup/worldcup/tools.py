@@ -3,7 +3,12 @@ import pymongo
 import pandas as pd
 from geotext import GeoText
 import pycountry
+import pandas as pd
 import numpy as np
+import os
+
+path_groups = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'static/worldcup/data/data_group.csv')
+path_matchs = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'static/worldcup/data/matchs.csv')
 
 def getDataFromMongo(collection_name):
     client = MongoClient('localhost', 27017)
@@ -42,3 +47,27 @@ def getPays(hashtag_name):
         team2 = "not_available"
 
     return team1, team2
+
+def getClassement():
+    data = pd.read_csv(path_groups,sep=";")
+    teams = []
+    for group in data['Group'].unique():
+        tmp = data[data['Group'] == group]
+        tmp.sort_values(by="Points",inplace=True,ascending=False)
+        tmp['Position'] = ["1","2","3","4"]
+        teams.append(tmp.to_dict(orient='records'))
+    return teams
+
+def getMatchs():
+    matchs = []
+    data = pd.read_csv(path_matchs,sep=";")
+    for group in data['Group'].unique():
+        matchs.append(data[data['Group'] == group].to_dict(orient='records'))
+    return matchs
+
+
+def getTables():
+	teams = getClassement()
+	matchs = getMatchs()
+	groups = ["Group A","Group B","Group C","Group D","Group E","Group F","Group G","Group H"]
+	return zip(teams,groups,matchs)

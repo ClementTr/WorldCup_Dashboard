@@ -1,0 +1,49 @@
+﻿Group;Jour;Heure;Equipe_1;Equipe_2
+A;Jeudi 14 Juin ;17:00;Russie;Arabie Saoudite
+A;Vendredi 15 Juin;14:00;Egypt;Uruguay
+A;Mardi 19 Juin;20:00;Russie;Egypte
+A;Mercredi 20 Juin;17:00;Uruguay;Arabie Saoudite
+A;Lundi 25 Juin;16:00;Uruguay;Russie
+A;Lundi 25 Juin;16:00;Arabie Saoudite;Egypte
+B;Vendredi 15 Juin;17:00;Maroc;Iran
+B;Vendredi 15 Juin;20:00;Portugal;Espagne
+B;Mercredi 20 Juin;14:00;Portugal;Maroc
+B;Mercredi 20 Juin;20:00;Iran;Espagne
+B;Lundi 25 Juin;20:00;Iran;Portugal
+B;Lundi 25 Juin;20:00;Espagne;Maroc
+C;Samedi 16 Juin;12:00;France;Australie
+C;Samedi 16 Juin;18:00;Peru;Danemark
+C;Jeudi 21 Juin;14:00;Danemark;Australie
+C;Jeudi 21 Juin;17:00;France;Perou
+C;Mardi 26 Juin;16:00;Danemark;France
+C;Mardi 26 Juin;16:00;Australie;Perou
+D;Samedi 16 Juin;15:00;Argentine;Islande
+D;Samedi 16 Juin;21:00;Croatie;Nigeria
+D;Jeudi 21 Juin;20:00;Argentine;Croatie
+D;Vendredi 22 Juin;17:00;Nigeria;Islande
+D;Mardi 26 Juin;20:00;Nigeria;Argentine
+D;Mardi 26 Juin;20:00;Islande;Croatie
+E;Dimanche 17 Juin;14:00;Costa Rica;Serbie
+E;Dimanche 17 Juin;20:00;Bresil;Suisse
+E;Vendredi 22 Juin;14:00;Bresil;Costa Rica
+E;Vendredi 22 Juin;20:00;Serbie;Suisse
+E;Mercredi 27 Juin;20:00;Serbie;Bresil
+E;Mercredi 27 Juin;20:00;Suisse;Costa Rica
+F;Dimanche 17 Juin;17:00;Allemagne;Mexique
+F;Lundi 18 Juin;14:00;Suede;Coree du sud
+F;Samedi 23 Juin;17:00;Coree du sud;Mexique
+F;Samedi 23 Juin;20:00;Allemagne;Suede
+F;Mercredi 27 Juin;16:00;Coree du sud;Allemagne
+F;Mercredi 27 Juin;16:00;Mexique;Suede
+G;Lundi 18 Juin;17:00;Belgique;Panama
+G;Lundi 18 Juin;20:00;Tunisie;Angleterre
+G;Samedi 23 Juin;14:00;Belgique;Tunisie
+G;Dimanche 24 Juin;14:00;Angleterre;Panama
+G;Jeudi 28 Juin;20:00;Angleterre;Belgique
+G;Jeudi 28 Juin;20:00;Panama;Tunisie
+H;Mardi 19 Juin;14:00;Colombie;Japon
+H;Mardi 19 Juin;17:00;Pologne;Senegal
+H;Dimanche 24 Juin;17:00;Japon;Senegal
+H;Dimanche 24 Juin;20:00;Pologne;Colombie
+H;Jeudi 28 Juin;16:00;Japon;Pologne
+H;Jeudi 28 Juin;16:00;Senegal;Colombie

@@ -4,7 +4,7 @@ from django.http import JsonResponse
 import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
-from .tools import countriesCalculations, getPays
+from .tools import countriesCalculations, getPays, getTables
 
 def home(request):
     if (request.method == "POST"):
@@ -12,7 +12,9 @@ def home(request):
     return render(request, 'worldcup/home.html')
 
 def table(request):
-    return render(request, 'worldcup/table.html')
+	data = {}
+	data['classement'] = getTables()
+	return render(request, 'worldcup/table.html',context=data)
 
 def data_countries(request):
 	data = countriesCalculations("#FRAITA")
