@@ -34,9 +34,8 @@ def twitter_setup():
 
 api = twitter_setup()
 
-
-#filters = sys.argv[1]
-##joueurs = sys.argv[2]
+global hashtag
+hashtag = str('#FRAAUS')[1:]
 
 def getPays():
     pays = {'Russie':'RUS','Arabie':'ARA', 'Portugal':'POR', 'Espagne':'SPA', 'France':'FRA', 'Australie':'AUS',
@@ -78,27 +77,42 @@ def get_location(text):
     if len(places.country_mentions) > 0:
         return pycountry.countries.get(alpha_2=list(places.country_mentions)[0]).alpha_3
     else:
-        return np.nan
+        return None
 
 class StreamListener(tweepy.StreamListener):
 
     def on_connect(self):
         # Called initially to connect to the Streaming API
+        global hashtag
         print("You are now connected to the streaming API.")
+        i = 0
+        if i == 0:
+            self.joueurs1, self.joueurs2  = getPlayers(hashtag)
+            self.all = []
+            for joueur_pos in self.joueurs1+self.joueurs2:
+                self.all.append(joueur_pos[0].split(' ')[1])
 
     def on_status(self,status):
         print("New Tweet !")
-        #print(status.text)
+        print(self.all)
         try:
             client = MongoClient('localhost', 27017)
-            db = client['WorldCup']
-            collection_tweets = db['FRAITA_Tweets']
-            collection_nations = db['FRAITA_Nations']
+            db = client['test']
+            collection_tweets = db['tweets']
+            collection_nations = db['nations']
+            collection_joueurs = db['joueurs']
 
 
             #Cleaning (alpha numeric characters)
             clean = clean_tweet(status.text)
             clean_location = get_location(status.user.location)
+
+            print(clean)
+            #joueurs
+            for joueur in self.all:
+                if joueur.lower() in clean.lower().split(' '):
+                    collection_joueurs.update_one({"Joueur":joueur}, {"$inc": {"Count":1}}, upsert=True)
+
 
             tweet = {'created_at':status.created_at,
                     'text':clean,
@@ -128,4 +142,4 @@ class StreamListener(tweepy.StreamListener):
 
 stream_listener = StreamListener()
 stream = tweepy.Stream(auth=api.auth, listener=stream_listener)
-stream.filter(track=["#FRAITA"],languages=["en"])
+stream.filter(track=[hashtag],languages=["en"])

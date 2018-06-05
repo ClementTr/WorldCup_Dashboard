@@ -49,8 +49,10 @@ def getPays(hashtag_name):
     return team1, team2
 
 def getClassement():
-    data = pd.read_csv(path_groups,sep=";")
+    data = pd.read_csv(path_groups)
+    print(data.head())
     teams = []
+    data['Difference'] = data['Buts_pour'] - data['Buts_contre']
     for group in data['Group'].unique():
         tmp = data[data['Group'] == group]
         tmp.sort_values(by="Points",inplace=True,ascending=False)
@@ -69,5 +71,5 @@ def getMatchs():
 def getTables():
 	teams = getClassement()
 	matchs = getMatchs()
-	groups = ["Group A","Group B","Group C","Group D","Group E","Group F","Group G","Group H"]
-	return zip(teams,groups,matchs)
+	groups = ["Groupe A","Groupe B","Groupe C","Groupe D","Groupe E","Groupe F","Groupe G","Groupe H"]
+	return zip(teams,groups,matchs,[i for i in range(0,8)])

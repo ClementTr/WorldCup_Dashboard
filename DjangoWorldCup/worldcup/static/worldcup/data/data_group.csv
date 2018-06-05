@@ -1,33 +1,33 @@
-Position;Equipe;Points;Group;emoji
-1;Russie;0;A;🇷🇺
-2;Arabie Saoudite;0;A;🇸🇦
-3;Egypte;0;A;🇪🇬
-4;Uruguay;0;A;🇺🇾
-1;Portugal;0;B;🇵🇹
-2;Espagne;0;B;🇪🇸
-3;Maroc;0;B;🇲🇦
-4;Iran;0;B;🇮🇷
-1;France;0;C;🇫🇷
-2;Australie;0;C;🇦🇺
-3;Perou;0;C;🇵🇪
-4;Danemark;0;C;🇩🇰
-1;Argentine;0;D;🇦🇷
-2;Islande;0;D;🇮🇸
-3;Croatie;0;D;🇭🇷
-4;Nigeria;0;D;🇳🇬
-1;Bresil;0;E;🇧🇷
-2;Suisse;0;E;🇨🇭
-3;Costa Rica;0;E;🇨🇷
-4;Serbie;0;E;🇷🇸
-1;Allemagne;0;F;🇩🇪
-2;Mexique;0;F;🇲🇽
-3;Suede;0;F;🇸🇪
-4;Coree du Sud;0;F;🇰🇷
-1;Belgique;0;G;🇧🇪
-2;Panama;0;G;🇵🇦
-3;Tunisie;0;G;🇹🇳
-4;Angleterre;0;G;󠁧󠁢󠁥󠁮󠁧󠁢󠁥󠁮󠁧󠁥󠁮󠁧󠁿🏴󠁧󠁧
-1;Pologne;0;H;🇵🇱
-2;Senegal;0;H;🇸🇳
-3;Colombie;0;H;🇨🇴
-4;Japon;0;H;🇯🇵
+,Position,Equipe,Points,Group,Emoji,Buts_pour,Buts_contre
+0,1,Russie,0,A,🇷🇺,0,0
+1,2,Arabie Saoudite,0,A,🇸🇦,0,0
+2,3,Egypte,0,A,🇪🇬,0,0
+3,4,Uruguay,0,A,🇺🇾,0,0
+4,1,Portugal,0,B,🇵🇹,0,0
+5,2,Espagne,0,B,🇪🇸,0,0
+6,3,Maroc,0,B,🇲🇦,0,0
+7,4,Iran,0,B,🇮🇷,0,0
+8,1,France,0,C,🇫🇷,0,0
+9,2,Australie,0,C,🇦🇺,0,0
+10,3,Perou,0,C,🇵🇪,0,0
+11,4,Danemark,0,C,🇩🇰,0,0
+12,1,Argentine,0,D,🇦🇷,0,0
+13,2,Islande,0,D,🇮🇸,0,0
+14,3,Croatie,0,D,🇭🇷,0,0
+15,4,Nigeria,0,D,🇳🇬,0,0
+16,1,Bresil,0,E,🇧🇷,0,0
+17,2,Suisse,0,E,🇨🇭,0,0
+18,3,Costa Rica,0,E,🇨🇷,0,0
+19,4,Serbie,0,E,🇷🇸,0,0
+20,1,Allemagne,0,F,🇩🇪,0,0
+21,2,Mexique,0,F,🇲🇽,0,0
+22,3,Suede,0,F,🇸🇪,0,0
+23,4,Coree du Sud,0,F,🇰🇷,0,0
+24,1,Belgique,0,G,🇧🇪,0,0
+25,2,Panama,0,G,🇵🇦,0,0
+26,3,Tunisie,0,G,🇹🇳,0,0
+27,4,Angleterre,0,G,🏴󠁧󠁢󠁥󠁮󠁧󠁿,0,0
+28,1,Pologne,0,H,🇵🇱,0,0
+29,2,Senegal,0,H,🇸🇳,0,0
+30,3,Colombie,0,H,🇨🇴,0,0
+31,4,Japon,0,H,🇯🇵,0,0
