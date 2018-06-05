@@ -1,49 +1,24 @@
 {% extends 'worldcup/base.html' %}
 {% load static %}
 
-
-
 <!-- BLOCK MAIN  -->
 {% block main %}
 <div class="main-content">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
 
-
-          <div class="row">
-
-            <div class="col-lg-12">
-              <!-- <div class="au-card m-b-30" style="padding-bottom: 0px;">
-                <h3>Match of the day - {{hashtag}}</h3>
-                  <center>
-                    <h3 class="title-2 m-b-30">Match of the day - {{hashtag}}</h3>
-                  </center>
-                  <h3>Match of the day - {{hashtag}}</h3>
-              </div> -->
-              <div class="au-card m-b-30" style="padding-bottom: 10px;">
-                <img src="/static/worldcup/img/flags/{{ country_1 }}.png" class="rounded float-left" alt="...">
-                <img src="/static/worldcup/img/flags/{{ country_2 }}.png" class="rounded float-right" alt="...">
-                <center>
-                  <h3 class="title-2 m-b-30" style"vertical-align: middle;">Match of the day - {{hashtag}}</h3>
-                </center>
-              </div>
-            </div>
-
-
-          <div>
-
           <div class="row">
 
             <!-- BLOCK TITLE MODIFY TITLE -->
-            <!-- <div class="col-lg-12">
+            <div class="col-lg-12">
                 <div class="au-card m-b-30" style="padding-bottom: 0px;">
                     <center>
                       <h3 class="title-2 m-b-40">Match of the day - {{hashtag}}</h3>
+                      <!-- <br>
+                      <h5>#FRAITA</h5> -->
                     </center>
                 </div>
-              </div> -->
-
-
+            </div>
 
 
               <div class="col-lg-6">
@@ -106,7 +81,6 @@
                         <h3 class="title-3 m-b-30 text-white">Top Players</h3>
                           <div class="table-responsive">
                               <table class="table table-top-countries text-white" id="players-table">
-
                               </table>
                           </div>
                       </div>
@@ -125,7 +99,7 @@
               </div>
 
               <div class="col-lg-6">
-                  <div class="au-card m-b-30">
+                  <div class="au-card m-b-30" style="padding-bottom: 40px; border-bottom-width: 10px; margin-bottom: 150px;">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">Deertweet about a player</h3>
                           <blockquote class="twitter-tweet" data-lang="fr"><p lang="en" dir="ltr">
@@ -143,6 +117,7 @@
 </div>
 <!-- END MAIN CONTENT-->
 {% endblock %}
+
 
 
 <!-- BLOCK D3V4 MODIFY D3 VERSION V4 CHARTS -->
@@ -251,13 +226,17 @@
       h_pitch = w_pitch/1.6;
     }
   }
-  keeper_path = "suisse/sommer.jpg" //*1
-  defenders_path = ["suisse/djourou.jpg", "suisse/schar.jpg", "suisse/xhaka.jpg", "suisse/zuber.jpg"] //*4
-  midfielders_path = ["suisse/freuler.jpg", "suisse/lang.jpg", "suisse/xhaka.jpg"] //*3
-  attackers_path = ["suisse/mvogo.jpg", "suisse/embolo.jpg", "suisse/shaqiri.jpg"] //*3
-  redraw_pitch(keeper_path, defenders_path, midfielders_path, attackers_path)
 
+  const keeper_name = "sommer"
+  const keeper_country = "suisse"
+  const defenders_name = ["djourou", "schar", "xhaka", "shaqiri"]
+  const defenders_country = ["suisse", "suisse", "suisse", "suisse"]
+  const midfielders_name = ["djourou", "schar", "xhaka", "shaqiri"]
+  const midfielders_country = ["suisse", "suisse", "suisse", "suisse"]
+  const attackers_name = ["djourou", "schar", "xhaka", "shaqiri"]
+  const attackers_country = ["suisse", "suisse", "suisse", "suisse"]
 
+  redraw_pitch()
 
   // window.d3 = null
 </script>
@@ -267,7 +246,7 @@
 
 <!-- BLOCK D3 MODIFY D3 VERSION V3 MAP CHARTS -->
 {% block d3 %}
-<script>
+<!-- <script>
 
 function loadTable(tableId, fields, data) {
   //$('#' + tableId).empty(); //not really necessary
@@ -391,7 +370,7 @@ setInterval(function(){
   window.addEventListener('resize', function(event) { map.resize(); });
 })}, 3000);
 
-</script>
+</script> -->
 
 <!-- <script>
 

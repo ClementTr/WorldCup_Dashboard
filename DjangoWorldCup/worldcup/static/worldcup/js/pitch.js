@@ -1,4 +1,4 @@
-function redraw_pitch(keeper_path, defenders_path, midfielders_path, attackers_path){
+function redraw_pitch(){
 
   d3.select("#pitch_plot_redraw").remove();
   svg_pitch = svg_pitch_init.attr("width", w_pitch)
@@ -7,11 +7,10 @@ function redraw_pitch(keeper_path, defenders_path, midfielders_path, attackers_p
                           .append("g")
                           .attr("id", "pitch_plot_redraw");
 
-  draw_pitch(keeper_path, defenders_path, midfielders_path, attackers_path);
+  draw_pitch();
 }
 
-function draw_pitch(keeper_path, defenders_path, midfielders_path, attackers_path){
-  console.log(defenders_path)
+function draw_pitch(){
   let div_pitchplot = document.getElementById("pitch_plot");
   let width_pitch = div_pitchplot.clientWidth;
   let height_pitch = div_pitchplot.clientHeight;
@@ -28,14 +27,8 @@ function draw_pitch(keeper_path, defenders_path, midfielders_path, attackers_pat
     }
   }
   else {
-    if (max_width_available==0){
       w_pitch = 536;
       h_pitch = w_pitch/1.6;
-    }
-    else{
-      w_pitch = max_width_available//536;
-      h_pitch = w_pitch/1.6;
-    }
   }
 
 
@@ -67,7 +60,7 @@ function draw_pitch(keeper_path, defenders_path, midfielders_path, attackers_pat
            .attr("y", y_keeper)
            .attr("height", footballer_img_size)
            .attr("width", footballer_img_size)
-           .attr("xlink:href", "/static/worldcup/img/players/" + keeper_path)
+           .attr("xlink:href", "/static/worldcup/img/players/" + keeper_country + "/" + keeper_name + ".jpg")
            .attr("clip-path", "url(#clip-circle_keeper)")
 
 
@@ -87,7 +80,7 @@ function draw_pitch(keeper_path, defenders_path, midfielders_path, attackers_pat
             .attr("y", y_cb1)
             .attr("height", footballer_img_size)
             .attr("width", footballer_img_size)
-            .attr("xlink:href", "/static/worldcup/img/players/" + defenders_path[0])
+            .attr("xlink:href", "/static/worldcup/img/players/" + defenders_country[0] + "/" + defenders_name[0] + ".jpg")
             .attr("clip-path", "url(#clip-circle_cb1)")
 
 
@@ -109,7 +102,7 @@ function draw_pitch(keeper_path, defenders_path, midfielders_path, attackers_pat
               .attr("y", y_cb2)
               .attr("height", footballer_img_size)
               .attr("width", footballer_img_size)
-              .attr("xlink:href", "/static/worldcup/img/players/" + defenders_path[1])
+              .attr("xlink:href", "/static/worldcup/img/players/" + defenders_country[1] + "/" + defenders_name[1] + ".jpg")
               .attr("clip-path", "url(#clip-circle_cb2)")
 
 
@@ -131,7 +124,7 @@ function draw_pitch(keeper_path, defenders_path, midfielders_path, attackers_pat
               .attr("y", y_rb)
               .attr("height", footballer_img_size)
               .attr("width", footballer_img_size)
-              .attr("xlink:href", "/static/worldcup/img/players/" + defenders_path[2])
+              .attr("xlink:href", "/static/worldcup/img/players/" + defenders_country[2] + "/" + defenders_name[2] + ".jpg")
               .attr("clip-path", "url(#clip-circle_rb)")
 
 
@@ -152,7 +145,7 @@ function draw_pitch(keeper_path, defenders_path, midfielders_path, attackers_pat
                .attr("y", y_lb)
                .attr("height", footballer_img_size)
                .attr("width", footballer_img_size)
-               .attr("xlink:href", "/static/worldcup/img/players/" + defenders_path[3])
+               .attr("xlink:href", "/static/worldcup/img/players/" + defenders_country[3] + "/" + defenders_name[3] + ".jpg")
                .attr("clip-path", "url(#clip-circle_lb)")
 
 
@@ -172,7 +165,7 @@ function draw_pitch(keeper_path, defenders_path, midfielders_path, attackers_pat
               .attr("y", y_cm)
               .attr("height", footballer_img_size)
               .attr("width", footballer_img_size)
-              .attr("xlink:href", "/static/worldcup/img/players/" + midfielders_path[0])
+              .attr("xlink:href", "/static/worldcup/img/players/" + midfielders_country[0] + "/" + midfielders_name[0] + ".jpg")
               .attr("clip-path", "url(#clip-circle_cm)")
 
 
@@ -193,7 +186,7 @@ function draw_pitch(keeper_path, defenders_path, midfielders_path, attackers_pat
                .attr("y", y_rm)
                .attr("height", footballer_img_size)
                .attr("width", footballer_img_size)
-               .attr("xlink:href", "/static/worldcup/img/players/" + midfielders_path[1])
+               .attr("xlink:href", "/static/worldcup/img/players/" + midfielders_country[1] + "/" + midfielders_name[1] + ".jpg")
                .attr("clip-path", "url(#clip-circle_rm)")
 
 
@@ -214,7 +207,7 @@ function draw_pitch(keeper_path, defenders_path, midfielders_path, attackers_pat
               .attr("y", y_lm)
               .attr("height", footballer_img_size)
               .attr("width", footballer_img_size)
-              .attr("xlink:href", "/static/worldcup/img/players/" + midfielders_path[2])
+              .attr("xlink:href", "/static/worldcup/img/players/" + midfielders_country[2] + "/" + midfielders_name[2] + ".jpg")
               .attr("clip-path", "url(#clip-circle_lm)")
 
 
@@ -234,7 +227,7 @@ function draw_pitch(keeper_path, defenders_path, midfielders_path, attackers_pat
                .attr("y", y_rw)
                .attr("height", footballer_img_size)
                .attr("width", footballer_img_size)
-               .attr("xlink:href", "/static/worldcup/img/players/" + attackers_path[0])
+               .attr("xlink:href", "/static/worldcup/img/players/" + attackers_country[0] + "/" + attackers_name[0] + ".jpg")
                .attr("clip-path", "url(#clip-circle_rw)")
 
 
@@ -254,7 +247,7 @@ function draw_pitch(keeper_path, defenders_path, midfielders_path, attackers_pat
               .attr("y", y_lw)
               .attr("height", footballer_img_size)
               .attr("width", footballer_img_size)
-              .attr("xlink:href", "/static/worldcup/img/players/" + attackers_path[1])
+              .attr("xlink:href", "/static/worldcup/img/players/" + attackers_country[1] + "/" + attackers_name[1] + ".jpg")
               .attr("clip-path", "url(#clip-circle_lw)")
 
 
@@ -274,6 +267,6 @@ function draw_pitch(keeper_path, defenders_path, midfielders_path, attackers_pat
                .attr("y", y_striker)
                .attr("height", footballer_img_size)
                .attr("width", footballer_img_size)
-               .attr("xlink:href", "/static/worldcup/img/players/" + attackers_path[2])
+               .attr("xlink:href", "/static/worldcup/img/players/" + attackers_country[2] + "/" + attackers_name[2] + ".jpg")
                .attr("clip-path", "url(#clip-circle_striker)")
 }
