@@ -10,15 +10,15 @@
           <div class="row">
 
             <!-- BLOCK TITLE MODIFY TITLE -->
-            <div class="col-lg-12">
-                <div class="au-card m-b-30" style="padding-bottom: 0px;">
-                    <center>
-                      <h3 class="title-2 m-b-40">Match of the day - {{hashtag}}</h3>
-                      <!-- <br>
-                      <h5>#FRAITA</h5> -->
-                    </center>
+              <div class="col-lg-12">
+                <div class="au-card m-b-30" style="padding-bottom: 10px;">
+                  <img src="/static/worldcup/img/flags/{{ country_1 }}.png" class="rounded float-left" alt="...">
+                  <img src="/static/worldcup/img/flags/{{ country_2 }}.png" class="rounded float-right" alt="...">
+                  <center>
+                    <h3 class="title-2 m-b-30" style"vertical-align: middle;">Match of the day - {{hashtag}}</h3>
+                  </center>
                 </div>
-            </div>
+              </div>
 
 
               <div class="col-lg-6">
@@ -217,24 +217,21 @@
     max_width_available = w_pitch
   }
   else {
-    if (max_width_available==0){
-      w_pitch = 536;
-      h_pitch = w_pitch/1.6;
-    }
-    else{
-      w_pitch = max_width_available//536;
-      h_pitch = w_pitch/1.6;
-    }
+    w_pitch = 536;
+    h_pitch = w_pitch/1.6;
   }
 
-  const keeper_name = "sommer"
-  const keeper_country = "suisse"
-  const defenders_name = ["djourou", "schar", "xhaka", "shaqiri"]
-  const defenders_country = ["suisse", "suisse", "suisse", "suisse"]
-  const midfielders_name = ["djourou", "schar", "xhaka", "shaqiri"]
-  const midfielders_country = ["suisse", "suisse", "suisse", "suisse"]
-  const attackers_name = ["djourou", "schar", "xhaka", "shaqiri"]
-  const attackers_country = ["suisse", "suisse", "suisse", "suisse"]
+  const keeper_name = "navas"
+  const keeper_country = "costa"
+
+  const defenders_name = ["djourou", "oviedo", "benatia", "meunier"]
+  const defenders_country = ["suisse", "costa", "maroc", "belgique"]
+
+  const midfielders_name = ["kante", "rakitic", "isco"]
+  const midfielders_country = ["france", "croatie", "espagne"]
+
+  const attackers_name = ["hazard", "giroud", "asensio"]
+  const attackers_country = ["belgique", "france", "espagne"]
 
   redraw_pitch()
 
