@@ -89,6 +89,7 @@ def getClassement():
     print(data.head())
     teams = []
     data['Difference'] = data['Buts_pour'] - data['Buts_contre']
+    print(data.head())
     for group in data['Group'].unique():
         tmp = data[data['Group'] == group]
         tmp.sort_values(by="Points",inplace=True,ascending=False)

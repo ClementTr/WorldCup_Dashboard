@@ -389,7 +389,9 @@ setInterval(function(){
   .then(response => response.json())
   .then(response => {
     // console.log(response);
-    var top10_players = JSON.parse(response).slice(0,5);
+    var series = JSON.parse(response);
+
+    var top10_team = series.slice(0, 10);
 
     loadTable('data-table', ['field1', 'field2'], top10_team);
 

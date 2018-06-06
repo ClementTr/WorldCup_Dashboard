@@ -35,8 +35,8 @@ def getPays():
 
 def getPlayers():
     data = pd.read_csv("Crawler/data_worldcup.csv")
-    players_team1 = data[data['Code'] == hashtag[:3]][['Player','Post', 'Code']].values.tolist()
-    players_team2 = data[data['Code'] == hashtag[3:]][['Player','Post', 'Code']].values.tolist()
+    players_team1 = data[data['Code'] == hashtag[:3]][['Player','Post_Simple', 'Code']].values.tolist()
+    players_team2 = data[data['Code'] == hashtag[3:]][['Player','Post_Simple', 'Code']].values.tolist()
     if len(players_team1) == 0:
         players_team1 = None
     elif len(players_team2) == 0:

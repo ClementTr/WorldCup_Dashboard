@@ -36,9 +36,9 @@
                                     <tr>
                                         <td>{{team.Position}}</td>
                                         {% if team.Equipe == "Angleterre"%}
-                                            <td><img  src="{% static 'worldcup/img/england.png' %}" style="width: 6%"/>{{team.Equipe}}</td>
+                                            <td><img  src="{% static 'worldcup/img/england.png' %}" style="width: 15px"/>{{team.Equipe}}</td>
                                         {% else %}
-                                        <td>{{team.emoji}}{{team.Equipe}}</td>
+                                        <td>{{team.Emoji}}{{team.Equipe}}</td>
                                         {% endif %}
                                         <td>{{team.Points}}</td>
                                         <td>{{team.Buts_pour}}</td>
