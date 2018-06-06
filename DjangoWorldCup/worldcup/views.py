@@ -4,7 +4,7 @@ from django.http import JsonResponse
 import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
-from .tools import countriesCalculations, getPays, getTables
+from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables
 
 def home(request):
     if (request.method == "POST"):
@@ -23,6 +23,25 @@ def data_countries(request):
 def data_players(request):
 	data = playersCalculations("#FRAITA")
 	return JsonResponse(data,safe=False)
+
+def data_playersPosition(request):
+	keeper_name, keeper_country, defenders_name, defenders_country, midfielders_name, midfielders_country, attackers_name, attackers_country = players_postCalculations("#FRAITA")
+	return JsonResponse({
+      "Name": {
+        "Keeper": [keeper_name],
+        "Defenders": defenders_name,
+        "Midfielders": midfielders_name,
+        "Attackers": attackers_name
+        },
+      "Country":{
+        "Keeper": [keeper_country],
+        "Defenders": defenders_country,
+        "Midfielders": midfielders_country,
+        "Attackers": attackers_country
+      }
+    },safe=False)
+
+
 
 def main(request):
     hashtag = "#FRAITA"

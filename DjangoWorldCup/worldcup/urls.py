@@ -7,6 +7,7 @@ urlpatterns = [
     path('table/', views.table, name='table'),
     path('datacountries/',views.data_countries, name='main'),
     path('dataplayers/',views.data_players, name='main'),
+    path('data_playersPosition/',views.data_playersPosition, name='main'),
 
     # path('final/', views.final, name='final'),
     # path('third/', views.third, name='third'),

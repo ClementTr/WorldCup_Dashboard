@@ -81,6 +81,9 @@
                         <h3 class="title-3 m-b-30 text-white">Top Players</h3>
                           <div class="table-responsive">
                               <table class="table table-top-countries text-white" id="players-table">
+                                <tbody>
+
+                                </tbody>
                               </table>
                           </div>
                       </div>
@@ -211,6 +214,14 @@
   let h_pitch
   let max_width_available = 0
 
+  let keeper_name
+  let keeper_country
+  let defenders_name
+  let midfielders_name
+  let midfielders_country
+  let attackers_name
+  let attackers_country
+
   if (width_pitch/height_pitch < 1.6) {
     w_pitch = width_pitch;
     h_pitch = height_pitch;
@@ -221,19 +232,58 @@
     h_pitch = w_pitch/1.6;
   }
 
-  const keeper_name = "navas"
-  const keeper_country = "costa"
+  fetch("http://localhost:8000/data_playersPosition", {
+    method: 'get',
+    dataType: 'json',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(response => {
+    keeper_name = response["Name"]["Keeper"][0]
+    keeper_country = response["Country"]["Keeper"][0]
 
-  const defenders_name = ["djourou", "oviedo", "benatia", "meunier"]
-  const defenders_country = ["suisse", "costa", "maroc", "belgique"]
+    defenders_name = response["Name"]["Defenders"]
+    defenders_country = response["Country"]["Defenders"]
 
-  const midfielders_name = ["kante", "rakitic", "isco"]
-  const midfielders_country = ["france", "croatie", "espagne"]
+    midfielders_name = response["Name"]["Midfielders"]
+    midfielders_country = response["Country"]["Midfielders"]
 
-  const attackers_name = ["hazard", "giroud", "asensio"]
-  const attackers_country = ["belgique", "france", "espagne"]
+    attackers_name = response["Name"]["Attackers"]
+    attackers_country = response["Country"]["Attackers"]
 
-  redraw_pitch()
+    redraw_pitch()
+  });
+
+  setInterval(function(){
+    var series;
+    fetch("http://localhost:8000/data_playersPosition", {
+      method: 'get',
+      dataType: 'json',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(response => {
+      document.getElementById("popup").remove();
+      keeper_name = response["Name"]["Keeper"][0]
+      keeper_country = response["Country"]["Keeper"][0]
+
+      defenders_name = response["Name"]["Defenders"]
+      defenders_country = response["Country"]["Defenders"]
+
+      midfielders_name = response["Name"]["Midfielders"]
+      midfielders_country = response["Country"]["Midfielders"]
+
+      attackers_name = response["Name"]["Attackers"]
+      attackers_country = response["Country"]["Attackers"]
+
+      redraw_pitch()
+    })}, 30000);
 
   // window.d3 = null
 </script>
@@ -243,7 +293,7 @@
 
 <!-- BLOCK D3 MODIFY D3 VERSION V3 MAP CHARTS -->
 {% block d3 %}
-<!-- <script>
+<script>
 
 function loadTable(tableId, fields, data) {
   //$('#' + tableId).empty(); //not really necessary
@@ -339,9 +389,7 @@ setInterval(function(){
   .then(response => response.json())
   .then(response => {
     // console.log(response);
-    var series = JSON.parse(response);
-
-    var top10_team = series.slice(0, 10);
+    var top10_players = JSON.parse(response).slice(0,5);
 
     loadTable('data-table', ['field1', 'field2'], top10_team);
 
@@ -367,9 +415,9 @@ setInterval(function(){
   window.addEventListener('resize', function(event) { map.resize(); });
 })}, 3000);
 
-</script> -->
+</script>
 
-<!-- <script>
+<script>
 
 fetch("http://localhost:8000/dataplayers", {
   method: 'get',
@@ -381,28 +429,26 @@ fetch("http://localhost:8000/dataplayers", {
 })
 .then(response => response.json())
 .then(response => {
-  // console.log(response);
-  var top10_players = JSON.parse(response);//.slice(0,10);
-
+  console.log(response);
+  var top10_players = JSON.parse(response).slice(0,5);
   loadTable('players-table', ['field1', 'field2'], top10_players);
   });
 
 
-setInterval(function(){
-  var series;
-  fetch("http://localhost:8000/dataplayers", {
-    method: 'get',
-    dataType: 'json',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(response => response.json())
-  .then(response => {
-    var top10_players = JSON.parse(response);//.slice(0,10);
-    loadTable('players-table', ['field1', 'field2'], top10_players);
-  })}, 3000);
+// setInterval(function(){
+//   fetch("http://localhost:8000/dataplayers", {
+//     method: 'get',
+//     dataType: 'json',
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json'
+//     }
+//   })
+//   .then(response => response.json())
+//   .then(response => {
+//     var top10_players = response.slice(0,5);
+//     loadTable('players-table', ['field1', 'field2'], top10_players);
+//   })}, 3000);
 
-</script>-->
+</script>
 {% endblock d3 %}

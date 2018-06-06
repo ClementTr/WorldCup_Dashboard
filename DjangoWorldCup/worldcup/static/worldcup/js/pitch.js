@@ -35,6 +35,7 @@ function draw_pitch(){
 
   let div_popup = d3v4.select("body")
                     .append("div")
+                    .attr("id", "popup")
                     .attr("class", "tooltip")
                     .style("opacity", 0);
 
