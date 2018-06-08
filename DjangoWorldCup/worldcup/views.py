@@ -4,7 +4,7 @@ from django.http import JsonResponse
 import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
-from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables
+from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity
 
 def home(request):
     if (request.method == "POST"):
@@ -17,11 +17,11 @@ def table(request):
 	return render(request, 'worldcup/table.html',context=data)
 
 def data_countries(request):
-	data = countriesCalculations("#FRAITA")
+	data = countriesCalculations("#PORALG")
 	return JsonResponse(data,safe=False)
 
 def data_players(request):
-	data = playersCalculations("#FRAITA")
+	data = playersCalculations("#PORALG")
 	return JsonResponse(data,safe=False)
 
 def data_playersPosition(request):
@@ -48,6 +48,12 @@ def main(request):
     country_1, country_2 = getPays(hashtag)
     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
     return render(request, 'worldcup/main.html', context)
+
+
+def data_positivite(request):
+    data = barplot_positivity("#PORALG")
+    print(data)
+    return JsonResponse(data,safe=False)
 
 
 

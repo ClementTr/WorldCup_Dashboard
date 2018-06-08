@@ -33,6 +33,30 @@ def playersCalculations(hashtag_name):
 	data = getDataFromMongo(collection_players)
 	return data[["Nom", "Count"]].to_json(orient='values')
 
+def getDataSentiment(hashtag_name):
+    client = MongoClient('localhost', 27017)
+    db = client['WorldCup']
+    collection_name = hashtag_name+'_Sentiments'
+    print(collection_name)
+    collection = db[collection_name]
+    data = pd.DataFrame(list(collection.find()))
+    print(data)
+    pays1 = hashtag_name[:3]
+    pays2 = hashtag_name[3:]
+    pourc_1 = (data[(data['Nation']==pays1) & (data['Sentiments']=='1')].Count / data[(data['Nation']==pays1)].Count.sum()).values[0]
+    pourc_2 = (data[(data['Nation']==pays2) & (data['Sentiments']=='1')].Count / data[(data['Nation']==pays2)].Count.sum()).values[0]
+
+    return pourc_1, pourc_2
+
+def barplot_positivity(hashtag_name):
+    collection_Sentiments= str(hashtag_name[1:])
+    pourc_1, pourc_2 = getDataSentiment(collection_Sentiments)
+    print("---------")
+    print(pourc_1)
+    print("----------")
+    return [{"key": collection_Sentiments[:3], "value": pourc_1, "color": "blue"},{"key": collection_Sentiments[3:], "value": pourc_2, "color": "red"}]
+
+
 
 def players_postCalculations(hashtag_name):
     keeper_name, keeper_country = "", "";
