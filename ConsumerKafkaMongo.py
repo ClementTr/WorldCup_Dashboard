@@ -10,12 +10,18 @@ import numpy as np
 import pandas as pd
 
 global hashtag, joueurs, db
-hashtag = str('#FRAAUS')[1:]
+hashtag = str('#PORALG')[1:]
 
 def init():
-    global joueurs, db
+    global joueurs, db, collection_Tweets, collection_Players, collection_Nations, collection_Sentiments, collection_Sentiments_Agg
     client = MongoClient('localhost', 27017)
     db = client['test']
+    collection_Tweets = db[hashtag+'_Tweets']
+    collection_Players = db[hashtag+'_Players']
+    collection_Nations = db[hashtag+'_Nations']
+    collection_Sentiments = db[hashtag+'_Sentiments']
+    collection_Sentiments_Agg = db[hashtag+'_Sentiments_Agg']
+
     joueurs = {}
     for joueur_pos in getPlayers():
                 joueurs[joueur_pos[0].split(' ')[1]] = [joueur_pos[0].split(' ')[0], joueur_pos[1], joueur_pos[2]]
@@ -24,7 +30,7 @@ def getPays():
     pays = {'Russie':'RUS','Arabie':'ARA', 'Portugal':'POR', 'Espagne':'SPA', 'France':'FRA', 'Australie':'AUS',
        'Bresil':'BRA', 'Suisse':'SUI', 'Tunisie':'TUN', 'Angleterre':'ENG', 'Egypte':'EGY', 'Iran':'IRN',
        'Perou':'PER', 'Costa':'CRI', 'Allemagne':'GER', 'Suede':'SWE', 'Pologne':'POL', 'Colombie':'COL',
-       'Maroc':'MAR', 'Danemark':'DEN', 'Serbie':'SER', 'Belgique':'BEL'}
+       'Maroc':'MAR', 'Danemark':'DEN', 'Serbie':'SER', 'Belgique':'BEL', 'Algerie':'ALG'}
 
     inv_pays = {v: k for k, v in pays.items()}
 
@@ -34,6 +40,7 @@ def getPays():
     return team1, team2
 
 def getPlayers():
+    global hashtag
     data = pd.read_csv("Crawler/data_worldcup.csv")
     players_team1 = data[data['Code'] == hashtag[:3]][['Player','Post_Simple', 'Code']].values.tolist()
     players_team2 = data[data['Code'] == hashtag[3:]][['Player','Post_Simple', 'Code']].values.tolist()
@@ -65,12 +72,10 @@ def get_location(text):
 def putDataToMongo(tweet):
 
     global joueurs
+    global hashtag
 
     print("New Tweet ! ")
-     try:
-        collection_tweets = db['tweets']
-        collection_nations = db['nations']
-        collection_joueurs = db['joueurs']
+    try:
 
         #Cleaning (alpha numeric characters)
         clean = clean_tweet(tweet["text"])
@@ -79,23 +84,28 @@ def putDataToMongo(tweet):
         else:
             clean_location = None
 
-        
-        for nom in joueurs.keys():
-                if nom.lower() in clean.lower().split(' '):
-                    print("Nom "+str(nom)+" Prenom "+str(joueurs[nom][0])+" Position "+str(joueurs[nom][1])+" Pays "+str(joueurs[nom][2]))
-                    collection_joueurs.update_one({"Nom":nom, "Prenom":self.all[nom][0], "Position":self.all[nom][1], "Pays":self.all[nom][2]}, {"$inc": {"Count":1}}, upsert=True)
-
-
+        #UPDATE TWEETS
+        sentiment = analize_sentiment(clean)
         tweetToMongo = {'created_at':tweet["created_at"],
                 'text':clean,
                 'location':tweet["location"],
-                'positivity':analize_sentiment(clean),
+                'positivity':sentiment,
                 'locationBis':clean_location,
                 'hashtags':tweet['hashtags']}
 
-        collection_tweets.insert_one(tweetToMongo)
+        collection_Tweets.insert_one(tweetToMongo)
+
+        #UPDATE PLAYERS and SENTIMENT (PAR PAYS)
+        for nom in joueurs.keys():
+                if nom.lower() in clean.lower().split(' '):
+                    collection_Players.update_one({"Nom":nom, "Prenom":joueurs[nom][0], "Position":joueurs[nom][1], "Pays":joueurs[nom][2]}, {"$inc": {"Count":1}}, upsert=True)
+                    collection_Sentiments.update_one({"Nation":joueurs[nom][2], "Sentiments":str(sentiment)}, {"$inc": {"Count":1}}, upsert=True)
+
+        #UPDATE NATIONS
         if clean_location != None:
-            collection_nations.update_one({"Nation":clean_location}, {"$inc": {"Count":1}}, upsert=True)
+            collection_Nations.update_one({"Nation":clean_location}, {"$inc": {"Count":1}}, upsert=True)
+
+
         print(tweetToMongo)
         print("On DataBase !")
         print("---------------------------------")
@@ -104,6 +114,6 @@ def putDataToMongo(tweet):
         pass
 
 init()
-consumer = KafkaConsumer("***", bootstrap_servers='localhost:9092',value_deserializer=lambda m: json.loads(m.decode('ascii')))
+consumer = KafkaConsumer("test", bootstrap_servers='localhost:9092',value_deserializer=lambda m: json.loads(m.decode('ascii')))
 for msg in consumer:
     putDataToMongo(msg.value)

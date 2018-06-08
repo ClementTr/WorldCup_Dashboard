@@ -6,12 +6,12 @@ from kafka import KafkaProducer
 
 
 #API SET UP
-CONSUMER_KEY    = '***'
-CONSUMER_SECRET = '***'
+CONSUMER_KEY    = 'u9oTn95Tyx7PeKqaVoQOr4zIg'
+CONSUMER_SECRET = 'DsH1mYSYyQOKOlUkvVvtV0YBBiWdaSyVleEAOhJbNmJYF2VaI6'
 
 # Access:
-ACCESS_TOKEN  = '***'
-ACCESS_SECRET = '***'
+ACCESS_TOKEN  = '936220490246557696-cansWdvPlCC0HAOzXL3CxU3b7M1XrKJ'
+ACCESS_SECRET = 'lZtJmEHxC88gVZ1hcQPLCslwVjS8ZjDy45IVyaqrwFrdk'
 
 def twitter_setup():
     """
@@ -29,7 +29,7 @@ def twitter_setup():
 api = twitter_setup()
 
 global hashtag
-hashtag = '#Cecchinato'
+hashtag = '#PORALG'
 
 
 class StreamListener(tweepy.StreamListener):
@@ -37,7 +37,7 @@ class StreamListener(tweepy.StreamListener):
     def on_connect(self):
         print("You are now connected to the streaming API.")
         self.producer = KafkaProducer(bootstrap_servers="localhost:9092",value_serializer=lambda m: json.dumps(m).encode('ascii'))
-        
+
 
     def on_status(self,status):
         print("New Tweet ! ")
@@ -45,12 +45,12 @@ class StreamListener(tweepy.StreamListener):
                 'text':status.text,
                 'location':status.user.location,
                 'hashtags':[i['text'] for i in status.entities['hashtags']]}
-        self.producer.send("***", tweet)
+        self.producer.send("test", tweet)
         self.producer.flush()
 
         print("On Kafka !")
         print("---------------------------------")
-    
+
 
 
     def on_limit(self, track):
