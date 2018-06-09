@@ -28,7 +28,15 @@
     ================================================== -->
     <link rel="stylesheet" type="text/css"  href="{% static 'worldcup/css/style.css' %}">
 
-
+    <style>
+    body {
+    /* background-image: url("{% static 'worldcup/img/football-stadium-227561_1920.jpg' %}"); */
+    /* background-image: url("{% static 'worldcup/img/vienna-reyes-616732-unsplash.jpg' %}"); */
+    background-image: url("{% static 'worldcup/img/thomas-serer-413745-unsplash.jpg' %}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    }
+    </style>
   </head>
   <body>
 
@@ -38,7 +46,8 @@
     ==========================================-->
     <div class="text-center">
         <div class="overlay">
-            <div class="content">
+            <div class="content" style="padding:10%">
+                <img src="{% static 'worldcup/img/logo_white.svg' %}" alt="DataDeer" style="height:35%;max-width:50%;"/>
                 <h1>Welcome on <strong><span class="color">DataDeer</span></strong> Dashboard</h1>
                 <p class="lead">Russian World Cup - 2018</p>
                 <form method = "post" action = "{% url 'home' %}">

@@ -52,7 +52,6 @@ def main(request):
 
 def data_positivite(request):
     data = barplot_positivity("#PORALG")
-    print(data)
     return JsonResponse(data,safe=False)
 
 

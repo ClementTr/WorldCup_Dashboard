@@ -43,8 +43,8 @@ def getDataSentiment(hashtag_name):
     print(data)
     pays1 = hashtag_name[:3]
     pays2 = hashtag_name[3:]
-    pourc_1 = (data[(data['Nation']==pays1) & (data['Sentiments']=='1')].Count / data[(data['Nation']==pays1)].Count.sum()).values[0]
-    pourc_2 = (data[(data['Nation']==pays2) & (data['Sentiments']=='1')].Count / data[(data['Nation']==pays2)].Count.sum()).values[0]
+    pourc_1 = np.round(((data[(data['Nation']==pays1) & (data['Sentiments']=='1')]['Count']/ data[(data['Nation']==pays1)]['Count'].sum()).values[0])*100)
+    pourc_2 = np.round(((data[(data['Nation']==pays2) & (data['Sentiments']=='1')]['Count']/ data[(data['Nation']==pays2)]['Count'].sum()).values[0])*100)
 
     return pourc_1, pourc_2
 
