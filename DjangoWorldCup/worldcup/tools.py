@@ -65,8 +65,8 @@ def positivity_negativity(hashtag_name):
     data = data.reset_index()
     data = data.drop('_id', axis=1)
     data['Time'] = pd.to_datetime(data['Time'], infer_datetime_format=True)
-    data.set_index('Time', inplace=True)
-    return data.to_json()
+    #data.set_index('Time', inplace=True)
+    data.to_json(orient="records")
 
 
 
