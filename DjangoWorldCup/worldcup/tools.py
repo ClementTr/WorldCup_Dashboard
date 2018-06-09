@@ -10,10 +10,11 @@ import os
 PAYS = {'Russie':'RUS','Arabie':'ARA', 'Portugal':'POR', 'Espagne':'SPA', 'France':'FRA', 'Australie':'AUS',
    'Bresil':'BRA', 'Suisse':'SUI', 'Tunisie':'TUN', 'Angleterre':'ENG', 'Egypte':'EGY', 'Iran':'IRN',
    'Perou':'PER', 'Costa':'CRI', 'Allemagne':'GER', 'Suede':'SWE', 'Pologne':'POL', 'Colombie':'COL',
-   'Maroc':'MAR', 'Danemark':'DEN', 'Serbie':'SER', 'Belgique':'BEL'}
+   'Maroc':'MAR', 'Danemark':'DEN', 'Serbie':'SER', 'Belgique':'BEL', 'Etats-Unis': 'USA', 'Algerie': 'ALG'}
 INV_PAYS = {v: k for k, v in PAYS.items()}
 path_groups = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'static/worldcup/data/data_group.csv')
 path_matchs = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'static/worldcup/data/matchs.csv')
+path_data = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'static/worldcup/data/')
 
 def getDataFromMongo(collection_name):
     client = MongoClient('localhost', 27017)
@@ -147,3 +148,11 @@ def getTables():
 	matchs = getMatchs()
 	groups = ["Groupe A","Groupe B","Groupe C","Groupe D","Groupe E","Groupe F","Groupe G","Groupe H"]
 	return zip(teams,groups,matchs,[i for i in range(0,8)])
+
+def getMatchData(hashtag_name):
+    path_match = str(path_data) + str(hashtag_name[1:]) + "/"
+    path_top11 = path_match + str(hashtag_name[1:]) + "_Players_Top11Players.csv"
+    print(path_top11)
+    df_top11 = pd.read_csv(path_top11)
+    df_top11["Pays"] = df_top11["Pays"].apply(lambda x: str(INV_PAYS[x]).lower())
+    return df_top11

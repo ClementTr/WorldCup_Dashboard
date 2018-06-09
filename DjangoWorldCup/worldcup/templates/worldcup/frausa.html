@@ -10,20 +10,17 @@
           <div class="row">
 
             <!-- BLOCK TITLE MODIFY TITLE -->
-              <div class="col-lg-12">
-                <div class="au-card m-b-30" style="padding-bottom: 10px;">
-                  <img src="/static/worldcup/img/flags/{{ country_1 }}.png" class="rounded float-left" alt="...">
-                  <img src="/static/worldcup/img/flags/{{ country_2 }}.png" class="rounded float-right" alt="...">
-                  <center>
-                    <h3 class="title-2 m-b-30" style"vertical-align: middle;">Match of the day - {{hashtag}}</h3>
-                  </center>
+            <div class="col-lg-12">
+                <div class="au-card m-b-30" style="padding-bottom: 0px;">
+                    <center>
+                      <h3 class="title-2 m-b-40">Match of the day - {{hashtag}}</h3>
+                      <!-- <br>
+                      <h5>#FRAITA</h5> -->
+                    </center>
                 </div>
-              </div>
-              <!-- <div class="col-lg-12">
-                <div class="card m-b-30">
-                  🏆 x 100 😂 x 99
-                </div>
-              </div> -->
+            </div>
+
+
               <div class="col-lg-6">
                   <div class="au-card m-b-30">
                       <div class="au-card-inner">
@@ -84,9 +81,7 @@
                         <h3 class="title-3 m-b-30 text-white">Top Buzz Players</h3>
                           <div class="table-responsive">
                               <table class="table table-top-countries text-white" id="players-table">
-                                <tbody>
 
-                                </tbody>
                               </table>
                           </div>
                       </div>
@@ -97,19 +92,16 @@
                   <div class="au-card m-b-30">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">Deertweet about a team</h3>
-                          <blockquote class="twitter-tweet" data-lang="fr"><p lang="fr" dir="ltr">Matuidi, Monsieur Blaise Matuidi ! ! ! ! ! ! ! ! ! ! 🤣🤣🤣 <a href="https://twitter.com/hashtag/FRAUSA?src=hash&amp;ref_src=twsrc%5Etfw">#FRAUSA</a> <a href="https://twitter.com/hashtag/FanDuCharo?src=hash&amp;ref_src=twsrc%5Etfw">#FanDuCharo</a> <a href="https://t.co/rHhqEkaVzg">pic.twitter.com/rHhqEkaVzg</a></p>&mdash; DB (@David24HD) <a href="https://twitter.com/David24HD/status/1005139421270863872?ref_src=twsrc%5Etfw">8 juin 2018</a></blockquote>
-                          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
                       </div>
                   </div>
               </div>
 
               <div class="col-lg-6">
-                  <div class="au-card m-b-30" style="padding-bottom: 40px; border-bottom-width: 10px; margin-bottom: 150px;">
+                  <div class="au-card m-b-30">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">Deertweet about a player</h3>
-                          <blockquote class="twitter-tweet" data-lang="fr"><p lang="fr" dir="ltr"><a href="https://twitter.com/hashtag/FRAUSA?src=hash&amp;ref_src=twsrc%5Etfw">#FRAUSA</a> <a href="https://twitter.com/hashtag/CoupeDuMonde2018?src=hash&amp;ref_src=twsrc%5Etfw">#CoupeDuMonde2018</a> Composition des équipes France-USA &gt;&gt; <a href="https://t.co/0AP3uhKU9J">https://t.co/0AP3uhKU9J</a> <a href="https://t.co/MSLvQIuOkX">pic.twitter.com/MSLvQIuOkX</a></p>&mdash; Le Parisien Infog (@LeParisienInfog) <a href="https://twitter.com/LeParisienInfog/status/1005191047796977664?ref_src=twsrc%5Etfw">8 juin 2018</a></blockquote>
-                          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
+                          
                       </div>
                   </div>
               </div>
@@ -122,7 +114,6 @@
 </div>
 <!-- END MAIN CONTENT-->
 {% endblock %}
-
 
 
 <!-- BLOCK D3V4 MODIFY D3 VERSION V4 CHARTS -->
@@ -149,27 +140,34 @@
   let x_plot, y_plot;
   let svg_plot;
 
-  fetch("http://localhost:8000/positive_negative", {
-  method: 'get',
-  dataType: 'json',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  }
-})
-.then(response => response.json())
-.then(response => {
-  dataset_barplot = response;
-});
+  d3v4.csv("/static/worldcup/df_dept_12_months.csv")
+      /* On load les colonnes de notre csv */
+      .row(d => {
+          return {
+              date: parse_time_plot(d.Date),
+              deliveries: +d.Delivered,
+              sales: +d.Sales
+          }
+      })
+      /* On les scale entre la plus petite et la plus grande valeur selon la taille de notre fenêtre */
+      .get((error, rows) => {
+          if (rows.length > 0) {
 
+              x_plot = d3v4.scaleLinear()
+                      .domain(d3v4.extent(rows, row => row.date))
+              y_plot = d3v4.scaleLinear()
+                      .domain([0, d3v4.max(rows, row => Math.max(row.deliveries, row.sales))])
 
+              dataset_plot = rows
+              redraw();
 
+          }
+      });
 </script>
 
 <!-- BARPLOT CHART -->
 <script type="text/javascript">
-
-
+  window.addEventListener("resize", redraw_barplot)
   const margin_barplot = {
       top: 10,
       right: 10,
@@ -177,55 +175,27 @@
       left: 60,
   };
 
-  var div_barplot = document.getElementById("bar_plot");
-  var svg_barplot_init = d3v4.select("#bar_plot").append("svg")
-  var svg_barplot;
-  var tooltip = d3v4.select("#bar_plot").append("div").attr("class", "toolTip");
+  let div_barplot = document.getElementById("bar_plot");
+  let svg_barplot_init = d3v4.select("#bar_plot").append("svg")
+  let svg_barplot
+  let tooltip = d3v4.select("#bar_plot").append("div").attr("class", "toolTip");
 
-  var w = div_barplot.clientWidth;
-  var h = 250;
+  let w = div_barplot.clientWidth;
+  let h = 250
 
-  var x = d3v4.scaleLinear()
-  var y = d3v4.scaleBand()
+  let dataset_barplot = [
+    {"key": "France", "value": 66, "color": "blue"},
+    {"key": "Portugal", "value": 42, "color": "red"},
+  ]
 
-    // async function fetchData() {
-      // var test;
-    fetch("http://localhost:8000/data_positivite", {
-    method: 'get',
-    dataType: 'json',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(response => response.json())
-  .then(response => {
-    dataset_barplot = response;
-    redraw_barplot();
-  });
+   var x = d3v4.scaleLinear()
+   var y = d3v4.scaleBand()
 
-  setInterval(function(){
-    fetch("http://localhost:8000/data_positivite", {
-      method: 'get',
-      dataType: 'json',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => response.json())
-    .then(response => {
-      dataset_barplot = response;
-      redraw_barplot();
-    })}, 30000);
-
-  window.addEventListener("resize", redraw_barplot);
-
-
+   redraw_barplot()
 </script>
 
 <!-- PITCH PLOT -->
-<!-- <script type="text/javascript">
+<script type="text/javascript">
   window.addEventListener("resize", redraw_pitch)
 
   let div_pitchplot = document.getElementById("pitch_plot");
@@ -237,86 +207,34 @@
   let h_pitch
   let max_width_available = 0
 
-  let keeper_name
-  let keeper_country
-  let defenders_name
-  let midfielders_name
-  let midfielders_country
-  let attackers_name
-  let attackers_country
-
   if (width_pitch/height_pitch < 1.6) {
     w_pitch = width_pitch;
     h_pitch = height_pitch;
     max_width_available = w_pitch
   }
   else {
-    w_pitch = 536;
-    h_pitch = w_pitch/1.6;
+    if (max_width_available==0){
+      w_pitch = 536;
+      h_pitch = w_pitch/1.6;
+    }
+    else{
+      w_pitch = max_width_available//536;
+      h_pitch = w_pitch/1.6;
+    }
   }
 
-  fetch("http://localhost:8000/data_playersPosition", {
-    method: 'get',
-    dataType: 'json',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(response => response.json())
-  .then(response => {
-    keeper_name = response["Name"]["Keeper"][0]
-    keeper_country = response["Country"]["Keeper"][0]
-
-    defenders_name = response["Name"]["Defenders"]
-    defenders_country = response["Country"]["Defenders"]
-
-    midfielders_name = response["Name"]["Midfielders"]
-    midfielders_country = response["Country"]["Midfielders"]
-
-    attackers_name = response["Name"]["Attackers"]
-    attackers_country = response["Country"]["Attackers"]
-
-    redraw_pitch()
-  });
-
-  setInterval(function(){
-    var series;
-    fetch("http://localhost:8000/data_playersPosition", {
-      method: 'get',
-      dataType: 'json',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => response.json())
-    .then(response => {
-      document.getElementById("popup").remove();
-      keeper_name = response["Name"]["Keeper"][0]
-      keeper_country = response["Country"]["Keeper"][0]
-
-      defenders_name = response["Name"]["Defenders"]
-      defenders_country = response["Country"]["Defenders"]
-
-      midfielders_name = response["Name"]["Midfielders"]
-      midfielders_country = response["Country"]["Midfielders"]
-
-      attackers_name = response["Name"]["Attackers"]
-      attackers_country = response["Country"]["Attackers"]
-
-      redraw_pitch()
-    })}, 30000);
+  redraw_pitch()
 
   // window.d3 = null
-</script> -->
+</script>
 
 {% endblock d3v4 %}
 
 
 <!-- BLOCK D3 MODIFY D3 VERSION V3 MAP CHARTS -->
 {% block d3 %}
-<!-- <script>
+<!--
+<script>
 
 function loadTable(tableId, fields, data) {
   //$('#' + tableId).empty(); //not really necessary
@@ -442,6 +360,84 @@ setInterval(function(){
 
 </script> -->
 
+<!-- STATIC -->
+<!-- BLOCK D3 MODIFY D3 VERSION V3 MAP CHARTS -->
+<script>
+
+function loadTable(tableId, fields, data) {
+  var rows = '';
+  $.each(data, function(index, item) {
+      var row = '<tr>';
+      $.each(fields, function(index, field) {
+        if(index == 0){
+          row += '<td>' + item[index] + '</td>';
+        }else{
+
+          row += '<td class=\"text-right\">' + item[index] + '</td>';
+        }
+      });
+      rows += row + '<tr>';
+  });
+  $('#' + tableId).html(rows);
+}
+
+  var series = [];
+
+  d3.csv("/static/worldcup/data/FRAITA_Nations.csv", function(data) {
+    for(var i = 0;i<data.length;i++){
+        series.push([data[i]['Nation'], data[i]['Count']]);
+    }
+
+
+  var top10_team = series.slice(0, 10);
+
+  loadTable('data-table', ['field1', 'field2'], top10_team);
+
+  var dataset = {};
+
+  var onlyValues = series.map(function(obj){ return obj[1]; });
+  var minValue = Math.min.apply(null, onlyValues),
+        maxValue = Math.max.apply(null, onlyValues);
+
+  var paletteScale = d3.scale.linear()
+        .domain([minValue,maxValue])
+        .range(["#EFEFFF","#02386F"]); // blue color
+
+  series.forEach(function(item){
+      var iso = item[0],
+              value = item[1];
+      dataset[iso] = { numberOfThings: value, fillColor: paletteScale(value) };
+  });
+
+  map = new Datamap({
+      element: document.getElementById('container1'),
+      projection: 'mercator',
+      fills: { defaultFill: '#F5F5F5' },
+      responsive: true,
+      geographyConfig: {
+        borderColor: '#DEDEDE',
+        highlightBorderWidth: 2,
+        highlightBorderColor: '#B7B7B7',
+        highlightFillColor: function(geo) {
+            return geo['fillColor'] || '#F5F5F5';
+        },
+        popupTemplate: function(geo, data) {
+            // don't show tooltip if country don't present in dataset
+            if (!data) { return ; }
+            // tooltip content
+            return ['<div class="hoverinfo">',
+                '<strong>', geo.properties.name, '</strong>',
+                '<br>Number of Tweets : <strong>', data.numberOfThings, '</strong>',
+                '</div>'].join('');
+        }
+      },
+      data: dataset
+  });
+  window.addEventListener('resize', function(event) { map.resize(); });
+});
+
+</script>
+
 <!-- <script>
 
 fetch("http://localhost:8000/dataplayers", {
@@ -454,26 +450,28 @@ fetch("http://localhost:8000/dataplayers", {
 })
 .then(response => response.json())
 .then(response => {
-  console.log(response);
-  var top10_players = JSON.parse(response).slice(0,5);
+  // console.log(response);
+  var top10_players = JSON.parse(response);//.slice(0,10);
+
   loadTable('players-table', ['field1', 'field2'], top10_players);
   });
 
 
-// setInterval(function(){
-//   fetch("http://localhost:8000/dataplayers", {
-//     method: 'get',
-//     dataType: 'json',
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json'
-//     }
-//   })
-//   .then(response => response.json())
-//   .then(response => {
-//     var top10_players = response.slice(0,5);
-//     loadTable('players-table', ['field1', 'field2'], top10_players);
-//   })}, 3000);
+setInterval(function(){
+  var series;
+  fetch("http://localhost:8000/dataplayers", {
+    method: 'get',
+    dataType: 'json',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(response => {
+    var top10_players = JSON.parse(response);//.slice(0,10);
+    loadTable('players-table', ['field1', 'field2'], top10_players);
+  })}, 3000);
 
-</script> -->
+</script>-->
 {% endblock d3 %}
