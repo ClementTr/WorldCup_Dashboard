@@ -150,29 +150,21 @@
   let x_plot, y_plot;
   let svg_plot;
 
-  d3v4.csv("/static/worldcup/df_dept_12_months.csv")
-      /* On load les colonnes de notre csv */
-      .row(d => {
-          return {
-              date: parse_time_plot(d.Date),
-              deliveries: +d.Delivered,
-              sales: +d.Sales
-          }
-      })
-      /* On les scale entre la plus petite et la plus grande valeur selon la taille de notre fenêtre */
-      .get((error, rows) => {
-          if (rows.length > 0) {
+  fetch("http://localhost:8000/positive_negative", {
+  method: 'get',
+  dataType: 'json',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  }
+})
+.then(response => response.json())
+.then(response => {
+  dataset_barplot = response;
+});
 
-              x_plot = d3v4.scaleLinear()
-                      .domain(d3v4.extent(rows, row => row.date))
-              y_plot = d3v4.scaleLinear()
-                      .domain([0, d3v4.max(rows, row => Math.max(row.deliveries, row.sales))])
 
-              dataset_plot = rows
-              redraw();
 
-          }
-      });
 </script>
 
 <!-- BARPLOT CHART -->

@@ -56,6 +56,19 @@ def barplot_positivity(hashtag_name):
     print("----------")
     return [{"key": collection_Sentiments[:3], "value": pourc_1, "color": "blue"},{"key": collection_Sentiments[3:], "value": pourc_2, "color": "red"}]
 
+def positivity_negativity(hashtag_name):
+    client = MongoClient('localhost', 27017)
+    db = client['test'] #On changera
+    collection_name = str(hashtag_name[1:])+'_Sentiments_Agg'
+    collection = db[collection_name]
+    data = pd.DataFrame(list(collection.find()))
+    data = data.reset_index()
+    data = data.drop('_id', axis=1)
+    data['Time'] = pd.to_datetime(data['Time'], infer_datetime_format=True)
+    data.set_index('Time', inplace=True)
+    return data.to_json()
+
+
 
 
 def players_postCalculations(hashtag_name):

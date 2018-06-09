@@ -4,7 +4,7 @@ from django.http import JsonResponse
 import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
-from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity
+from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity
 
 def home(request):
     if (request.method == "POST"):
@@ -54,7 +54,9 @@ def data_positivite(request):
     data = barplot_positivity("#PORALG")
     return JsonResponse(data,safe=False)
 
-
+def positive_negative(request):
+    data = positivity_negativity("#PORALG")
+    return JsonResponse(data,safe=False)
 
 # def final(request):
 #     hashtag = "#"
