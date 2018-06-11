@@ -3,6 +3,12 @@ import pymongo
 import pandas as pd
 import numpy as np
 
+PAYS = {'Russie':'RUS','Arabie':'ARA', 'Portugal':'POR', 'Espagne':'SPA', 'France':'FRA', 'Australie':'AUS',
+   'Bresil':'BRA', 'Suisse':'SUI', 'Tunisie':'TUN', 'Angleterre':'ENG', 'Egypte':'EGY', 'Iran':'IRN',
+   'Perou':'PER', 'Costa':'CRI', 'Allemagne':'GER', 'Suede':'SWE', 'Pologne':'POL', 'Colombie':'COL',
+   'Maroc':'MAR', 'Danemark':'DEN', 'Serbie':'SER', 'Belgique':'BEL', 'Etats-Unis': 'USA', 'Algerie': 'ALG'}
+INV_PAYS = {v: k for k, v in PAYS.items()}
+
 global db
 
 def initMongo():
@@ -84,26 +90,39 @@ def save11Players(matchname):
 	data = pd.DataFrame(list(collection.find()))
 
 	keeper_name, keeper_country = "", "";
-    defenders_name, defenders_country = [], [];
-    midfielders_name, midfielders_country = [], [];
-    attackers_name, attackers_country = [], [];
-    
-    for poste in data['Position'].unique():
-        if poste == 'Gardien':
-            keeper_name = data[data['Position'] == poste]["Nom"].values.tolist()[0]
-            keeper_country = INV_PAYS[data[data['Position'] == poste]["Pays"].values.tolist()[0]].lower()
-        if poste == 'Défenseur':
-            defenders_name = data[data['Position'] == poste]["Nom"].values.tolist()[:4]
-            defenders_country = [INV_PAYS[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:4]]
-        if poste == 'Milieu':
-            midfielders_name = data[data['Position'] == poste]["Nom"].values.tolist()[:3]
-            midfielders_country = [INV_PAYS[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
-        if poste == 'Attaquant':
-            attackers_name = data[data['Position'] == poste]["Nom"].values.tolist()[:3]
-            attackers_country = [INV_PAYS[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
-	
-    file = open(matchname+".json","w")
-	file.write()
+	defenders_name, defenders_country = [], [];
+	midfielders_name, midfielders_country = [], [];
+	attackers_name, attackers_country = [], [];
+
+	for poste in data['Position'].unique():
+	    if poste == 'Gardien':
+	        keeper_name = data[data['Position'] == poste]["Nom"].values.tolist()[0]
+	        keeper_country = INV_PAYS[data[data['Position'] == poste]["Pays"].values.tolist()[0]].lower()
+	    if poste == 'Défenseur':
+	        defenders_name = data[data['Position'] == poste]["Nom"].values.tolist()[:4]
+	        defenders_country = [INV_PAYS[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:4]]
+	    if poste == 'Milieu':
+	        midfielders_name = data[data['Position'] == poste]["Nom"].values.tolist()[:3]
+	        midfielders_country = [INV_PAYS[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
+	    if poste == 'Attaquant':
+	        attackers_name = data[data['Position'] == poste]["Nom"].values.tolist()[:3]
+	        attackers_country = [INV_PAYS[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
+
+	file = open(matchname+"_Top11Players"+".json","w")
+	file.write(str({
+	  "Name": {
+	    "Keeper": [keeper_name],
+	    "Defenders": defenders_name,
+	    "Midfielders": midfielders_name,
+	    "Attackers": attackers_name
+	    },
+	  "Country":{
+	    "Keeper": [keeper_country],
+	    "Defenders": defenders_country,
+	    "Midfielders": midfielders_country,
+	    "Attackers": attackers_country
+	  }
+	}))
 	file.close()
 	# top11.to_csv(matchname+"_Top11Players.json",index=False)
 
@@ -142,10 +161,10 @@ def removeMongoCollections(hashtag):
 initMongo()
 hashtag = "#FRAUSA"
 matchname = str(hashtag[1:])
-saveCountriesData(matchname)
-saveTweets(matchname)
-savePositivity(matchname)
-saveTimeSeries(matchname)
-saveTopPlayers(matchname)
+# saveCountriesData(matchname)
+# saveTweets(matchname)
+# savePositivity(matchname)
+# saveTimeSeries(matchname)
+# saveTopPlayers(matchname)
 save11Players(matchname)
 #removeMongoCollections(matchname)
