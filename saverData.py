@@ -29,6 +29,7 @@ def saveCountriesData(matchname):
 	collection = db[matchname+"_Nations"]
 	data = pd.DataFrame(list(collection.find()))
 	data.sort_values(by="Count", ascending=False, inplace=True)
+	data['Count'] = np.ceil((data['Count'] * 100)/data['Count'].sum())
 	data[['Count','Nation']].to_csv(matchname+"_Nations.csv",index=False)
 
 def transformHashtags(dic):
@@ -66,6 +67,7 @@ def saveTopPlayers(matchname):
 	data = pd.DataFrame(list(collection.find()))
 	# print(data)
 	data.sort_values(by="Count", ascending=False, inplace=True)
+	data['Count'] = np.ceil((data['Count']*100)/data['Count'].sum())
 	data = data.iloc[:10,:]
 	data[['Nom','Count']].to_json(matchname+"_TopPlayers.json",orient='values')#.to_csv(matchname+"_TopPlayers.csv",index=False)
 
@@ -130,8 +132,8 @@ def savePositivity(matchname):
 	data = pd.DataFrame(list(collection.find()))
 	pays1 = matchname[:3]
 	pays2 = matchname[3:]
-	pourc_1 = np.round(((data[(data['Nation']==pays1) & (data['Sentiments']=='1')]['Count']/ data[(data['Nation']==pays1)]['Count'].sum()).values[0])*100)
-	pourc_2 = np.round(((data[(data['Nation']==pays2) & (data['Sentiments']=='1')]['Count']/ data[(data['Nation']==pays2)]['Count'].sum()).values[0])*100)
+	pourc_1 = np.ceil(((data[(data['Nation']==pays1) & (data['Sentiments']=='1')]['Count']/ data[(data['Nation']==pays1)]['Count'].sum()).values[0])*100)
+	pourc_2 = np.ceil(((data[(data['Nation']==pays2) & (data['Sentiments']=='1')]['Count']/ data[(data['Nation']==pays2)]['Count'].sum()).values[0])*100)
 	with open(matchname+"_Sentiments.json", 'w') as outfile:
 	    json.dump([{"key": pays1, "value": pourc_1, "color": "blue"},{"key": pays2, "value": pourc_2, "color": "red"}], outfile)
 
@@ -162,6 +164,6 @@ matchname = str(hashtag[1:])
 # saveTweets(matchname)
 #savePositivity(matchname)
 # saveTimeSeries(matchname)
-saveTopPlayers(matchname)
+#saveTopPlayers(matchname)
 #save11Players(matchname)
 #removeMongoCollections(matchname)
