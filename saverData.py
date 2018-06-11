@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 import pymongo
 import pandas as pd
+import numpy as np
 
 global db
 
@@ -10,18 +11,18 @@ def initMongo():
 	client = MongoClient('localhost', 27017)
 	db = client['WorldCup']
 
-def saveCountriesData(collection_name):
-	''' 
-	Save Countries data 
-	Input : 
-		- collection_name : string
-	Output : 
+def saveCountriesData(matchname):
+	'''
+	Save Countries data
+	Input :
+		- matchname : string
+	Output :
 		- Dataframe : file
 	'''
-	collection = db[collection_name]
+	collection = db[matchname+"_Nations"]
 	data = pd.DataFrame(list(collection.find()))
 	data.sort_values(by="Count", ascending=False, inplace=True)
-	data[['Count','Nation']].to_csv(collection_name+".csv",index=False)
+	data[['Count','Nation']].to_csv(matchname+".csv",index=False)
 
 def transformHashtags(dic):
     tmp = []
@@ -29,35 +30,37 @@ def transformHashtags(dic):
         tmp.append(i['text'])
     return tmp
 
-def saveTweets(collection_name):
-	''' 
-	Save Tweets data 
-	Input : 
-		- collection_name : string
-	Output : 
+def saveTweets(matchname):
+	'''
+	Save Tweets data
+	Input :
+		- matchname : string
+	Output :
 		- Dataframe : file
 	'''
-	client = MongoClient('localhost', 27017)
-	db = client['WorldCup']
-	collection = db[collection_name]
+	collection = db[matchname+"_Tweets"]
 	data = pd.DataFrame(list(collection.find()))
 	if 'hashtags' in data.columns:
 		if type(data['hashtags'][0][0]) == dict:
 			data['hashtags'] = data['hashtags'].apply(transformHashtags)
-	data.iloc[:,1:].to_parquet(collection_name+".parquet")
+	data.reset_index(inplace=True)
+	# print(data.iloc[:,2:])
+	data.iloc[:,2:].to_parquet(matchname+".parquet")
 
-def saveTopPlayers(collection_name):
-	''' 
-	Save Top players data 
-	Input : 
-		- collection_name : string
-	Output : 
+def saveTopPlayers(matchname):
+	'''
+	Save Top players data
+	Input :
+		- matchname : string
+	Output :
 		- Dataframe : file
 	'''
-	collection = db[collection_name]
+	collection = db[matchname+"_Players"]
 	data = pd.DataFrame(list(collection.find()))
-	data.sort_values(by="Count", ascending=False, inplace=True).iloc[:10,:]
-	# data.to_csv(collection_name+"_TopPlayers.csv",index=False)
+	# print(data)
+	data.sort_values(by="Count", ascending=False, inplace=True)
+	data = data.iloc[:10,:]
+	data.to_csv(matchname+"_TopPlayers.csv",index=False)
 
 def newPost(post):
 	if 'Gardien' in post:
@@ -69,45 +72,80 @@ def newPost(post):
 	elif 'Ailier' in post or 'Avant' in post:
 	    return 'Attaquant'
 
-def save11Players(collection_name):
-	''' 
-	Save Top 11 players data 
-	Input : 
-		- collection_name : string
-	Output : 
+def save11Players(matchname):
+	'''
+	Save Top 11 players data
+	Input :
+		- matchname : string
+	Output :
 		- Dataframe : file
 	'''
-	collection = db[collection_name]
+	collection = db[matchname+"_Players"]
 	data = pd.DataFrame(list(collection.find()))
-	data['Post_Simple'] = data['Post'].apply(newPost)
-	top11 = pd.DataFrame()
-	for poste in test['Post_Simple'].unique():
-	    if poste == 'Gardien':
-	        top11 = top11.append(data[data['Post_Simple'] == poste].iloc[0,:])
-	    if poste == 'Défenseur':
-	        top11 = top11.append(data[data['Post_Simple'] == poste].iloc[:4,:])
-	    if poste == 'Milieu':
-	        top11 = top11.append(data[data['Post_Simple'] == poste].iloc[:3,:])
-	    if poste == 'Attaquant':
-	        top11 = top11.append(data[data['Post_Simple'] == poste].iloc[:3,:])
-	#top11.to_csv(collection_name+"_Top11Players.csv",index=False)
 
-def savePositivity(collection_name):
-	'''TO DO'''
+	keeper_name, keeper_country = "", "";
+    defenders_name, defenders_country = [], [];
+    midfielders_name, midfielders_country = [], [];
+    attackers_name, attackers_country = [], [];
+    
+    for poste in data['Position'].unique():
+        if poste == 'Gardien':
+            keeper_name = data[data['Position'] == poste]["Nom"].values.tolist()[0]
+            keeper_country = INV_PAYS[data[data['Position'] == poste]["Pays"].values.tolist()[0]].lower()
+        if poste == 'Défenseur':
+            defenders_name = data[data['Position'] == poste]["Nom"].values.tolist()[:4]
+            defenders_country = [INV_PAYS[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:4]]
+        if poste == 'Milieu':
+            midfielders_name = data[data['Position'] == poste]["Nom"].values.tolist()[:3]
+            midfielders_country = [INV_PAYS[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
+        if poste == 'Attaquant':
+            attackers_name = data[data['Position'] == poste]["Nom"].values.tolist()[:3]
+            attackers_country = [INV_PAYS[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
+	
+    file = open(matchname+".json","w")
+	file.write()
+	file.close()
+	# top11.to_csv(matchname+"_Top11Players.json",index=False)
 
-def saveTimeSeries(collection_name):
-	'''TO DO'''
+def savePositivity(matchname):
+	'''Save Positivity of Tweets in JSON format'''
+	collection = db[matchname+"_Sentiments"]
+	data = pd.DataFrame(list(collection.find()))
+	pays1 = matchname[:3]
+	pays2 = matchname[3:]
+	pourc_1 = np.round(((data[(data['Nation']==pays1) & (data['Sentiments']=='1')]['Count']/ data[(data['Nation']==pays1)]['Count'].sum()).values[0])*100)
+	pourc_2 = np.round(((data[(data['Nation']==pays2) & (data['Sentiments']=='1')]['Count']/ data[(data['Nation']==pays2)]['Count'].sum()).values[0])*100)
+	file = open(matchname+".json","w")
+	file.write(str([{"key": pays1, "value": pourc_1, "color": "blue"},{"key": pays2, "value": pourc_2, "color": "red"}]))
+	file.close()
+
+
+def saveTimeSeries(matchname):
+	'''Save TimeSeries Sentiments in CSV'''
+	collection = db[matchname+"_Sentiments_Agg"]
+	data = pd.DataFrame(list(collection.find()))
+	data = data[["Time","Positive","Negative","Neutral"]]
+	data["Positive"] = data["Positive"].apply(int)
+	data["Negative"] = data["Negative"].apply(int)
+	data["Neutral"] = data["Neutral"].apply(int)
+	data["Positive"] = np.ceil((data["Positive"]*100)/data["Positive"].sum())
+	data["Negative"] = np.ceil((data["Negative"]*100)/data["Negative"].sum())
+	data["Neutral"] = np.ceil((data["Neutral"]*100)/data["Neutral"].sum())
+	data[["Time","Positive","Negative","Neutral"]].to_csv(matchname+"_Sentiments_Agg.csv",index=False)
 
 def removeMongoCollections(hashtag):
 	'''Remove Nations, Tweets & Joueurs collections '''
-	for collect in [hashtag+"_Nations",hashtag+"_Tweets"]:
-		collection = db[collection_name]
+	for collect in [hashtag+"_Nations",hashtag+"_Tweets",hashtag+"_Players"]:
+		collection = db[collect]
 		collection.drop()
 
 initMongo()
-hashtag = "#FRAITA"
-collection_name = str(hashtag[1:])
-saveCountriesData(collection_name+"_Nations")
-saveTweets(collection_name+"_Tweets")
-#removeMongoCollections(collection_name)
-
+hashtag = "#FRAUSA"
+matchname = str(hashtag[1:])
+saveCountriesData(matchname)
+saveTweets(matchname)
+savePositivity(matchname)
+saveTimeSeries(matchname)
+saveTopPlayers(matchname)
+save11Players(matchname)
+#removeMongoCollections(matchname)

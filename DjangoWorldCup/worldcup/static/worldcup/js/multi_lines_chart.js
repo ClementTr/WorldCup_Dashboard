@@ -18,6 +18,7 @@ function redraw(){
     x_plot.range([0, innerW]);
     y_plot.range([innerH, 0]);
     draw(dataset_plot, innerW, innerH)
+
   }
 }
 
@@ -25,13 +26,13 @@ function redraw(){
 function draw(data, innerW, innerH) {
       /* On créé une variable courbe pour les sales */
       let valuelineSales = d3v4.line()
-                               .x(d => x_plot(d.date))
-                               .y(d => y_plot(d.sales))
+                               .x(d => x_plot(d.Time))
+                               .y(d => y_plot(d.Negative))
                                .curve(d3v4.curveCardinal); // Pour avoir des courbes linéaires
       /* On créé une variable courbe pour les deliveries */
       let valuelineDelivered = d3v4.line()
-                                   .x(d => x_plot(d.date))
-                                   .y(d => y_plot(d.deliveries))
+                                   .x(d => x_plot(d.Time))
+                                   .y(d => y_plot(d.Positive))
                                    .curve(d3v4.curveCardinal);
 
       /* On ajoute groupé à la fenêtre initiale un axe à x au bon format (date) */
@@ -39,7 +40,7 @@ function draw(data, innerW, innerH) {
               .attr("class", "axis")
               .attr("transform", "translate(0," + innerH + ")")
               .call(d3v4.axisBottom(x_plot)
-              .tickFormat(parse_time_plot))
+              .tickFormat(format_date))
               .selectAll("text")
               .style("text-anchor", "end")
               .attr("dx", "-.8em")
@@ -56,7 +57,8 @@ function draw(data, innerW, innerH) {
               .data([data])
               .attr("class", "line")
               .attr("id", "sales")
-              .attr("d", valuelineSales)
+              .attr("d",valuelineSales)
+              .style("stroke", "blue")
               .transition() // On ajoute ces lignes pour dessiner les courbes en direct
               .duration(2000)
               .attrTween("stroke-dasharray", function() {
@@ -71,6 +73,7 @@ function draw(data, innerW, innerH) {
               .attr("class", "line")
               .attr("id", "deliveries")
               .attr("d", valuelineDelivered)
+              .style("stroke", "red")
               .transition() // On ajoute ces lignes pour dessiner les courbes en direct
               .duration(2000)
               .attrTween("stroke-dasharray", function() {
@@ -137,13 +140,12 @@ function draw(data, innerW, innerH) {
               i = bisect_date_plot(data, x0, 1),
               d0 = data[i - 1],
               d1 = data[i],
-              d = x0 - d0.date > d1.date - x0 ? d1 : d0; // sorte de if pour trouver le point le plus proche
-          focus_sales.attr("transform", "translate(" + x_plot(d.date) + "," + y_plot(d.sales) + ")");
-          focus_sales.select("text").text(d.sales);
-
-          focus_deliveries.select(".x-hover-line").attr("y2", innerH - y_plot(d.deliveries));
-          focus_deliveries.attr("transform", "translate(" + x_plot(d.date) + "," + y_plot(d.deliveries) + ")");
-          focus_deliveries.select("text").text(d.deliveries);
+              d = x0 - d0.Time > d1.Time - x0 ? d1 : d0; // sorte de if pour trouver le point le plus proche
+          focus_sales.attr("transform", "translate(" + x_plot(d.Time) + "," + y_plot(d.Negative) + ")");
+          focus_sales.select("text").text(d.Negative);
+          focus_deliveries.select(".x-hover-line").attr("y2", innerH - y_plot(d.Positive));
+          focus_deliveries.attr("transform", "translate(" + x_plot(d.Time) + "," + y_plot(d.Positive) + ")");
+          focus_deliveries.select("text").text(d.Positive);
       }
 
   }

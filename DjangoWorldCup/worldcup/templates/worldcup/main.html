@@ -36,7 +36,7 @@
               <div class="col-lg-6">
                   <div class="au-card m-b-30" style="padding-left: 20px;">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Nombre de Tweets/Retwets</h3>
+                          <h3 class="title-2 m-b-40">Positivity Evolution</h3>
                           <!-- <canvas id="sales-chart"></canvas> -->
                           <div class="chart-wrapper" id="simple_plot"></div>
                       </div>
@@ -97,8 +97,7 @@
                   <div class="au-card m-b-30">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">Deertweet about a team</h3>
-                          <blockquote class="twitter-tweet" data-lang="fr"><p lang="fr" dir="ltr">Matuidi, Monsieur Blaise Matuidi ! ! ! ! ! ! ! ! ! ! 🤣🤣🤣 <a href="https://twitter.com/hashtag/FRAUSA?src=hash&amp;ref_src=twsrc%5Etfw">#FRAUSA</a> <a href="https://twitter.com/hashtag/FanDuCharo?src=hash&amp;ref_src=twsrc%5Etfw">#FanDuCharo</a> <a href="https://t.co/rHhqEkaVzg">pic.twitter.com/rHhqEkaVzg</a></p>&mdash; DB (@David24HD) <a href="https://twitter.com/David24HD/status/1005139421270863872?ref_src=twsrc%5Etfw">8 juin 2018</a></blockquote>
-                          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                          <blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="fr" dir="ltr">Les Bleus accrochent le nul : <a href="https://t.co/heJfZRFrnw">https://t.co/heJfZRFrnw</a> <a href="https://t.co/MBQljEKRXg">pic.twitter.com/MBQljEKRXg</a></p>&mdash; L&#39;ÉQUIPE (@lequipe) <a href="https://twitter.com/lequipe/status/1005555336760188928?ref_src=twsrc%5Etfw">June 9, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
                       </div>
                   </div>
               </div>
@@ -107,9 +106,8 @@
                   <div class="au-card m-b-30" style="padding-bottom: 40px; border-bottom-width: 10px; margin-bottom: 150px;">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">Deertweet about a player</h3>
-                          <blockquote class="twitter-tweet" data-lang="fr"><p lang="fr" dir="ltr"><a href="https://twitter.com/hashtag/FRAUSA?src=hash&amp;ref_src=twsrc%5Etfw">#FRAUSA</a> <a href="https://twitter.com/hashtag/CoupeDuMonde2018?src=hash&amp;ref_src=twsrc%5Etfw">#CoupeDuMonde2018</a> Composition des équipes France-USA &gt;&gt; <a href="https://t.co/0AP3uhKU9J">https://t.co/0AP3uhKU9J</a> <a href="https://t.co/MSLvQIuOkX">pic.twitter.com/MSLvQIuOkX</a></p>&mdash; Le Parisien Infog (@LeParisienInfog) <a href="https://twitter.com/LeParisienInfog/status/1005191047796977664?ref_src=twsrc%5Etfw">8 juin 2018</a></blockquote>
-                          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
+                          <blockquote class="twitter-tweet" data-lang="en"><p lang="fr" dir="ltr">Le 11 de départ de la France face aux États-Unis ⤵️<br><br>Lloris <br>Sidibé<br>Varane<br>Umtiti<br>Mendy <br>Pogba<br>Kanté<br>Matuidi<br>Griezmann<br>Giroud<br>Mbappé <a href="https://t.co/9iAtgiML6m">pic.twitter.com/9iAtgiML6m</a></p>&mdash; L&#39;ÉQUIPE (@lequipe) <a href="https://twitter.com/lequipe/status/1005510674888392705?ref_src=twsrc%5Etfw">June 9, 2018</a></blockquote> 
+                          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
                       </div>
                   </div>
               </div>
@@ -142,12 +140,13 @@
   let div_plot = document.getElementById("simple_plot");
   let svg_plot_init = d3v4.select("#simple_plot").append("svg")
 
-  let parse_time_plot = d3v4.timeParse("%m-%Y");
-  let bisect_date_plot = d3v4.bisector(d => d.date).left;
-
+  var format_date = d3v4.timeFormat("%H:%M");
   let dataset_plot = []
   let x_plot, y_plot;
   let svg_plot;
+  let bisect_date_plot;
+
+  
 
   fetch("http://localhost:8000/positive_negative", {
   method: 'get',
@@ -156,13 +155,47 @@
     'Accept': 'application/json',
     'Content-Type': 'application/json'
   }
-})
-.then(response => response.json())
-.then(response => {
-  dataset_barplot = response;
-});
+  })
+  .then(response => response.json())
+  .then(response => {
+    
+    data = JSON.parse(response);
 
+    data.forEach(function(item,index){
+      date = new Date(item["Time"])
+      dataset_plot.push({"Time": date,
+        "Positive":Number(item["Positive"]),
+        "Negative":Number(item["Negative"])});
 
+    });
+
+    bisect_date_plot = d3v4.bisector(function(d) { return d["Time"];}).left;
+
+    x_plot = d3v4.scaleTime()
+                 .domain(d3v4.extent(dataset_plot,function(d) { 
+                      return d["Time"];
+                  }));
+
+    console.log(d3v4.extent(dataset_plot,function(d) { 
+                      return d["Time"];
+                  }));
+  
+    y_plot = d3v4.scaleLinear()
+            .domain([0, d3v4.max(dataset_plot,function(d) { 
+                return Math.max(d["Positive"], d["Negative"]);
+                }
+              )]);
+
+    dataset_plot.forEach(function(item,index){
+      console.log(index);
+      console.log(item["Time"])
+      console.log(x_plot(item["Time"]));
+      console.log("---------------------");
+    });
+    
+    redraw();
+
+  });
 
 </script>
 
@@ -225,7 +258,7 @@
 </script>
 
 <!-- PITCH PLOT -->
-<!-- <script type="text/javascript">
+<script type="text/javascript">
   window.addEventListener("resize", redraw_pitch)
 
   let div_pitchplot = document.getElementById("pitch_plot");
@@ -309,14 +342,14 @@
     })}, 30000);
 
   // window.d3 = null
-</script> -->
+</script>
 
 {% endblock d3v4 %}
 
 
 <!-- BLOCK D3 MODIFY D3 VERSION V3 MAP CHARTS -->
 {% block d3 %}
-<!-- <script>
+<script>
 
 function loadTable(tableId, fields, data) {
   //$('#' + tableId).empty(); //not really necessary
@@ -328,7 +361,7 @@ function loadTable(tableId, fields, data) {
           row += '<td>' + item[index] + '</td>';
         }else{
 
-          row += '<td class=\"text-right\">' + item[index] + '</td>';
+          row += '<td class=\"text-right\">' + item[index]+ "%" + '</td>';
         }
       });
       rows += row + '<tr>';
@@ -440,9 +473,9 @@ setInterval(function(){
   window.addEventListener('resize', function(event) { map.resize(); });
 })}, 3000);
 
-</script> -->
+</script>
 
-<!-- <script>
+<script>
 
 fetch("http://localhost:8000/dataplayers", {
   method: 'get',
@@ -460,20 +493,20 @@ fetch("http://localhost:8000/dataplayers", {
   });
 
 
-// setInterval(function(){
-//   fetch("http://localhost:8000/dataplayers", {
-//     method: 'get',
-//     dataType: 'json',
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json'
-//     }
-//   })
-//   .then(response => response.json())
-//   .then(response => {
-//     var top10_players = response.slice(0,5);
-//     loadTable('players-table', ['field1', 'field2'], top10_players);
-//   })}, 3000);
+setInterval(function(){
+  fetch("http://localhost:8000/dataplayers", {
+    method: 'get',
+    dataType: 'json',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(response => {
+    var top10_players = response.slice(0,5);
+    loadTable('players-table', ['field1', 'field2'], top10_players);
+  })}, 3000);
 
-</script> -->
+</script>
 {% endblock d3 %}

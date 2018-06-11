@@ -25,23 +25,25 @@ def getDataFromMongo(collection_name):
     return data
 
 def countriesCalculations(hashtag_name):
-	collection_nation = str(hashtag_name[1:]) + "_Nations"
-	data = getDataFromMongo(collection_nation)
-	return data[["Nation", "Count"]].to_json(orient='values')
+    collection_nation = str(hashtag_name[1:]) + "_Nations"
+    data = getDataFromMongo(collection_nation)
+    data = data[["Nation", "Count"]]
+    data['Percentage'] = np.ceil((data['Count'] * 100)/data['Count'].sum())
+    return data[["Nation", "Percentage"]].to_json(orient='values')
 
 def playersCalculations(hashtag_name):
-	collection_players = str(hashtag_name[1:]) + "_Players"
-	data = getDataFromMongo(collection_players)
-	return data[["Nom", "Count"]].to_json(orient='values')
+    collection_players = str(hashtag_name[1:]) + "_Players"
+    data = getDataFromMongo(collection_players)
+    data = data[["Nom", "Count"]]
+    data['Percentage'] = np.ceil((data['Count']*100)/data['Count'].sum())
+    return data[["Nom", "Percentage"]].to_json(orient='values')
 
 def getDataSentiment(hashtag_name):
     client = MongoClient('localhost', 27017)
     db = client['WorldCup']
     collection_name = hashtag_name+'_Sentiments'
-    print(collection_name)
     collection = db[collection_name]
     data = pd.DataFrame(list(collection.find()))
-    print(data)
     pays1 = hashtag_name[:3]
     pays2 = hashtag_name[3:]
     pourc_1 = np.round(((data[(data['Nation']==pays1) & (data['Sentiments']=='1')]['Count']/ data[(data['Nation']==pays1)]['Count'].sum()).values[0])*100)
@@ -52,22 +54,21 @@ def getDataSentiment(hashtag_name):
 def barplot_positivity(hashtag_name):
     collection_Sentiments= str(hashtag_name[1:])
     pourc_1, pourc_2 = getDataSentiment(collection_Sentiments)
-    print("---------")
-    print(pourc_1)
-    print("----------")
     return [{"key": collection_Sentiments[:3], "value": pourc_1, "color": "blue"},{"key": collection_Sentiments[3:], "value": pourc_2, "color": "red"}]
 
 def positivity_negativity(hashtag_name):
     client = MongoClient('localhost', 27017)
-    db = client['test'] #On changera
+    db = client['WorldCup'] #On changera
     collection_name = str(hashtag_name[1:])+'_Sentiments_Agg'
+    #collection_name = "PORALG"+'_Sentiments_Agg'
     collection = db[collection_name]
     data = pd.DataFrame(list(collection.find()))
     data = data.reset_index()
-    data = data.drop('_id', axis=1)
+    data = data.drop(['_id','index'], axis=1)
     data['Time'] = pd.to_datetime(data['Time'], infer_datetime_format=True)
+    #print(data)
     #data.set_index('Time', inplace=True)
-    data.to_json(orient="records")
+    return data.drop_duplicates('Time').to_json(orient="records")
 
 
 
@@ -124,10 +125,10 @@ def getPays(hashtag_name):
 
 def getClassement():
     data = pd.read_csv(path_groups)
-    print(data.head())
+    #print(data.head())
     teams = []
     data['Difference'] = data['Buts_pour'] - data['Buts_contre']
-    print(data.head())
+    #print(data.head())
     for group in data['Group'].unique():
         tmp = data[data['Group'] == group]
         tmp.sort_values(by="Points",inplace=True,ascending=False)
@@ -152,7 +153,7 @@ def getTables():
 def getMatchData(hashtag_name):
     path_match = str(path_data) + str(hashtag_name[1:]) + "/"
     path_top11 = path_match + str(hashtag_name[1:]) + "_Players_Top11Players.csv"
-    print(path_top11)
+    #print(path_top11)
     df_top11 = pd.read_csv(path_top11)
     df_top11["Pays"] = df_top11["Pays"].apply(lambda x: str(INV_PAYS[x]).lower())
     return df_top11
