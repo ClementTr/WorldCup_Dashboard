@@ -4,6 +4,7 @@
 Dé-commenter la balise du nouveau match  
 Linker le nouveau match à main/  
 Modifier le lien du précédent match (anciennement main/ vers hashtagmatch/)
+/!\ Faire les mêmes opérations pour la version mobile
 
 ##urls.py
 Dé-commenter le match à suivre  

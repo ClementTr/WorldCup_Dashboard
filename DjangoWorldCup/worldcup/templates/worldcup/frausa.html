@@ -10,15 +10,15 @@
           <div class="row">
 
             <!-- BLOCK TITLE MODIFY TITLE -->
-            <div class="col-lg-12">
-                <div class="au-card m-b-30" style="padding-bottom: 0px;">
-                    <center>
-                      <h3 class="title-2 m-b-40">Match of the day - {{hashtag}}</h3>
-                      <!-- <br>
-                      <h5>#FRAITA</h5> -->
-                    </center>
+              <div class="col-lg-12">
+                <div class="au-card m-b-30" style="padding-bottom: 10px;">
+                  <img src="/static/worldcup/img/flags/{{ country_1 }}.png" class="rounded float-left" alt="...">
+                  <img src="/static/worldcup/img/flags/{{ country_2 }}.png" class="rounded float-right" alt="...">
+                  <center>
+                    <h3 class="title-2 m-b-30" style"vertical-align: middle;">Match of the day - {{hashtag}}</h3>
+                  </center>
                 </div>
-            </div>
+              </div>
 
 
               <div class="col-lg-6">
@@ -92,6 +92,8 @@
                   <div class="au-card m-b-30">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">Deertweet about a team</h3>
+                          <blockquote class="twitter-tweet" data-lang="fr"><p lang="fr" dir="ltr">🔴🔵🇵🇹 Golooooo Gonçaaaaaaaloooooo Guedes ! <a href="https://twitter.com/hashtag/PortugalAlgeria?src=hash&amp;ref_src=twsrc%5Etfw">#PortugalAlgeria</a> <a href="https://twitter.com/hashtag/PORALG?src=hash&amp;ref_src=twsrc%5Etfw">#PORALG</a><a href="https://twitter.com/PSG_inside?ref_src=twsrc%5Etfw">@PSG_inside</a> ne le vend stp 🙏🙏 <a href="https://t.co/6tjqQyr9kR">pic.twitter.com/6tjqQyr9kR</a></p>&mdash; PARIScompsHD (@PARIScompsHD) <a href="https://twitter.com/PARIScompsHD/status/1004811505680953344?ref_src=twsrc%5Etfw">7 juin 2018</a></blockquote>
+                          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
                       </div>
                   </div>
@@ -101,7 +103,8 @@
                   <div class="au-card m-b-30">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">Deertweet about a player</h3>
-                          
+                          <blockquote class="twitter-tweet" data-lang="fr"><p lang="fr" dir="ltr">Les notes de <a href="https://twitter.com/hashtag/PORALG?src=hash&amp;ref_src=twsrc%5Etfw">#PORALG</a> selon <a href="https://twitter.com/_Goalpoint?ref_src=twsrc%5Etfw">@_Goalpoint</a> <a href="https://t.co/OldD0D6fi8">pic.twitter.com/OldD0D6fi8</a></p>&mdash; DZfoot (@DZfoot) <a href="https://twitter.com/DZfoot/status/1005023955239960578?ref_src=twsrc%5Etfw">8 juin 2018</a></blockquote>
+                          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                       </div>
                   </div>
               </div>
@@ -133,32 +136,37 @@
   let div_plot = document.getElementById("simple_plot");
   let svg_plot_init = d3v4.select("#simple_plot").append("svg")
 
-  let parse_time_plot = d3v4.timeParse("%m-%Y");
-  let bisect_date_plot = d3v4.bisector(d => d.date).left;
+  var format_date_base = d3v4.timeFormat("% %H:%M");
+  var format_date = d3v4.timeFormat("%H:%M");
+  let bisect_date_plot = d3v4.bisector(d => d.Time).left;
 
   let dataset_plot = []
   let x_plot, y_plot;
   let svg_plot;
 
-  d3v4.csv("/static/worldcup/df_dept_12_months.csv")
+   let matchname2 = "{{hashtag}}"
+
+  d3v4.csv("/static/worldcup/data/"+matchname2.slice(1,7)+"/"+matchname2.slice(1,7)+"_Sentiments_Agg.csv")
       /* On load les colonnes de notre csv */
       .row(d => {
           return {
-              date: parse_time_plot(d.Date),
-              deliveries: +d.Delivered,
-              sales: +d.Sales
+              Time: new Date(d.Time),
+              Negative: +d.Negative,
+              Positive: +d.Positive
           }
       })
       /* On les scale entre la plus petite et la plus grande valeur selon la taille de notre fenêtre */
       .get((error, rows) => {
           if (rows.length > 0) {
 
-              x_plot = d3v4.scaleLinear()
-                      .domain(d3v4.extent(rows, row => row.date))
+              x_plot = d3v4.scaleTime()
+                      .domain(d3v4.extent(rows, row => row.Time))
               y_plot = d3v4.scaleLinear()
-                      .domain([0, d3v4.max(rows, row => Math.max(row.deliveries, row.sales))])
+                      .domain([0, d3v4.max(rows, row => Math.max(row.Negative, row.Positive))])
 
               dataset_plot = rows
+
+
               redraw();
 
           }
@@ -182,16 +190,23 @@
 
   let w = div_barplot.clientWidth;
   let h = 250
+  var x, y;
 
-  let dataset_barplot = [
-    {"key": "France", "value": 66, "color": "blue"},
-    {"key": "Portugal", "value": 42, "color": "red"},
-  ]
+  let dataset_barplot;
 
-   var x = d3v4.scaleLinear()
-   var y = d3v4.scaleBand()
+  d3v4.json("/static/worldcup/data/"+matchname2.slice(1,7)+"/"+matchname2.slice(1,7)+"_Sentiments.json", function(error, myData) {
+    
+    dataset_barplot = myData;
 
-   redraw_barplot()
+    // console.log(dataset_barplot);
+
+     x = d3v4.scaleLinear()
+     y = d3v4.scaleBand()
+
+    redraw_barplot()
+
+  });
+   
 </script>
 
 <!-- PITCH PLOT -->
@@ -207,25 +222,44 @@
   let h_pitch
   let max_width_available = 0
 
+  let keeper_name
+  let keeper_country
+  let defenders_name
+  let midfielders_name
+  let midfielders_country
+  let attackers_name
+  let attackers_country
+
   if (width_pitch/height_pitch < 1.6) {
     w_pitch = width_pitch;
     h_pitch = height_pitch;
     max_width_available = w_pitch
   }
   else {
-    if (max_width_available==0){
-      w_pitch = 536;
-      h_pitch = w_pitch/1.6;
-    }
-    else{
-      w_pitch = max_width_available//536;
-      h_pitch = w_pitch/1.6;
-    }
+    w_pitch = 536;
+    h_pitch = w_pitch/1.6;
   }
 
-  redraw_pitch()
+  let matchname = "{{hashtag}}"
+  
+  d3v4.json("/static/worldcup/data/"+matchname.slice(1,7)+"/"+matchname.slice(1,7)+"_Top11Players.json", function(error, myData) {
+    // console.log(myData);
+    keeper_name = myData["Name"]["Keeper"][0]
+    keeper_country = myData["Country"]["Keeper"][0]
 
-  // window.d3 = null
+    defenders_name = myData["Name"]["Defenders"]
+    defenders_country = myData["Country"]["Defenders"]
+
+    midfielders_name = myData["Name"]["Midfielders"]
+    midfielders_country = myData["Country"]["Midfielders"]
+
+    attackers_name = myData["Name"]["Attackers"]
+    attackers_country = myData["Country"]["Attackers"]
+
+    redraw_pitch()
+  });
+
+  window.d3 = null
 </script>
 
 {% endblock d3v4 %}
@@ -233,135 +267,6 @@
 
 <!-- BLOCK D3 MODIFY D3 VERSION V3 MAP CHARTS -->
 {% block d3 %}
-<!--
-<script>
-
-function loadTable(tableId, fields, data) {
-  //$('#' + tableId).empty(); //not really necessary
-  var rows = '';
-  $.each(data, function(index, item) {
-      var row = '<tr>';
-      $.each(fields, function(index, field) {
-        if(index == 0){
-          row += '<td>' + item[index] + '</td>';
-        }else{
-
-          row += '<td class=\"text-right\">' + item[index] + '</td>';
-        }
-      });
-      rows += row + '<tr>';
-  });
-  $('#' + tableId).html(rows);
-}
-
-var map ;
-fetch("http://localhost:8000/datacountries", {
-  method: 'get',
-  dataType: 'json',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  }
-})
-.then(response => response.json())
-.then(response => {
-  // console.log(response);
-  var series = JSON.parse(response);
-
-
-  var top10_team = series.slice(0, 10);
-
-  loadTable('data-table', ['field1', 'field2'], top10_team);
-
-  // console.log(series)
-
-  var dataset = {};
-
-  var onlyValues = series.map(function(obj){ return obj[1]; });
-  var minValue = Math.min.apply(null, onlyValues),
-        maxValue = Math.max.apply(null, onlyValues);
-
-  var paletteScale = d3.scale.linear()
-        .domain([minValue,maxValue])
-        .range(["#EFEFFF","#02386F"]); // blue color
-
-  series.forEach(function(item){
-      var iso = item[0],
-              value = item[1];
-      dataset[iso] = { numberOfThings: value, fillColor: paletteScale(value) };
-  });
-
-  map = new Datamap({
-      element: document.getElementById('container1'),
-      projection: 'mercator',
-      fills: { defaultFill: '#F5F5F5' },
-      responsive: true,
-      geographyConfig: {
-        borderColor: '#DEDEDE',
-        highlightBorderWidth: 2,
-        highlightBorderColor: '#B7B7B7',
-        highlightFillColor: function(geo) {
-            return geo['fillColor'] || '#F5F5F5';
-        },
-        popupTemplate: function(geo, data) {
-            // don't show tooltip if country don't present in dataset
-            if (!data) { return ; }
-            // tooltip content
-            return ['<div class="hoverinfo">',
-                '<strong>', geo.properties.name, '</strong>',
-                '<br>Number of Tweets : <strong>', data.numberOfThings, '</strong>',
-                '</div>'].join('');
-        }
-      },
-      data: dataset
-  });
-});
-
-setInterval(function(){
-  var series;
-  fetch("http://localhost:8000/datacountries", {
-    method: 'get',
-    dataType: 'json',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(response => response.json())
-  .then(response => {
-    // console.log(response);
-    var series = JSON.parse(response);
-
-    var top10_team = series.slice(0, 10);
-
-    loadTable('data-table', ['field1', 'field2'], top10_team);
-
-    var onlyValues = series.map(function(obj){ return obj[1]; });
-    var minValue = Math.min.apply(null, onlyValues),
-        maxValue = Math.max.apply(null, onlyValues);
-
-    var paletteScale = d3.scale.linear()
-        .domain([minValue,maxValue])
-        .range(["#EFEFFF","#02386F"]); // blue color
-
-    // console.log(series)
-
-    var dataset = {};
-
-    series.forEach(function(item){
-        var iso = item[0],
-                value = item[1];
-        dataset[iso] = { numberOfThings: value, fillColor: paletteScale(value)  };
-    });
-
-  map.updateChoropleth(dataset, {reset: true});
-  window.addEventListener('resize', function(event) { map.resize(); });
-})}, 3000);
-
-</script> -->
-
-<!-- STATIC -->
-<!-- BLOCK D3 MODIFY D3 VERSION V3 MAP CHARTS -->
 <script>
 
 function loadTable(tableId, fields, data) {
@@ -370,10 +275,10 @@ function loadTable(tableId, fields, data) {
       var row = '<tr>';
       $.each(fields, function(index, field) {
         if(index == 0){
-          row += '<td>' + item[index] + '</td>';
+          row += '<td>' + item[index]  + '</td>';
         }else{
 
-          row += '<td class=\"text-right\">' + item[index] + '</td>';
+          row += '<td class=\"text-right\">' + item[index]+"%" + '</td>';
         }
       });
       rows += row + '<tr>';
@@ -382,14 +287,14 @@ function loadTable(tableId, fields, data) {
 }
 
   var series = [];
-
-  d3.csv("/static/worldcup/data/FRAITA_Nations.csv", function(data) {
+  var oppostion = "{{hashtag}}"
+  d3.csv("/static/worldcup/data/"+oppostion.slice(1,7)+"/"+oppostion.slice(1,7)+"_Nations.csv", function(data) {
     for(var i = 0;i<data.length;i++){
         series.push([data[i]['Nation'], data[i]['Count']]);
     }
 
 
-  var top10_team = series.slice(0, 10);
+  var top10_team = series.slice(0, 7);
 
   loadTable('data-table', ['field1', 'field2'], top10_team);
 
@@ -435,43 +340,15 @@ function loadTable(tableId, fields, data) {
   });
   window.addEventListener('resize', function(event) { map.resize(); });
 });
-
 </script>
-
-<!-- <script>
-
-fetch("http://localhost:8000/dataplayers", {
-  method: 'get',
-  dataType: 'json',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  }
-})
-.then(response => response.json())
-.then(response => {
-  // console.log(response);
-  var top10_players = JSON.parse(response);//.slice(0,10);
-
-  loadTable('players-table', ['field1', 'field2'], top10_players);
+<script type="text/javascript">
+    
+  
+  d3v4.json("/static/worldcup/data/"+matchname.slice(1,7)+"/"+matchname.slice(1,7)+"_TopPlayers.json", function(error, myData) {
+    // console.log(myData);
+    var top10_players = myData.slice(0,5);
+    loadTable('players-table', ['field1', 'field2'], top10_players);
   });
 
-
-setInterval(function(){
-  var series;
-  fetch("http://localhost:8000/dataplayers", {
-    method: 'get',
-    dataType: 'json',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(response => response.json())
-  .then(response => {
-    var top10_players = JSON.parse(response);//.slice(0,10);
-    loadTable('players-table', ['field1', 'field2'], top10_players);
-  })}, 3000);
-
-</script>-->
+</script>
 {% endblock d3 %}

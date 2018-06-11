@@ -149,11 +149,3 @@ def getTables():
 	matchs = getMatchs()
 	groups = ["Groupe A","Groupe B","Groupe C","Groupe D","Groupe E","Groupe F","Groupe G","Groupe H"]
 	return zip(teams,groups,matchs,[i for i in range(0,8)])
-
-def getMatchData(hashtag_name):
-    path_match = str(path_data) + str(hashtag_name[1:]) + "/"
-    path_top11 = path_match + str(hashtag_name[1:]) + "_Players_Top11Players.csv"
-    #print(path_top11)
-    df_top11 = pd.read_csv(path_top11)
-    df_top11["Pays"] = df_top11["Pays"].apply(lambda x: str(INV_PAYS[x]).lower())
-    return df_top11

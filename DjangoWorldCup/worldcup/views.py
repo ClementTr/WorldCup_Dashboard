@@ -4,8 +4,8 @@ from django.http import JsonResponse
 import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
-from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, getMatchData
-MATCH_HASHTAG = '#FRAUSA'
+from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity
+MATCH_HASHTAG = '#BELCRI'
 
 def home(request):
     if (request.method == "POST"):
@@ -203,6 +203,12 @@ def positive_negative(request):
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
 #     return render(request, 'worldcup/porspa.html', context)
 #
+def belcri(request):
+    hashtag = "#BELCRI"
+    country_1, country_2 = getPays(hashtag)
+    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
+    return render(request, 'worldcup/belcri.html', context)
+
 def rusara(request):
     hashtag = "#RUSARA"
     country_1, country_2 = getPays(hashtag)
@@ -218,16 +224,16 @@ def frausa(request):
 def poralg(request):
     hashtag = "#PORALG"
     country_1, country_2 = getPays(hashtag)
-    df_matchs = getMatchData(hashtag)
-    keeper_name = df_matchs[df_matchs['Position'] == "Gardien"]["Nom"].tolist()[0]
-    defenders_name = df_matchs[df_matchs['Position'] == "Défenseur"]["Nom"].tolist()
-    midfielders_name = df_matchs[df_matchs['Position'] == "Milieu"]["Nom"].tolist()
-    attackers_name = df_matchs[df_matchs['Position'] == "Attaquant"]["Nom"].tolist()
-    keeper_country = df_matchs[df_matchs['Position'] == "Gardien"]["Pays"].tolist()[0]
-    defenders_country = df_matchs[df_matchs['Position'] == "Défenseur"]["Pays"].tolist()
-    midfielders_country = df_matchs[df_matchs['Position'] == "Milieu"]["Pays"].tolist()
-    attackers_country = df_matchs[df_matchs['Position'] == "Attaquant"]["Pays"].tolist()
-    json_eleven = {"Name": {"Keeper": [keeper_name], "Defenders": defenders_name, "Midfielders": midfielders_name, "Attackers": attackers_name},
-                    "Country": {"Keeper": [keeper_country], "Defenders": defenders_country, "Midfielders": midfielders_country, "Attackers": attackers_country}}
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2, "json_eleven": json_eleven}
+    # df_matchs = getMatchData(hashtag)
+    # keeper_name = df_matchs[df_matchs['Position'] == "Gardien"]["Nom"].tolist()[0]
+    # defenders_name = df_matchs[df_matchs['Position'] == "Défenseur"]["Nom"].tolist()
+    # midfielders_name = df_matchs[df_matchs['Position'] == "Milieu"]["Nom"].tolist()
+    # attackers_name = df_matchs[df_matchs['Position'] == "Attaquant"]["Nom"].tolist()
+    # keeper_country = df_matchs[df_matchs['Position'] == "Gardien"]["Pays"].tolist()[0]
+    # defenders_country = df_matchs[df_matchs['Position'] == "Défenseur"]["Pays"].tolist()
+    # midfielders_country = df_matchs[df_matchs['Position'] == "Milieu"]["Pays"].tolist()
+    # attackers_country = df_matchs[df_matchs['Position'] == "Attaquant"]["Pays"].tolist()
+    # json_eleven = {"Name": {"Keeper": [keeper_name], "Defenders": defenders_name, "Midfielders": midfielders_name, "Attackers": attackers_name},
+    #                 "Country": {"Keeper": [keeper_country], "Defenders": defenders_country, "Midfielders": midfielders_country, "Attackers": attackers_country}}
+    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
     return render(request, 'worldcup/poralg.html', context)

@@ -228,18 +228,24 @@
     h_pitch = w_pitch/1.6;
   }
 
-  var myDjangoList = (("{{json_eleven |safe}}").replace(/&(l|g|quo)t;/g, function(a,b){
-            return {
-                l   : '<',
-                g   : '>',
-                quo : '"'
-            }[b];
-        }));
+  // var myDjangoList = (("{{json_eleven |safe}}").replace(/&(l|g|quo)t;/g, function(a,b){
+  //           return {
+  //               l   : '<',
+  //               g   : '>',
+  //               quo : '"'
+  //           }[b];
+  //       }));
 
-  myDjangoList = myDjangoList.replace(/u'/g, '\'')
-  myDjangoList = myDjangoList.replace(/'/g, '\"')
-  myData = JSON.parse( myDjangoList );
-  console.log(myData)
+  // myDjangoList = myDjangoList.replace(/u'/g, '\'')
+  // myDjangoList = myDjangoList.replace(/'/g, '\"')
+  // myData = JSON.parse( myDjangoList );
+  // console.log(myData)
+
+  let matchname = "{{hashtag}}"
+  
+  d3v4.json("/static/worldcup/data/"+matchname.substr(1)+"/"+matchname.substr(1)+"_Top11Players.json", function(error, data) {
+    console.log()
+  }
 
   keeper_name = myData["Name"]["Keeper"][0]
   keeper_country = myData["Country"]["Keeper"][0]

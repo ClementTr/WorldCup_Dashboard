@@ -2,6 +2,7 @@ from pymongo import MongoClient
 import pymongo
 import pandas as pd
 import numpy as np
+import json
 
 PAYS = {'Russie':'RUS','Arabie':'ARA', 'Portugal':'POR', 'Espagne':'SPA', 'France':'FRA', 'Australie':'AUS',
    'Bresil':'BRA', 'Suisse':'SUI', 'Tunisie':'TUN', 'Angleterre':'ENG', 'Egypte':'EGY', 'Iran':'IRN',
@@ -28,7 +29,7 @@ def saveCountriesData(matchname):
 	collection = db[matchname+"_Nations"]
 	data = pd.DataFrame(list(collection.find()))
 	data.sort_values(by="Count", ascending=False, inplace=True)
-	data[['Count','Nation']].to_csv(matchname+".csv",index=False)
+	data[['Count','Nation']].to_csv(matchname+"_Nations.csv",index=False)
 
 def transformHashtags(dic):
     tmp = []
@@ -66,7 +67,7 @@ def saveTopPlayers(matchname):
 	# print(data)
 	data.sort_values(by="Count", ascending=False, inplace=True)
 	data = data.iloc[:10,:]
-	data.to_csv(matchname+"_TopPlayers.csv",index=False)
+	data[['Nom','Count']].to_json(matchname+"_TopPlayers.json",orient='values')#.to_csv(matchname+"_TopPlayers.csv",index=False)
 
 def newPost(post):
 	if 'Gardien' in post:
@@ -107,9 +108,8 @@ def save11Players(matchname):
 	    if poste == 'Attaquant':
 	        attackers_name = data[data['Position'] == poste]["Nom"].values.tolist()[:3]
 	        attackers_country = [INV_PAYS[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
-
-	file = open(matchname+"_Top11Players"+".json","w")
-	file.write(str({
+	with open(matchname+"_Top11Players.json", 'w') as outfile:
+	    json.dump({
 	  "Name": {
 	    "Keeper": [keeper_name],
 	    "Defenders": defenders_name,
@@ -122,9 +122,7 @@ def save11Players(matchname):
 	    "Midfielders": midfielders_country,
 	    "Attackers": attackers_country
 	  }
-	}))
-	file.close()
-	# top11.to_csv(matchname+"_Top11Players.json",index=False)
+	},outfile)
 
 def savePositivity(matchname):
 	'''Save Positivity of Tweets in JSON format'''
@@ -134,9 +132,8 @@ def savePositivity(matchname):
 	pays2 = matchname[3:]
 	pourc_1 = np.round(((data[(data['Nation']==pays1) & (data['Sentiments']=='1')]['Count']/ data[(data['Nation']==pays1)]['Count'].sum()).values[0])*100)
 	pourc_2 = np.round(((data[(data['Nation']==pays2) & (data['Sentiments']=='1')]['Count']/ data[(data['Nation']==pays2)]['Count'].sum()).values[0])*100)
-	file = open(matchname+".json","w")
-	file.write(str([{"key": pays1, "value": pourc_1, "color": "blue"},{"key": pays2, "value": pourc_2, "color": "red"}]))
-	file.close()
+	with open(matchname+"_Sentiments.json", 'w') as outfile:
+	    json.dump([{"key": pays1, "value": pourc_1, "color": "blue"},{"key": pays2, "value": pourc_2, "color": "red"}], outfile)
 
 
 def saveTimeSeries(matchname):
@@ -163,8 +160,8 @@ hashtag = "#FRAUSA"
 matchname = str(hashtag[1:])
 # saveCountriesData(matchname)
 # saveTweets(matchname)
-# savePositivity(matchname)
+#savePositivity(matchname)
 # saveTimeSeries(matchname)
-# saveTopPlayers(matchname)
-save11Players(matchname)
+saveTopPlayers(matchname)
+#save11Players(matchname)
 #removeMongoCollections(matchname)
