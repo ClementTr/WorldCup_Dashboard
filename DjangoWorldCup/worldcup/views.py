@@ -45,8 +45,7 @@ def data_playersPosition(request):
 
 
 def main(request):
-    hashtag = MATCH_HASHTAG
-    country_1, country_2 = getPays(hashtag)
+    country_1, country_2 = getPays(MATCH_HASHTAG)
     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
     return render(request, 'worldcup/main.html', context)
 
