@@ -25,7 +25,7 @@ SECRET_KEY = 'nb7d2=^^3yr*_q$e5e-4+&8s(a$2=$m%ojjaiyo*r)g%otvm^%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["worldcup.datadeer.fr"]
 
 
 # Application definition
@@ -119,3 +119,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
