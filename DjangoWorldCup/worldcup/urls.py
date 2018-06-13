@@ -36,9 +36,6 @@ urlpatterns = [
     # path('brasui/', views.brasui, name='brasui'),
     # path('fraaus/', views.fraaus, name='fraaus'),
     # path('porspa/', views.porspa, name='porspa'),
-    path('belcri/', views.belcri, name='belcri'),
     path('rusara/', views.rusara, name='rusara'),
-    path('frausa/', views.frausa, name='frausa'),
-    path('poralg/', views.poralg, name='poralg')
-
+    path('frausa/', views.frausa, name='frausa')
 ]

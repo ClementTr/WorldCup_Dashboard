@@ -24,7 +24,7 @@
               <div class="col-lg-6">
                   <div class="au-card m-b-30">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Positivity Prediction</h3>
+                          <h3 class="title-2 m-b-40">Number of positives tweets by team</h3>
                           <div class="chart-wrapper" id="bar_plot"></div>
                       </div>
                   </div>
@@ -33,7 +33,7 @@
               <div class="col-lg-6">
                   <div class="au-card m-b-30" style="padding-left: 20px;">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Nombre de Tweets/Retwets</h3>
+                          <h3 class="title-2 m-b-40">Number of positives/negatives tweets during the match</h3>
                           <!-- <canvas id="sales-chart"></canvas> -->
                           <div class="chart-wrapper" id="simple_plot"></div>
                       </div>
@@ -43,7 +43,7 @@
               <div class="col-lg-9">
                   <div class="au-card m-b-30">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Map this match</h3>
+                          <h3 class="title-2 m-b-40">Number of tweets by country</h3>
                           <div class="card-body" id="container1"></div>
                       </div>
                   </div>
@@ -52,7 +52,7 @@
               <div class="col-lg-3">
                     <div class="au-card au-card--bg-blue au-card-top-countries m-b-30">
                         <div class="au-card-inner">
-                          <h3 class="title-3 m-b-30 text-white">top countries</h3>
+                          <h3 class="title-3 m-b-30 text-white">Top Countries Tweets</h3>
                             <div class="table-responsive">
                                 <table class="table table-top-countries text-white" id="data-table">
                                     <tbody>
@@ -91,20 +91,17 @@
               <div class="col-lg-6">
                   <div class="au-card m-b-30">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Deertweet about a team</h3>
-                          <blockquote class="twitter-tweet" data-lang="fr"><p lang="fr" dir="ltr">🔴🔵🇵🇹 Golooooo Gonçaaaaaaaloooooo Guedes ! <a href="https://twitter.com/hashtag/PortugalAlgeria?src=hash&amp;ref_src=twsrc%5Etfw">#PortugalAlgeria</a> <a href="https://twitter.com/hashtag/PORALG?src=hash&amp;ref_src=twsrc%5Etfw">#PORALG</a><a href="https://twitter.com/PSG_inside?ref_src=twsrc%5Etfw">@PSG_inside</a> ne le vend stp 🙏🙏 <a href="https://t.co/6tjqQyr9kR">pic.twitter.com/6tjqQyr9kR</a></p>&mdash; PARIScompsHD (@PARIScompsHD) <a href="https://twitter.com/PARIScompsHD/status/1004811505680953344?ref_src=twsrc%5Etfw">7 juin 2018</a></blockquote>
-                          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-                      </div>
+                          <h3 class="title-2 m-b-40">Our favorite tweet</h3>
+                          <blockquote class="twitter-tweet" data-lang="fr"><p lang="fr" dir="ltr">Alors ce dernier match avant la Russie ? <a href="https://twitter.com/hashtag/FRAUSA?src=hash&amp;ref_src=twsrc%5Etfw">#FRAUSA</a> <a href="https://t.co/Dz6hB4Qb0I">pic.twitter.com/Dz6hB4Qb0I</a></p>&mdash; CLZZ (@clooz2012) <a href="https://twitter.com/clooz2012/status/1005547103802798080?ref_src=twsrc%5Etfw">9 juin 2018</a></blockquote>
+                        </div>
                   </div>
               </div>
 
               <div class="col-lg-6">
                   <div class="au-card m-b-30">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Deertweet about a player</h3>
-                          <blockquote class="twitter-tweet" data-lang="fr"><p lang="fr" dir="ltr">Les notes de <a href="https://twitter.com/hashtag/PORALG?src=hash&amp;ref_src=twsrc%5Etfw">#PORALG</a> selon <a href="https://twitter.com/_Goalpoint?ref_src=twsrc%5Etfw">@_Goalpoint</a> <a href="https://t.co/OldD0D6fi8">pic.twitter.com/OldD0D6fi8</a></p>&mdash; DZfoot (@DZfoot) <a href="https://twitter.com/DZfoot/status/1005023955239960578?ref_src=twsrc%5Etfw">8 juin 2018</a></blockquote>
-                          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                          <h3 class="title-2 m-b-40">Deertweet tweets by itself</h3>
+
                       </div>
                   </div>
               </div>
@@ -195,7 +192,7 @@
   let dataset_barplot;
 
   d3v4.json("/static/worldcup/data/"+matchname2.slice(1,7)+"/"+matchname2.slice(1,7)+"_Sentiments.json", function(error, myData) {
-    
+
     dataset_barplot = myData;
 
     // console.log(dataset_barplot);
@@ -206,7 +203,7 @@
     redraw_barplot()
 
   });
-   
+
 </script>
 
 <!-- PITCH PLOT -->
@@ -241,7 +238,7 @@
   }
 
   let matchname = "{{hashtag}}"
-  
+
   d3v4.json("/static/worldcup/data/"+matchname.slice(1,7)+"/"+matchname.slice(1,7)+"_Top11Players.json", function(error, myData) {
     // console.log(myData);
     keeper_name = myData["Name"]["Keeper"][0]
@@ -342,8 +339,8 @@ function loadTable(tableId, fields, data) {
 });
 </script>
 <script type="text/javascript">
-    
-  
+
+
   d3v4.json("/static/worldcup/data/"+matchname.slice(1,7)+"/"+matchname.slice(1,7)+"_TopPlayers.json", function(error, myData) {
     // console.log(myData);
     var top10_players = myData.slice(0,5);

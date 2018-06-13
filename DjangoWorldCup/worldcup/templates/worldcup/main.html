@@ -27,7 +27,7 @@
               <div class="col-lg-6">
                   <div class="au-card m-b-30">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Positivity Prediction</h3>
+                          <h3 class="title-2 m-b-40">Number of positives tweets by team</h3>
                           <div class="chart-wrapper" id="bar_plot"></div>
                       </div>
                   </div>
@@ -36,7 +36,7 @@
               <div class="col-lg-6">
                   <div class="au-card m-b-30" style="padding-left: 20px;">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Positivity Evolution</h3>
+                          <h3 class="title-2 m-b-40">Number of positives/negatives tweets by team during the match</h3>
                           <!-- <canvas id="sales-chart"></canvas> -->
                           <div class="chart-wrapper" id="simple_plot"></div>
                       </div>
@@ -46,7 +46,7 @@
               <div class="col-lg-9">
                   <div class="au-card m-b-30">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Map this match</h3>
+                          <h3 class="title-2 m-b-40">Number of tweets by country</h3>
                           <div class="card-body" id="container1"></div>
                       </div>
                   </div>
@@ -55,7 +55,7 @@
               <div class="col-lg-3">
                     <div class="au-card au-card--bg-blue au-card-top-countries m-b-30">
                         <div class="au-card-inner">
-                          <h3 class="title-3 m-b-30 text-white">top countries</h3>
+                          <h4 class="title-3 m-b-30 text-white">Top Countries Tweets</h4>
                             <div class="table-responsive">
                                 <table class="table table-top-countries text-white" id="data-table">
                                     <tbody>
@@ -96,8 +96,8 @@
               <div class="col-lg-6">
                   <div class="au-card m-b-30">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Deertweet about a team</h3>
-                          <blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="fr" dir="ltr">Les Bleus accrochent le nul : <a href="https://t.co/heJfZRFrnw">https://t.co/heJfZRFrnw</a> <a href="https://t.co/MBQljEKRXg">pic.twitter.com/MBQljEKRXg</a></p>&mdash; L&#39;ÉQUIPE (@lequipe) <a href="https://twitter.com/lequipe/status/1005555336760188928?ref_src=twsrc%5Etfw">June 9, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+                          <h3 class="title-2 m-b-40">Our favorite tweet</h3>
+
                       </div>
                   </div>
               </div>
@@ -105,9 +105,8 @@
               <div class="col-lg-6">
                   <div class="au-card m-b-30" style="padding-bottom: 40px; border-bottom-width: 10px; margin-bottom: 150px;">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Deertweet about a player</h3>
-                          <blockquote class="twitter-tweet" data-lang="en"><p lang="fr" dir="ltr">Le 11 de départ de la France face aux États-Unis ⤵️<br><br>Lloris <br>Sidibé<br>Varane<br>Umtiti<br>Mendy <br>Pogba<br>Kanté<br>Matuidi<br>Griezmann<br>Giroud<br>Mbappé <a href="https://t.co/9iAtgiML6m">pic.twitter.com/9iAtgiML6m</a></p>&mdash; L&#39;ÉQUIPE (@lequipe) <a href="https://twitter.com/lequipe/status/1005510674888392705?ref_src=twsrc%5Etfw">June 9, 2018</a></blockquote> 
-                          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+                          <h3 class="title-2 m-b-40">Deertweet tweets by itself</h3>
+                          
                       </div>
                   </div>
               </div>
@@ -146,7 +145,7 @@
   let svg_plot;
   let bisect_date_plot;
 
-  
+
 
   fetch("http://localhost:8000/positive_negative", {
   method: 'get',
@@ -158,7 +157,7 @@
   })
   .then(response => response.json())
   .then(response => {
-    
+
     data = JSON.parse(response);
 
     data.forEach(function(item,index){
@@ -172,16 +171,16 @@
     bisect_date_plot = d3v4.bisector(function(d) { return d["Time"];}).left;
 
     x_plot = d3v4.scaleTime()
-                 .domain(d3v4.extent(dataset_plot,function(d) { 
+                 .domain(d3v4.extent(dataset_plot,function(d) {
                       return d["Time"];
                   }));
 
-    console.log(d3v4.extent(dataset_plot,function(d) { 
+    console.log(d3v4.extent(dataset_plot,function(d) {
                       return d["Time"];
                   }));
-  
+
     y_plot = d3v4.scaleLinear()
-            .domain([0, d3v4.max(dataset_plot,function(d) { 
+            .domain([0, d3v4.max(dataset_plot,function(d) {
                 return Math.max(d["Positive"], d["Negative"]);
                 }
               )]);
@@ -192,7 +191,7 @@
       console.log(x_plot(item["Time"]));
       console.log("---------------------");
     });
-    
+
     redraw();
 
   });
