@@ -24,22 +24,18 @@
                                 <thead>
                                     <tr>
                                         <th>Position</th>
-                                        <th>Equipe</th>
+                                        <th>Teams</th>
                                         <th>Points</th>
-                                        <th>Buts Pour</th>
-                                        <th>But Contre</th>
-                                        <th>Difference</th>
+                                        <th>Goals For</th>
+                                        <th>Goals Against</th>
+                                        <th>Goal Difference</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {% for team in teams %}
                                     <tr>
                                         <td>{{team.Position}}</td>
-                                        {% if team.Equipe == "Angleterre"%}
-                                            <td><img  src="{% static 'worldcup/img/england.png' %}" style="width: 15px"/>{{team.Equipe}}</td>
-                                        {% else %}
-                                        <td>{{team.Emoji}}{{team.Equipe}}</td>
-                                        {% endif %}
+                                        <td><img  src="/static/worldcup/img/emoji/{{team.Emoji}}.png" style="width: 15px"/>{{team.Equipe}}</td>
                                         <td>{{team.Points}}</td>
                                         <td>{{team.Buts_pour}}</td>
                                         <td>{{team.Buts_contre}}</td>
@@ -56,7 +52,7 @@
                                 <div class="card-header" id="headingOne">
                                     <h5 class="mb-0 text-center">
                                         <button class="btn btn-link text-center" data-toggle="collapse" data-target="#collapse{{index}}" aria-expanded="true" aria-controls="collapseOne">
-                                            Programme & Résultats
+                                            Program & Results
                                         </button>
                                     </h5>
                                 </div>
@@ -66,8 +62,8 @@
                                     <table class="table table-borderless table-striped table-earning text-center">
                                         <thead>
                                             <tr>
-                                                <th>Jour</th>
-                                                <th>Heure</th>
+                                                <th>Day</th>
+                                                <th>Hour</th>
                                                 <th></th>
                                                 <th>Match</th>
                                                 <th></th>
