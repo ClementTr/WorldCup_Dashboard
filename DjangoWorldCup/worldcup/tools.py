@@ -121,7 +121,7 @@ def getPays(hashtag_name):
     except KeyError:
         team2 = "not_available"
 
-    return team1, team2
+    return team1.lower(), team2.lower()
 
 def getClassement():
     data = pd.read_csv(path_groups)
