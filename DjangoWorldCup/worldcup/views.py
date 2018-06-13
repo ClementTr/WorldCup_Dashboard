@@ -4,7 +4,7 @@ from django.http import JsonResponse
 import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
-from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity
+from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, get_Emojis
 MATCH_HASHTAG = '#RUSARA'
 
 def home(request):
@@ -46,7 +46,8 @@ def data_playersPosition(request):
 
 def main(request):
     country_1, country_2 = getPays(MATCH_HASHTAG)
-    context = {'hashtag': MATCH_HASHTAG, 'country_1': country_1, "country_2": country_2}
+    emoji = get_Emojis(MATCH_HASHTAG)
+    context = {'hashtag': MATCH_HASHTAG, 'country_1': country_1, "country_2": country_2,"emoji":emoji}
     return render(request, 'worldcup/main.html', context)
 
 

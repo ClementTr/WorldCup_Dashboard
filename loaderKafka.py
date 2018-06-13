@@ -44,7 +44,8 @@ class StreamListener(tweepy.StreamListener):
         tweet = {'created_at':str(status.created_at),
                 'text':status.text,
                 'location':status.user.location,
-                'hashtags':[i['text'] for i in status.entities['hashtags']]}
+                'hashtags':[i['text'] for i in status.entities['hashtags']],
+                'lang':status.lang}
         self.producer.send("test", tweet)
         self.producer.flush()
 

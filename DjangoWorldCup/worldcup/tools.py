@@ -6,6 +6,7 @@ import pycountry
 import pandas as pd
 import numpy as np
 import os
+import json
 
 PAYS = {'Russie':'RUS','Arabie':'ARA', 'Portugal':'POR', 'Espagne':'SPA', 'France':'FRA', 'Australie':'AUS',
    'Bresil':'BRA', 'Suisse':'SUI', 'Tunisie':'TUN', 'Angleterre':'ENG', 'Egypte':'EGY', 'Iran':'IRN',
@@ -21,6 +22,7 @@ def getDataFromMongo(collection_name):
     db = client['WorldCup']
     collection = db[collection_name]
     data = pd.DataFrame(list(collection.find()))
+    client.close()
     data.sort_values(by="Count", ascending=False, inplace=True)
     return data
 
@@ -44,6 +46,7 @@ def getDataSentiment(hashtag_name):
     collection_name = hashtag_name+'_Sentiments'
     collection = db[collection_name]
     data = pd.DataFrame(list(collection.find()))
+    client.close()
     pays1 = hashtag_name[:3]
     pays2 = hashtag_name[3:]
     pourc_1 = np.round(((data[(data['Nation']==pays1) & (data['Sentiments']=='1')]['Count']/ data[(data['Nation']==pays1)]['Count'].sum()).values[0])*100)
@@ -58,19 +61,25 @@ def barplot_positivity(hashtag_name):
 
 def positivity_negativity(hashtag_name):
     client = MongoClient('localhost', 27017)
-    db = client['WorldCup'] #On changera
+    db = client['WorldCup']
     collection_name = str(hashtag_name[1:])+'_Sentiments_Agg'
-    #collection_name = "PORALG"+'_Sentiments_Agg'
     collection = db[collection_name]
     data = pd.DataFrame(list(collection.find()))
+    client.close()
     data = data.reset_index()
     data = data.drop(['_id','index'], axis=1)
     data['Time'] = pd.to_datetime(data['Time'], infer_datetime_format=True)
-    #print(data)
-    #data.set_index('Time', inplace=True)
     return data.drop_duplicates('Time').to_json(orient="records")
 
-
+def get_Emojis(hashtag_name):
+    collection_name = str(hashtag_name[1:]) + "_Emojis"
+    try :
+        data = getDataFromMongo(collection_name)
+        data = data[["Emoji", "Count"]].iloc[:10,:]
+        return json.loads(data[["Emoji", "Count"]].to_json(orient="records"))
+    except:
+        return [{}]
+    
 
 
 def players_postCalculations(hashtag_name):
@@ -94,20 +103,6 @@ def players_postCalculations(hashtag_name):
             attackers_name = data[data['Position'] == poste]["Nom"].values.tolist()[:3]
             attackers_country = [INV_PAYS[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
     return keeper_name, keeper_country, defenders_name, defenders_country, midfielders_name, midfielders_country, attackers_name, attackers_country
-    # for poste in data['Post_Simple'].unique():
-    #     if poste == 'Gardien':
-    #         keeper_name = data[data['Post_Simple'] == poste]["Nom"].values[0]
-    #         keeper_country = data[data['Post_Simple'] == poste]["Pays"].values[0]
-    #     if poste == 'Défenseur':
-    #         defenders_name = data[data['Post_Simple'] == poste]["Nom"].values[:4]
-    #         defenders_country = data[data['Post_Simple'] == poste]["Pays"].values[:4]
-    #     if poste == 'Milieu':
-    #         midfielders_name = data[data['Post_Simple'] == poste]["Nom"].values[:3]
-    #         midfielders_country = data[data['Post_Simple'] == poste]["Pays"].values[:3]
-    #     if poste == 'Attaquant':
-    #         attackers_name = data[data['Post_Simple'] == poste]["Nom"].values[:3]
-    #         attackers_country = data[data['Post_Simple'] == poste]["Pays"].values[:3]
-    # return keeper_name, keeper_country, defenders_name, defenders_country, midfielders_name, midfielders_country, attackers_name, attackers_country
 
 
 def getPays(hashtag_name):

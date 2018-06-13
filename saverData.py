@@ -10,11 +10,11 @@ PAYS = {'Russie':'RUS','Arabie':'ARA', 'Portugal':'POR', 'Espagne':'SPA', 'Franc
    'Maroc':'MAR', 'Danemark':'DEN', 'Serbie':'SER', 'Belgique':'BEL', 'Etats-Unis': 'USA', 'Algerie': 'ALG'}
 INV_PAYS = {v: k for k, v in PAYS.items()}
 
-global db
+global db,client
 
 def initMongo():
 	''' Init connexion to WorldCup Mongo Database'''
-	global db
+	global db,client
 	client = MongoClient('localhost', 27017)
 	db = client['WorldCup']
 
@@ -151,6 +151,12 @@ def saveTimeSeries(matchname):
 	data["Neutral"] = np.ceil((data["Neutral"]*100)/data["Neutral"].sum())
 	data[["Time","Positive","Negative","Neutral"]].to_csv(matchname+"_Sentiments_Agg.csv",index=False)
 
+def saveEmojis(matchname):
+	collection = db[matchname+"_Emojis"]
+    data = getDataFromMongo(collection)
+    data = data[["Emoji", "Count"]].iloc[:10,:]
+    data[["Emoji", "Count"]].to_json(matchname+"_Emojis",orient="records")
+
 def removeMongoCollections(hashtag):
 	'''Remove Nations, Tweets & Joueurs collections '''
 	for collect in [hashtag+"_Nations",hashtag+"_Tweets",hashtag+"_Players"]:
@@ -160,10 +166,12 @@ def removeMongoCollections(hashtag):
 initMongo()
 hashtag = "#FRAUSA"
 matchname = str(hashtag[1:])
-# saveCountriesData(matchname)
-# saveTweets(matchname)
-#savePositivity(matchname)
-# saveTimeSeries(matchname)
-#saveTopPlayers(matchname)
-#save11Players(matchname)
+saveCountriesData(matchname)
+saveTweets(matchname)
+savePositivity(matchname)
+saveTimeSeries(matchname)
+saveTopPlayers(matchname)
+save11Players(matchname)
+saveEmojis(matchname)
 #removeMongoCollections(matchname)
+client.close()
