@@ -1,4 +1,4 @@
-Age,Country,Description,Link,Name,Post,Firstname,Lastname,Code
+Age,Country,Description,Link,Name,Position,Firstname,Lastname,Trigramme
 32,Australia,"Solidly built and a born competitor, Nahuel Guzman is an unorthodox keeper with excellent positional sense and good ball skills.",https://api.fifa.com/api/v1/picture/players/2018fwc/200999_sq-300_jpg?allowDefaultPicture=true,NAHUEL GUZMAN,Goalkeeper,Nahuel,Guzman,AUS
 31,Australia,"Franco Armani owes his place at Russia 2018 to more than just the superb first four months he has enjoyed at River Plate. Though imposingly built, Armani has fine reflexes and is rarely caught out in the air, qualities that he combines with a gift for leadership.",https://api.fifa.com/api/v1/picture/players/2018fwc/398422_sq-300_jpg?allowDefaultPicture=true,FRANCO ARMANI,Goalkeeper,Franco,Armani,AUS
 36,Australia,"Willy Caballero is an experienced, unfussy goalkeeper with excellent reflexes, fine ball skills and a commanding voice.",https://api.fifa.com/api/v1/picture/players/2018fwc/181440_sq-300_jpg?allowDefaultPicture=true,WILFREDO CABALLERO,Goalkeeper,Wilfredo,Caballero,AUS
