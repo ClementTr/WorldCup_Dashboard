@@ -42,8 +42,10 @@ function draw_barplot(){
 
    svg_barplot.selectAll(".bar")
               .data(dataset_barplot)
-              .on("mouseover", function(d) { console.log(d.key) })
-              .on("mouseout", function(d) {console.log("out")});
+              //.on("mouseover", function(d) {return mouseover_bar(d.key, d3v4.event.pageX, d3v4.event.pageY) })
+              //.on("mouseover", function(d) { console.log(d.key) })
+              .on("mouseout", function() {return mouseout_bar()})
+              .on("mousemove", function(d) {return mousemove_bar(d.key, d3v4.event.pageX, d3v4.event.pageY) });
 
 
     let text_country = svg_barplot.append("g")
@@ -68,9 +70,25 @@ function draw_barplot(){
                     .delay(1500)
                     .text(function(d) { return d.value });
 
+    let div_popup_bar = d3v4.select("body")
+                            .append("div")
+                            .attr("id", "popup")
+                            .attr("class", "tooltip")
+                            .style("opacity", 0);
 
-    function mouseover(){
-      console.log("over")
-      console.log()
+
+    function mousemove_bar(country, x, y){
+      div_popup_bar.transition()
+                   .duration(200)
+                   .style("opacity", .9);
+      div_popup_bar.html("<img src='/static/worldcup/img/flags/" + country + ".png' style='height:15px'/><br>" + country.charAt(0).toUpperCase() + country.slice(1))
+                   .style("left", x + "px")
+                   .style("top", y + "px");
+    }
+
+    function mouseout_bar(){
+      div_popup_bar.transition()
+               .duration(500)
+               .style("opacity", 0);
     }
 }

@@ -96,7 +96,8 @@ function draw(data, innerW, innerH) {
 
       /* Initialisation de focus */
       let focus_sales = svg_plot.append("g")
-                                .attr("class", "focus_sales")
+                                //.attr("class", "focus_sales")
+                                .style("stroke", "blue")
                                 .style("display", "none");
 
       /* Dessin de la variable focus comme étant un cercle de rayon 4.5 px */
@@ -110,7 +111,8 @@ function draw(data, innerW, innerH) {
 
       /* Initialisation de focus */
       let focus_deliveries = svg_plot.append("g")
-                                     .attr("class", "focus_deliveries")
+                                     //.attr("class", "focus_deliveries")
+                                     .style("stroke", "red")
                                      .style("display", "none");
 
       /* Dessin de la variable focus comme étant un cercle de rayon 4.5 px */
@@ -123,16 +125,26 @@ function draw(data, innerW, innerH) {
                       .attr("dy", ".35em");
 
 
-
-      focus_deliveries.append("line")
-                      .attr("class", "x-hover-line hover-line")
-                      .attr("y1", 0)
-                      .attr("y2", innerH);
-
-      focus_deliveries.append("line")
-                      .attr("class", "y-hover-line hover-line")
-                      .attr("x1", innerW)
-                      .attr("x2", innerW);
+      /*vertical line*/
+      // focus_sales.append("line")
+      //                 .attr("class", "x-hover-line hover-line")
+      //                 .attr("y1", 0)
+      //                 .attr("y2", innerH);
+      //
+      // focus_sales.append("line")
+      //                 .attr("class", "y-hover-line hover-line")
+      //                 .attr("x1", innerW)
+      //                 .attr("x2", innerW);
+      //
+      // focus_deliveries.append("line")
+      //                 .attr("class", "x-hover-line hover-line")
+      //                 .attr("y1", 0)
+      //                 .attr("y2", innerH);
+      //
+      // focus_deliveries.append("line")
+      //                 .attr("class", "y-hover-line hover-line")
+      //                 .attr("x1", innerW)
+      //                 .attr("x2", innerW);
 
       /* La fonction mousemove */
       function mousemove() {
@@ -143,7 +155,18 @@ function draw(data, innerW, innerH) {
               d = x0 - d0.Time > d1.Time - x0 ? d1 : d0; // sorte de if pour trouver le point le plus proche
           focus_sales.attr("transform", "translate(" + x_plot(d.Time) + "," + y_plot(d.Negative) + ")");
           focus_sales.select("text").text(d.Negative);
-          focus_deliveries.select(".x-hover-line").attr("y2", innerH - y_plot(d.Positive));
+
+          // if (Math.max(d.Positive, d.Negative) == d.Positive) {
+          //   focus_deliveries.select(".x-hover-line").attr("y2", innerH - y_plot(d.Positive));
+          //   console.log("Positif")
+          // }
+          // else{
+          //   focus_sales.select(".x-hover-line").attr("y2", innerH - y_plot(d.Negative));
+          //   console.log("Negatif")
+          // }
+
+
+
           focus_deliveries.attr("transform", "translate(" + x_plot(d.Time) + "," + y_plot(d.Positive) + ")");
           focus_deliveries.select("text").text(d.Positive);
       }

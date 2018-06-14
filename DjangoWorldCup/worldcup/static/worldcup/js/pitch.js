@@ -77,7 +77,7 @@ function draw_pitch(){
             .attr("width", footballer_img_size)
             .attr("xlink:href", "/static/worldcup/img/players/" + keeper_country + "/" + keeper_name + ".jpg")
             .attr("clip-path", "url(#clip-circle_keeper)")
-            .on("mouseover",  function() {return mouseover_pitch(keeper_country, keeper_name, d3v4.event.pageX, d3v4.event.pageY)})
+            .on("mousemove",  function() {return mousemove_pitch(keeper_country, keeper_name, d3v4.event.pageX, d3v4.event.pageY)})
             .on("mouseout", function() {return mouseout_pitch()} );
 
 
@@ -107,7 +107,7 @@ function draw_pitch(){
             .attr("width", footballer_img_size)
             .attr("xlink:href", "/static/worldcup/img/players/" + defenders_country[0] + "/" + defenders_name[0] + ".jpg")
             .attr("clip-path", "url(#clip-circle_cb1)")
-            .on("mouseover",  function() {return mouseover_pitch(defenders_country[0], defenders_name[0], d3v4.event.pageX, d3v4.event.pageY)})
+            .on("mousemove",  function() {return mousemove_pitch(defenders_country[0], defenders_name[0], d3v4.event.pageX, d3v4.event.pageY)})
             .on("mouseout", function() {return mouseout_pitch()} );
 
 
@@ -136,7 +136,7 @@ function draw_pitch(){
               .attr("width", footballer_img_size)
               .attr("xlink:href", "/static/worldcup/img/players/" + defenders_country[1] + "/" + defenders_name[1] + ".jpg")
               .attr("clip-path", "url(#clip-circle_cb2)")
-              .on("mouseover",  function() {return mouseover_pitch(defenders_country[1], defenders_name[1], d3v4.event.pageX, d3v4.event.pageY)})
+              .on("mousemove",  function() {return mousemove_pitch(defenders_country[1], defenders_name[1], d3v4.event.pageX, d3v4.event.pageY)})
               .on("mouseout", function() {return mouseout_pitch()} );
 
 
@@ -164,7 +164,7 @@ function draw_pitch(){
               .attr("width", footballer_img_size)
               .attr("xlink:href", "/static/worldcup/img/players/" + defenders_country[2] + "/" + defenders_name[2] + ".jpg")
               .attr("clip-path", "url(#clip-circle_rb)")
-              .on("mouseover",  function() {return mouseover_pitch(defenders_country[2], defenders_name[2], d3v4.event.pageX, d3v4.event.pageY)})
+              .on("mousemove",  function() {return mousemove_pitch(defenders_country[2], defenders_name[2], d3v4.event.pageX, d3v4.event.pageY)})
               .on("mouseout", function() {return mouseout_pitch()} );
 
 
@@ -192,7 +192,7 @@ function draw_pitch(){
                .attr("width", footballer_img_size)
                .attr("xlink:href", "/static/worldcup/img/players/" + defenders_country[3] + "/" + defenders_name[3] + ".jpg")
                .attr("clip-path", "url(#clip-circle_lb)")
-               .on("mouseover",  function() {return mouseover_pitch(defenders_country[3], defenders_name[3], d3v4.event.pageX, d3v4.event.pageY)})
+               .on("mousemove",  function() {return mousemove_pitch(defenders_country[3], defenders_name[3], d3v4.event.pageX, d3v4.event.pageY)})
                .on("mouseout", function() {return mouseout_pitch()} );
 
 
@@ -220,7 +220,7 @@ function draw_pitch(){
               .attr("width", footballer_img_size)
               .attr("xlink:href", "/static/worldcup/img/players/" + midfielders_country[0] + "/" + midfielders_name[0] + ".jpg")
               .attr("clip-path", "url(#clip-circle_cm)")
-              .on("mouseover",  function() {return mouseover_pitch(midfielders_country[0], midfielders_name[0], d3v4.event.pageX, d3v4.event.pageY)})
+              .on("mousemove",  function() {return mousemove_pitch(midfielders_country[0], midfielders_name[0], d3v4.event.pageX, d3v4.event.pageY)})
               .on("mouseout", function() {return mouseout_pitch()} );
 
 
@@ -248,7 +248,7 @@ function draw_pitch(){
                .attr("width", footballer_img_size)
                .attr("xlink:href", "/static/worldcup/img/players/" + midfielders_country[1] + "/" + midfielders_name[1] + ".jpg")
                .attr("clip-path", "url(#clip-circle_rm)")
-               .on("mouseover",  function() {return mouseover_pitch(midfielders_country[1], midfielders_name[1], d3v4.event.pageX, d3v4.event.pageY)})
+               .on("mousemove",  function() {return mousemove_pitch(midfielders_country[1], midfielders_name[1], d3v4.event.pageX, d3v4.event.pageY)})
                .on("mouseout", function() {return mouseout_pitch()} );
 
 
@@ -276,7 +276,7 @@ function draw_pitch(){
               .attr("width", footballer_img_size)
               .attr("xlink:href", "/static/worldcup/img/players/" + midfielders_country[2] + "/" + midfielders_name[2] + ".jpg")
               .attr("clip-path", "url(#clip-circle_lm)")
-              .on("mouseover",  function() {return mouseover_pitch(midfielders_country[2], midfielders_name[2], d3v4.event.pageX, d3v4.event.pageY)})
+              .on("mousemove",  function() {return mousemove_pitch(midfielders_country[2], midfielders_name[2], d3v4.event.pageX, d3v4.event.pageY)})
               .on("mouseout", function() {return mouseout_pitch()} );
 
 
@@ -304,7 +304,7 @@ function draw_pitch(){
                .attr("width", footballer_img_size)
                .attr("xlink:href", "/static/worldcup/img/players/" + attackers_country[0] + "/" + attackers_name[0] + ".jpg")
                .attr("clip-path", "url(#clip-circle_rw)")
-               .on("mouseover",  function() {return mouseover_pitch(attackers_country[0], attackers_name[0], d3v4.event.pageX, d3v4.event.pageY)})
+               .on("mousemove",  function() {return mousemove_pitch(attackers_country[0], attackers_name[0], d3v4.event.pageX, d3v4.event.pageY)})
                .on("mouseout", function() {return mouseout_pitch()} );
 
 
@@ -332,7 +332,7 @@ function draw_pitch(){
               .attr("width", footballer_img_size)
               .attr("xlink:href", "/static/worldcup/img/players/" + attackers_country[1] + "/" + attackers_name[1] + ".jpg")
               .attr("clip-path", "url(#clip-circle_lw)")
-              .on("mouseover",  function() {return mouseover_pitch(attackers_country[1], attackers_name[1], d3v4.event.pageX, d3v4.event.pageY)})
+              .on("mousemove",  function() {return mousemove_pitch(attackers_country[1], attackers_name[1], d3v4.event.pageX, d3v4.event.pageY)})
               .on("mouseout", function() {return mouseout_pitch()} );
 
 
@@ -360,12 +360,12 @@ function draw_pitch(){
                .attr("width", footballer_img_size)
                .attr("xlink:href", "/static/worldcup/img/players/" + attackers_country[2] + "/" + attackers_name[2] + ".jpg")
                .attr("clip-path", "url(#clip-circle_striker)")
-               .on("mouseover",  function() {return mouseover_pitch(attackers_country[2], attackers_name[2], d3v4.event.pageX, d3v4.event.pageY)})
+               .on("mousemove",  function() {return mousemove_pitch(attackers_country[2], attackers_name[2], d3v4.event.pageX, d3v4.event.pageY)})
                .on("mouseout", function() {return mouseout_pitch()} );
 
 
-       /* La fonction mouseover */
-       function mouseover_pitch(country, name, x, y) {
+       /* La fonction mousemove */
+       function mousemove_pitch(country, name, x, y) {
           div_popup.transition()
                    .duration(200)
                    .style("opacity", .9);
@@ -374,7 +374,7 @@ function draw_pitch(){
                    .style("top", y + "px");
        }
 
-       /* La fonction mouseover */
+       /* La fonction mousemove */
        function mouseout_pitch() {
          div_popup.transition()
                   .duration(500)
