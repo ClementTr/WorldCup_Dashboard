@@ -150,7 +150,7 @@ def getClassement():
     data = pd.read_csv(path_groups)
     #print(data.head())
     teams = []
-    data['Difference'] = data['Buts_pour'] - data['Buts_contre']
+    data['Difference'] =  data['Buts_contre'] - data['Buts_pour']
     #print(data.head())
     for group in data['Group'].unique():
         tmp = data[data['Group'] == group]
