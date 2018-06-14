@@ -115,6 +115,21 @@ def players_postCalculations(hashtag_name):
         if poste == 'Forward':
             attackers_name = data[data['Position'] == poste]["Nom"].values.tolist()[:3]
             attackers_country = [INV_PAYS_EN[i].capitalize() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
+    if keeper_name == "":
+       keeper_name = "Undefined"
+       keeper_cpuntry = "Undefined"
+   if len(defenders_name) < 4:
+       for i in range(len(defenders_name),4):
+           defenders_name.append("Undefined")
+           defenders_country.append("Undefined") 
+    if len(midfielders_name) < 3:
+       for i in range(len(midfielders_name),3):
+           midfielders_name.append("Undefined")
+           midfielders_country.append("Undefined")
+    if len(attackers_name) < 3:
+       for i in range(len(attackers_name),3):
+           attackers_name.append("Undefined")
+           attackers_country.append("Undefined")
     return keeper_name, keeper_country, defenders_name, defenders_country, midfielders_name, midfielders_country, attackers_name, attackers_country
 
 
