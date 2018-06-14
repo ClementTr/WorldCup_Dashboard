@@ -29,7 +29,7 @@ def twitter_setup():
 api = twitter_setup()
 
 global hashtag
-hashtag = '#PORALG'
+hashtag = '#RUSARA'
 
 
 class StreamListener(tweepy.StreamListener):
@@ -46,7 +46,7 @@ class StreamListener(tweepy.StreamListener):
                 'location':status.user.location,
                 'hashtags':[i['text'] for i in status.entities['hashtags']],
                 'lang':status.lang}
-        self.producer.send("test", tweet)
+        self.producer.send("WorldCup", tweet)
         self.producer.flush()
 
         print("On Kafka !")
@@ -65,4 +65,4 @@ class StreamListener(tweepy.StreamListener):
 
 stream_listener = StreamListener()
 stream = tweepy.Stream(auth=api.auth, listener=stream_listener)
-stream.filter(track=[hashtag],languages=["en"])
+stream.filter(track=[hashtag],languages=["en","fr"])

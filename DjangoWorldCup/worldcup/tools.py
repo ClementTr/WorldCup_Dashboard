@@ -8,11 +8,24 @@ import numpy as np
 import os
 import json
 
-PAYS = {'Russie':'RUS','Arabie':'ARA', 'Portugal':'POR', 'Espagne':'SPA', 'France':'FRA', 'Australie':'AUS',
-   'Bresil':'BRA', 'Suisse':'SUI', 'Tunisie':'TUN', 'Angleterre':'ENG', 'Egypte':'EGY', 'Iran':'IRN',
-   'Perou':'PER', 'Costa':'CRI', 'Allemagne':'GER', 'Suede':'SWE', 'Pologne':'POL', 'Colombie':'COL',
-   'Maroc':'MAR', 'Danemark':'DEN', 'Serbie':'SER', 'Belgique':'BEL', 'Etats-Unis': 'USA', 'Algerie': 'ALG'}
-INV_PAYS = {v: k for k, v in PAYS.items()}
+# PAYS = {'Russie':'RUS','Arabie':'ARA', 'Portugal':'POR', 'Espagne':'SPA', 'France':'FRA', 'Australie':'AUS',
+#    'Bresil':'BRA', 'Suisse':'SUI', 'Tunisie':'TUN', 'Angleterre':'ENG', 'Egypte':'EGY', 'Iran':'IRN',
+#    'Perou':'PER', 'Costa':'CRI', 'Allemagne':'GER', 'Suede':'SWE', 'Pologne':'POL', 'Colombie':'COL',
+#    'Maroc':'MAR', 'Danemark':'DEN', 'Serbie':'SER', 'Belgique':'BEL', 'Etats-Unis': 'USA', 'Algerie': 'ALG'}
+
+PAYS_EN = {"Australia": 'AUS', "Belgium": 'BEL', "Brazil": 'BRA',
+                        "Colombia": 'COL', "Costa": 'CRI', "Croatia": 'HRV',
+                        "Denmark": 'DEN', "Egypt": 'EGY', "England": 'ENG',
+                        "France": 'FRA', "Germany": 'GER', "Iran": 'IRN',
+                        "Morocco": 'MAR', "Peru": 'PER', "Poland": 'POL',
+                        "Portugal": 'POR', "Russia": 'RUS', "Arabia": 'ARA',
+                        "Serbia": 'SER', "Spain": 'SPA', "Sweden": 'SWE',
+                        "Switzerland": 'SUI', "Tunisia": 'TUN','United_States':'USA'}
+
+
+# INV_PAYS = {v: k for k, v in PAYS.items()}
+INV_PAYS_EN = {v: k for k, v in PAYS_EN.items()}
+
 path_groups = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'static/worldcup/data/data_group.csv')
 path_matchs = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'static/worldcup/data/matchs.csv')
 path_data = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'static/worldcup/data/')
@@ -57,7 +70,7 @@ def getDataSentiment(hashtag_name):
 def barplot_positivity(hashtag_name):
     collection_Sentiments= str(hashtag_name[1:])
     pourc_1, pourc_2 = getDataSentiment(collection_Sentiments)
-    return [{"key": collection_Sentiments[:3], "value": pourc_1, "color": "blue"},{"key": collection_Sentiments[3:], "value": pourc_2, "color": "red"}]
+    return [{"key": INV_PAYS_EN[collection_Sentiments[:3]], "value": pourc_1, "color": "blue","trig":collection_Sentiments[:3]},{"key": INV_PAYS_EN[collection_Sentiments[3:]], "value": pourc_2, "color": "red","trig":collection_Sentiments[3:]}]
 
 def positivity_negativity(hashtag_name):
     client = MongoClient('localhost', 27017)
@@ -90,29 +103,29 @@ def players_postCalculations(hashtag_name):
     collection_players = str(hashtag_name[1:]) + "_Players"
     data = getDataFromMongo(collection_players)
     for poste in data['Position'].unique():
-        if poste == 'Gardien':
+        if poste == 'Goalkeeper':
             keeper_name = data[data['Position'] == poste]["Nom"].values.tolist()[0]
-            keeper_country = INV_PAYS[data[data['Position'] == poste]["Pays"].values.tolist()[0]].lower()
-        if poste == 'Défenseur':
+            keeper_country = INV_PAYS_EN[data[data['Position'] == poste]["Pays"].values.tolist()[0]].lower()
+        if poste == 'Defender':
             defenders_name = data[data['Position'] == poste]["Nom"].values.tolist()[:4]
-            defenders_country = [INV_PAYS[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:4]]
-        if poste == 'Milieu':
+            defenders_country = [INV_PAYS_EN[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:4]]
+        if poste == 'Midfielder':
             midfielders_name = data[data['Position'] == poste]["Nom"].values.tolist()[:3]
-            midfielders_country = [INV_PAYS[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
-        if poste == 'Attaquant':
+            midfielders_country = [INV_PAYS_EN[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
+        if poste == 'Forward':
             attackers_name = data[data['Position'] == poste]["Nom"].values.tolist()[:3]
-            attackers_country = [INV_PAYS[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
+            attackers_country = [INV_PAYS_EN[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
     return keeper_name, keeper_country, defenders_name, defenders_country, midfielders_name, midfielders_country, attackers_name, attackers_country
 
 
 def getPays(hashtag_name):
     try:
-        team1 = INV_PAYS[hashtag_name[1:4]]
+        team1 = INV_PAYS_EN[hashtag_name[1:4]]
     except KeyError:
         team1 = "not_available"
 
     try:
-        team2 = INV_PAYS[hashtag_name[4:]]
+        team2 = INV_PAYS_EN[hashtag_name[4:]]
     except KeyError:
         team2 = "not_available"
 

@@ -13,12 +13,12 @@ import emoji
 from correspondance_emoji import *
 
 global hashtag, joueurs, db
-hashtag = str('#PORALG')[1:]
+hashtag = str('#RUSARA')[1:]
 
 def init():
     global joueurs, db, collection_Tweets, collection_Players, collection_Nations, collection_Sentiments, collection_Sentiments_Agg
     client = MongoClient('localhost', 27017)
-    db = client['test']
+    db = client['WorldCup']
     collection_Tweets = db[hashtag+'_Tweets']
     collection_Players = db[hashtag+'_Players']
     collection_Nations = db[hashtag+'_Nations']
@@ -28,13 +28,17 @@ def init():
 
     joueurs = {}
     for joueur_pos in getPlayers():
-                joueurs[joueur_pos[0].split(' ')[1]] = [joueur_pos[0].split(' ')[0], joueur_pos[1], joueur_pos[2]]
+                joueurs[joueur_pos[0]] = [joueur_pos[1], joueur_pos[2], joueur_pos[3]]
 
 def getPays():
-    pays = {'Russie':'RUS','Arabie':'ARA', 'Portugal':'POR', 'Espagne':'SPA', 'France':'FRA', 'Australie':'AUS',
-       'Bresil':'BRA', 'Suisse':'SUI', 'Tunisie':'TUN', 'Angleterre':'ENG', 'Egypte':'EGY', 'Iran':'IRN',
-       'Perou':'PER', 'Costa':'CRI', 'Allemagne':'GER', 'Suede':'SWE', 'Pologne':'POL', 'Colombie':'COL',
-       'Maroc':'MAR', 'Danemark':'DEN', 'Serbie':'SER', 'Belgique':'BEL', 'Algerie':'ALG'}
+    pays = {"Australia": 'AUS', "Belgium": 'BEL', "Brazil": 'BRA',
+                        "Colombia": 'COL', "Costa": 'CRI', "Croatia": 'HRV',
+                        "Denmark": 'DEN', "Egypt": 'EGY', "England": 'ENG',
+                        "France": 'FRA', "Germany": 'GER', "Iran": 'IRN',
+                        "Morocco": 'MAR', "Peru": 'PER', "Poland": 'POL',
+                        "Portugal": 'POR', "Russia": 'RUS', "Arabia": 'ARA',
+                        "Serbia": 'SER', "Spain": 'SPA', "Sweden": 'SWE',
+                        "Switzerland": 'SUI', "Tunisia": 'TUN','United_States':'USA'}
 
     inv_pays = {v: k for k, v in pays.items()}
 
@@ -46,8 +50,8 @@ def getPays():
 def getPlayers():
     global hashtag
     data = pd.read_csv("Crawler/data_worldcup.csv")
-    players_team1 = data[data['Code'] == hashtag[:3]][['Player','Post_Simple', 'Code']].values.tolist()
-    players_team2 = data[data['Code'] == hashtag[3:]][['Player','Post_Simple', 'Code']].values.tolist()
+    players_team1 = data[data['Code'] == hashtag[:3]][['Lastname','Firstname','Post', 'Code']].values.tolist()
+    players_team2 = data[data['Code'] == hashtag[3:]][['Lastname','Firstname','Post', 'Code']].values.tolist()
     if len(players_team1) == 0:
         players_team1 = None
     elif len(players_team2) == 0:
@@ -115,11 +119,12 @@ def putDataToMongo(tweet):
         #UPDATE TWEETS
         
         tweetToMongo = {'created_at':tweet["created_at"],
-                'text':clean,
+                'text':tweet["text"],
                 'location':tweet["location"],
                 'positivity':sentiment,
                 'locationBis':clean_location,
-                'hashtags':tweet['hashtags']}
+                'hashtags':tweet['hashtags'],
+                'lang':tweet["lang"]}
 
         collection_Tweets.insert_one(tweetToMongo)
 
@@ -147,6 +152,6 @@ def putDataToMongo(tweet):
         pass
 
 init()
-consumer = KafkaConsumer("test", bootstrap_servers='localhost:9092',value_deserializer=lambda m: json.loads(m.decode('ascii')))
+consumer = KafkaConsumer("WorldCup", bootstrap_servers='localhost:9092',value_deserializer=lambda m: json.loads(m.decode('ascii')))
 for msg in consumer:
     putDataToMongo(msg.value)
