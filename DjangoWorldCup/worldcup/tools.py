@@ -105,16 +105,16 @@ def players_postCalculations(hashtag_name):
     for poste in data['Position'].unique():
         if poste == 'Goalkeeper':
             keeper_name = data[data['Position'] == poste]["Nom"].values.tolist()[0]
-            keeper_country = INV_PAYS_EN[data[data['Position'] == poste]["Pays"].values.tolist()[0]].lower()
+            keeper_country = INV_PAYS_EN[data[data['Position'] == poste]["Pays"].values.tolist()[0]].capitalize()
         if poste == 'Defender':
             defenders_name = data[data['Position'] == poste]["Nom"].values.tolist()[:4]
-            defenders_country = [INV_PAYS_EN[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:4]]
+            defenders_country = [INV_PAYS_EN[i].capitalize() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:4]]
         if poste == 'Midfielder':
             midfielders_name = data[data['Position'] == poste]["Nom"].values.tolist()[:3]
-            midfielders_country = [INV_PAYS_EN[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
+            midfielders_country = [INV_PAYS_EN[i].capitalize() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
         if poste == 'Forward':
             attackers_name = data[data['Position'] == poste]["Nom"].values.tolist()[:3]
-            attackers_country = [INV_PAYS_EN[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
+            attackers_country = [INV_PAYS_EN[i].capitalize() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
     return keeper_name, keeper_country, defenders_name, defenders_country, midfielders_name, midfielders_country, attackers_name, attackers_country
 
 
@@ -129,7 +129,7 @@ def getPays(hashtag_name):
     except KeyError:
         team2 = "not_available"
 
-    return team1.lower(), team2.lower()
+    return team1.capitalize(), team2.capitalize()
 
 def getClassement():
     data = pd.read_csv(path_groups)

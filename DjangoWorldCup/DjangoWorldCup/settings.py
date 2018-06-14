@@ -25,7 +25,7 @@ SECRET_KEY = 'nb7d2=^^3yr*_q$e5e-4+&8s(a$2=$m%ojjaiyo*r)g%otvm^%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["worldcup.datadeer.fr", "localhost"]
+ALLOWED_HOSTS = ["worldcup.datadeer.fr", "localhost", "34.236.185.228"]
 
 
 # Application definition

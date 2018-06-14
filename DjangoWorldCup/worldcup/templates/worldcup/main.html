@@ -163,7 +163,7 @@
 
 
 
-  fetch("http://localhost:8000/positive_negative", {
+  fetch("http://worldcup.datadeer.fr/positive_negative", {
   method: 'get',
   dataType: 'json',
   headers: {
@@ -238,7 +238,7 @@
 
     // async function fetchData() {
       // var test;
-    fetch("http://localhost:8000/data_positivite", {
+    fetch("http://worldcup.datadeer.fr/data_positivite", {
     method: 'get',
     dataType: 'json',
     headers: {
@@ -253,7 +253,7 @@
   });
 
   setInterval(function(){
-    fetch("http://localhost:8000/data_positivite", {
+    fetch("http://worldcup.datadeer.fr/data_positivite", {
       method: 'get',
       dataType: 'json',
       headers: {
@@ -303,7 +303,7 @@
     h_pitch = w_pitch/1.6;
   }
 
-  fetch("http://localhost:8000/data_playersPosition", {
+  fetch("http://worldcup.datadeer.fr/data_playersPosition", {
     method: 'get',
     dataType: 'json',
     headers: {
@@ -330,7 +330,7 @@
 
   setInterval(function(){
     var series;
-    fetch("http://localhost:8000/data_playersPosition", {
+    fetch("http://worldcup.datadeer.fr/data_playersPosition", {
       method: 'get',
       dataType: 'json',
       headers: {
@@ -385,7 +385,7 @@ function loadTable(tableId, fields, data) {
 }
 
 var map ;
-fetch("http://localhost:8000/datacountries", {
+fetch("http://worldcup.datadeer.fr/datacountries", {
   method: 'get',
   dataType: 'json',
   headers: {
@@ -449,7 +449,7 @@ fetch("http://localhost:8000/datacountries", {
 
 setInterval(function(){
   var series;
-  fetch("http://localhost:8000/datacountries", {
+  fetch("http://worldcup.datadeer.fr/datacountries", {
     method: 'get',
     dataType: 'json',
     headers: {
@@ -492,7 +492,7 @@ setInterval(function(){
 
 <script>
 
-fetch("http://localhost:8000/dataplayers", {
+fetch("http://worldcup.datadeer.fr/dataplayers", {
   method: 'get',
   dataType: 'json',
   headers: {
@@ -509,7 +509,7 @@ fetch("http://localhost:8000/dataplayers", {
 
 
 setInterval(function(){
-  fetch("http://localhost:8000/dataplayers", {
+  fetch("http://worldcup.datadeer.fr/dataplayers", {
     method: 'get',
     dataType: 'json',
     headers: {
