@@ -149,3 +149,7 @@ venv.bak/
 nations_ucl.json
 tweets_ucl.json
 tokens.txt
+
+
+nohup.out
+DjangoWorldCup/static/*
