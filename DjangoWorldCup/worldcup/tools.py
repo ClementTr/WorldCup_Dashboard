@@ -20,7 +20,7 @@ PAYS_EN = {"Australia": 'AUS', "Belgium": 'BEL', "Brazil": 'BRA',
                         "Morocco": 'MAR', "Peru": 'PER', "Poland": 'POL',
                         "Portugal": 'POR', "Russia": 'RUS', "Arabia": 'ARA',
                         "Serbia": 'SER', "Spain": 'SPA', "Sweden": 'SWE',
-                        "Switzerland": 'SUI', "Tunisia": 'TUN','United_States':'USA'}
+                        "Switzerland": 'SUI', "Tunisia": 'TUN','United_states':'USA'}
 
 
 # INV_PAYS = {v: k for k, v in PAYS.items()}
@@ -88,7 +88,7 @@ def get_Emojis(hashtag_name):
     collection_name = str(hashtag_name[1:]) + "_Emojis"
     try :
         data = getDataFromMongo(collection_name)
-        data = data[["Emoji", "Count"]].iloc[:10,:]
+        data = data[["Emoji", "Count"]].iloc[:6,:]
         return json.loads(data[["Emoji", "Count"]].to_json(orient="records"))
     except:
         return [{}]

@@ -131,7 +131,7 @@ def putDataToMongo(tweet):
     for nom in joueurs.keys():
             if nom.lower() in clean.lower().split(' '):
                 collection_Players.update_one({"Nom":nom, "Prenom":joueurs[nom][0], "Position":joueurs[nom][1], "Pays":joueurs[nom][2]}, {"$inc": {"Count":1}}, upsert=True)
-                collection_Sentiments.update_one({"Nation":joueurs[nom][2], "Sentiments":str(sentiment)}, {"$inc": {"Count":1}}, upsert=True)
+                collection_Sentiments.update_one({"Nation":joueurs[nom][3], "Sentiments":str(sentiment)}, {"$inc": {"Count":1}}, upsert=True)
 
     #UPDATE NATIONS
     if clean_location != None:
