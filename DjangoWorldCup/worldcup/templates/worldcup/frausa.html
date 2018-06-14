@@ -45,7 +45,7 @@
               <div class="col-lg-6">
                   <div class="au-card m-b-30" style="padding-left: 20px;">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Number of positives/negatives tweets during the match</h3>
+                          <h3 class="title-2 m-b-40">Number of +/- tweets during the match</h3>
                           <!-- <canvas id="sales-chart"></canvas> -->
                           <div class="chart-wrapper" id="simple_plot"></div>
                       </div>
@@ -304,7 +304,7 @@ function loadTable(tableId, fields, data) {
     }
 
 
-  var top10_team = series.slice(0, 7);
+  var top10_team = series.slice(0, 6);
 
   loadTable('data-table', ['field1', 'field2'], top10_team);
 
@@ -356,7 +356,7 @@ function loadTable(tableId, fields, data) {
 
   d3v4.json("/static/worldcup/data/"+matchname.slice(1,7)+"/"+matchname.slice(1,7)+"_TopPlayers.json", function(error, myData) {
     // console.log(myData);
-    var top10_players = myData.slice(0,5);
+    var top10_players = myData.slice(0,6);
     loadTable('players-table', ['field1', 'field2'], top10_players);
   });
 
