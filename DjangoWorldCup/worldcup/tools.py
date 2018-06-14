@@ -118,7 +118,7 @@ def players_postCalculations(hashtag_name):
     if keeper_name == "":
        keeper_name = "Undefined"
        keeper_cpuntry = "Undefined"
-   if len(defenders_name) < 4:
+    if len(defenders_name) < 4:
        for i in range(len(defenders_name),4):
            defenders_name.append("Undefined")
            defenders_country.append("Undefined") 

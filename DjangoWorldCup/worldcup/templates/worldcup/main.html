@@ -265,7 +265,7 @@
     .then(response => {
       dataset_barplot = response;
       redraw_barplot();
-    })}, 30000);
+    })}, 60000);
 
   window.addEventListener("resize", redraw_barplot);
 
@@ -354,7 +354,7 @@
       attackers_country = response["Country"]["Attackers"]
 
       redraw_pitch()
-    })}, 30000);
+    })}, 60000);
 
   // window.d3 = null
 </script>

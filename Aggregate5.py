@@ -19,7 +19,7 @@ while test == True:
    cursor = collection_Tweets.find()
    df =  pd.DataFrame(list(cursor))
    df['date'] = pd.to_datetime(df['created_at'],  infer_datetime_format=True)
-   df_temp = df.loc[(df['date'] > datetime.datetime.now() + datetime.timedelta(minutes=-125)) & (df['date'] < datetime.datetime.now() + datetime.timedelta(minutes=-120))]
+   df_temp = df.loc[(df['date'] > datetime.datetime.now() + datetime.timedelta(minutes=-245)) & (df['date'] < datetime.datetime.now() + datetime.timedelta(minutes=-240))]
    if 1 in df_temp['positivity'].value_counts().index:
        pos_count = df_temp['positivity'].value_counts()[1]
    else:
@@ -33,7 +33,7 @@ while test == True:
    else:
        neg_count =0
 
-   to_insert = {'Time':str(datetime.datetime.now() + datetime.timedelta(minutes=-120)),
+   to_insert = {'Time':str(datetime.datetime.now() + datetime.timedelta(minutes=-240)),
            'Positive':str(pos_count),
            'Neutral':str(neut_count),
            'Negative':str(neg_count)}
