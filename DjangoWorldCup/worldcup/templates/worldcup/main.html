@@ -3,6 +3,22 @@
 
 <!-- BLOCK MAIN  -->
 {% block main %}
+<style>
+div.scrollmenu {
+    background-color: white;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+div.scrollmenu li {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+</style>
 <div class="main-content">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
@@ -20,7 +36,19 @@
                 </div>
               </div>
 
-              <div class="col-lg-4">
+
+
+              <div class="col-lg-12">
+                <div class="au-card m-b-30" style="padding-bottom: 20px;background: #007bff; padding-top: 20px;">
+                  <div class="scrollmenu" style="background: #007bff">
+                    {% for x in emoji %}
+                    <li><i class="em em-{{x.Emoji}}"></i> x{{x.Count}}</li>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6">
                   <div class="au-card m-b-30">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">Number of positives tweets by team</h3>
@@ -29,35 +57,15 @@
                   </div>
               </div>
 
-              <div class="col-lg-5">
+              <div class="col-lg-6">
                   <div class="au-card m-b-30" style="padding-left: 20px;">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Number of positives/negatives tweets by team during the match</h3>
+                          <h3 class="title-2 m-b-40">Number of +/- tweets by team during the match</h3>
                           <!-- <canvas id="sales-chart"></canvas> -->
                           <div class="chart-wrapper" id="simple_plot"></div>
                       </div>
                   </div>
               </div>
-
-              <div class="col-lg-3">
-                    <div class="au-card au-card--bg-blue au-card-top-countries m-b-30">
-                        <div class="au-card-inner">
-                          <h4 class="title-3 m-b-30 text-white">Top Twitter Emojis</h4>
-                            <div class="table-responsive">
-                                <table class="table table-top-countries text-white">
-                            <tbody>
-                            {% for x in emoji %}
-                                <tr>
-                                  <td> <i class="em em-{{x.Emoji}}"></i></td>
-                                  <td>{{x.Count}}</td>
-                                </tr>
-                            {% endfor %}
-                             </tbody>
-                          </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
               <div class="col-lg-9">
                   <div class="au-card m-b-30">
@@ -113,7 +121,7 @@
                   <div class="au-card m-b-30">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">Our favorite tweet</h3>
-
+		          <blockquote class="twitter-tweet" data-lang="fr"><p lang="fr" dir="ltr">Ça chambre déjà... <a href="https://twitter.com/hashtag/Rusia2018?src=hash&amp;ref_src=twsrc%5Etfw">#Rusia2018</a> <a href="https://twitter.com/hashtag/RUSKSA?src=hash&amp;ref_src=twsrc%5Etfw">#RUSKSA</a> <a href="https://t.co/pavhBqMbiV">pic.twitter.com/pavhBqMbiV</a></p>&mdash; Nabil Djellit (@Nabil_djellit) <a href="https://twitter.com/Nabil_djellit/status/1007308770186354688?ref_src=twsrc%5Etfw">14 juin 2018</a></blockquote>
                       </div>
                   </div>
               </div>
@@ -135,7 +143,6 @@
 </div>
 <!-- END MAIN CONTENT-->
 {% endblock %}
-
 
 
 <!-- BLOCK D3V4 MODIFY D3 VERSION V4 CHARTS -->
@@ -399,7 +406,7 @@ fetch("http://worldcup.datadeer.fr/datacountries", {
   var series = JSON.parse(response);
 
 
-  var top10_team = series.slice(0, 10);
+  var top10_team = series.slice(0, 6);
 
   loadTable('data-table', ['field1', 'field2'], top10_team);
 
@@ -462,7 +469,7 @@ setInterval(function(){
     // console.log(response);
     var series = JSON.parse(response);
 
-    var top10_team = series.slice(0, 10);
+    var top10_team = series.slice(0, 6);
 
     loadTable('data-table', ['field1', 'field2'], top10_team);
 

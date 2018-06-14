@@ -13,7 +13,7 @@ function redraw_barplot(){
                               .attr("transform", `translate(${margin_barplot.left}, ${margin_barplot.top})`);
 
     x.range([0, w])
-     .domain([0, d3v4.max(dataset_barplot, function(d) { return d.value; }) + 3]);
+     .domain([0, d3v4.max(dataset_barplot, function(d) { return d.value; }) + 8]);
     y.range([h, 0])
       .padding(0.4)
       .domain(dataset_barplot.map(function(d) { return d.key; }));

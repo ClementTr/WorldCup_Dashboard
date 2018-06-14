@@ -88,7 +88,7 @@ def get_Emojis(hashtag_name):
     collection_name = str(hashtag_name[1:]) + "_Emojis"
     try :
         data = getDataFromMongo(collection_name)
-        data = data[["Emoji", "Count"]].iloc[:6,:]
+        data = data[["Emoji", "Count"]].iloc[:25,:]
         return json.loads(data[["Emoji", "Count"]].to_json(orient="records"))
     except:
         return [{}]
