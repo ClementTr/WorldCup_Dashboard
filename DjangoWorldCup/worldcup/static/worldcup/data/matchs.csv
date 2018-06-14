@@ -1,49 +1,49 @@
-Group;Jour;Heure;Equipe_1;Equipe_2;Score_Equipe_1;Score_Equipe_2
-A;Thursday 14 June ;17:00;Russia;Saudi Arabia;5;0
-A;Friday 15 June;14:00;Egypt;Uruguay;;
-A;Tuesday 19 June;20:00;Russia;Egypt;;
-A;Wednesday 20 June;17:00;Uruguay;Saudi Arabia;;
-A;Monday 25 June;16:00;Uruguay;Russia;;
-A;Monday 25 June;16:00;Saudi Arabia;Egypt;;
-B;Friday 15 June;17:00;Morocco;Iran;;
-B;Friday 15 June;20:00;Portugal;Spain;;
-B;Wednesday 20 June;14:00;Portugal;Morocco;;
-B;Wednesday 20 June;20:00;Iran;Spain;;
-B;Monday 25 June;20:00;Iran;Portugal;;
-B;Monday 25 June;20:00;Spain;Morocco;;
-C;Saturday 16 June;12:00;France;Australia;;
-C;Saturday 16 June;18:00;Peru;Denmark;;
-C;Thursday 21 June;14:00;Denmark;Australia;;
-C;Thursday 21 June;17:00;France;Peru;;
-C;Tuesday 26 June;16:00;Denmark;France;;
-C;Tuesday 26 June;16:00;Australia;Peru;;
-D;Saturday 16 June;15:00;Argentina;Iceland;;
-D;Saturday 16 June;21:00;Croatia;Nigeria;;
-D;Thursday 21 June;20:00;Argentina;Croatia;;
-D;Friday 22 June;17:00;Nigeria;Iceland;;
-D;Tuesday 26 June;20:00;Nigeria;Argentina;;
-D;Tuesday 26 June;20:00;Iceland;Croatia;;
-E;Sunday 17 June;14:00;Costa Rica;Serbia;;
-E;Sunday 17 June;20:00;Brazil;Switzerland;;
-E;Friday 22 June;14:00;Brazil;Costa Rica;;
-E;Friday 22 June;20:00;Serbia;Switzerland;;
-E;Wednesday 27 June;20:00;Serbia;Brazil;;
-E;Wednesday 27 June;20:00;Switzerland;Costa Rica;;
-F;Sunday 17 June;17:00;Germany;Mexico;;
-F;Monday 18 June;14:00;Sweden;Korea Republic;;
-F;Saturday 23 June;17:00;Korea Republic;Mexico;;
-F;Saturday 23 June;20:00;Germany;Sweden;;
-F;Wednesday 27 June;16:00;Korea Republic;Germany;;
-F;Wednesday 27 June;16:00;Mexico;Sweden;;
-G;Monday 18 June;17:00;Belgium;Panama;;
-G;Monday 18 June;20:00;Tunisia;England;;
-G;Saturday 23 June;14:00;Belgium;Tunisia;;
-G;Sunday 24 June;14:00;England;Panama;;
-G;Thursday 28 June;20:00;England;Belgium;;
-G;Thursday 28 June;20:00;Panama;Tunisia;;
-H;Tuesday 19 June;14:00;Colombia;Japan;;
-H;Tuesday 19 June;17:00;Poland;Senegal;;
-H;Sunday 24 June;17:00;Japan;Senegal;;
-H;Sunday 24 June;20:00;Poland;Colombia;;
-H;Thursday 28 June;16:00;Japan;Poland;;
-H;Thursday 28 June;16:00;Senegal;Colombia;;
+Group;Jour;Heure;Equipe_1;Equipe_2;Score_Equipe_1;Score
+A;Thursday 14 June ;17:00;Russia;Saudi Arabia;5.0;5 - 0
+A;Friday 15 June;14:00;Egypt;Uruguay;;VS
+A;Tuesday 19 June;20:00;Russia;Egypt;;VS
+A;Wednesday 20 June;17:00;Uruguay;Saudi Arabia;;VS
+A;Monday 25 June;16:00;Uruguay;Russia;;VS
+A;Monday 25 June;16:00;Saudi Arabia;Egypt;;VS
+B;Friday 15 June;17:00;Morocco;Iran;;VS
+B;Friday 15 June;20:00;Portugal;Spain;;VS
+B;Wednesday 20 June;14:00;Portugal;Morocco;;VS
+B;Wednesday 20 June;20:00;Iran;Spain;;VS
+B;Monday 25 June;20:00;Iran;Portugal;;VS
+B;Monday 25 June;20:00;Spain;Morocco;;VS
+C;Saturday 16 June;12:00;France;Australia;;VS
+C;Saturday 16 June;18:00;Peru;Denmark;;VS
+C;Thursday 21 June;14:00;Denmark;Australia;;VS
+C;Thursday 21 June;17:00;France;Peru;;VS
+C;Tuesday 26 June;16:00;Denmark;France;;VS
+C;Tuesday 26 June;16:00;Australia;Peru;;VS
+D;Saturday 16 June;15:00;Argentina;Iceland;;VS
+D;Saturday 16 June;21:00;Croatia;Nigeria;;VS
+D;Thursday 21 June;20:00;Argentina;Croatia;;VS
+D;Friday 22 June;17:00;Nigeria;Iceland;;VS
+D;Tuesday 26 June;20:00;Nigeria;Argentina;;VS
+D;Tuesday 26 June;20:00;Iceland;Croatia;;VS
+E;Sunday 17 June;14:00;Costa Rica;Serbia;;VS
+E;Sunday 17 June;20:00;Brazil;Switzerland;;VS
+E;Friday 22 June;14:00;Brazil;Costa Rica;;VS
+E;Friday 22 June;20:00;Serbia;Switzerland;;VS
+E;Wednesday 27 June;20:00;Serbia;Brazil;;VS
+E;Wednesday 27 June;20:00;Switzerland;Costa Rica;;VS
+F;Sunday 17 June;17:00;Germany;Mexico;;VS
+F;Monday 18 June;14:00;Sweden;Korea Republic;;VS
+F;Saturday 23 June;17:00;Korea Republic;Mexico;;VS
+F;Saturday 23 June;20:00;Germany;Sweden;;VS
+F;Wednesday 27 June;16:00;Korea Republic;Germany;;VS
+F;Wednesday 27 June;16:00;Mexico;Sweden;;VS
+G;Monday 18 June;17:00;Belgium;Panama;;VS
+G;Monday 18 June;20:00;Tunisia;England;;VS
+G;Saturday 23 June;14:00;Belgium;Tunisia;;VS
+G;Sunday 24 June;14:00;England;Panama;;VS
+G;Thursday 28 June;20:00;England;Belgium;;VS
+G;Thursday 28 June;20:00;Panama;Tunisia;;VS
+H;Tuesday 19 June;14:00;Colombia;Japan;;VS
+H;Tuesday 19 June;17:00;Poland;Senegal;;VS
+H;Sunday 24 June;17:00;Japan;Senegal;;VS
+H;Sunday 24 June;20:00;Poland;Colombia;;VS
+H;Thursday 28 June;16:00;Japan;Poland;;VS
+H;Thursday 28 June;16:00;Senegal;Colombia;;VS
