@@ -12,9 +12,11 @@ function redraw_barplot(){
                               .attr("id", "bar_plot_redraw")
                               .attr("transform", `translate(${margin_barplot.left}, ${margin_barplot.top})`);
 
-    x.range([0, w]);
+    x.range([0, w])
+     .domain([0, d3v4.max(dataset_barplot, function(d) { return d.value; }) + 3]);
     y.range([h, 0])
-      .padding(0.4);
+      .padding(0.4)
+      .domain(dataset_barplot.map(function(d) { return d.key; }));
 
     draw_barplot()
 }
@@ -23,8 +25,8 @@ function draw_barplot(){
    svg_barplot.append("g")
            .call(d3v4.axisLeft(y));
 
-   x.domain([0, d3v4.max(dataset_barplot, function(d) { return d.value; }) + 3]);
-   y.domain(dataset_barplot.map(function(d) { return d.key; }));
+   // x.domain([0, d3v4.max(dataset_barplot, function(d) { return d.value; }) + 3]);
+   // y.domain(dataset_barplot.map(function(d) { return d.key; }));
 
    svg_barplot.selectAll(".bar")
            .data(dataset_barplot)
@@ -42,10 +44,8 @@ function draw_barplot(){
 
    svg_barplot.selectAll(".bar")
               .data(dataset_barplot)
-              //.on("mouseover", function(d) {return mouseover_bar(d.key, d3v4.event.pageX, d3v4.event.pageY) })
-              //.on("mouseover", function(d) { console.log(d.key) })
               .on("mouseout", function() {return mouseout_bar()})
-              .on("mousemove", function(d) {return mousemove_bar(d.key, d3v4.event.pageX, d3v4.event.pageY) });
+              .on("mousemove", function(d) {return mousemove_bar(d.value, d.key, d3v4.event.pageX, d3v4.event.pageY) });
 
 
     let text_country = svg_barplot.append("g")
@@ -68,7 +68,7 @@ function draw_barplot(){
                     .attr("x", function(d) { return x(d.value) - 10 })
                     .attr("y", function(d) { return y(d.key) })
                     .delay(1500)
-                    .text(function(d) { return d.value });
+                    .text(function(d) { return d.value + "%" });
 
     let div_popup_bar = d3v4.select("body")
                             .append("div")
@@ -77,11 +77,11 @@ function draw_barplot(){
                             .style("opacity", 0);
 
 
-    function mousemove_bar(country, x, y){
+    function mousemove_bar(percent_value, country, x, y){
       div_popup_bar.transition()
                    .duration(200)
                    .style("opacity", .9);
-      div_popup_bar.html("<img src='/static/worldcup/img/flags/" + country + ".png' style='height:15px'/><br>" + country.charAt(0).toUpperCase() + country.slice(1))
+      div_popup_bar.html("<img src='/static/worldcup/img/flags/" + country + ".png' style='height:15px'/><br>" + country.charAt(0).toUpperCase() + country.slice(1) + "<br>" + percent_value + "%")
                    .style("left", x + "px")
                    .style("top", y + "px");
     }
