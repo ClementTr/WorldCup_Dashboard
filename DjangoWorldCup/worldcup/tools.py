@@ -82,7 +82,12 @@ def positivity_negativity(hashtag_name):
     data = data.reset_index()
     data = data.drop(['_id','index'], axis=1)
     data['Time'] = pd.to_datetime(data['Time'], infer_datetime_format=True)
-    return data.drop_duplicates('Time').to_json(orient="records")
+    data['cumul'] = data[["Negative","Neutral","Positive"]].applymap(int).sum(axis=1)
+    data['Negative'] = np.ceil((data['Negative'].astype(int)/data['cumul'])*100)
+    data['Neutral'] = np.ceil((data['Neutral'].astype(int)/data['cumul'])*100)
+    data['Positive'] = np.ceil((data['Positive'].astype(int)/data['cumul'])*100)
+    return data[["Time","Positive","Negatif"]].drop_duplicates('Time').to_json(orient="records")
+    # return data.drop_duplicates('Time').to_json(orient="records")
 
 def get_Emojis(hashtag_name):
     collection_name = str(hashtag_name[1:]) + "_Emojis"
