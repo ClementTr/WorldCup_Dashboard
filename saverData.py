@@ -4,10 +4,14 @@ import pandas as pd
 import numpy as np
 import json
 
-PAYS = {'Russie':'RUS','Arabie':'ARA', 'Portugal':'POR', 'Espagne':'SPA', 'France':'FRA', 'Australie':'AUS',
-   'Bresil':'BRA', 'Suisse':'SUI', 'Tunisie':'TUN', 'Angleterre':'ENG', 'Egypte':'EGY', 'Iran':'IRN',
-   'Perou':'PER', 'Costa':'CRI', 'Allemagne':'GER', 'Suede':'SWE', 'Pologne':'POL', 'Colombie':'COL',
-   'Maroc':'MAR', 'Danemark':'DEN', 'Serbie':'SER', 'Belgique':'BEL', 'Etats-Unis': 'USA', 'Algerie': 'ALG'}
+PAYS = {"Australia": 'AUS', "Belgium": 'BEL', "Brazil": 'BRA',
+                        "Colombia": 'COL', "Costa": 'CRI', "Croatia": 'HRV',
+                        "Denmark": 'DEN', "Egypt": 'EGY', "England": 'ENG',
+                        "France": 'FRA', "Germany": 'GER', "Iran": 'IRN',
+                        "Morocco": 'MAR', "Peru": 'PER', "Poland": 'POL',
+                        "Portugal": 'POR', "Russia": 'RUS', "Arabia": 'ARA',
+                        "Serbia": 'SER', "Spain": 'SPA', "Sweden": 'SWE',
+                        "Switzerland": 'SUI', "Tunisia": 'TUN','United_states':'USA'}
 INV_PAYS = {v: k for k, v in PAYS.items()}
 
 global db,client
@@ -16,7 +20,7 @@ def initMongo():
 	''' Init connexion to WorldCup Mongo Database'''
 	global db,client
 	client = MongoClient('localhost', 27017)
-	db = client['WorldCup']
+	db = client['WorldCup_RUSARA']
 
 def saveCountriesData(matchname):
 	'''
@@ -49,11 +53,11 @@ def saveTweets(matchname):
 	collection = db[matchname+"_Tweets"]
 	data = pd.DataFrame(list(collection.find()))
 	if 'hashtags' in data.columns:
-		if type(data['hashtags'][0][0]) == dict:
+		if type(data['hashtags'][0]) == dict:
 			data['hashtags'] = data['hashtags'].apply(transformHashtags)
 	data.reset_index(inplace=True)
 	# print(data.iloc[:,2:])
-	data.iloc[:,2:].to_parquet(matchname+".parquet")
+	data.iloc[:,2:].to_csv(matchname+".csv")
 
 def saveTopPlayers(matchname):
 	'''
@@ -98,18 +102,35 @@ def save11Players(matchname):
 	attackers_name, attackers_country = [], [];
 
 	for poste in data['Position'].unique():
-	    if poste == 'Gardien':
+	    if poste == 'Goalkeeper':
 	        keeper_name = data[data['Position'] == poste]["Nom"].values.tolist()[0]
 	        keeper_country = INV_PAYS[data[data['Position'] == poste]["Pays"].values.tolist()[0]].lower()
-	    if poste == 'Défenseur':
+	    if poste == 'Defender':
 	        defenders_name = data[data['Position'] == poste]["Nom"].values.tolist()[:4]
 	        defenders_country = [INV_PAYS[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:4]]
-	    if poste == 'Milieu':
+	    if poste == 'Midfielder':
 	        midfielders_name = data[data['Position'] == poste]["Nom"].values.tolist()[:3]
 	        midfielders_country = [INV_PAYS[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
-	    if poste == 'Attaquant':
+	    if poste == 'Forward':
 	        attackers_name = data[data['Position'] == poste]["Nom"].values.tolist()[:3]
 	        attackers_country = [INV_PAYS[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
+
+	if keeper_name == "":
+	   keeper_name = "Undefined"
+	   keeper_cpuntry = "Undefined"
+	if len(defenders_name) < 4:
+	   for i in range(len(defenders_name),4):
+	       defenders_name.append("Undefined")
+	       defenders_country.append("Undefined") 
+	if len(midfielders_name) < 3:
+	   for i in range(len(midfielders_name),3):
+	       midfielders_name.append("Undefined")
+	       midfielders_country.append("Undefined")
+	if len(attackers_name) < 3:
+	   for i in range(len(attackers_name),3):
+	       attackers_name.append("Undefined")
+	       attackers_country.append("Undefined")
+
 	with open(matchname+"_Top11Players.json", 'w') as outfile:
 	    json.dump({
 	  "Name": {
@@ -135,7 +156,7 @@ def savePositivity(matchname):
 	pourc_1 = np.ceil(((data[(data['Nation']==pays1) & (data['Sentiments']=='1')]['Count']/ data[(data['Nation']==pays1)]['Count'].sum()).values[0])*100)
 	pourc_2 = np.ceil(((data[(data['Nation']==pays2) & (data['Sentiments']=='1')]['Count']/ data[(data['Nation']==pays2)]['Count'].sum()).values[0])*100)
 	with open(matchname+"_Sentiments.json", 'w') as outfile:
-	    json.dump([{"key": pays1, "value": pourc_1, "color": "blue"},{"key": pays2, "value": pourc_2, "color": "red"}], outfile)
+	    json.dump([{"key": INV_PAYS[pays1], "value": pourc_1, "color": "blue", "trig":pays1},{"key": INV_PAYS[pays2], "value": pourc_2, "color": "red", "trig":pays2}], outfile)
 
 
 def saveTimeSeries(matchname):
@@ -152,10 +173,11 @@ def saveTimeSeries(matchname):
 	data[["Time","Positive","Negative","Neutral"]].to_csv(matchname+"_Sentiments_Agg.csv",index=False)
 
 def saveEmojis(matchname):
-	collection = db[matchname+"_Emojis"]
-    data = getDataFromMongo(collection)
-    data = data[["Emoji", "Count"]].iloc[:10,:]
-    data[["Emoji", "Count"]].to_json(matchname+"_Emojis",orient="records")
+    collection = db[matchname+"_Emojis"]
+    data = pd.DataFrame(list(collection.find()))
+    #data = getDataFromMongo(collection)
+    data = data[["Emoji", "Count"]]
+    data[["Emoji", "Count"]].to_json(matchname+"_Emojis.json",orient="records")
 
 def removeMongoCollections(hashtag):
 	'''Remove Nations, Tweets & Joueurs collections '''
@@ -164,7 +186,7 @@ def removeMongoCollections(hashtag):
 		collection.drop()
 
 initMongo()
-hashtag = "#FRAUSA"
+hashtag = "#RUSARA"
 matchname = str(hashtag[1:])
 saveCountriesData(matchname)
 saveTweets(matchname)
