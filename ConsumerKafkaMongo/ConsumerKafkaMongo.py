@@ -1,3 +1,4 @@
+
 from kafka import KafkaConsumer
 import json
 from pymongo import MongoClient
@@ -49,7 +50,7 @@ def getPays():
 
 def getPlayers():
     global hashtag
-    data = pd.read_csv("Crawler/data_worldcup.csv")
+    data = pd.read_csv("../Crawler/data_worldcup.csv")
     players_team1 = data[data['Code'] == hashtag[:3]][['Lastname','Firstname','Post', 'Code']].values.tolist()
     players_team2 = data[data['Code'] == hashtag[3:]][['Lastname','Firstname','Post', 'Code']].values.tolist()
     if len(players_team1) == 0:
@@ -83,7 +84,10 @@ def analize_sentiment_fr(tweet):
 def get_location(text):
     places = GeoText(text)
     if len(places.country_mentions) > 0:
-        return pycountry.countries.get(alpha_2=list(places.country_mentions)[0]).alpha_3
+        try:
+            return pycountry.countries.get(alpha_2=list(places.country_mentions)[0]).alpha_3
+        except:
+            return None
     else:
         return None
 
@@ -103,6 +107,7 @@ def putDataToMongo(tweet):
     global hashtag
 
     print("New Tweet ! ")
+
     #Cleaning (alpha numeric characters)
     clean = clean_tweet(tweet["text"])
     if tweet["location"] != None:
@@ -125,31 +130,34 @@ def putDataToMongo(tweet):
             'hashtags':tweet['hashtags'],
             'lang':tweet["lang"]}
 
-    collection_Tweets.insert_one(tweetToMongo)
+    
 
-    #UPDATE PLAYERS and SENTIMENT (PAR PAYS)
-    for nom in joueurs.keys():
-            if nom.lower() in clean.lower().split(' '):
-                collection_Players.update_one({"Nom":nom, "Prenom":joueurs[nom][0], "Position":joueurs[nom][1], "Pays":joueurs[nom][2]}, {"$inc": {"Count":1}}, upsert=True)
-                collection_Sentiments.update_one({"Nation":joueurs[nom][2], "Sentiments":str(sentiment)}, {"$inc": {"Count":1}}, upsert=True)
+    try:
+        collection_Tweets.insert_one(tweetToMongo)
 
-    #UPDATE NATIONS
-    if clean_location != None:
-        collection_Nations.update_one({"Nation":clean_location}, {"$inc": {"Count":1}}, upsert=True)
+        #UPDATE PLAYERS and SENTIMENT (PAR PAYS)
+        for nom in joueurs.keys():
+                if nom.lower() in clean.lower().split(' '):
+                    collection_Players.update_one({"Nom":nom, "Prenom":joueurs[nom][0], "Position":joueurs[nom][1], "Pays":joueurs[nom][2]}, {"$inc": {"Count":1}}, upsert=True)
+                    collection_Sentiments.update_one({"Nation":joueurs[nom][2], "Sentiments":str(sentiment)}, {"$inc": {"Count":1}}, upsert=True)
 
-    emojis = get_emojisCode(tweet["text"])
-    if len(emojis) > 0:
-        for em in emojis:
-            collection_Emojis.update_one({"Emoji":em}, {"$inc": {"Count":1}}, upsert=True)
+        #UPDATE NATIONS
+        if clean_location != None:
+            collection_Nations.update_one({"Nation":clean_location}, {"$inc": {"Count":1}}, upsert=True)
 
+        emojis = get_emojisCode(tweet["text"])
+        if len(emojis) > 0:
+            for em in emojis:
+                collection_Emojis.update_one({"Emoji":em}, {"$inc": {"Count":1}}, upsert=True)
 
-    print(tweetToMongo)
-    print("On DataBase !")
-    print("---------------------------------")
-    # except BaseException as e:
-    #     print('failed ondata,', str(e))
-    #     pass
+        print(tweetToMongo)
+        print("On DataBase !")
+        print("---------------------------------")
+    except BaseException as e:
+        print('failed ondata,', str(e))
+        pass
 init()
-consumer = KafkaConsumer("WorldCup", bootstrap_servers='localhost:9092',value_deserializer=lambda m: json.loads(m.decode('ascii')))
+consumer = KafkaConsumer("WorldCup", bootstrap_servers='localhost:9092',auto_offset_reset='earliest',value_deserializer=lambda m: json.loads(m.decode('ascii')))
 for msg in consumer:
     putDataToMongo(msg.value)
+
