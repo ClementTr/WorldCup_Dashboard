@@ -20,7 +20,7 @@ def initMongo():
 	''' Init connexion to WorldCup Mongo Database'''
 	global db,client
 	client = MongoClient('localhost', 27017)
-	db = client['WorldCup_RUSARA']
+	db = client['WorldCup']
 
 def saveCountriesData(matchname):
 	'''

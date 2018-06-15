@@ -29,7 +29,7 @@ def twitter_setup():
 api = twitter_setup()
 
 global hashtag
-hashtag = '#RUSARA'
+hashtag = '#PORSPA'
 
 
 class StreamListener(tweepy.StreamListener):

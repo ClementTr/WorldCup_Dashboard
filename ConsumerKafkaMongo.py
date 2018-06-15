@@ -13,7 +13,7 @@ import emoji
 from correspondance_emoji import *
 
 global hashtag, joueurs, db
-hashtag = str('#RUSARA')[1:]
+hashtag = str('#PORSPA')[1:]
 
 def init():
     global joueurs, db, collection_Tweets, collection_Players, collection_Nations, collection_Sentiments, collection_Sentiments_Agg, collection_Emojis
