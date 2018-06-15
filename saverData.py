@@ -164,9 +164,9 @@ def saveTimeSeries(matchname):
 	collection = db[matchname+"_Sentiments_Agg"]
 	data = pd.DataFrame(list(collection.find()))
 	data = data[["Time","Positive","Negative","Neutral"]]
-	data['cumul'] = data[["Negative","Neutral","Positive"]].applymap(int).sum(axis=1)
+	data['cumul'] = data[["Negative","Positive"]].applymap(int).sum(axis=1)
 	data['Negative'] = np.ceil((data['Negative'].astype(int)/data['cumul'])*100)
-	data['Neutral'] = np.ceil((data['Neutral'].astype(int)/data['cumul'])*100)
+	#data['Neutral'] = np.ceil((data['Neutral'].astype(int)/data['cumul'])*100)
 	data['Positive'] = np.ceil((data['Positive'].astype(int)/data['cumul'])*100)
 	data[["Time","Positive","Negative"]].drop_duplicates('Time').dropna().to_csv(matchname+"_Sentiments_Agg.csv",index=False)
 

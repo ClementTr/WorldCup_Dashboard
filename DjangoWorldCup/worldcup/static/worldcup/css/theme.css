@@ -1567,7 +1567,7 @@ section {
 }
 
 .menu-sidebar {
-    width: 300px;
+    width: 220px;
     position: fixed;
     left: 0;
     top: 0;
@@ -2104,7 +2104,7 @@ section {
 }
 
 .menu-sidebar2 {
-    width: 300px;
+    width: 220px;
     position: fixed;
     left: 0;
     top: 0;
