@@ -21,3 +21,6 @@ textblob==0.15.1
 tweepy==3.6.0
 Unidecode==1.0.22
 urllib3==1.22
+kafka-python
+textblob_fr
+emoji
