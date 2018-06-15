@@ -175,6 +175,7 @@ def saveEmojis(matchname):
     data = pd.DataFrame(list(collection.find()))
     #data = getDataFromMongo(collection)
     data = data[["Emoji", "Count"]]
+    data.sort_values(by="Count", ascending=False, inplace=True)
     data[["Emoji", "Count"]].to_json(matchname+"_Emojis.json",orient="records")
 
 def removeMongoCollections(hashtag):
