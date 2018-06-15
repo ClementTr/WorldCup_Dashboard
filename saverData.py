@@ -57,7 +57,7 @@ def saveTweets(matchname):
 			data['hashtags'] = data['hashtags'].apply(transformHashtags)
 	data.reset_index(inplace=True)
 	# print(data.iloc[:,2:])
-	data.iloc[:,2:].to_csv(matchname+".csv")
+	data.iloc[:,2:].to_csv(matchname+"_Tweets.csv")
 
 def saveTopPlayers(matchname):
 	'''
@@ -179,7 +179,7 @@ def saveEmojis(matchname):
 
 def removeMongoCollections(hashtag):
 	'''Remove Nations, Tweets & Joueurs collections '''
-	for collect in [hashtag+"_Nations",hashtag+"_Tweets",hashtag+"_Players"]:
+	for collect in [hashtag+"_Nations",hashtag+"_Tweets",hashtag+"_Players",hashtag+"_Sentiments",hashtag+"_Sentiments_Agg",hashtag+"_Emojis"]:
 		collection = db[collect]
 		collection.drop()
 
