@@ -177,3 +177,7 @@ def getTables():
 	matchs = getMatchs()
 	groups = ["Groupe A","Groupe B","Groupe C","Groupe D","Groupe E","Groupe F","Groupe G","Groupe H"]
 	return zip(teams,groups,matchs,[i for i in range(0,8)])
+
+def getEmojisClassement(hashtag_name):
+    with open(path_data+hashtag_name+'/'+hashtag_name+"_Emojis.json") as f:
+        return json.loads(f.read())
