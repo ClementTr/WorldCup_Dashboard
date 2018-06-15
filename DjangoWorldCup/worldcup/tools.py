@@ -122,7 +122,7 @@ def players_postCalculations(hashtag_name):
             attackers_country = [INV_PAYS_EN[i].capitalize() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
     if keeper_name == "":
        keeper_name = "Undefined"
-       keeper_cpuntry = "Undefined"
+       keeper_country = "Undefined"
     if len(defenders_name) < 4:
        for i in range(len(defenders_name),4):
            defenders_name.append("Undefined")
