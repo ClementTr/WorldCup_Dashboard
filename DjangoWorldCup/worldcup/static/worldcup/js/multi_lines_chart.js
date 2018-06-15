@@ -58,7 +58,7 @@ function draw(data, innerW, innerH) {
               .attr("class", "line")
               .attr("id", "sales")
               .attr("d",valuelineSales)
-              .style("stroke", "blue")
+              .style("stroke", "red")
               .transition() // On ajoute ces lignes pour dessiner les courbes en direct
               .duration(2000)
               .attrTween("stroke-dasharray", function() {
@@ -73,7 +73,7 @@ function draw(data, innerW, innerH) {
               .attr("class", "line")
               .attr("id", "deliveries")
               .attr("d", valuelineDelivered)
-              .style("stroke", "red")
+              .style("stroke", "blue")
               .transition() // On ajoute ces lignes pour dessiner les courbes en direct
               .duration(2000)
               .attrTween("stroke-dasharray", function() {
@@ -97,7 +97,7 @@ function draw(data, innerW, innerH) {
       /* Initialisation de focus */
       let focus_sales = svg_plot.append("g")
                                 //.attr("class", "focus_sales")
-                                .style("stroke", "blue")
+                                .style("stroke", "red")
                                 .style("display", "none");
 
       /* Dessin de la variable focus comme étant un cercle de rayon 4.5 px */
@@ -112,7 +112,7 @@ function draw(data, innerW, innerH) {
       /* Initialisation de focus */
       let focus_deliveries = svg_plot.append("g")
                                      //.attr("class", "focus_deliveries")
-                                     .style("stroke", "red")
+                                     .style("stroke", "blue")
                                      .style("display", "none");
 
       /* Dessin de la variable focus comme étant un cercle de rayon 4.5 px */
@@ -126,25 +126,19 @@ function draw(data, innerW, innerH) {
 
 
       /*vertical line*/
-      // focus_sales.append("line")
-      //                 .attr("class", "x-hover-line hover-line")
-      //                 .attr("y1", 0)
-      //                 .attr("y2", innerH);
-      //
-      // focus_sales.append("line")
-      //                 .attr("class", "y-hover-line hover-line")
-      //                 .attr("x1", innerW)
-      //                 .attr("x2", innerW);
-      //
-      // focus_deliveries.append("line")
-      //                 .attr("class", "x-hover-line hover-line")
-      //                 .attr("y1", 0)
-      //                 .attr("y2", innerH);
-      //
-      // focus_deliveries.append("line")
-      //                 .attr("class", "y-hover-line hover-line")
-      //                 .attr("x1", innerW)
-      //                 .attr("x2", innerW);
+      svg_plot.append("text")
+            .attr("x", 5)
+            .attr("y", 5)
+            .attr("class", "legend")    // style the legend
+            .style("fill","blue")
+            .text("Positive"); 
+
+      svg_plot.append("text")
+            .attr("x", 80)
+            .attr("y", 5)
+            .attr("class", "legend")    // style the legend
+            .style("fill","red")
+            .text("Negative"); 
 
       /* La fonction mousemove */
       function mousemove() {

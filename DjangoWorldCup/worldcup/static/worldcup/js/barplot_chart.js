@@ -85,7 +85,7 @@ function draw_barplot(){
       div_popup_bar.transition()
                    .duration(200)
                    .style("height", "50px")
-                   .style("height", "100px")
+                   .style("width", "100px")
                    .style("opacity", .9);
       div_popup_bar.html("<img src='/static/worldcup/img/flags/" + country + ".png' style='height:15px'/><br>" + country.charAt(0).toUpperCase() + country.slice(1) + "<br>" + percent_value + "%")
                    .style("left", x + "px")

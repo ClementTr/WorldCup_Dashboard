@@ -5,7 +5,7 @@ import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
 from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, get_Emojis
-MATCH_HASHTAG = '#RUSARA'
+MATCH_HASHTAG = '#PORSPA'
 
 def home(request):
     if (request.method == "POST"):
@@ -45,9 +45,10 @@ def data_playersPosition(request):
 
 
 def main(request):
+    date = "Friday, June 15th - 20:00"
     country_1, country_2 = getPays(MATCH_HASHTAG)
     emoji = get_Emojis(MATCH_HASHTAG)
-    context = {'hashtag': MATCH_HASHTAG, 'country_1': country_1, "country_2": country_2,"emoji":emoji}
+    context = {'hashtag': MATCH_HASHTAG, 'country_1': country_1, "country_2": country_2,"emoji":emoji,"date":date}
     return render(request, 'worldcup/main.html', context)
 
 
@@ -197,24 +198,27 @@ def positive_negative(request):
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
 #     return render(request, 'worldcup/match.html', context)
 #
-# def porspa(request):
-#     hashtag = "#PORSPA"
-#     country_1, country_2 = getPays(hashtag)
-#     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/match.html', context)
-#
+def porspa(request):
+    hashtag = "#PORSPA"
+    date = "Friday, June 15th - 20:00"
+    country_1, country_2 = getPays(hashtag)
+    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date}
+    return render(request, 'worldcup/match.html', context)
 
 
 def rusara(request):
     hashtag = "#RUSARA"
-    country_1, country_2 = getPays(hashtag)
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-    return render(request, 'worldcup/match.html', context)
-
-def frausa(request):
-    hashtag = "#FRAUSA"
-    country_1, country_2 = getPays(hashtag)
     our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>Alors ce dernier match avant la Russie ? <a href='https://twitter.com/hashtag/FRAUSA?src=hash&amp;ref_src=twsrc%5Etfw>'#FRAUSA</a> <a href='https://t.co/Dz6hB4Qb0I'>pic.twitter.com/Dz6hB4Qb0I</a></p>&mdash; CLZZ (@clooz2012) <a href='https://twitter.com/clooz2012/status/1005547103802798080?ref_src=twsrc%5Etfw'>9 juin 2018</a></blockquote>"
     rnn_tweet = ""
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet}
+    date = "Thursday, June 14th - 17:00"
+    country_1, country_2 = getPays(hashtag)
+    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet,"date":date}
     return render(request, 'worldcup/match.html', context)
+
+# def frausa(request):
+#     hashtag = "#FRAUSA"
+#     country_1, country_2 = getPays(hashtag)
+#     our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>Alors ce dernier match avant la Russie ? <a href='https://twitter.com/hashtag/FRAUSA?src=hash&amp;ref_src=twsrc%5Etfw>'#FRAUSA</a> <a href='https://t.co/Dz6hB4Qb0I'>pic.twitter.com/Dz6hB4Qb0I</a></p>&mdash; CLZZ (@clooz2012) <a href='https://twitter.com/clooz2012/status/1005547103802798080?ref_src=twsrc%5Etfw'>9 juin 2018</a></blockquote>"
+#     rnn_tweet = ""
+#     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet}
+#     return render(request, 'worldcup/match.html', context)

@@ -28,6 +28,7 @@
                   <img src="/static/worldcup/img/flags/{{ country_2 }}.png" class="rounded float-right" alt="...">
                   <center>
                     <h3 class="title-2 m-b-30" style"vertical-align: middle;">Match of the day - {{hashtag}}</h3>
+                    <h4 class="title-3 m-b-30" style"vertical-align: middle;">{{date}}</h4>
                   </center>
                 </div>
               </div>
@@ -36,7 +37,7 @@
               <div class="col-lg-6">
                   <div class="au-card m-b-30" style="padding-right:7px;">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Number of positives tweets by team</h3>
+                          <h3 class="title-2 m-b-40">Percentage of positives tweets by team</h3>
                           <div class="chart-wrapper" id="bar_plot"></div>
                       </div>
                   </div>
@@ -45,7 +46,7 @@
               <div class="col-lg-6" style="padding-left:7px;">
                   <div class="au-card m-b-30" style="padding-left: 20px;">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Number of +/- tweets during the match</h3>
+                          <h3 class="title-2 m-b-40">Percentage of +/- tweets during the match</h3>
                           <!-- <canvas id="sales-chart"></canvas> -->
                           <div class="chart-wrapper" id="simple_plot"></div>
                       </div>
@@ -55,7 +56,7 @@
               <div class="col-lg-9">
                   <div class="au-card m-b-30">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Number of tweets by country</h3>
+                          <h3 class="title-2 m-b-40">Percentage of tweets by country</h3>
                           <div class="card-body" id="container1"></div>
                       </div>
                   </div>
@@ -101,7 +102,7 @@
               </div>
 
 
-              <div class="col-lg-6">
+              <div class="col-lg-4">
                   <div class="au-card m-b-30">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">Our favorite tweet</h3>
@@ -110,7 +111,16 @@
                   </div>
               </div>
 
-              <div class="col-lg-6">
+              <div class="col-lg-4">
+                <div class="au-card m-b-30">
+                      <div class="au-card-inner">
+                          <h3 class="title-2 m-b-40">Deertweet tweets by itself</h3>
+                          {{rnn_tweet|safe}}
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-4">
                   <div class="au-card m-b-30">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">Deertweet tweets by itself</h3>
