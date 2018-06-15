@@ -4,7 +4,9 @@ import pandas as pd
 import datetime
 
 global hashtag, joueurs, db
-hashtag = str('#PORSPA')[1:]
+# hashtag = str('#PORSPA')[1:]
+with open('HASHTAG_FILE.txt') as f:
+    hashtag = f.read()[1:]
 
 client = MongoClient('localhost', 27017)
 db = client['WorldCup']
@@ -16,6 +18,7 @@ test = False
 cursor = collection_Tweets.find()
 df =  pd.DataFrame(list(cursor))
 df['date'] = pd.to_datetime(df['created_at'],  infer_datetime_format=True)
+df.drop_duplicates('date',inplace=True)
 print(df.count())
 print(df['date'].min())
 print(df['date'].max())

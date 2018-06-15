@@ -184,7 +184,9 @@ def removeMongoCollections(hashtag):
 		collection.drop()
 
 initMongo()
-hashtag = "#RUSARA"
+with open('HASHTAG_FILE.txt') as f:
+    hashtag = f.read()
+# hashtag = "#RUSARA"
 matchname = str(hashtag[1:])
 saveCountriesData(matchname)
 saveTweets(matchname)

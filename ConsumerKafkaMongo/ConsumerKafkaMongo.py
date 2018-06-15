@@ -1,4 +1,3 @@
-
 from kafka import KafkaConsumer
 import json
 from pymongo import MongoClient
@@ -14,7 +13,10 @@ import emoji
 from correspondance_emoji import *
 
 global hashtag, joueurs, db
-hashtag = str('#PORSPA')[1:]
+with open('../HASHTAG_FILE.txt') as f:
+    hashtag = f.read()[1:]
+
+# hashtag = str('#PORSPA')[1:]
 
 def init():
     global joueurs, db, collection_Tweets, collection_Players, collection_Nations, collection_Sentiments, collection_Sentiments_Agg, collection_Emojis
@@ -117,8 +119,10 @@ def putDataToMongo(tweet):
 
     if tweet["lang"] == 'fr':
         sentiment = analize_sentiment_fr(clean)
-    else :
+    elif tweet["lang"] == 'en':
         sentiment = analize_sentiment_en(clean)
+    else:
+        sentime = 0
     #print(sentiment)
     #UPDATE TWEETS
     
@@ -129,8 +133,6 @@ def putDataToMongo(tweet):
             'locationBis':clean_location,
             'hashtags':tweet['hashtags'],
             'lang':tweet["lang"]}
-
-    
 
     try:
         collection_Tweets.insert_one(tweetToMongo)

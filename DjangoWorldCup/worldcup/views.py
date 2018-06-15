@@ -192,12 +192,12 @@ def positive_negative(request):
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
 #     return render(request, 'worldcup/match.html', context)
 #
-# def fraaus(request):
-#     hashtag = "#FRAAUS"
-#     country_1, country_2 = getPays(hashtag)
-#     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/match.html', context)
-#
+def fraaus(request):
+    hashtag = "#FRAAUS"
+    country_1, country_2 = getPays(hashtag)
+    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
+    return render(request, 'worldcup/match.html', context)
+
 def porspa(request):
     hashtag = "#PORSPA"
     date = "Friday, June 15th - 20:00"

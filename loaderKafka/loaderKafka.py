@@ -29,8 +29,9 @@ def twitter_setup():
 api = twitter_setup()
 
 global hashtag
-hashtag = '#PORSPA'
-
+# hashtag = '#PORSPA'
+with open('../HASHTAG_FILE.txt') as f:
+    hashtag = f.read()[1:]
 
 class StreamListener(tweepy.StreamListener):
 
@@ -65,4 +66,4 @@ class StreamListener(tweepy.StreamListener):
 
 stream_listener = StreamListener()
 stream = tweepy.Stream(auth=api.auth, listener=stream_listener)
-stream.filter(track=[hashtag],languages=["en","fr"])
+stream.filter(track=[hashtag],languages=["en","fr","es","de","it","pt"])
