@@ -13,7 +13,6 @@ collection_Sentiments_Agg = db[hashtag+'_Sentiments_Agg']
 now = datetime.datetime.now()
 test = False
 
-Loop
 cursor = collection_Tweets.find()
 df =  pd.DataFrame(list(cursor))
 df['date'] = pd.to_datetime(df['created_at'],  infer_datetime_format=True)
