@@ -208,7 +208,7 @@ def porspa(request):
 
 def rusara(request):
     hashtag = "#RUSARA"
-    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>Alors ce dernier match avant la Russie ? <a href='https://twitter.com/hashtag/FRAUSA?src=hash&amp;ref_src=twsrc%5Etfw>'#FRAUSA</a> <a href='https://t.co/Dz6hB4Qb0I'>pic.twitter.com/Dz6hB4Qb0I</a></p>&mdash; CLZZ (@clooz2012) <a href='https://twitter.com/clooz2012/status/1005547103802798080?ref_src=twsrc%5Etfw'>9 juin 2018</a></blockquote>"
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>Ça chambre déjà... <a href='https://twitter.com/hashtag/Rusia2018?src=hash&amp;ref_src=twsrc%5Etfw'>#Rusia2018</a> <a href='https://twitter.com/hashtag/RUSKSA?src=hash&amp;ref_src=twsrc%5Etfw'>#RUSKSA</a> <a href='https://t.co/pavhBqMbiV'>pic.twitter.com/pavhBqMbiV</a></p>&mdash; Nabil Djellit (@Nabil_djellit) <a href='https://twitter.com/Nabil_djellit/status/1007308770186354688?ref_src=twsrc%5Etfw'>14 juin 2018</a></blockquote>"
     rnn_tweet = ""
     date = "Thursday, June 14th - 17:00"
     country_1, country_2 = getPays(hashtag)
