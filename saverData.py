@@ -164,13 +164,11 @@ def saveTimeSeries(matchname):
 	collection = db[matchname+"_Sentiments_Agg"]
 	data = pd.DataFrame(list(collection.find()))
 	data = data[["Time","Positive","Negative","Neutral"]]
-	data["Positive"] = data["Positive"].apply(int)
-	data["Negative"] = data["Negative"].apply(int)
-	data["Neutral"] = data["Neutral"].apply(int)
-	data["Positive"] = np.ceil((data["Positive"]*100)/data["Positive"].sum())
-	data["Negative"] = np.ceil((data["Negative"]*100)/data["Negative"].sum())
-	data["Neutral"] = np.ceil((data["Neutral"]*100)/data["Neutral"].sum())
-	data[["Time","Positive","Negative","Neutral"]].to_csv(matchname+"_Sentiments_Agg.csv",index=False)
+	data['cumul'] = data[["Negative","Neutral","Positive"]].applymap(int).sum(axis=1)
+	data['Negative'] = np.ceil((data['Negative'].astype(int)/data['cumul'])*100)
+	data['Neutral'] = np.ceil((data['Neutral'].astype(int)/data['cumul'])*100)
+	data['Positive'] = np.ceil((data['Positive'].astype(int)/data['cumul'])*100)
+	data[["Time","Positive","Negative"]].drop_duplicates('Time').dropna().to_csv(matchname+"_Sentiments_Agg.csv",index=False)
 
 def saveEmojis(matchname):
     collection = db[matchname+"_Emojis"]
