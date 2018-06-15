@@ -104,16 +104,16 @@ def save11Players(matchname):
 	for poste in data['Position'].unique():
 	    if poste == 'Goalkeeper':
 	        keeper_name = data[data['Position'] == poste]["Nom"].values.tolist()[0]
-	        keeper_country = INV_PAYS[data[data['Position'] == poste]["Pays"].values.tolist()[0]].lower()
+	        keeper_country = INV_PAYS[data[data['Position'] == poste]["Pays"].values.tolist()[0]].capitalize()
 	    if poste == 'Defender':
 	        defenders_name = data[data['Position'] == poste]["Nom"].values.tolist()[:4]
-	        defenders_country = [INV_PAYS[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:4]]
+	        defenders_country = [INV_PAYS[i].capitalize() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:4]]
 	    if poste == 'Midfielder':
 	        midfielders_name = data[data['Position'] == poste]["Nom"].values.tolist()[:3]
-	        midfielders_country = [INV_PAYS[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
+	        midfielders_country = [INV_PAYS[i].capitalize() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
 	    if poste == 'Forward':
 	        attackers_name = data[data['Position'] == poste]["Nom"].values.tolist()[:3]
-	        attackers_country = [INV_PAYS[i].lower() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
+	        attackers_country = [INV_PAYS[i].capitalize() for i in data[data['Position'] == poste]["Pays"].values.tolist()[:3]]
 
 	if keeper_name == "":
 	   keeper_name = "Undefined"
