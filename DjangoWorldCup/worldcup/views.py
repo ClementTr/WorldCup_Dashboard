@@ -205,7 +205,8 @@ def porspa(request):
     rnn_tweet = ""
     date = "Friday, June 15th - 20:00"
     country_1, country_2 = getPays(hashtag)
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet}
+    emojis = getEmojisClassement(hashtag[1:])
+    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis}
     return render(request, 'worldcup/match.html', context)
 
 
@@ -216,7 +217,6 @@ def rusara(request):
     rnn_tweet = ""
     date = "Thursday, June 14th - 17:00"
     emojis = getEmojisClassement(hashtag[1:])
-    print(emojis)
     country_1, country_2 = getPays(hashtag)
     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet,"goal_tweet":goal_tweet,"date":date,"emojis":emojis}
     return render(request, 'worldcup/match.html', context)
