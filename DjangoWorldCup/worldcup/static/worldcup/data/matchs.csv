@@ -1,12 +1,12 @@
 Group;Jour;Heure;Equipe_1;Equipe_2;Score_Equipe_1;Score
 A;Thursday 14 June ;17:00;Russia;Saudi Arabia;5.0;5 - 0
-A;Friday 15 June;14:00;Egypt;Uruguay;;VS
+A;Friday 15 June;14:00;Egypt;Uruguay;;0 - 1
 A;Tuesday 19 June;20:00;Russia;Egypt;;VS
 A;Wednesday 20 June;17:00;Uruguay;Saudi Arabia;;VS
 A;Monday 25 June;16:00;Uruguay;Russia;;VS
 A;Monday 25 June;16:00;Saudi Arabia;Egypt;;VS
-B;Friday 15 June;17:00;Morocco;Iran;;VS
-B;Friday 15 June;20:00;Portugal;Spain;;VS
+B;Friday 15 June;17:00;Morocco;Iran;;0 - 1
+B;Friday 15 June;20:00;Portugal;Spain;;3 - 3
 B;Wednesday 20 June;14:00;Portugal;Morocco;;VS
 B;Wednesday 20 June;20:00;Iran;Spain;;VS
 B;Monday 25 June;20:00;Iran;Portugal;;VS
