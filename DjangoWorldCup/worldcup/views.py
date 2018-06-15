@@ -63,145 +63,145 @@ def positive_negative(request):
 #     hashtag = "#"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/main.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def third(request):
 #     hashtag = "#"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/main.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def semi_final_2(request):
 #     hashtag = "#"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/main.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def semi_final_1(request):
 #     hashtag = "#"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/main.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def quarter_final_2(request):
 #     hashtag = "#"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/main.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def quarter_final_1(request):
 #     hashtag = "#"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/main.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def round_16_4(request):
 #     hashtag = "#"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/main.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def round_16_3(request):
 #     hashtag = "#"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/main.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def round_16_2(request):
 #     hashtag = "#"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/main.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def round_16_1(request):
 #     hashtag = "#"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/main.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def engbel(request):
 #     hashtag = "#ENGBEL"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/engbel.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def serbra(request):
 #     hashtag = "#SERBRA"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/serbra.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def fraden(request):
 #     hashtag = "#FRADEN"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/fraden.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def spamar(request):
 #     hashtag = "#SPAMAR"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/spamar.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def polcol(request):
 #     hashtag = "#POLCOL"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/polcol.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def gerswe(request):
 #     hashtag = "#GERSWE"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/gerswe.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def bracri(request):
 #     hashtag = "#BRACRI"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/bracri.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def fraper(request):
 #     hashtag = "#FRAPER"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/fraper.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def irnspa(request):
 #     hashtag = "#IRNSPA"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/irnspa.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def rusegy(request):
 #     hashtag = "#RUSEGY"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/rusegy.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def tuneng(request):
 #     hashtag = "#TUNENG"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/tuneng.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def brasui(request):
 #     hashtag = "#BRASUI"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/brasui.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def fraaus(request):
 #     hashtag = "#FRAAUS"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/fraaus.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 # def porspa(request):
 #     hashtag = "#PORSPA"
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/porspa.html', context)
+#     return render(request, 'worldcup/match.html', context)
 #
 
 
@@ -209,10 +209,12 @@ def rusara(request):
     hashtag = "#RUSARA"
     country_1, country_2 = getPays(hashtag)
     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-    return render(request, 'worldcup/rusara.html', context)
+    return render(request, 'worldcup/match.html', context)
 
 def frausa(request):
     hashtag = "#FRAUSA"
     country_1, country_2 = getPays(hashtag)
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-    return render(request, 'worldcup/frausa.html', context)
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>Alors ce dernier match avant la Russie ? <a href='https://twitter.com/hashtag/FRAUSA?src=hash&amp;ref_src=twsrc%5Etfw>'#FRAUSA</a> <a href='https://t.co/Dz6hB4Qb0I'>pic.twitter.com/Dz6hB4Qb0I</a></p>&mdash; CLZZ (@clooz2012) <a href='https://twitter.com/clooz2012/status/1005547103802798080?ref_src=twsrc%5Etfw'>9 juin 2018</a></blockquote>"
+    rnn_tweet = ""
+    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet}
+    return render(request, 'worldcup/match.html', context)
