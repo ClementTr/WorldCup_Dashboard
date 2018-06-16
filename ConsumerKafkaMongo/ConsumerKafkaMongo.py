@@ -1,3 +1,4 @@
+
 from kafka import KafkaConsumer
 import json
 from pymongo import MongoClient
@@ -14,7 +15,7 @@ from correspondance_emoji import *
 
 global hashtag, joueurs, db
 with open('../HASHTAG_FILE.txt') as f:
-    hashtag = f.read()[1:]
+    hashtag = f.read()[1:7]
 
 # hashtag = str('#PORSPA')[1:]
 
@@ -44,22 +45,34 @@ def getPays():
                         "Switzerland": 'SUI', "Tunisia": 'TUN','United_States':'USA'}
 
     inv_pays = {v: k for k, v in pays.items()}
-
+    # print(hashtag[:3])
+    # print(hashtag[3:])
     team1 = inv_pays[hashtag[:3]]
     team2 = inv_pays[hashtag[3:]]
 
     return team1, team2
 
+
 def getPlayers():
     global hashtag
+    # print(hashtag)
     data = pd.read_csv("../Crawler/data_worldcup.csv")
+    #print(data)
     players_team1 = data[data['Code'] == hashtag[:3]][['Lastname','Firstname','Post', 'Code']].values.tolist()
     players_team2 = data[data['Code'] == hashtag[3:]][['Lastname','Firstname','Post', 'Code']].values.tolist()
+    #print(players_team2)
     if len(players_team1) == 0:
         players_team1 = None
+        #print("players_team1")
+        return None
     elif len(players_team2) == 0:
         players_team2 = None
+        print("players_team2")
+        return None
     return players_team1 + players_team2
+
+# print(getPlayers())
+
 
 def clean_tweet(tweet):
     return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet).split())
@@ -122,7 +135,7 @@ def putDataToMongo(tweet):
     elif tweet["lang"] == 'en':
         sentiment = analize_sentiment_en(clean)
     else:
-        sentime = 0
+        sentiment = 0
     #print(sentiment)
     #UPDATE TWEETS
     
@@ -162,4 +175,6 @@ init()
 consumer = KafkaConsumer("WorldCup", bootstrap_servers='localhost:9092',auto_offset_reset='earliest',value_deserializer=lambda m: json.loads(m.decode('ascii')))
 for msg in consumer:
     putDataToMongo(msg.value)
+
+
 

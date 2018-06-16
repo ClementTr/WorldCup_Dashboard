@@ -31,7 +31,7 @@ api = twitter_setup()
 global hashtag
 # hashtag = '#PORSPA'
 with open('../HASHTAG_FILE.txt') as f:
-    hashtag = f.read()[1:]
+    hashtag = f.read()[1:7]
 
 class StreamListener(tweepy.StreamListener):
 

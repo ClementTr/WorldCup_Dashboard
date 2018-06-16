@@ -6,7 +6,7 @@ import datetime
 global hashtag, joueurs, db
 # hashtag = str('#PORSPA')[1:]
 with open('HASHTAG_FILE.txt') as f:
-    hashtag = f.read()[1:]
+    hashtag = f.read()[1:7]
 
 client = MongoClient('localhost', 27017)
 db = client['WorldCup']
