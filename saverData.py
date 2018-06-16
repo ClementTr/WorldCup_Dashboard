@@ -95,6 +95,7 @@ def save11Players(matchname):
 	'''
 	collection = db[matchname+"_Players"]
 	data = pd.DataFrame(list(collection.find()))
+	data.sort_values(by="Count", ascending=False, inplace=True)
 
 	keeper_name, keeper_country = "", "";
 	defenders_name, defenders_country = [], [];
@@ -185,16 +186,16 @@ def removeMongoCollections(hashtag):
 		collection.drop()
 
 initMongo()
-with open('HASHTAG_FILE.txt') as f:
-    hashtag = f.read()
-# hashtag = "#RUSARA"
+# with open('HASHTAG_FILE.txt') as f:
+#     hashtag = f.read()
+hashtag = "#PORSPA"
 matchname = str(hashtag[1:])
-saveCountriesData(matchname)
-saveTweets(matchname)
-savePositivity(matchname)
-saveTimeSeries(matchname)
-saveTopPlayers(matchname)
+# saveCountriesData(matchname)
+# saveTweets(matchname)
+# savePositivity(matchname)
+# saveTimeSeries(matchname)
+# saveTopPlayers(matchname)
 save11Players(matchname)
-saveEmojis(matchname)
+# saveEmojis(matchname)
 #removeMongoCollections(matchname)
 client.close()
