@@ -188,14 +188,14 @@ def removeMongoCollections(hashtag):
 initMongo()
 # with open('HASHTAG_FILE.txt') as f:
 #     hashtag = f.read()
-hashtag = "#PORSPA"
+hashtag = "#FRAAUS"
 matchname = str(hashtag[1:])
-# saveCountriesData(matchname)
-# saveTweets(matchname)
-# savePositivity(matchname)
-# saveTimeSeries(matchname)
-# saveTopPlayers(matchname)
+saveCountriesData(matchname)
+saveTweets(matchname)
+savePositivity(matchname)
+saveTimeSeries(matchname)
+saveTopPlayers(matchname)
 save11Players(matchname)
-# saveEmojis(matchname)
+saveEmojis(matchname)
 #removeMongoCollections(matchname)
 client.close()
