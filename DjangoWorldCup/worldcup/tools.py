@@ -14,7 +14,7 @@ import json
 #    'Maroc':'MAR', 'Danemark':'DEN', 'Serbie':'SER', 'Belgique':'BEL', 'Etats-Unis': 'USA', 'Algerie': 'ALG'}
 
 PAYS_EN = {"Australia": 'AUS', "Belgium": 'BEL', "Brazil": 'BRA',
-                        "Colombia": 'COL', "Costa": 'CRI', "Croatia": 'HRV',
+                        "Colombia": 'COL', "Costa": 'CRC', "Croatia": 'HRV',
                         "Denmark": 'DEN', "Egypt": 'EGY', "England": 'ENG',
                         "France": 'FRA', "Germany": 'GER', "Iran": 'IRN',
                         "Morocco": 'MAR', "Peru": 'PER', "Poland": 'POL',
