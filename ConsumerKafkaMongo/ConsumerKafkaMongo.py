@@ -36,13 +36,13 @@ def init():
 
 def getPays():
     pays = {"Australia": 'AUS', "Belgium": 'BEL', "Brazil": 'BRA',
-                        "Colombia": 'COL', "Costa": 'CRI', "Croatia": 'HRV',
+                        "Colombia": 'COL', "Costa": 'CRC', "Croatia": 'HRV',
                         "Denmark": 'DEN', "Egypt": 'EGY', "England": 'ENG',
                         "France": 'FRA', "Germany": 'GER', "Iran": 'IRN',
                         "Morocco": 'MAR', "Peru": 'PER', "Poland": 'POL',
                         "Portugal": 'POR', "Russia": 'RUS', "Arabia": 'ARA',
                         "Serbia": 'SER', "Spain": 'SPA', "Sweden": 'SWE',
-                        "Switzerland": 'SUI', "Tunisia": 'TUN','United_States':'USA'}
+                        "Switzerland": 'SWI', "Tunisia": 'TUN','United_States':'USA'}
 
     inv_pays = {v: k for k, v in pays.items()}
     # print(hashtag[:3])
