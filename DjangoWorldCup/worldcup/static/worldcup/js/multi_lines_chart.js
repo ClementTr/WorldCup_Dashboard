@@ -25,10 +25,10 @@ function redraw(){
 
 function draw(data, innerW, innerH) {
       /* On créé une variable courbe pour les sales */
-      let valuelineSales = d3v4.line()
-                               .x(d => x_plot(d.Time))
-                               .y(d => y_plot(d.Negative))
-                               .curve(d3v4.curveCardinal); // Pour avoir des courbes linéaires
+      // let valuelineSales = d3v4.line()
+      //                          .x(d => x_plot(d.Time))
+      //                          .y(d => y_plot(d.Negative))
+      //                          .curve(d3v4.curveCardinal); // Pour avoir des courbes linéaires
       /* On créé une variable courbe pour les deliveries */
       let valuelineDelivered = d3v4.line()
                                    .x(d => x_plot(d.Time))
@@ -53,18 +53,18 @@ function draw(data, innerW, innerH) {
               .call(d3v4.axisLeft(y_plot));
 
       /* On dessine la variable valuelineSales */
-      svg_plot.append("path")
-              .data([data])
-              .attr("class", "line")
-              .attr("id", "sales")
-              .attr("d",valuelineSales)
-              .style("stroke", "red")
-              .transition() // On ajoute ces lignes pour dessiner les courbes en direct
-              .duration(2000)
-              .attrTween("stroke-dasharray", function() {
-                  var len = this.getTotalLength();
-                  return function(t) { return (d3v4.interpolateString("0," + len, len + ",0"))(t) };
-              });
+      // svg_plot.append("path")
+      //         .data([data])
+      //         .attr("class", "line")
+      //         .attr("id", "sales")
+      //         .attr("d",valuelineSales)
+      //         .style("stroke", "red")
+      //         .transition() // On ajoute ces lignes pour dessiner les courbes en direct
+      //         .duration(2000)
+      //         .attrTween("stroke-dasharray", function() {
+      //             var len = this.getTotalLength();
+      //             return function(t) { return (d3v4.interpolateString("0," + len, len + ",0"))(t) };
+      //         });
 
 
       /* On dessine la variable valuelineDelivered */
@@ -90,24 +90,24 @@ function draw(data, innerW, innerH) {
               .attr("class", "overlay")
               .attr("width", innerW)
               .attr("height", innerH)
-              .on("mouseover", () => (focus_sales.style("display", null) & focus_deliveries.style("display", null)))
-              .on("mouseout", () => (focus_sales.style("display", "none") & focus_deliveries.style("display", "none")))
+              .on("mouseover", () => (focus_deliveries.style("display", null)))
+              .on("mouseout", () => (focus_deliveries.style("display", "none")))
               .on("mousemove", mousemove);
 
       /* Initialisation de focus */
-      let focus_sales = svg_plot.append("g")
-                                //.attr("class", "focus_sales")
-                                .style("stroke", "red")
-                                .style("display", "none");
+      // let focus_sales = svg_plot.append("g")
+      //                           //.attr("class", "focus_sales")
+      //                           .style("stroke", "red")
+      //                           .style("display", "none");
 
-      /* Dessin de la variable focus comme étant un cercle de rayon 4.5 px */
-      focus_sales.append("circle")
-                 .attr("r", 4.5);
+      //  Dessin de la variable focus comme étant un cercle de rayon 4.5 px 
+      // focus_sales.append("circle")
+      //            .attr("r", 4.5);
 
-      /* Ajout d'un texte sur focus */
-      focus_sales.append("text")
-                 .attr("x", 9)
-                 .attr("dy", ".35em");
+      // /* Ajout d'un texte sur focus */
+      // focus_sales.append("text")
+      //            .attr("x", 9)
+      //            .attr("dy", ".35em");
 
       /* Initialisation de focus */
       let focus_deliveries = svg_plot.append("g")
@@ -126,19 +126,19 @@ function draw(data, innerW, innerH) {
 
 
       /*vertical line*/
-      svg_plot.append("text")
-            .attr("x", 5)
-            .attr("y", 5)
-            .attr("class", "legend")    // style the legend
-            .style("fill","blue")
-            .text("Positive"); 
+      // svg_plot.append("text")
+      //       .attr("x", 5)
+      //       .attr("y", 5)
+      //       .attr("class", "legend")    // style the legend
+      //       .style("fill","blue")
+      //       .text("Positive"); 
 
-      svg_plot.append("text")
-            .attr("x", 80)
-            .attr("y", 5)
-            .attr("class", "legend")    // style the legend
-            .style("fill","red")
-            .text("Negative"); 
+      // svg_plot.append("text")
+      //       .attr("x", 80)
+      //       .attr("y", 5)
+      //       .attr("class", "legend")    // style the legend
+      //       .style("fill","red")
+      //       .text("Negative"); 
 
       /* La fonction mousemove */
       function mousemove() {
@@ -147,8 +147,8 @@ function draw(data, innerW, innerH) {
               d0 = data[i - 1],
               d1 = data[i],
               d = x0 - d0.Time > d1.Time - x0 ? d1 : d0; // sorte de if pour trouver le point le plus proche
-          focus_sales.attr("transform", "translate(" + x_plot(d.Time) + "," + y_plot(d.Negative) + ")");
-          focus_sales.select("text").text(d.Negative);
+          // focus_sales.attr("transform", "translate(" + x_plot(d.Time) + "," + y_plot(d.Negative) + ")");
+          // focus_sales.select("text").text(d.Negative);
 
           // if (Math.max(d.Positive, d.Negative) == d.Positive) {
           //   focus_deliveries.select(".x-hover-line").attr("y2", innerH - y_plot(d.Positive));
