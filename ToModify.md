@@ -1,14 +1,17 @@
 #To Modify
 
 ##base.html
-Dé-commenter la balise du nouveau match  
-Linker le nouveau match à main/  
-Modifier le lien du précédent match (anciennement main/ vers hashtagmatch/)
-/!\ Faire les mêmes opérations pour la version mobile
+Dé-commenter la balise du nouveau match  (Laptop + Mobile)
+Modifier # du /main/ (Laptop + Mobile)
 
 ##urls.py
 Dé-commenter le match à suivre  
 
 ##view.py
-Dé-commenter le match à suivre  
-Modifier la variable globale MATCH_HASHTAG
+Changer MATCH_HASHTAG
+#### Main
+Dans le main, changer date du match à suivre  
+Changer our_tweet
+Changer goal_tweet
+#### Match view
+Décommenter le match de la veille, ajouter les 3 tweets

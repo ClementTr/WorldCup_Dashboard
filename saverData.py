@@ -11,7 +11,7 @@ PAYS = {"Australia": 'AUS', "Belgium": 'BEL', "Brazil": 'BRA',
                         "Morocco": 'MAR', "Peru": 'PER', "Poland": 'POL',
                         "Portugal": 'POR', "Russia": 'RUS', "Arabia": 'ARA',
                         "Serbia": 'SER', "Spain": 'SPA', "Sweden": 'SWE',
-                        "Switzerland": 'SUI', "Tunisia": 'TUN','United_states':'USA'}
+                        "Switzerland": 'SWI', "Tunisia": 'TUN','United_states':'USA'}
 INV_PAYS = {v: k for k, v in PAYS.items()}
 
 global db,client
@@ -165,6 +165,8 @@ def saveTimeSeries(matchname):
 	collection = db[matchname+"_Sentiments_Agg"]
 	data = pd.DataFrame(list(collection.find()))
 	data = data[["Time","Positive","Negative","Neutral"]]
+	data['Time'] = pd.to_datetime(data['Time'], infer_datetime_format=True)
+	data["Time"] = data["Time"].apply(lambda x : x+timedelta(hours=2))
 	data['cumul'] = data[["Negative","Positive"]].applymap(int).sum(axis=1)
 	data['Negative'] = np.ceil((data['Negative'].astype(int)/data['cumul'])*100)
 	#data['Neutral'] = np.ceil((data['Neutral'].astype(int)/data['cumul'])*100)
