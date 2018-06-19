@@ -5,7 +5,7 @@ import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
 from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, get_Emojis, getEmojisClassement
-MATCH_HASHTAG = '#TUNENG'
+MATCH_HASHTAG = '#POLSEN'
 
 def home(request):
     if (request.method == "POST"):
@@ -44,11 +44,11 @@ def data_playersPosition(request):
 
 
 def main(request):
-    date = "Monday, June 18th - 20:00"
+    date = "Tuesday, June 19th - 17:00"
     country_1, country_2 = getPays(MATCH_HASHTAG)
     emoji = get_Emojis(MATCH_HASHTAG)
-    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>The scenes if England only went and won the <a href='https://twitter.com/hashtag/WorldCup?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCup</a>... <br><br>18:15 BST <a href='https://twitter.com/BBCOne?ref_src=twsrc%5Etfw'>@BBCOne</a> <a href='https://twitter.com/hashtag/bbcworldcup?src=hash&amp;ref_src=twsrc%5Etfw'>#bbcworldcup</a> <a href='https://t.co/iaGUuRkON0'>pic.twitter.com/iaGUuRkON0</a></p>&mdash; BBC Sport (@BBCSport) <a href='https://twitter.com/BBCSport/status/1008672925510242305?ref_src=twsrc%5Etfw'>18 juin 2018</a></blockquote>"
-    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>All <a href='https://twitter.com/hashtag/WorldCup?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCup</a> games are shown free on the Russian underground 🙌<br><br>We need this in England! 😍 <a href='https://t.co/NEj2mWUyal'>pic.twitter.com/NEj2mWUyal</a></p>&mdash; talkSPORT (@talkSPORT) <a href='https://twitter.com/talkSPORT/status/1008698533912956928?ref_src=twsrc%5Etfw'>18 juin 2018</a></blockquote>"
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Let&#39;s Go!🇸🇳🔥  <a href='https://twitter.com/hashtag/NewLevels?src=hash&amp;ref_src=twsrc%5Etfw'>#NewLevels</a><a href='https://twitter.com/hashtag/SEN?src=hash&amp;ref_src=twsrc%5Etfw'>#SEN</a> <a href='https://twitter.com/hashtag/POLSEN?src=hash&amp;ref_src=twsrc%5Etfw'>#POLSEN</a> <a href='https://twitter.com/hashtag/WorldCup?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCup</a> <a href='https://t.co/uBR7OOakUH'>pic.twitter.com/uBR7OOakUH</a></p>&mdash; Senegal Football🇸🇳 (@SenegalFootball) <a href='https://twitter.com/SenegalFootball/status/1009035702301003777?ref_src=twsrc%5Etfw'>19 juin 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Sadio Mane Premier League 17/18 goals<br><br>Music: Booba - DKR <a href='https://t.co/n6q5C0chGS'>pic.twitter.com/n6q5C0chGS</a></p>&mdash; Roar Of The Kop (@KopVideos) <a href='https://twitter.com/KopVideos/status/1005780518103846912?ref_src=twsrc%5Etfw'>10 juin 2018</a></blockquote>"
     context = {'hashtag': MATCH_HASHTAG, 'country_1': country_1, "country_2": country_2, "emoji":emoji, "date":date, "our_tweet": our_tweet, "goal_tweet": goal_tweet, "our_tweet": our_tweet, "goal_tweet": goal_tweet}
     return render(request, 'worldcup/main.html', context)
 
@@ -181,18 +181,23 @@ def positive_negative(request):
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
 #     return render(request, 'worldcup/match.html', context)
 #
-# def tuneng(request):
-#     hashtag = "#TUNENG"
-#     country_1, country_2 = getPays(hashtag)
-#     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/match.html', context)
+def tuneng(request):
+    hashtag = "#TUNENG"
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>England 😱 <a href='https://t.co/N0zBMDzizd'>pic.twitter.com/N0zBMDzizd</a></p>&mdash; The LAD Football (@TheLADFootball) <a href='https://twitter.com/TheLADFootball/status/1008947073914290176?ref_src=twsrc%5Etfw'>19 juin 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Everything is better with titanic music <br><br>England  <a href='https://twitter.com/hashtag/ENGTUN?src=hash&amp;ref_src=twsrc%5Etfw'>#ENGTUN</a> <a href='https://t.co/gr2AGaXEqc'>pic.twitter.com/gr2AGaXEqc</a></p>&mdash; Raekwon (@RaekwonJ71) <a href='https://twitter.com/RaekwonJ71/status/1008997894022750208?ref_src=twsrc%5Etfw'>19 juin 2018</a></blockquote>"
+    rnn_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Kane for England celebrating late goal anytime <a href='https://twitter.com/hashtag/TUNENG?src=hash&amp;ref_src=twsrc%5Etfw'>#TUNENG</a> <a href='https://twitter.com/hashtag/RNN?src=hash&amp;ref_src=twsrc%5Etfw'>#RNN</a> <a href='https://t.co/afnrvka2xW'>pic.twitter.com/afnrvka2xW</a></p>&mdash; DataDeer (@DataDeer_) <a href='https://twitter.com/DataDeer_/status/1009052406598885377?ref_src=twsrc%5Etfw'>June 19, 2018</a></blockquote>"
+    date = "Monday, June 18th - 17:00"
+    country_1, country_2 = getPays(hashtag)
+    emojis = getEmojisClassement(hashtag[1:])
+    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis}
+    return render(request, 'worldcup/match.html', context)
 #
 def braswi(request):
     hashtag = "#BRASWI"
     our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>When Neymar was in school<br>(🎥:  <a href='https://twitter.com/kennynobrega?ref_src=twsrc%5Etfw'>@kennynobrega</a> )<a href='https://t.co/XQ8Ky418IH'>https://t.co/XQ8Ky418IH</a></p>&mdash; Troll Football Media (@Troll__Footbal) <a href='https://twitter.com/Troll__Footbal/status/1008436596809654274?ref_src=twsrc%5Etfw'>17 juin 2018</a></blockquote>"
     goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>le Golazoooooode <a href='https://twitter.com/Phil_Coutinho?ref_src=twsrc%5Etfw'>@Phil_Coutinho</a>, quel monstre 🇧🇷🔥 <a href='https://t.co/chAgB3iAyn'>pic.twitter.com/chAgB3iAyn</a></p>&mdash; Visca Barça (@ViscaBarca_FR) <a href='https://twitter.com/ViscaBarca_FR/status/1008417839160741890?ref_src=twsrc%5Etfw'>17 juin 2018</a></blockquote>"
-    rnn_tweet = ""
-    date = "Friday, June 15th - 20:00"
+    rnn_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Coutinho scores screamers like a replay <a href='https://twitter.com/hashtag/BRASWI?src=hash&amp;ref_src=twsrc%5Etfw'>#BRASWI</a> <a href='https://twitter.com/hashtag/RNN?src=hash&amp;ref_src=twsrc%5Etfw'>#RNN</a> <a href='https://t.co/aK8WzrhZ2m'>pic.twitter.com/aK8WzrhZ2m</a></p>&mdash; DataDeer (@DataDeer_) <a href='https://twitter.com/DataDeer_/status/1009047499083075584?ref_src=twsrc%5Etfw'>June 19, 2018</a></blockquote>"
+    date = "Sunday, June 17th - 20:00"
     country_1, country_2 = getPays(hashtag)
     emojis = getEmojisClassement(hashtag[1:])
     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis}
@@ -232,11 +237,3 @@ def rusara(request):
     country_1, country_2 = getPays(hashtag)
     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet,"goal_tweet":goal_tweet,"date":date,"emojis":emojis}
     return render(request, 'worldcup/match.html', context)
-
-# def frausa(request):
-#     hashtag = "#FRAUSA"
-#     country_1, country_2 = getPays(hashtag)
-#     our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>Alors ce dernier match avant la Russie ? <a href='https://twitter.com/hashtag/FRAUSA?src=hash&amp;ref_src=twsrc%5Etfw>'#FRAUSA</a> <a href='https://t.co/Dz6hB4Qb0I'>pic.twitter.com/Dz6hB4Qb0I</a></p>&mdash; CLZZ (@clooz2012) <a href='https://twitter.com/clooz2012/status/1005547103802798080?ref_src=twsrc%5Etfw'>9 juin 2018</a></blockquote>"
-#     rnn_tweet = ""
-#     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet}
-#     return render(request, 'worldcup/match.html', context)

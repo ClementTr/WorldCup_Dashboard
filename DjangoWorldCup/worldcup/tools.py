@@ -20,7 +20,8 @@ PAYS_EN = {"Australia": 'AUS', "Belgium": 'BEL', "Brazil": 'BRA',
                         "Morocco": 'MAR', "Peru": 'PER', "Poland": 'POL',
                         "Portugal": 'POR', "Russia": 'RUS', "Arabia": 'ARA',
                         "Serbia": 'SER', "Spain": 'SPA', "Sweden": 'SWE',
-                        "Switzerland": 'SWI', "Tunisia": 'TUN','United_states':'USA'}
+                        "Switzerland": 'SWI', "Tunisia": 'TUN','United_states':'USA',
+                        "Senegal": "SEN"}
 
 
 # INV_PAYS = {v: k for k, v in PAYS.items()}
