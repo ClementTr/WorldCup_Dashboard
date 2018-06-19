@@ -119,7 +119,7 @@ def save11Players(matchname):
 
 	if keeper_name == "":
 	   keeper_name = "Undefined"
-	   keeper_cpuntry = "Undefined"
+	   keeper_country = "Undefined"
 	if len(defenders_name) < 4:
 	   for i in range(len(defenders_name),4):
 	       defenders_name.append("Undefined")
