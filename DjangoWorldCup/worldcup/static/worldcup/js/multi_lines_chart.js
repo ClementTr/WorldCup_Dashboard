@@ -100,7 +100,7 @@ function draw(data, innerW, innerH) {
       //                           .style("stroke", "red")
       //                           .style("display", "none");
 
-      //  Dessin de la variable focus comme étant un cercle de rayon 4.5 px 
+      //  Dessin de la variable focus comme étant un cercle de rayon 4.5 px
       // focus_sales.append("circle")
       //            .attr("r", 4.5);
 
@@ -131,14 +131,14 @@ function draw(data, innerW, innerH) {
       //       .attr("y", 5)
       //       .attr("class", "legend")    // style the legend
       //       .style("fill","blue")
-      //       .text("Positive"); 
+      //       .text("Positive");
 
       // svg_plot.append("text")
       //       .attr("x", 80)
       //       .attr("y", 5)
       //       .attr("class", "legend")    // style the legend
       //       .style("fill","red")
-      //       .text("Negative"); 
+      //       .text("Negative");
 
       /* La fonction mousemove */
       function mousemove() {
