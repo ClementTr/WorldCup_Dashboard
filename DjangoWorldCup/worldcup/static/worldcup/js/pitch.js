@@ -22,7 +22,7 @@ function draw_pitch(){
   let w_pitch
   let h_pitch
   let color_suisse = "red"
-  let dict_color = { "Switzerland":"red", "Germany":"black", "England":"white", "Arabia":"green", "Australia":"darkblue", "Belgium":"#eedc00", "Brazil":"yellow", "Colombia":"yellow", "Costa":"#133e7c", "Denmark":"darkred", "Egypt":"black", "France":"blue", "Iran":"darkgreen", "Morocco":"darkred", "Peru":"red", "Poland":"red", "Portugal":"darkred", "Russia":"blue", "Spain":"red", "Sweden":"darkblue", "Tunisia":"red" };
+  let dict_color = { "Switzerland":"red", "Germany":"black", "England":"white", "Arabia":"green", "Australia":"darkblue", "Belgium":"#eedc00", "Brazil":"yellow", "Colombia":"yellow", "Costa":"#133e7c", "Denmark":"darkred", "Egypt":"black", "France":"blue", "Iran":"darkgreen", "Morocco":"darkred", "Peru":"red", "Poland":"red", "Portugal":"darkred", "Russia":"blue", "Spain":"red", "Sweden":"darkblue", "Tunisia":"red", "Senegal": "#FDEF40" };
   if (width_pitch/height_pitch < 1.6) {
     w_pitch = width_pitch;
     h_pitch = height_pitch;
