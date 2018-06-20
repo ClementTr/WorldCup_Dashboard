@@ -1,7 +1,7 @@
 ,Position,Equipe,Points,Group,Emoji,Buts_pour,Buts_contre
-0,1,Russia,3,A,russia,5,0
+0,1,Russia,6,A,russia,8,1
 1,2,Saudi Arabia,0,A,saudi-arabia,0,5
-2,3,Egypt,0,A,egypt,0,1
+2,3,Egypt,0,A,egypt,0,4
 3,4,Uruguay,3,A,uruguay,1,0
 4,1,Portugal,1,B,portugal,3,3
 5,2,Spain,1,B,spain,3,3
@@ -25,10 +25,10 @@
 23,4,Korea Republic,0,F,south-korea,0,1
 24,1,Belgium,3,G,belgium,3,0
 25,2,Panama,0,G,panama,0,3
-26,3,Tunisia,0,G,tunisia,0,0
-27,4,England,0,G,england,0,0
-28,1,Poland,0,H,poland,0,0
-29,2,Senegal,0,H,senegal,0,0
-30,3,Colombia,0,H,colombia,0,0
-31,4,Japan,0,H,japan,0,0
+26,3,Tunisia,0,G,tunisia,0,1
+27,4,England,3,G,england,2,0
+28,1,Poland,0,H,poland,1,2
+29,2,Senegal,3,H,senegal,2,1
+30,3,Colombia,0,H,colombia,1,2
+31,4,Japan,3,H,japan,2,1
 
