@@ -5,7 +5,7 @@ import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
 from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, get_Emojis, getEmojisClassement
-MATCH_HASHTAG = '#POLSEN'
+MATCH_HASHTAG = '#IRASPA'
 
 def home(request):
     if (request.method == "POST"):
@@ -47,9 +47,8 @@ def main(request):
     date = "Tuesday, June 19th - 17:00"
     country_1, country_2 = getPays(MATCH_HASHTAG)
     emoji = get_Emojis(MATCH_HASHTAG)
-    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Let&#39;s Go!🇸🇳🔥  <a href='https://twitter.com/hashtag/NewLevels?src=hash&amp;ref_src=twsrc%5Etfw'>#NewLevels</a><a href='https://twitter.com/hashtag/SEN?src=hash&amp;ref_src=twsrc%5Etfw'>#SEN</a> <a href='https://twitter.com/hashtag/POLSEN?src=hash&amp;ref_src=twsrc%5Etfw'>#POLSEN</a> <a href='https://twitter.com/hashtag/WorldCup?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCup</a> <a href='https://t.co/uBR7OOakUH'>pic.twitter.com/uBR7OOakUH</a></p>&mdash; Senegal Football🇸🇳 (@SenegalFootball) <a href='https://twitter.com/SenegalFootball/status/1009035702301003777?ref_src=twsrc%5Etfw'>19 juin 2018</a></blockquote>"
-    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Sadio Mane Premier League 17/18 goals<br><br>Music: Booba - DKR <a href='https://t.co/n6q5C0chGS'>pic.twitter.com/n6q5C0chGS</a></p>&mdash; Roar Of The Kop (@KopVideos) <a href='https://twitter.com/KopVideos/status/1005780518103846912?ref_src=twsrc%5Etfw'>10 juin 2018</a></blockquote>"
-    context = {'hashtag': MATCH_HASHTAG, 'country_1': country_1, "country_2": country_2, "emoji":emoji, "date":date, "our_tweet": our_tweet, "goal_tweet": goal_tweet, "our_tweet": our_tweet, "goal_tweet": goal_tweet}
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>🇪🇸 AS conducted a poll asking fans the question &#39;Which ‘keeper would you pick to start for Spain against Iran?&#39;<br><br>49.8%  Kepa Arrizabalaga <br>38.4%  David De Gea <br>11.8%  Pepe Reina<br><br>(39,917 votes)<br><br>Over 61% want De Gea dropped 😳<br><br>Would you stick with him? <a href='https://t.co/0ytWFCEncO'>pic.twitter.com/0ytWFCEncO</a></p>&mdash; Coral (@Coral) <a href='https://twitter.com/Coral/status/1009363980073291776?ref_src=twsrc%5Etfw'>June 20, 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>SPAIN VS PORTUGAL HIGHLIGHTS ALL GOALS 2018 <a href='https://t.co/XO60JUnJip'>pic.twitter.com/XO60JUnJip</a></p>&mdash; Daily Hurriyat (@HurriyatPk) <a href='https://twitter.com/HurriyatPk/status/1008571547899060224?ref_src=twsrc%5Etfw'>June 18, 2018</a></blockquote>"
     return render(request, 'worldcup/main.html', context)
 
 
@@ -174,13 +173,19 @@ def positive_negative(request):
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
 #     return render(request, 'worldcup/match.html', context)
-#
-# def rusegy(request):
-#     hashtag = "#RUSEGY"
-#     country_1, country_2 = getPays(hashtag)
-#     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/match.html', context)
-#
+
+
+def rusegy(request):
+    hashtag = "#RUSENG"
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>Les mecs qui parient depuis le début de la Coupe du monde : <a href='https://t.co/s42v98D1nv'>pic.twitter.com/s42v98D1nv</a></p>&mdash; Dark (@Nelson_Menfoot) <a href='https://twitter.com/Nelson_Menfoot/status/1009072056284172290?ref_src=twsrc%5Etfw'>19 juin 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>World Cup 2018: Russia vs Egypt 3-1 all goals <a href='https://t.co/JzQ9cWzeqV'>pic.twitter.com/JzQ9cWzeqV</a></p>&mdash; Daily Hurriyat (@HurriyatPk) <a href='https://twitter.com/HurriyatPk/status/1009173576489078787?ref_src=twsrc%5Etfw'>June 19, 2018</a></blockquote>"
+    rnn_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Salah is back for Egypt own goal in 28 years. <a href='https://twitter.com/hashtag/RUSEGY?src=hash&amp;ref_src=twsrc%5Etfw'>#RUSEGY</a> <a href='https://twitter.com/hashtag/RNN?src=hash&amp;ref_src=twsrc%5Etfw'>#RNN</a> <a href='https://t.co/r32RIEslwY'>pic.twitter.com/r32RIEslwY</a></p>&mdash; DataDeer (@DataDeer_) <a href='https://twitter.com/DataDeer_/status/1009398332987502592?ref_src=twsrc%5Etfw'>June 20, 2018</a></blockquote>"
+    date = "Tuesday, June 19th - 20:00"
+    country_1, country_2 = getPays(hashtag)
+    emojis = getEmojisClassement(hashtag[1:])
+    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis}
+    return render(request, 'worldcup/match.html', context)
+
 def tuneng(request):
     hashtag = "#TUNENG"
     our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>England 😱 <a href='https://t.co/N0zBMDzizd'>pic.twitter.com/N0zBMDzizd</a></p>&mdash; The LAD Football (@TheLADFootball) <a href='https://twitter.com/TheLADFootball/status/1008947073914290176?ref_src=twsrc%5Etfw'>19 juin 2018</a></blockquote>"
