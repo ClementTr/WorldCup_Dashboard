@@ -46,9 +46,10 @@ def data_playersPosition(request):
 def main(request):
     date = "Wenedsay, June 20th - 17:00"
     country_1, country_2 = getPays(MATCH_HASHTAG)
-    emoji = get_Emojis(MATCH_HASHTAG)
+    emojis = get_Emojis(MATCH_HASHTAG)
     our_tweet = ""
     goal_tweet = ""
+    context = {'hashtag': MATCH_HASHTAG, 'country_1': country_1, "country_2": country_2, "date":date, "our_tweet": our_tweet, "goal_tweet":goal_tweet, "emojis":emojis}
     return render(request, 'worldcup/main.html', context)
 
 
