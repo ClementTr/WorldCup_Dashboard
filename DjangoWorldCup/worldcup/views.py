@@ -177,7 +177,7 @@ def positive_negative(request):
 
 
 def rusegy(request):
-    hashtag = "#RUSENG"
+    hashtag = "#RUSEGY"
     our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>Les mecs qui parient depuis le début de la Coupe du monde : <a href='https://t.co/s42v98D1nv'>pic.twitter.com/s42v98D1nv</a></p>&mdash; Dark (@Nelson_Menfoot) <a href='https://twitter.com/Nelson_Menfoot/status/1009072056284172290?ref_src=twsrc%5Etfw'>19 juin 2018</a></blockquote>"
     goal_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>World Cup 2018: Russia vs Egypt 3-1 all goals <a href='https://t.co/JzQ9cWzeqV'>pic.twitter.com/JzQ9cWzeqV</a></p>&mdash; Daily Hurriyat (@HurriyatPk) <a href='https://twitter.com/HurriyatPk/status/1009173576489078787?ref_src=twsrc%5Etfw'>June 19, 2018</a></blockquote>"
     rnn_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Salah is back for Egypt own goal in 28 years. <a href='https://twitter.com/hashtag/RUSEGY?src=hash&amp;ref_src=twsrc%5Etfw'>#RUSEGY</a> <a href='https://twitter.com/hashtag/RNN?src=hash&amp;ref_src=twsrc%5Etfw'>#RNN</a> <a href='https://t.co/r32RIEslwY'>pic.twitter.com/r32RIEslwY</a></p>&mdash; DataDeer (@DataDeer_) <a href='https://twitter.com/DataDeer_/status/1009398332987502592?ref_src=twsrc%5Etfw'>June 20, 2018</a></blockquote>"
