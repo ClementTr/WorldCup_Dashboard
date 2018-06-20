@@ -5,7 +5,7 @@ import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
 from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, get_Emojis, getEmojisClassement
-MATCH_HASHTAG = '#IRASPA'
+MATCH_HASHTAG = '#URUKSA'
 
 def home(request):
     if (request.method == "POST"):
@@ -44,11 +44,11 @@ def data_playersPosition(request):
 
 
 def main(request):
-    date = "Tuesday, June 19th - 17:00"
+    date = "Wenedsay, June 20th - 17:00"
     country_1, country_2 = getPays(MATCH_HASHTAG)
     emoji = get_Emojis(MATCH_HASHTAG)
-    our_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>🇪🇸 AS conducted a poll asking fans the question &#39;Which ‘keeper would you pick to start for Spain against Iran?&#39;<br><br>49.8%  Kepa Arrizabalaga <br>38.4%  David De Gea <br>11.8%  Pepe Reina<br><br>(39,917 votes)<br><br>Over 61% want De Gea dropped 😳<br><br>Would you stick with him? <a href='https://t.co/0ytWFCEncO'>pic.twitter.com/0ytWFCEncO</a></p>&mdash; Coral (@Coral) <a href='https://twitter.com/Coral/status/1009363980073291776?ref_src=twsrc%5Etfw'>June 20, 2018</a></blockquote>"
-    goal_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>SPAIN VS PORTUGAL HIGHLIGHTS ALL GOALS 2018 <a href='https://t.co/XO60JUnJip'>pic.twitter.com/XO60JUnJip</a></p>&mdash; Daily Hurriyat (@HurriyatPk) <a href='https://twitter.com/HurriyatPk/status/1008571547899060224?ref_src=twsrc%5Etfw'>June 18, 2018</a></blockquote>"
+    our_tweet = ""
+    goal_tweet = ""
     return render(request, 'worldcup/main.html', context)
 
 
