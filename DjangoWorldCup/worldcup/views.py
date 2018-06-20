@@ -47,6 +47,7 @@ def main(request):
     date = "Wenedsay, June 20th - 17:00"
     country_1, country_2 = getPays(MATCH_HASHTAG)
     emojis = get_Emojis(MATCH_HASHTAG)
+    print(emojis)
     our_tweet = ""
     goal_tweet = ""
     context = {'hashtag': MATCH_HASHTAG, 'country_1': country_1, "country_2": country_2, "date":date, "our_tweet": our_tweet, "goal_tweet":goal_tweet, "emojis":emojis}
@@ -176,12 +177,12 @@ def positive_negative(request):
 #     return render(request, 'worldcup/match.html', context)
 
 
-def rusegy(request):
-    hashtag = "#RUSEGY"
-    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>Les mecs qui parient depuis le début de la Coupe du monde : <a href='https://t.co/s42v98D1nv'>pic.twitter.com/s42v98D1nv</a></p>&mdash; Dark (@Nelson_Menfoot) <a href='https://twitter.com/Nelson_Menfoot/status/1009072056284172290?ref_src=twsrc%5Etfw'>19 juin 2018</a></blockquote>"
-    goal_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>World Cup 2018: Russia vs Egypt 3-1 all goals <a href='https://t.co/JzQ9cWzeqV'>pic.twitter.com/JzQ9cWzeqV</a></p>&mdash; Daily Hurriyat (@HurriyatPk) <a href='https://twitter.com/HurriyatPk/status/1009173576489078787?ref_src=twsrc%5Etfw'>June 19, 2018</a></blockquote>"
-    rnn_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Salah is back for Egypt own goal in 28 years. <a href='https://twitter.com/hashtag/RUSEGY?src=hash&amp;ref_src=twsrc%5Etfw'>#RUSEGY</a> <a href='https://twitter.com/hashtag/RNN?src=hash&amp;ref_src=twsrc%5Etfw'>#RNN</a> <a href='https://t.co/r32RIEslwY'>pic.twitter.com/r32RIEslwY</a></p>&mdash; DataDeer (@DataDeer_) <a href='https://twitter.com/DataDeer_/status/1009398332987502592?ref_src=twsrc%5Etfw'>June 20, 2018</a></blockquote>"
-    date = "Tuesday, June 19th - 20:00"
+def polseg(request):
+    hashtag = "#POLSEG"
+    our_tweet = #"<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>Les mecs qui parient depuis le début de la Coupe du monde : <a href='https://t.co/s42v98D1nv'>pic.twitter.com/s42v98D1nv</a></p>&mdash; Dark (@Nelson_Menfoot) <a href='https://twitter.com/Nelson_Menfoot/status/1009072056284172290?ref_src=twsrc%5Etfw'>19 juin 2018</a></blockquote>"
+    goal_tweet = #"<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>World Cup 2018: Russia vs Egypt 3-1 all goals <a href='https://t.co/JzQ9cWzeqV'>pic.twitter.com/JzQ9cWzeqV</a></p>&mdash; Daily Hurriyat (@HurriyatPk) <a href='https://twitter.com/HurriyatPk/status/1009173576489078787?ref_src=twsrc%5Etfw'>June 19, 2018</a></blockquote>"
+    rnn_tweet = #"<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Salah is back for Egypt own goal in 28 years. <a href='https://twitter.com/hashtag/RUSEGY?src=hash&amp;ref_src=twsrc%5Etfw'>#RUSEGY</a> <a href='https://twitter.com/hashtag/RNN?src=hash&amp;ref_src=twsrc%5Etfw'>#RNN</a> <a href='https://t.co/r32RIEslwY'>pic.twitter.com/r32RIEslwY</a></p>&mdash; DataDeer (@DataDeer_) <a href='https://twitter.com/DataDeer_/status/1009398332987502592?ref_src=twsrc%5Etfw'>June 20, 2018</a></blockquote>"
+    date = "Tuesday, June 19th - 17:00"
     country_1, country_2 = getPays(hashtag)
     emojis = getEmojisClassement(hashtag[1:])
     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis}
