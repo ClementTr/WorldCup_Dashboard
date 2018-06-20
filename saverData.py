@@ -10,9 +10,9 @@ PAYS = {"Australia": 'AUS', "Belgium": 'BEL', "Brazil": 'BRA',
                         "Denmark": 'DEN', "Egypt": 'EGY', "England": 'ENG',
                         "France": 'FRA', "Germany": 'GER', "Iran": 'IRN',
                         "Morocco": 'MAR', "Peru": 'PER', "Poland": 'POL',
-                        "Portugal": 'POR', "Russia": 'RUS', "Arabia": 'ARA',
+                        "Portugal": 'POR', "Russia": 'RUS', "Arabia": 'KSA',
                         "Serbia": 'SER', "Spain": 'SPA', "Sweden": 'SWE',
-                        "Switzerland": 'SWI', "Tunisia": 'TUN','United_states':'USA'}
+                        "Switzerland": 'SWI',"Senegal":"SEN","Tunisia": 'TUN','United_states':'USA'}
 INV_PAYS = {v: k for k, v in PAYS.items()}
 
 global db,client
@@ -191,7 +191,7 @@ def removeMongoCollections(hashtag):
 initMongo()
 # with open('HASHTAG_FILE.txt') as f:
 #     hashtag = f.read()
-hashtag = "#TUNENG"
+hashtag = "#POLSEN"
 matchname = str(hashtag[1:])
 saveCountriesData(matchname)
 saveTweets(matchname)
