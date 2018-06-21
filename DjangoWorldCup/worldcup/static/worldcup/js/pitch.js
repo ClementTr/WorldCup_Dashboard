@@ -22,7 +22,7 @@ function draw_pitch(){
   let w_pitch
   let h_pitch
   let color_suisse = "red"
-  let dict_color = { "Switzerland":"red", "Germany":"black", "England":"white", "Arabia":"green", "Australia":"darkblue", "Belgium":"#eedc00", "Brazil":"yellow", "Colombia":"yellow", "Costa":"#133e7c", "Denmark":"darkred", "Egypt":"black", "France":"blue", "Iran":"darkgreen", "Morocco":"darkred", "Peru":"red", "Poland":"red", "Portugal":"darkred", "Russia":"blue", "Spain":"red", "Sweden":"darkblue", "Tunisia":"red", "Senegal": "#FDEF40" };
+  let dict_color = { "Switzerland":"red", "Germany":"#00ADB5", "England":"#CF081F", "Arabia":"#006C35", "Australia":"#003739", "Belgium":"#EF3340", "Brazil":"#002776", "Colombia":"#003893", "Costa":"#CE1126", "Denmark":"#C60C30", "Egypt":"#CE1126", "France":"#002395", "Iran":"#DA0000", "Morocco":"#C1272D", "Peru":"#D91023", "Poland":"crimson", "Portugal":"red", "Russia":"#D52B1E", "Spain":"#C60B1E", "Sweden":"#006BA8", "Tunisia":"#E70013", "Senegal": "#00853F", "Uruguay":"#84b0dc" };
   if (width_pitch/height_pitch < 1.6) {
     w_pitch = width_pitch;
     h_pitch = height_pitch;
