@@ -44,11 +44,11 @@ def data_playersPosition(request):
 
 
 def main(request):
-    date = "Thursday, June 21th - 17:00"
+    date = "Friday, June 22th - 14:00"
     country_1, country_2 = getPays(MATCH_HASHTAG)
     emojis = get_Emojis(MATCH_HASHTAG)
-    our_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='fr' dir='ltr'>Répondre présent face à une équipe du Pérou qui ne lâchera rien pendant 90 minutes ! On le sait et on est prêt 👊🔥 <a href='https://twitter.com/hashtag/FiersdetreBleus?src=hash&amp;ref_src=twsrc%5Etfw'>#FiersdetreBleus</a><br>🇫🇷🆚🇵🇪<br>🕔 17h<br>📺 TF1 &amp; beIN SPORTS<br>📍 Ekaterinbourg<br>📲 <a href='https://twitter.com/hashtag/FRAPER?src=hash&amp;ref_src=twsrc%5Etfw'>#FRAPER</a> <a href='https://t.co/EfqxtYc1rV'>pic.twitter.com/EfqxtYc1rV</a></p>&mdash; Equipe de France (@equipedefrance) <a href='https://twitter.com/equipedefrance/status/1009685849917853696?ref_src=twsrc%5Etfw'>June 21, 2018</a></blockquote> <script async src='https://platform.twitter.com/widgets.js' charset='utf-8'></script>"
-    goal_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='fr' dir='ltr'>Ce matin, N&#39;Golo Kanté a repris deux fois des Chocapic, Olivier Giroud a enfilé son bandana de ninja, et Deschamps a attaché les mains d&#39;Umtiti dans son dos : désolé, Pérou, mais c&#39;est une machine de guerre qui te fonce dessus. <a href='https://twitter.com/hashtag/FRAPER?src=hash&amp;ref_src=twsrc%5Etfw'>#FRAPER</a> <a href='https://t.co/d9Ued4VWRZ'>https://t.co/d9Ued4VWRZ</a></p>&mdash; SO FOOT (@sofoot) <a href='https://twitter.com/sofoot/status/1009688994744070145?ref_src=twsrc%5Etfw'>June 21, 2018</a></blockquote> <script async src='https://platform.twitter.com/widgets.js' charset='utf-8'></script>"
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Brazil fans right now 🤣 <a href='https://t.co/JLjRGFJDmx'>pic.twitter.com/JLjRGFJDmx</a></p>&mdash; TLF Videos (@TLFVideos) <a href='https://twitter.com/TLFVideos/status/1010064347945553921?ref_src=twsrc%5Etfw'>22 juin 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>COUTINHO! WHAT A GOAL! 🔥🔥🔥<a href='https://t.co/EWGlvPCQct'>pic.twitter.com/EWGlvPCQct</a></p>&mdash; World Cup 18 (@WorldCupStuff18) <a href='https://twitter.com/WorldCupStuff18/status/1008415710081617921?ref_src=twsrc%5Etfw'>17 juin 2018</a></blockquote>"
     context = {'hashtag': MATCH_HASHTAG, 'country_1': country_1, "country_2": country_2, "date":date, "our_tweet": our_tweet, "goal_tweet":goal_tweet, "emojis":emojis}
     return render(request, 'worldcup/main.html', context)
 
@@ -163,12 +163,18 @@ def positive_negative(request):
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
 #     return render(request, 'worldcup/match.html', context)
 #
-# def fraper(request):
-#     hashtag = "#FRAPER"
-#     country_1, country_2 = getPays(hashtag)
-#     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/match.html', context)
-#
+
+def fraper(request):
+    hashtag = "#FRAPER"
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='und' dir='ltr'><a href='https://t.co/FwtY4iudKs'>pic.twitter.com/FwtY4iudKs</a></p>&mdash; Scipion (@Scipionista) <a href='https://twitter.com/Scipionista/status/1009851445410181121?ref_src=twsrc%5Etfw'>21 juin 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>⚽️🌎🇫🇷 <a href='https://twitter.com/hashtag/Goal?src=hash&amp;ref_src=twsrc%5Etfw'>#Goal</a> from <a href='https://twitter.com/hashtag/Mbapp%C3%A9?src=hash&amp;ref_src=twsrc%5Etfw'>#Mbappé</a> for <a href='https://twitter.com/hashtag/France?src=hash&amp;ref_src=twsrc%5Etfw'>#France</a> against <a href='https://twitter.com/hashtag/Peru?src=hash&amp;ref_src=twsrc%5Etfw'>#Peru</a> for those who missed it. <a href='https://twitter.com/hashtag/franceperou?src=hash&amp;ref_src=twsrc%5Etfw'>#franceperou</a> <a href='https://twitter.com/hashtag/PERFRA?src=hash&amp;ref_src=twsrc%5Etfw'>#PERFRA</a> <a href='https://twitter.com/hashtag/FRA?src=hash&amp;ref_src=twsrc%5Etfw'>#FRA</a> <a href='https://twitter.com/hashtag/WorldCup2018?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCup2018</a> <a href='https://twitter.com/hashtag/WorldCupRussia2018?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCupRussia2018</a> <a href='https://t.co/Ndy4QkZGnK'>pic.twitter.com/Ndy4QkZGnK</a></p>&mdash; Thierry LopezDeArias (@TLopezDeArias) <a href='https://twitter.com/TLopezDeArias/status/1009934891671347201?ref_src=twsrc%5Etfw'>June 21, 2018</a></blockquote>"
+    rnn_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>Mbappe est buteur est le plus jeune français à la coupe du monde. <a href='https://twitter.com/hashtag/FRAPER?src=hash&amp;ref_src=twsrc%5Etfw'>#FRAPER</a> <a href='https://twitter.com/hashtag/RNN?src=hash&amp;ref_src=twsrc%5Etfw'>#RNN</a> <a href='https://twitter.com/hashtag/DeepLearning?src=hash&amp;ref_src=twsrc%5Etfw'>#DeepLearning</a> <a href='https://twitter.com/hashtag/AI?src=hash&amp;ref_src=twsrc%5Etfw'>#AI</a> <a href='https://t.co/cokD5NMhH7'>pic.twitter.com/cokD5NMhH7</a></p>&mdash; DataDeer (@DataDeer_) <a href='https://twitter.com/DataDeer_/status/1010077440989958144?ref_src=twsrc%5Etfw'>22 juin 2018</a></blockquote>"
+    date = "Thursday, June 21th - 17:00"
+    country_1, country_2 = getPays(hashtag)
+    emojis = getEmojisClassement(hashtag[1:])
+    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis}
+    return render(request, 'worldcup/match.html', context)
+
 def uruksa(request):
     hashtag = "#URUKSA"
     our_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='fr' dir='ltr'>Belle résistance des Saoudiens qui en gardent sous la semelle. <a href='https://twitter.com/hashtag/URUKSA?src=hash&amp;ref_src=twsrc%5Etfw'>#URUKSA</a> <a href='https://t.co/0a9ykRMO7V'>pic.twitter.com/0a9ykRMO7V</a></p>&mdash; Winamax Sport (@WinamaxSport) <a href='https://twitter.com/WinamaxSport/status/1009467268797992960?ref_src=twsrc%5Etfw'>June 20, 2018</a></blockquote>"
