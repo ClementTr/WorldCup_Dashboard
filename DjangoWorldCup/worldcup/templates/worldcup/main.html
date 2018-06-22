@@ -40,8 +40,8 @@ div.scrollmenu li {
             <!-- BLOCK TITLE MODIFY TITLE -->
               <div class="col-lg-12">
                 <div class="au-card m-b-30" style="padding-bottom: 10px;">
-                  <img src="/static/worldcup/img/flags/{{ country_1 }}.png" class="rounded float-left" alt="...">
-                  <img src="/static/worldcup/img/flags/{{ country_2 }}.png" class="rounded float-right" alt="...">
+                  <img src="/static/worldcup/img/flags/{{ country_1 }}.png" class="rounded float-left" style="border:1px solid #021a40; height: 100px; width:90px; height:45px;" alt="...">
++                  <img src="/static/worldcup/img/flags/{{ country_2 }}.png" class="rounded float-right" style="border:1px solid #021a40; width:90px; height:45px;" alt="...">
                   <center>
                     <h3 class="title-2 m-b-30" style"vertical-align: middle;">Match of the day - {{hashtag}}</h3>
                     <h4 class="title-3 m-b-30" style"vertical-align: middle;">{{date}}</h4>
@@ -89,7 +89,7 @@ div.scrollmenu li {
               <div class="col-lg-9">
                   <div class="au-card m-b-30">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Percentage of tweets by country</h3>
+                          <h3 class="title-2 m-b-40">% of tweets by country</h3>
                           <div class="card-body" id="container1"></div>
                       </div>
                   </div>
@@ -113,7 +113,7 @@ div.scrollmenu li {
 	     <div class="col-lg-6" style="padding-right:7px;">
                   <div class="au-card m-b-30">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Percentage of positives tweets by team</h3>
+                          <h3 class="title-2 m-b-40">% of positives tweets by team</h3>
                           <div class="chart-wrapper" id="bar_plot"></div>
                       </div>
                   </div>
@@ -122,7 +122,7 @@ div.scrollmenu li {
 	     <div class="col-lg-6" style="padding-left:7px;">
                   <div class="au-card m-b-30" style="padding-left: 20px;">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Percentage of +/- tweets during the match</h3>
+                          <h3 class="title-2 m-b-40">% of positives tweets during the match</h3>
                           <div class="chart-wrapper" id="simple_plot"></div>
                       </div>
                   </div>
