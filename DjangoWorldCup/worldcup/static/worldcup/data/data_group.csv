@@ -1,31 +1,31 @@
 ,Position,Equipe,Points,Group,Emoji,Buts_pour,Buts_contre
 0,1,Russia,6,A,russia,8,1
-1,2,Saudi Arabia,0,A,saudi-arabia,0,5
+1,2,Saudi Arabia,0,A,saudi-arabia,0,6
 2,3,Egypt,0,A,egypt,0,4
-3,4,Uruguay,3,A,uruguay,1,0
-4,1,Portugal,1,B,portugal,3,3
-5,2,Spain,1,B,spain,3,3
-6,3,Morocco,0,B,morocco,0,1
-7,4,Iran,3,B,iran,1,0
-8,1,France,3,C,france,2,1
-9,2,Australia,0,C,australia,1,2
-10,3,Peru,0,C,peru,0,1
-11,4,Denmark,3,C,denmark,1,0
-12,1,Argentina,1,D,argentina,1,1
-13,2,Iceland,1,D,iceland,1,1
-14,3,Croatia,3,D,croatia,2,0
-15,4,Nigeria,0,D,nigeria,0,2
-16,1,Brazil,1,E,brazil,1,1
-17,2,Switzerland,1,E,switzerland,1,1
-18,3,Costa Rica,0,E,costa-rica,0,1
-19,4,Serbia,3,E,serbia,1,0
-20,1,Germany,0,F,germany,0,1
-21,2,Mexico,3,F,mexico,1,0
-22,3,Sweden,3,F,sweden,1,0
-23,4,Korea Republic,0,F,south-korea,0,1
-24,1,Belgium,3,G,belgium,3,0
+3,4,Uruguay,6,A,uruguay,2,0
+4,1,Portugal,4,B,portugal,4,3
+5,2,Spain,4,B,spain,4,3
+6,3,Morocco,0,B,morocco,0,2
+7,4,Iran,3,B,iran,1,1
+8,1,France,6,C,france,3,1
+9,2,Australia,1,C,australia,2,3
+10,3,Peru,0,C,peru,0,2
+11,4,Denmark,4,C,denmark,2,1
+12,1,Argentina,1,D,argentina,1,4
+13,2,Iceland,1,D,iceland,1,3
+14,3,Croatia,6,D,croatia,5,0
+15,4,Nigeria,3,D,nigeria,2,2
+16,1,Brazil,4,E,brazil,3,1
+17,2,Switzerland,4,E,switzerland,3,2
+18,3,Costa Rica,0,E,costa-rica,0,3
+19,4,Serbia,3,E,serbia,2,2
+20,1,Germany,3,F,germany,2,2
+21,2,Mexico,6,F,mexico,3,1
+22,3,Sweden,3,F,sweden,2,2
+23,4,Korea Republic,0,F,south-korea,1,3
+24,1,Belgium,6,G,belgium,8,2
 25,2,Panama,0,G,panama,0,3
-26,3,Tunisia,0,G,tunisia,0,1
+26,3,Tunisia,0,G,tunisia,3,7
 27,4,England,3,G,england,2,0
 28,1,Poland,0,H,poland,1,2
 29,2,Senegal,3,H,senegal,2,1

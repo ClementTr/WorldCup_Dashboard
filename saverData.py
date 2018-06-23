@@ -6,7 +6,7 @@ import json
 from datetime import datetime, timedelta
 
 PAYS = {"Australia": 'AUS', "Belgium": 'BEL', "Brazil": 'BRA',
-                        "Colombia": 'COL', "Costa": 'CRI', "Croatia": 'HRV',
+                        "Colombia": 'COL', "Costa": 'CRC', "Croatia": 'HRV',
                         "Denmark": 'DEN', "Egypt": 'EGY', "England": 'ENG',
                         "France": 'FRA', "Germany": 'GER', "Iran": 'IRN',
                         "Morocco": 'MAR', "Peru": 'PER', "Poland": 'POL',
@@ -191,7 +191,7 @@ def removeMongoCollections(hashtag):
 initMongo()
 # with open('HASHTAG_FILE.txt') as f:
 #     hashtag = f.read()
-hashtag = "#FRAPER"
+hashtag = "#GERSWE"
 matchname = str(hashtag[1:])
 saveCountriesData(matchname)
 saveTweets(matchname)
