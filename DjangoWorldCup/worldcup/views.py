@@ -5,7 +5,7 @@ import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
 from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, get_Emojis, getEmojisClassement
-MATCH_HASHTAG = '#FRAPER'
+MATCH_HASHTAG = '#GERSWE'
 
 def home(request):
     if (request.method == "POST"):
@@ -44,11 +44,11 @@ def data_playersPosition(request):
 
 
 def main(request):
-    date = "Friday, June 22th - 14:00"
+    date = "Saturday, June 23th - 20:00"
     country_1, country_2 = getPays(MATCH_HASHTAG)
     emojis = get_Emojis(MATCH_HASHTAG)
-    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Brazil fans right now 🤣 <a href='https://t.co/JLjRGFJDmx'>pic.twitter.com/JLjRGFJDmx</a></p>&mdash; TLF Videos (@TLFVideos) <a href='https://twitter.com/TLFVideos/status/1010064347945553921?ref_src=twsrc%5Etfw'>22 juin 2018</a></blockquote>"
-    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>COUTINHO! WHAT A GOAL! 🔥🔥🔥<a href='https://t.co/EWGlvPCQct'>pic.twitter.com/EWGlvPCQct</a></p>&mdash; World Cup 18 (@WorldCupStuff18) <a href='https://twitter.com/WorldCupStuff18/status/1008415710081617921?ref_src=twsrc%5Etfw'>17 juin 2018</a></blockquote>"
+    our_tweet = ""
+    goal_tweet = ""
     context = {'hashtag': MATCH_HASHTAG, 'country_1': country_1, "country_2": country_2, "date":date, "our_tweet": our_tweet, "goal_tweet":goal_tweet, "emojis":emojis}
     return render(request, 'worldcup/main.html', context)
 
@@ -157,12 +157,18 @@ def positive_negative(request):
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
 #     return render(request, 'worldcup/match.html', context)
 #
-# def bracri(request):
-#     hashtag = "#BRACRI"
-#     country_1, country_2 = getPays(hashtag)
-#     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/match.html', context)
-#
+
+def bracrc(request):
+    hashtag = "#BRACRC"
+    our_tweet = ""
+    goal_tweet = ""
+    rnn_tweet = ""
+    date = "Friday, June 22th - 14:00"
+    country_1, country_2 = getPays(hashtag)
+    emojis = getEmojisClassement(hashtag[1:])
+    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis}
+    return render(request, 'worldcup/match.html', context)
+
 
 def fraper(request):
     hashtag = "#FRAPER"
