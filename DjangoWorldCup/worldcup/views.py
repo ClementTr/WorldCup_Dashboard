@@ -5,7 +5,7 @@ import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
 from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, get_Emojis, getEmojisClassement
-MATCH_HASHTAG = '#GERSWE'
+MATCH_HASHTAG = '#POLCOL'
 
 def home(request):
     if (request.method == "POST"):
@@ -44,11 +44,11 @@ def data_playersPosition(request):
 
 
 def main(request):
-    date = "Saturday, June 23th - 20:00"
+    date = "Sunday, June 24th - 20:00"
     country_1, country_2 = getPays(MATCH_HASHTAG)
     emojis = get_Emojis(MATCH_HASHTAG)
-    our_tweet = ""
-    goal_tweet = ""
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>Un match aux couleurs de l&#39;<a href='https://twitter.com/AS_Monaco?ref_src=twsrc%5Etfw'>@AS_Monaco</a> ⚪🔴<br><br>Habituellement coéquipiers en club, <a href='https://twitter.com/kamilglik25?ref_src=twsrc%5Etfw'>@kamilglik25</a> &amp; <a href='https://twitter.com/FALCAO?ref_src=twsrc%5Etfw'>@FALCAO</a> seront ce soir adversaires ! Qui gagnera son duel ? 🇵🇱🇨🇴<a href='https://twitter.com/hashtag/CM2018?src=hash&amp;ref_src=twsrc%5Etfw'>#CM2018</a> <a href='https://twitter.com/hashtag/POLCOL?src=hash&amp;ref_src=twsrc%5Etfw'>#POLCOL</a> <a href='https://t.co/1TkFv3k3zi'>pic.twitter.com/1TkFv3k3zi</a></p>&mdash; Ligue 1 Conforama (@Ligue1Conforama) <a href='https://twitter.com/Ligue1Conforama/status/1010802207212605440?ref_src=twsrc%5Etfw'>24 juin 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>James Rodriguez with the nicest 2014 World Cup goal <a href='https://twitter.com/hashtag/WorldCup2018?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCup2018</a> <a href='https://t.co/GxizmIWtxZ'>pic.twitter.com/GxizmIWtxZ</a></p>&mdash; j.b.b (@hoopbeastco) <a href='https://twitter.com/hoopbeastco/status/1007675395028733953?ref_src=twsrc%5Etfw'>15 juin 2018</a></blockquote>"
     context = {'hashtag': MATCH_HASHTAG, 'country_1': country_1, "country_2": country_2, "date":date, "our_tweet": our_tweet, "goal_tweet":goal_tweet, "emojis":emojis}
     return render(request, 'worldcup/main.html', context)
 
@@ -150,19 +150,25 @@ def positive_negative(request):
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
 #     return render(request, 'worldcup/match.html', context)
-#
-# def gerswe(request):
-#     hashtag = "#GERSWE"
-#     country_1, country_2 = getPays(hashtag)
-#     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/match.html', context)
-#
+
+
+def gerswe(request):
+    hashtag = "#GERSWE"
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Joachim Low reportedly motivated German players at halftime by telling them that they would each have to sniff his fingers after the game if they lost. <a href='https://t.co/qHFMvW1zPX'>pic.twitter.com/qHFMvW1zPX</a></p>&mdash; Soccer Memes (@SoccerMemes) <a href='https://twitter.com/SoccerMemes/status/1010643836543143939?ref_src=twsrc%5Etfw'>23 juin 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>TONI KROOS! WHAT A FANTASTIC GOAL! 🇩🇪😎 <a href='https://t.co/04tTKCJxxe'>pic.twitter.com/04tTKCJxxe</a></p>&mdash; Old Days Football (@OldDaysFootball) <a href='https://twitter.com/OldDaysFootball/status/1010614962203525120?ref_src=twsrc%5Etfw'>23 juin 2018</a></blockquote>"
+    rnn_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Kroos with very timely late curve pressure is still alive <a href='https://twitter.com/hashtag/GERSWE?src=hash&amp;ref_src=twsrc%5Etfw'>#GERSWE</a> <a href='https://twitter.com/hashtag/RNN?src=hash&amp;ref_src=twsrc%5Etfw'>#RNN</a> <a href='https://twitter.com/hashtag/DeepLearning?src=hash&amp;ref_src=twsrc%5Etfw'>#DeepLearning</a> <a href='https://twitter.com/hashtag/AI?src=hash&amp;ref_src=twsrc%5Etfw'>#AI</a> <a href='https://t.co/8CWOtsI41d'>pic.twitter.com/8CWOtsI41d</a></p>&mdash; DataDeer (@DataDeer_) <a href='https://twitter.com/DataDeer_/status/1010882675664740352?ref_src=twsrc%5Etfw'>24 juin 2018</a></blockquote>"
+    date = "Saturday, June 23th - 14:00"
+    country_1, country_2 = getPays(hashtag)
+    emojis = getEmojisClassement(hashtag[1:])
+    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis}
+    return render(request, 'worldcup/match.html', context)
+
 
 def bracrc(request):
     hashtag = "#BRACRC"
-    our_tweet = ""
-    goal_tweet = ""
-    rnn_tweet = ""
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>C&#39;est un trucage ou quoi? <a href='https://twitter.com/neymarjr?ref_src=twsrc%5Etfw'>@neymarjr</a> 🔥 <a href='https://t.co/laGuEnKdE6'>pic.twitter.com/laGuEnKdE6</a></p>&mdash; Rapha Jay New (@RaphaJay1) <a href='https://twitter.com/RaphaJay1/status/1010239350339178497?ref_src=twsrc%5Etfw'>22 juin 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Coutinho hit first goal for the Brazilians <a href='https://t.co/memY0Xzivu'>pic.twitter.com/memY0Xzivu</a></p>&mdash; Cartoon pee (@AfariPee) <a href='https://twitter.com/AfariPee/status/1010166351145717760?ref_src=twsrc%5Etfw'>22 juin 2018</a></blockquote>"
+    rnn_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Neymar dive looking for penalty was overturned <a href='https://twitter.com/hashtag/BRACRC?src=hash&amp;ref_src=twsrc%5Etfw'>#BRACRC</a> <a href'https://twitter.com/hashtag/RNN?src=hash&amp;ref_src=twsrc%5Etfw'>#RNN</a> <a href='https://twitter.com/hashtag/DeepLearning?src=hash&amp;ref_src=twsrc%5Etfw'>#DeepLearning</a> <a href='https://twitter.com/hashtag/AI?src=hash&amp;ref_src=twsrc%5Etfw'>#AI</a> <a href='https://t.co/4LFYjjp1yL'>pic.twitter.com/4LFYjjp1yL</a></p>&mdash; DataDeer (@DataDeer_) <a href='https://twitter.com/DataDeer_/status/1010880643201470464?ref_src=twsrc%5Etfw'>24 juin 2018</a></blockquote>"
     date = "Friday, June 22th - 14:00"
     country_1, country_2 = getPays(hashtag)
     emojis = getEmojisClassement(hashtag[1:])
