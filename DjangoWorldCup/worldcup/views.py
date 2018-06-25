@@ -5,7 +5,7 @@ import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
 from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, get_Emojis, getEmojisClassement
-MATCH_HASHTAG = '#POLCOL'
+MATCH_HASHTAG = '#URURUS'
 
 def home(request):
     if (request.method == "POST"):
@@ -44,11 +44,11 @@ def data_playersPosition(request):
 
 
 def main(request):
-    date = "Sunday, June 24th - 20:00"
+    date = "Monday, June 25th - 16:00"
     country_1, country_2 = getPays(MATCH_HASHTAG)
     emojis = get_Emojis(MATCH_HASHTAG)
-    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>Un match aux couleurs de l&#39;<a href='https://twitter.com/AS_Monaco?ref_src=twsrc%5Etfw'>@AS_Monaco</a> ⚪🔴<br><br>Habituellement coéquipiers en club, <a href='https://twitter.com/kamilglik25?ref_src=twsrc%5Etfw'>@kamilglik25</a> &amp; <a href='https://twitter.com/FALCAO?ref_src=twsrc%5Etfw'>@FALCAO</a> seront ce soir adversaires ! Qui gagnera son duel ? 🇵🇱🇨🇴<a href='https://twitter.com/hashtag/CM2018?src=hash&amp;ref_src=twsrc%5Etfw'>#CM2018</a> <a href='https://twitter.com/hashtag/POLCOL?src=hash&amp;ref_src=twsrc%5Etfw'>#POLCOL</a> <a href='https://t.co/1TkFv3k3zi'>pic.twitter.com/1TkFv3k3zi</a></p>&mdash; Ligue 1 Conforama (@Ligue1Conforama) <a href='https://twitter.com/Ligue1Conforama/status/1010802207212605440?ref_src=twsrc%5Etfw'>24 juin 2018</a></blockquote>"
-    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>James Rodriguez with the nicest 2014 World Cup goal <a href='https://twitter.com/hashtag/WorldCup2018?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCup2018</a> <a href='https://t.co/GxizmIWtxZ'>pic.twitter.com/GxizmIWtxZ</a></p>&mdash; j.b.b (@hoopbeastco) <a href='https://twitter.com/hoopbeastco/status/1007675395028733953?ref_src=twsrc%5Etfw'>15 juin 2018</a></blockquote>"
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>0-1 vs. Uruguay<br>1-3 vs. Russia<br><br>Egypt’s <a href='https://twitter.com/hashtag/WorldCup?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCup</a> is all but wrapped up after two games 🤕 <a href="https://t.co/HXkpkenEAc">pic.twitter.com/HXkpkenEAc</a></p>&mdash; B/R Football (@brfootball) <a href='https://twitter.com/brfootball/status/1009163719123832834?ref_src=twsrc%5Etfw'>19 juin 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Incredible goal by Aleksandr GOLOVIN vs Saudi Arabia in the first match at the World Cup! <a href='https://t.co/ln8OrrYXvg'>pic.twitter.com/ln8OrrYXvg</a></p>&mdash; Sharp90 (@Sharp905) <a href='https://twitter.com/Sharp905/status/1010820302144667648?ref_src=twsrc%5Etfw'>24 juin 2018</a></blockquote>"
     context = {'hashtag': MATCH_HASHTAG, 'country_1': country_1, "country_2": country_2, "date":date, "our_tweet": our_tweet, "goal_tweet":goal_tweet, "emojis":emojis}
     return render(request, 'worldcup/main.html', context)
 
@@ -145,11 +145,17 @@ def positive_negative(request):
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
 #     return render(request, 'worldcup/match.html', context)
 #
-# def polcol(request):
-#     hashtag = "#POLCOL"
-#     country_1, country_2 = getPays(hashtag)
-#     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/match.html', context)
+
+def polcol(request):
+    hashtag = "#POLCOL"
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'><a href='https://twitter.com/hashtag/COL?src=hash&amp;ref_src=twsrc%5Etfw'>#COL</a>⁠ ⁠legend Carlos Valderrama and his wife watching the game. <a href='https://twitter.com/hashtag/WorldCup?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCup</a> <a href='https://t.co/riXkIKp6aL'>pic.twitter.com/riXkIKp6aL</a></p>&mdash; FIFA World Cup (@WorIdCupUpdates) <a href='https://twitter.com/WorIdCupUpdates/status/1010972062670876672?ref_src=twsrc%5Etfw'>24 juin 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>.<a href='https://twitter.com/FALCAO?ref_src=twsrc%5Etfw'>@Falcao</a> gets his first <a href='https://twitter.com/hashtag/WorldCup?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCup</a> goal for <a href='https://twitter.com/hashtag/COL?src=hash&amp;ref_src=twsrc%5Etfw'>#COL</a>. 🐯⚽<br>🎥 Highlights 👉 <a href='https://t.co/LOdKDX2Cwn'>https://t.co/LOdKDX2Cwn</a> <br>📺 TV listings 👉 <a href='https://t.co/xliHcxWvEO'>https://t.co/xliHcxWvEO</a> <a href='https://t.co/k52X90N5gl'>pic.twitter.com/k52X90N5gl</a></p>&mdash; FIFA World Cup 🏆 (@FIFAWorldCup) <a href='https://twitter.com/FIFAWorldCup/status/1011001088508645377?ref_src=twsrc%5Etfw'>24 juin 2018</a></blockquote>"
+    rnn_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Falcao scored his first world cup goal back to his best <a href='https://twitter.com/hashtag/POLCOL?src=hash&amp;ref_src=twsrc%5Etfw'>#POLCOL</a> <a href='https://twitter.com/hashtag/RNN?src=hash&amp;ref_src=twsrc%5Etfw'>#RNN</a> <a href='https://twitter.com/hashtag/DeepLearning?src=hash&amp;ref_src=twsrc%5Etfw'>#DeepLearning</a> <a href='https://twitter.com/hashtag/AI?src=hash&amp;ref_src=twsrc%5Etfw'>#AI</a> <a href='https://t.co/V0BV0zJMS6'>pic.twitter.com/V0BV0zJMS6</a></p>&mdash; DataDeer (@DataDeer_) <a href='https://twitter.com/DataDeer_/status/1011206975307251712?ref_src=twsrc%5Etfw'>25 juin 2018</a></blockquote>"
+    date = "Sunday, June 24th - 17:00"
+    country_1, country_2 = getPays(hashtag)
+    emojis = getEmojisClassement(hashtag[1:])
+    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis}
+    return render(request, 'worldcup/match.html', context)
 
 
 def gerswe(request):
