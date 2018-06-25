@@ -47,7 +47,7 @@ def main(request):
     date = "Monday, June 25th - 16:00"
     country_1, country_2 = getPays(MATCH_HASHTAG)
     emojis = get_Emojis(MATCH_HASHTAG)
-    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>0-1 vs. Uruguay<br>1-3 vs. Russia<br><br>Egypt’s <a href='https://twitter.com/hashtag/WorldCup?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCup</a> is all but wrapped up after two games 🤕 <a href="https://t.co/HXkpkenEAc">pic.twitter.com/HXkpkenEAc</a></p>&mdash; B/R Football (@brfootball) <a href='https://twitter.com/brfootball/status/1009163719123832834?ref_src=twsrc%5Etfw'>19 juin 2018</a></blockquote>"
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>0-1 vs. Uruguay<br>1-3 vs. Russia<br><br>Egypt’s <a href='https://twitter.com/hashtag/WorldCup?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCup</a> is all but wrapped up after two games 🤕 <a href='https://t.co/HXkpkenEAc'>pic.twitter.com/HXkpkenEAc</a></p>&mdash; B/R Football (@brfootball) <a href='https://twitter.com/brfootball/status/1009163719123832834?ref_src=twsrc%5Etfw'>19 juin 2018</a></blockquote>"
     goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Incredible goal by Aleksandr GOLOVIN vs Saudi Arabia in the first match at the World Cup! <a href='https://t.co/ln8OrrYXvg'>pic.twitter.com/ln8OrrYXvg</a></p>&mdash; Sharp90 (@Sharp905) <a href='https://twitter.com/Sharp905/status/1010820302144667648?ref_src=twsrc%5Etfw'>24 juin 2018</a></blockquote>"
     context = {'hashtag': MATCH_HASHTAG, 'country_1': country_1, "country_2": country_2, "date":date, "our_tweet": our_tweet, "goal_tweet":goal_tweet, "emojis":emojis}
     return render(request, 'worldcup/main.html', context)
