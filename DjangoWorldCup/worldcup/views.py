@@ -5,7 +5,7 @@ import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
 from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, get_Emojis, getEmojisClassement
-MATCH_HASHTAG = '#DENFRA'
+MATCH_HASHTAG = '#SERBRA'
 
 def home(request):
     if (request.method == "POST"):
@@ -44,11 +44,11 @@ def data_playersPosition(request):
 
 
 def main(request):
-    date = "Tuesday, June 26th - 16:00"
+    date = "Wednesday, June 27th - 20:00"
     country_1, country_2 = getPays(MATCH_HASHTAG)
     emojis = get_Emojis(MATCH_HASHTAG)
-    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>Notre qualification pour les huitièmes de finale est assurée. Maintenant, il faut viser la 1ère place du groupe 👊<br>Danemark/France, demain à 16h00 🇫🇷<a href='https://twitter.com/hashtag/FiersdetreBleus?src=hash&amp;ref_src=twsrc%5Etfw'>#FiersdetreBleus</a> <a href='https://twitter.com/hashtag/DANFRA?src=hash&amp;ref_src=twsrc%5Etfw'>#DANFRA</a> <a href='https://t.co/cNCUOZScuV'>pic.twitter.com/cNCUOZScuV</a></p>&mdash; Equipe de France (@equipedefrance) <a href='https://twitter.com/equipedefrance/status/1011291389362130945?ref_src=twsrc%5Etfw'>25 juin 2018</a></blockquote>"
-    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Retweeted Throwback Arsenal (<a href='https://twitter.com/ThrowbackAFC?ref_src=twsrc%5Etfw'>@ThrowbackAFC</a>):<a href='https://twitter.com/hashtag/OTD?src=hash&amp;ref_src=twsrc%5Etfw'>#OTD</a> in 2012 Arsenal signed Olivier Giroud from Montpellier HSC. In 253 appearances, he scored 105 goals and made 41 assists. <br><br>(Video courtesy of <a href='https://twitter.com/afcDW?ref_src=twsrc%5Etfw'>@afcDW</a>) <a href='https://t.co/wflmPZd9gk'>pic.twitter.com/wflmPZd9gk</a></p>&mdash; ibrameyang (@The_Ibrah) <a href='https://twitter.com/The_Ibrah/status/1011487730872868870?ref_src=twsrc%5Etfw'>26 juin 2018</a></blockquote>"
+    our_tweet = ""
+    goal_tweet = ""
     context = {'hashtag': MATCH_HASHTAG, 'country_1': country_1, "country_2": country_2, "date":date, "our_tweet": our_tweet, "goal_tweet":goal_tweet, "emojis":emojis}
     return render(request, 'worldcup/main.html', context)
 
@@ -133,12 +133,18 @@ def positive_negative(request):
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
 #     return render(request, 'worldcup/match.html', context)
 #
-# def fraden(request):
-#     hashtag = "#FRADEN"
-#     country_1, country_2 = getPays(hashtag)
-#     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/match.html', context)
-#
+
+def fraden(request):
+    hashtag = "#FRADEN"
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>🗣 “I truly believe that we have a great team that can take on Brazil” <br><br>Serbia’s Adem Ljajic is ready for <a href='https://twitter.com/hashtag/SRBBRA?src=hash&amp;ref_src=twsrc%5Etfw'>#SRBBRA</a> <a href='https://t.co/8sT8MZx4v6'>pic.twitter.com/8sT8MZx4v6</a></p>&mdash; FIFA World Cup 🏆 (@FIFAWorldCup) <a href='https://twitter.com/FIFAWorldCup/status/1011942469938933762?ref_src=twsrc%5Etfw'>27 juin 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Coutinho hit first goal for the Brazilians <a href='https://t.co/memY0Xzivu'>pic.twitter.com/memY0Xzivu</a></p>&mdash; Cartoon pee (@AfariPee) <a href='https://twitter.com/AfariPee/status/1010166351145717760?ref_src=twsrc%5Etfw'>22 juin 2018</a></blockquote>"
+    rnn_tweet = ""
+    date = "Tuesday, June 26th - 20:00"
+    country_1, country_2 = getPays(hashtag)
+    emojis = getEmojisClassement(hashtag[1:])
+    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis}
+    return render(request, 'worldcup/match.html', context)
+
 def ururus(request):
     hashtag = "#URURUS"
     our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>Poutine avant chaque début de match dans le vestiaire Russe <br>- <a href='https://t.co/hUDYzmY1IB'>pic.twitter.com/hUDYzmY1IB</a></p>&mdash; LHR (@Taylorlhrmdy) <a href='https://twitter.com/Taylorlhrmdy/status/1009378839225688065?ref_src=twsrc%5Etfw'>20 juin 2018</a></blockquote>"
