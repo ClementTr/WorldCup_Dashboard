@@ -142,7 +142,7 @@ def positive_negative(request):
 def ururus(request):
     hashtag = "#URURUS"
     our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>Poutine avant chaque début de match dans le vestiaire Russe <br>- <a href='https://t.co/hUDYzmY1IB'>pic.twitter.com/hUDYzmY1IB</a></p>&mdash; LHR (@Taylorlhrmdy) <a href='https://twitter.com/Taylorlhrmdy/status/1009378839225688065?ref_src=twsrc%5Etfw'>20 juin 2018</a></blockquote>"
-    goal_tweet = "<blockquote class='twitter-tweet' data-lang="fr"><p lang="en" dir='ltr'>Luis Suarez scoring the first goal of the game from a freekick. Absolute genius.<a href='https://t.co/RSzrBgYQLI'>pic.twitter.com/RSzrBgYQLI</a></p>&mdash; BarcaUniversal Comps (@BarcaRaw) <a href='https://twitter.com/BarcaRaw/status/1011252631644319744?ref_src=twsrc%5Etfw'>25 juin 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Luis Suarez scoring the first goal of the game from a freekick. Absolute genius.<a href='https://t.co/RSzrBgYQLI'>pic.twitter.com/RSzrBgYQLI</a></p>&mdash; BarcaUniversal Comps (@BarcaRaw) <a href='https://twitter.com/BarcaRaw/status/1011252631644319744?ref_src=twsrc%5Etfw'>25 juin 2018</a></blockquote>"
     rnn_tweet = ""
     date = "Monday, June 25th - 16:00"
     country_1, country_2 = getPays(hashtag)
