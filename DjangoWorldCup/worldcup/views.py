@@ -134,8 +134,8 @@ def positive_negative(request):
 #     return render(request, 'worldcup/match.html', context)
 #
 
-def fraden(request):
-    hashtag = "#FRADEN"
+def denfra(request):
+    hashtag = "#DENFRA"
     our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>🗣 “I truly believe that we have a great team that can take on Brazil” <br><br>Serbia’s Adem Ljajic is ready for <a href='https://twitter.com/hashtag/SRBBRA?src=hash&amp;ref_src=twsrc%5Etfw'>#SRBBRA</a> <a href='https://t.co/8sT8MZx4v6'>pic.twitter.com/8sT8MZx4v6</a></p>&mdash; FIFA World Cup 🏆 (@FIFAWorldCup) <a href='https://twitter.com/FIFAWorldCup/status/1011942469938933762?ref_src=twsrc%5Etfw'>27 juin 2018</a></blockquote>"
     goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Coutinho hit first goal for the Brazilians <a href='https://t.co/memY0Xzivu'>pic.twitter.com/memY0Xzivu</a></p>&mdash; Cartoon pee (@AfariPee) <a href='https://twitter.com/AfariPee/status/1010166351145717760?ref_src=twsrc%5Etfw'>22 juin 2018</a></blockquote>"
     rnn_tweet = ""
