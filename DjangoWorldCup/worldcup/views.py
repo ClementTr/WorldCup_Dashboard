@@ -47,8 +47,8 @@ def main(request):
     date = "Wednesday, June 27th - 20:00"
     country_1, country_2 = getPays(MATCH_HASHTAG)
     emojis = get_Emojis(MATCH_HASHTAG)
-    our_tweet = ""
-    goal_tweet = ""
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>🗣 “I truly believe that we have a great team that can take on Brazil” <br><br>Serbia’s Adem Ljajic is ready for <a href='https://twitter.com/hashtag/SRBBRA?src=hash&amp;ref_src=twsrc%5Etfw'>#SRBBRA</a> <a href='https://t.co/8sT8MZx4v6'>pic.twitter.com/8sT8MZx4v6</a></p>&mdash; FIFA World Cup 🏆 (@FIFAWorldCup) <a href='https://twitter.com/FIFAWorldCup/status/1011942469938933762?ref_src=twsrc%5Etfw'>27 juin 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Coutinho hit first goal for the Brazilians <a href='https://t.co/memY0Xzivu'>pic.twitter.com/memY0Xzivu</a></p>&mdash; Cartoon pee (@AfariPee) <a href='https://twitter.com/AfariPee/status/1010166351145717760?ref_src=twsrc%5Etfw'>22 juin 2018</a></blockquote>"
     context = {'hashtag': MATCH_HASHTAG, 'country_1': country_1, "country_2": country_2, "date":date, "our_tweet": our_tweet, "goal_tweet":goal_tweet, "emojis":emojis}
     return render(request, 'worldcup/main.html', context)
 
@@ -136,8 +136,8 @@ def positive_negative(request):
 
 def denfra(request):
     hashtag = "#DENFRA"
-    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>🗣 “I truly believe that we have a great team that can take on Brazil” <br><br>Serbia’s Adem Ljajic is ready for <a href='https://twitter.com/hashtag/SRBBRA?src=hash&amp;ref_src=twsrc%5Etfw'>#SRBBRA</a> <a href='https://t.co/8sT8MZx4v6'>pic.twitter.com/8sT8MZx4v6</a></p>&mdash; FIFA World Cup 🏆 (@FIFAWorldCup) <a href='https://twitter.com/FIFAWorldCup/status/1011942469938933762?ref_src=twsrc%5Etfw'>27 juin 2018</a></blockquote>"
-    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Coutinho hit first goal for the Brazilians <a href='https://t.co/memY0Xzivu'>pic.twitter.com/memY0Xzivu</a></p>&mdash; Cartoon pee (@AfariPee) <a href='https://twitter.com/AfariPee/status/1010166351145717760?ref_src=twsrc%5Etfw'>22 juin 2018</a></blockquote>"
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>Résumé de la première mi-temps. <a href='https://twitter.com/hashtag/FRADAN?src=hash&amp;ref_src=twsrc%5Etfw'>#FRADAN</a> <a href='https://t.co/WBrXbsPN2d'>pic.twitter.com/WBrXbsPN2d</a></p>&mdash; Betclic France (@Betclic) <a href='https://twitter.com/Betclic/status/1011622541025267712?ref_src=twsrc%5Etfw'>26 juin 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>Top 10 des trucs à retenir de ce match Danemark-France, quel ennui <a href='https://t.co/TTO8MJlhLF'>https://t.co/TTO8MJlhLF</a> <a href='https://t.co/08tyHc6IZC'>pic.twitter.com/08tyHc6IZC</a></p>&mdash; Topito (@topito_com) <a href='https://twitter.com/topito_com/status/1011650314561380352?ref_src=twsrc%5Etfw'>26 juin 2018</a></blockquote>"
     rnn_tweet = ""
     date = "Tuesday, June 26th - 20:00"
     country_1, country_2 = getPays(hashtag)
