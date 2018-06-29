@@ -410,7 +410,7 @@ function loadTable(tableId, fields, data) {
 
   d3v4.json("/static/worldcup/data/"+matchname.slice(1,7)+"/"+matchname.slice(1,7)+"_TopPlayers.json", function(error, myData) {
     // console.log(myData);
-    var top10_players = myData.slice(0,6);
+    var top10_players = myData.slice(0,11);
     loadTable('players-table', ['field1', 'field2'], top10_players);
   });
 
