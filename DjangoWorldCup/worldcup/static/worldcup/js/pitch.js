@@ -36,7 +36,6 @@ function draw_pitch(){
       w_pitch = 536;
       h_pitch = w_pitch/1.6;
   }
-  console.log(w_pitch, h_pitch)
   let div_popup = d3v4.select("body")
                     .append("div")
                     .attr("id", "popup_pitch")
@@ -369,16 +368,16 @@ function draw_pitch(){
     svg_pitch.append("svg:image")
              .attr("xlink:href", "/static/worldcup/js/pitch.svg")
              .attr("transform", "translate(300,150) rotate(90)")
-             .attr("x", -210)
-             .attr("y", 0)
-             .attr('width', w_pitch)
+             .attr("x", -155)
+             .attr("y", -120)
+             .attr('width', w_pitch+100)
              .attr('height', h_pitch);
 
    let adjust_radius = 0
 
    // KEEPER
-   x_keeper =  w_pitch/2.8 - 43
-   y_keeper = h_pitch/2 + 110
+   x_keeper =  w_pitch/2.8 - 5
+   y_keeper = h_pitch/2 + 190
    let defs_keeper = svg_pitch.append("defs")
                        .attr("id", "imgdefs")
    let clipPath_keeper = defs_keeper.append('clipPath')
@@ -408,8 +407,8 @@ function draw_pitch(){
 
 
     // CB1
-    let x_cb1 = w_pitch/2.2 - 43
-    let y_cb1 = h_pitch/1.6 + 20
+    let x_cb1 = w_pitch/2.2 - 85
+    let y_cb1 = h_pitch/1.6 + 40
     let defs_cb1 = svg_pitch.append("defs")
                         .attr("id", "imgdefs")
     let clipPath_cb1 = defs_cb1.append('clipPath')
@@ -437,8 +436,8 @@ function draw_pitch(){
 
 
       // CB2
-      let x_cb2 = w_pitch/2 - 2*footballer_img_size - 43
-      let y_cb2 = h_pitch/1.6 + 20
+      let x_cb2 = w_pitch/2 - 2*footballer_img_size + 80
+      let y_cb2 = h_pitch/1.6 + 40
       let defs_cb2 = svg_pitch.append("defs")
                           .attr("id", "imgdefs")
       let clipPath_cb2 = defs_cb1.append('clipPath')
@@ -465,8 +464,8 @@ function draw_pitch(){
 
 
       // RB
-      let x_rb = h_pitch/1.6 + 22 - 43
-      let y_rb = h_pitch/2.1 + 30
+      let x_rb = h_pitch/1.6 - 50
+      let y_rb = h_pitch/2.1 + 65
       let defs_rb = svg_pitch.append("defs")
                           .attr("id", "imgdefs")
       let clipPath_rb = defs_rb.append('clipPath')
@@ -493,8 +492,8 @@ function draw_pitch(){
 
 
        // LB
-       let x_lb = h_pitch/2 - 120 - 43
-       let y_lb = h_pitch/2.1 + 30
+       let x_lb = h_pitch/2 - 240
+       let y_lb = h_pitch/2.1 + 65
        let defs_lb = svg_pitch.append("defs")
                            .attr("id", "imgdefs")
        let clipPath_lb = defs_lb.append('clipPath')
@@ -521,8 +520,8 @@ function draw_pitch(){
 
 
       // CM
-      let x_cm = w_pitch/2 - w_pitch/7 - 43
-      let y_cm = h_pitch/2 - 20
+      let x_cm = w_pitch/2.8 - 5
+      let y_cm = h_pitch/2
       let defs_cm = svg_pitch.append("defs")
                           .attr("id", "imgdefs")
       let clipPath_cm = defs_cm.append('clipPath')
@@ -549,7 +548,7 @@ function draw_pitch(){
 
 
        // LM
-       let x_rm = w_pitch/2 - 120 - 43
+       let x_rm = w_pitch/2 - 150
        let y_rm = h_pitch/2 - 50
        let defs_rm = svg_pitch.append("defs")
                            .attr("id", "imgdefs")
@@ -577,7 +576,7 @@ function draw_pitch(){
 
 
       // RM
-      let x_lm = w_pitch/2 - 43
+      let x_lm = w_pitch/2 + 23
       let y_lm = h_pitch/2 - 50
       let defs_lm = svg_pitch.append("defs")
                           .attr("id", "imgdefs")
@@ -605,8 +604,8 @@ function draw_pitch(){
 
 
        // RW
-       let x_rw = w_pitch/2 + 25 - 43
-       let y_rw = h_pitch/2 - 125
+       let x_rw = w_pitch/2 + 45
+       let y_rw = h_pitch/2 - 155
        let defs_rw = svg_pitch.append("defs")
                            .attr("id", "imgdefs")
        let clipPath_rw = defs_rw.append('clipPath')
@@ -632,9 +631,9 @@ function draw_pitch(){
                 .on("mouseout", function() {return mouseout_pitch()} );
 
 
-      // LW
-      let x_lw = w_pitch/2 - 145 - 43
-      let y_lw = h_pitch/2 - 125
+      // STRIKER
+      let x_lw = w_pitch/2.8 - 5
+      let y_lw = h_pitch/2 - 200
       let defs_lw = svg_pitch.append("defs")
                           .attr("id", "imgdefs")
       let clipPath_lw = defs_rw.append('clipPath')
@@ -660,9 +659,9 @@ function draw_pitch(){
                .on("mouseout", function() {return mouseout_pitch()} );
 
 
-       // STRIKER
-       let x_striker = w_pitch/2 - w_pitch/7 - 43
-       let y_striker = h_pitch/2 - 150
+       // LW
+       let x_striker = w_pitch/2 - 172
+       let y_striker = h_pitch/2 - 155
        let defs_striker = svg_pitch.append("defs")
                            .attr("id", "imgdefs")
        let clipPath_striker = defs_striker.append('clipPath')
@@ -711,4 +710,3 @@ function draw_pitch(){
                   .style("opacity", 0);
        }
 }
-
