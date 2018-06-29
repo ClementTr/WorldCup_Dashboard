@@ -43,7 +43,7 @@ function draw_pitch(){
                     .style("opacity", 0);
   let footballer_img_size = w_pitch/8
 
-  if (w_pitch > 540){
+  if (w_pitch > 410){
 
     svg_pitch.append("svg:image")
              .attr("xlink:href", "/static/worldcup/js/pitch.svg")
@@ -604,7 +604,7 @@ function draw_pitch(){
 
 
        // RW
-       let x_rw = w_pitch/2 + 45
+       let x_rw = w_pitch/2 + 40
        let y_rw = h_pitch/2 - 155
        let defs_rw = svg_pitch.append("defs")
                            .attr("id", "imgdefs")
