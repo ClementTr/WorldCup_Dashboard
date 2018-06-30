@@ -225,12 +225,12 @@ div.scrollmenu li {
                 }
               )]);
 
-    dataset_plot.forEach(function(item,index){
+    /*dataset_plot.forEach(function(item,index){
       console.log(index);
       console.log(item["Time"])
       console.log(x_plot(item["Time"]));
       console.log("---------------------");
-    });
+    });*/
 
     redraw();
 
@@ -468,35 +468,38 @@ div.scrollmenu li {
   .then(response => response.json())
   .then(response => {
 
-    let len_data_players = response["Percentage0"].length
-    Percentage_0 = response["Percentage0"][len_data_players-1]
-    Percentage_1 = response["Percentage1"][len_data_players-1]
-    Percentage_2 = response["Percentage2"][len_data_players-1]
-    Percentage_3 = response["Percentage3"][len_data_players-1]
-    Percentage_4 = response["Percentage4"][len_data_players-1]
+    //let nse = response[0]
+    let len_data_players = response.length
+    console.log("response0", response[0])
+    console.log("taille", response.length)
+    Percentage_1 = response[len_data_players-1]["Percentage1"]
+    Percentage_2 = response[len_data_players-1]["Percentage2"]
+    Percentage_3 = response[len_data_players-1]["Percentage3"]
+    Percentage_4 = response[len_data_players-1]["Percentage4"]
+    Percentage_5 = response[len_data_players-1]["Percentage5"]
+    console.log(len_data_players, Percentage_1, Percentage_2)
+    Country_1 = response[len_data_players-1]["Pays1"]
+    Country_2 = response[len_data_players-1]["Pays2"]
+    Country_3 = response[len_data_players-1]["Pays3"]
+    Country_4 = response[len_data_players-1]["Pays4"]
+    Country_5 = response[len_data_players-1]["Pays5"]
+    console.log(Country_5)
+    Name_1 = response[len_data_players-1]["Player1"]
+    Name_2 = response[len_data_players-1]["Player2"]
+    Name_3 = response[len_data_players-1]["Player3"]
+    Name_4 = response[len_data_players-1]["Player4"]
+    Name_5 = response[len_data_players-1]["Player5"]
 
-    Country_0 = response["Country0"][0]
-    Country_1 = response["Country1"][0]
-    Country_2 = response["Country2"][0]
-    Country_3 = response["Country3"][0]
-    Country_4 = response["Country4"][0]
-
-    Name_0 = response["Name0"][0]
-    Name_1 = response["Name1"][0]
-    Name_2 = response["Name2"][0]
-    Name_3 = response["Name3"][0]
-    Name_4 = response["Name4"][0]
-
-    data = JSON.parse(response);
+    data = response//JSON.parse(response);
 
     data.forEach(function(item,index){
       date = new Date(item["Time"])
       dataset_players.push({"Time": date,
         "Percentage1": Number(item["Percentage1"]),
-        "Percentage2": Number(item["Percentage2"])}),
+        "Percentage2": Number(item["Percentage2"]),
         "Percentage3": Number(item["Percentage3"]),
-        "Percentage4": Number(item["Percentage4"])}),
-        "Percentage5": Number(item["Percentage5"]);
+        "Percentage4": Number(item["Percentage4"]),
+        "Percentage5": Number(item["Percentage5"])});
 
     });
 
@@ -504,9 +507,17 @@ div.scrollmenu li {
 
 
     x_players = d3v4.scaleTime()
-                    .domain(d3v4.extent(rows, row => row.Time))
+                    .domain(d3v4.extent(dataset_players, function(d) {
+                    return d["Time"];
+                  }));
     y_players = d3v4.scaleLinear()
-                    .domain([0, d3v4.max(rows, row => Math.max(row.Percentage1, row.Percentage2, row.Percentage3, row.Percentage4, row.Percentage5))])
+            .domain([0, d3v4.max(dataset_players,function(d) {
+                return Math.max(d["Percentage1"], d["Percentage2"], d["Percentage3"], d["Percentage4"], d["Percentage5"]);
+                }
+              )]);
+
+    older_date = d3v4.max(dataset_plot, d => Math.max(d.Time))
+    console.log("older_date", older_date)
 
     // dataset_plot.forEach(function(item,index){
     //   console.log(index);
@@ -686,3 +697,4 @@ setInterval(function(){
 
 </script>
 {% endblock d3 %}
+

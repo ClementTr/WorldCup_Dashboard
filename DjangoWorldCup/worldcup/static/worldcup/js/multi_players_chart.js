@@ -31,6 +31,7 @@ function draw_players(data, innerW, innerH) {
       //                          .y(d => y_plot(d.Negative))
       //                          .curve(d3v4.curveCardinal); // Pour avoir des courbes linéaires
       /* On créé une variable courbe pour les deliveries */
+
       let valueline_Player1 = d3v4.line()
                                    .x(d => x_players(d.Time))
                                    .y(d => y_players(d.Percentage1))
@@ -74,6 +75,8 @@ function draw_players(data, innerW, innerH) {
               .attr("class", "axis")
               .call(d3v4.axisLeft(y_players));
 
+      console.log("data", data)
+      console.log("valueline_Player1", valueline_Player1)
 
       /* On dessine la variable Player 1 */
       svg_players.append("path")
@@ -91,7 +94,7 @@ function draw_players(data, innerW, innerH) {
 
       /* On dessine la variable Player 2 */
       svg_players.append("path")
-              .data([data])
+              .data(data)
               .attr("class", "line")
               .attr("id", "player2")
               .attr("d", valueline_Player2)
@@ -105,7 +108,7 @@ function draw_players(data, innerW, innerH) {
 
       /* On dessine la variable Player 3 */
       svg_players.append("path")
-              .data([data])
+              .data(data)
               .attr("class", "line")
               .attr("id", "player3")
               .attr("d", valueline_Player3)
@@ -119,9 +122,9 @@ function draw_players(data, innerW, innerH) {
 
     /* On dessine la variable Player 4 */
     svg_players.append("path")
-            .data([data])
+            .data(data)
             .attr("class", "line")
-            .attr("id", "player2")
+            .attr("id", "player4")
             .attr("d", valueline_Player4)
             .style("stroke", dict_color[Country_4])
             .transition() // On ajoute ces lignes pour dessiner les courbes en direct
@@ -133,9 +136,9 @@ function draw_players(data, innerW, innerH) {
 
     /* On dessine la variable Player 5 */
     svg_players.append("path")
-            .data([data])
+            .data(data)
             .attr("class", "line")
-            .attr("id", "player3")
+            .attr("id", "player5")
             .attr("d", valueline_Player5)
             .style("stroke", dict_color[Country_5])
             .transition() // On ajoute ces lignes pour dessiner les courbes en direct
@@ -224,6 +227,9 @@ function draw_players(data, innerW, innerH) {
 
       let pos_player1 = svg_players.append("defs")
                           .attr("id", "imgdefs")
+
+      console.log("1", y_players(Percentage_1))
+      console.log("2", Percentage_1)
       let clipPath_player1 = pos_player1.append('clipPath')
                                   .attr('id', 'clip-circle_player1')
                                   .append("circle")
@@ -231,6 +237,7 @@ function draw_players(data, innerW, innerH) {
                                   .attr("cx", x_players(older_date) - 20 + (56/2))
                                   .attr("cy", y_players(Percentage_1) -30 + (56/2));
 
+     console.log(x_players(older_date))
      svg_players.append("circle")
               .style("fill", dict_color[Country_1])
               .attr("r", -2 + (56/2))

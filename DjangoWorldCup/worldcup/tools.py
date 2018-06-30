@@ -55,8 +55,9 @@ def playersCalculations(hashtag_name):
     return data[["Nom", "Percentage"]].to_json(orient='values')
 
 def playersTimeseriesCalculations(hashtag_name):
+    client = MongoClient('localhost', 27017)
     db = client['WorldCup']
-    collection_name = str(hashtag_name[1:]) + "_Timeseries_Players"
+    collection_name = "FRAARG_Timeseries_Players"#str(hashtag_name[1:]) + "_Timeseries_Players"
     collection = db[collection_name]
     data = pd.DataFrame(list(collection.find()))
     client.close()
@@ -64,13 +65,13 @@ def playersTimeseriesCalculations(hashtag_name):
     data = data.drop(['_id','index'], axis=1)
     data['Time'] = pd.to_datetime(data['Time'], infer_datetime_format=True)
     top5_now_players = data.sort_values(by=["Time","Percentage"],ascending=False).iloc[:5,:]["Player"].values.tolist()
-    top5_now = data[data['Player'].isin(Top5_now_players)]
+    top5_now = data[data['Player'].isin(top5_now_players)]
     topdf = []
     for time, index in zip(top5_now["Time"].unique(),range(len(top5_now["Time"].unique()))):
         time = pd.to_datetime(time, infer_datetime_format=True)
         tmp = {}
         tmp["Time"] = int(time.timestamp() * 1000)
-        for i in zip(top5_now[top5_now["Time"] == time].iterrows(),range(0,5)):
+        for i,j in zip(top5_now[top5_now["Time"] == time].iterrows(),range(1,6)):
             #tmp[i[1]['Player']] = {"Percentage":i[1]['Percentage'],"Pays":i[1]["Pays"]}
             tmp['Player'+str(j)] = i[1]['Player']
             tmp["Percentage"+str(j)] = i[1]['Percentage']
