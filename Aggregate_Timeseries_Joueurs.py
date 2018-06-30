@@ -22,31 +22,32 @@ def getDataFromMongo(collection_name):
     collection = db[collection_name]
     data = pd.DataFrame(list(collection.find()))
     client.close()
+    #print(data)
     data.sort_values(by="Count", ascending=False, inplace=True)
     return data
 
 def playersCalculations(hashtag_name):
     client = MongoClient('localhost', 27017)
     db = client['WorldCup']
-    collection_timeseries_Players = db[str(hashtag_name[1:])+'_Timeseries_Players']
-    data = getDataFromMongo(str(hashtag_name[1:])+'_Players')
+    collection_timeseries_Players = db[str(hashtag_name)+'_Timeseries_Players']
+    data = getDataFromMongo(str(hashtag_name)+'_Players')
     data['Percentage'] = np.ceil((data['Count']*100)/data['Count'].sum())
     timing =  datetime.datetime.now()
     for i, row in data.iterrows():
         to_insert = {'Time':str(timing),
                 'Player':row['Nom'],
-                'Percentage':str(row['Percentage'],
-                'Pays':INV_PAYS_EN[row['Pays']])}
+                'Percentage':str(row['Percentage']),
+                'Pays':INV_PAYS_EN[row['Pays']]}
 
         collection_timeseries_Players.insert_one(to_insert)
     return None
 
 global hashtag
-with open('../HASHTAG_FILE.txt') as f:
+with open('HASHTAG_FILE.txt') as f:
     hashtag = f.read()[1:7]
 client = MongoClient('localhost', 27017)
 db = client['WorldCup']
 test = True
 while test == True:
-    playersCalculations(hashtag_name)
+    playersCalculations(hashtag)
     time.sleep(60)
