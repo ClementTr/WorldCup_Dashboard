@@ -70,8 +70,11 @@ def playersTimeseriesCalculations(hashtag_name):
         time = pd.to_datetime(time, infer_datetime_format=True)
         tmp = {}
         tmp["Time"] = int(time.timestamp() * 1000)
-        for i in top5_now[top5_now["Time"] == time].iterrows():
-            tmp[i[1]['Player']] = {"Percentage":i[1]['Percentage'],"Pays":i[1]["Pays"]}
+        for i in zip(top5_now[top5_now["Time"] == time].iterrows(),range(0,5)):
+            #tmp[i[1]['Player']] = {"Percentage":i[1]['Percentage'],"Pays":i[1]["Pays"]}
+            tmp['Player'+str(j)] = i[1]['Player']
+            tmp["Percentage"+str(j)] = i[1]['Percentage']
+            tmp["Pays"+str(j)] = i[1]['Pays']
         topdf.append(tmp)
 
     return topdf
