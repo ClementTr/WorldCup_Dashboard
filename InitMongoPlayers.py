@@ -6,7 +6,7 @@ import numpy as np
 global hashtag
 #with open('../HASHTAG_FILE.txt') as f:
 #    hashtag = f.read()[1:7]
-hashtag = "SENCOL"
+hashtag = "FRAARG"
 
 def getPlayers():
     global hashtag
