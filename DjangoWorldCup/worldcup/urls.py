@@ -23,6 +23,7 @@ urlpatterns = [
     # path('round_16_3/', views.round_16_3, name='round_16_3'),
     # path('round_16_2/', views.round_16_2, name='round_16_2'),
     # path('round_16_1/', views.round_16_1, name='round_16_1'),
+    path('fraarg/', views.engbel, name='match'),
     path('engbel/', views.engbel, name='poules'),
     path('serbra/', views.serbra, name='poules'),
     path('denfra/', views.denfra, name='poules'),

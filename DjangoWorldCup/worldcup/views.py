@@ -5,7 +5,7 @@ import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
 from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, get_Emojis, getEmojisClassement, playersTimeseriesCalculations
-MATCH_HASHTAG = '#FRAARG'
+MATCH_HASHTAG = '#URUPOR'
 
 def home(request):
     if (request.method == "POST"):
@@ -44,7 +44,7 @@ def data_playersPosition(request):
 
 
 def main(request):
-    date = "Saturday, June 30th - 16:00"
+    date = "Saturday, June 30th - 20:00"
     country_1, country_2 = getPays(MATCH_HASHTAG)
     emojis = get_Emojis(MATCH_HASHTAG)
     our_tweet = ""
@@ -119,12 +119,17 @@ def timeseries_players(request):
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
 #     return render(request, 'worldcup/match.html', context)
 #
-# def round_16_1(request):
-#     hashtag = "#"
-#     country_1, country_2 = getPays(hashtag)
-#     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/match.html', context)
-#
+def fraarg(request):
+    hashtag = "#FRAARG"
+    our_tweet = ""
+    goal_tweet = ""
+    rnn_tweet = ""
+    date = "Saturday, June 30th - 16:00"
+    country_1, country_2 = getPays(hashtag)
+    emojis = getEmojisClassement(hashtag[1:])
+    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis}
+    return render(request, 'worldcup/poules.html', context)
+
 def engbel(request):
     hashtag = "#ENGBEL"
     our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>The second just before I knew I f*cked up <a href='https://twitter.com/hashtag/InternetUndefeated?src=hash&amp;ref_src=twsrc%5Etfw'>#InternetUndefeated</a> 😂 <a href='https://t.co/wAf5Wt6QvK'>pic.twitter.com/wAf5Wt6QvK</a></p>&mdash; Michy Batshuayi (@mbatshuayi) <a href='https://twitter.com/mbatshuayi/status/1012433791040794625?ref_src=twsrc%5Etfw'>28 juin 2018</a></blockquote>"
