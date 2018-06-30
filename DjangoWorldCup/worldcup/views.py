@@ -5,7 +5,7 @@ import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
 from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, get_Emojis, getEmojisClassement, playersTimeseriesCalculations
-MATCH_HASHTAG = '#ENGBEL'
+MATCH_HASHTAG = '#FRAARG'
 
 def home(request):
     if (request.method == "POST"):
@@ -44,11 +44,11 @@ def data_playersPosition(request):
 
 
 def main(request):
-    date = "Thursday, June 28th - 20:00"
+    date = "Saturday, June 30th - 16:00"
     country_1, country_2 = getPays(MATCH_HASHTAG)
     emojis = get_Emojis(MATCH_HASHTAG)
-    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>Pour <a href='https://twitter.com/Fellaini?ref_src=twsrc%5Etfw'>@Fellaini</a>, c&#39;est &quot;50/50&quot; ce soir entre la Belgique et l&#39;Angleterre.<br>Et vous, qu&#39;en pensez-vous ?<a href='https://twitter.com/hashtag/BEL?src=hash&amp;ref_src=twsrc%5Etfw'>#BEL</a> <a href='https://twitter.com/hashtag/ENGBEL?src=hash&amp;ref_src=twsrc%5Etfw'>#ENGBEL</a> <a href='https://twitter.com/hashtag/CM2018?src=hash&amp;ref_src=twsrc%5Etfw'>#CM2018</a> <a href='https://t.co/oeKd4nVI01'>pic.twitter.com/oeKd4nVI01</a></p>&mdash; Coupe du Monde 🏆 (@fifaworldcup_fr) <a href='https://twitter.com/fifaworldcup_fr/status/1012244207262552065?ref_src=twsrc%5Etfw'>28 juin 2018</a></blockquote>"
-    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Dries Mertens&#39; goal for <a href='https://twitter.com/hashtag/BEL?src=hash&amp;ref_src=twsrc%5Etfw'>#BEL</a> yesterday against <a href='https://twitter.com/hashtag/KOR?src=hash&amp;ref_src=twsrc%5Etfw'>#KOR</a> . Early contender for Best goal of the <a href='https://twitter.com/hashtag/Russia2018?src=hash&amp;ref_src=twsrc%5Etfw'>#Russia2018</a> <a href='https://twitter.com/hashtag/WorldCup?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCup</a> <a href='https://t.co/ATD83jybBX'>pic.twitter.com/ATD83jybBX</a></p>&mdash; BPA🐐 (@BayoPsalm) <a href='https://twitter.com/BayoPsalm/status/1008941230506508288?ref_src=twsrc%5Etfw'>19 juin 2018</a></blockquote>"
+    our_tweet = ""
+    goal_tweet = ""
     context = {'hashtag': MATCH_HASHTAG, 'country_1': country_1, "country_2": country_2, "date":date, "our_tweet": our_tweet, "goal_tweet":goal_tweet, "emojis":emojis}
     return render(request, 'worldcup/main.html', context)
 
@@ -125,18 +125,23 @@ def timeseries_players(request):
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
 #     return render(request, 'worldcup/match.html', context)
 #
-# def engbel(request):
-#     hashtag = "#ENGBEL"
-#     country_1, country_2 = getPays(hashtag)
-#     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/poules.html', context)
-#
+def beleng(request):
+    hashtag = "#BELENG"
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>The second just before I knew I f*cked up <a href='https://twitter.com/hashtag/InternetUndefeated?src=hash&amp;ref_src=twsrc%5Etfw'>#InternetUndefeated</a> 😂 <a href='https://t.co/wAf5Wt6QvK'>pic.twitter.com/wAf5Wt6QvK</a></p>&mdash; Michy Batshuayi (@mbatshuayi) <a href='https://twitter.com/mbatshuayi/status/1012433791040794625?ref_src=twsrc%5Etfw'>28 juin 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Great goal from Januzaj - but Batshuayi has just immortalised himself in the form of internet memes. <a href='https://t.co/JXar2T5hFy'>pic.twitter.com/JXar2T5hFy</a></p>&mdash; Richard Conway (@richard_conway) <a href='https://twitter.com/richard_conway/status/1012415865290199040?ref_src=twsrc%5Etfw'>28 juin 2018</a></blockquote>"
+    rnn_tweet = ""
+    date = "Tuesday, June 28th - 20:00"
+    country_1, country_2 = getPays(hashtag)
+    emojis = getEmojisClassement(hashtag[1:])
+    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis}
+    return render(request, 'worldcup/poules.html', context)
+
 def serbra(request):
     hashtag = "#SERBRA"
     our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Brazil fans in the metro in Moscow. Amazing 💛🇧🇷  <a href='https://t.co/pASRbD7XKA'>pic.twitter.com/pASRbD7XKA</a></p>&mdash; Seleção Brasileira (@BrazilStat) <a href='https://twitter.com/BrazilStat/status/1012328371764723712?ref_src=twsrc%5Etfw'>28 juin 2018</a></blockquote>"
     goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>first goal of Brazil a typical Coutinho assist and good Penetration run behinde to defense from Paulinho. <a href='https://twitter.com/KlipDraw?ref_src=twsrc%5Etfw'>@KlipDraw</a>  <a href='https://twitter.com/hashtag/BRA?src=hash&amp;ref_src=twsrc%5Etfw'>#BRA</a> <a href='https://twitter.com/hashtag/SRB?src=hash&amp;ref_src=twsrc%5Etfw'>#SRB</a> <a href='https://t.co/xFUUzlJTp0'>pic.twitter.com/xFUUzlJTp0</a></p>&mdash; Cüneyt ALİBEYOĞULLARI (@CAlibeyogullari) <a href='https://twitter.com/CAlibeyogullari/status/1012121881225416705?ref_src=twsrc%5Etfw'>27 juin 2018</a></blockquote>"
     rnn_tweet = ""
-    date = "Tuesday, June 26th - 20:00"
+    date = "Wednesday, June 27th - 20:00"
     country_1, country_2 = getPays(hashtag)
     emojis = getEmojisClassement(hashtag[1:])
     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis}
