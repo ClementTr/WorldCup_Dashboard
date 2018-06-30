@@ -70,7 +70,7 @@ div.scrollmenu li {
                   </div>
               </div>
 
-              <div class="col-lg-7">
+              <!-- <div class="col-lg-7">
                   <div class="au-card au-card--bg-blue au-card-top-countries m-b-30">
                       <div class="au-card-inner">
                         <h3 class="title-3 m-b-30 text-white">Top Buzz Players</h3>
@@ -81,17 +81,17 @@ div.scrollmenu li {
                           </div>
                       </div>
                   </div>
-              </div>
+              </div> -->
 
 
-              <!-- <div class="col-lg-5">
+              <div class="col-lg-7">
                   <div class="au-card m-b-30">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">Players Buzz - Live</h3>
                           <div class="chart-wrapper" id="multi_playersChart"></div>
                       </div>
                   </div>
-              </div> -->
+              </div>
 
 
               <div class="col-lg-9">
@@ -489,13 +489,13 @@ div.scrollmenu li {
     Percentage_3 = response[len_data_players-1]["Percentage3"]
     Percentage_4 = response[len_data_players-1]["Percentage4"]
     Percentage_5 = response[len_data_players-1]["Percentage5"]
-    console.log(len_data_players, Percentage_1, Percentage_2)
+
     Country_1 = response[len_data_players-1]["Pays1"]
     Country_2 = response[len_data_players-1]["Pays2"]
     Country_3 = response[len_data_players-1]["Pays3"]
     Country_4 = response[len_data_players-1]["Pays4"]
     Country_5 = response[len_data_players-1]["Pays5"]
-    console.log(Country_5)
+
     Name_1 = response[len_data_players-1]["Player1"]
     Name_2 = response[len_data_players-1]["Player2"]
     Name_3 = response[len_data_players-1]["Player3"]
@@ -512,11 +512,9 @@ div.scrollmenu li {
         "Percentage3": Number(item["Percentage3"]),
         "Percentage4": Number(item["Percentage4"]),
         "Percentage5": Number(item["Percentage5"])});
-
     });
 
     bisect_date_players = d3v4.bisector(function(d) { return d["Time"];}).left;
-
 
     x_players = d3v4.scaleTime()
                     .domain(d3v4.extent(dataset_players, function(d) {
@@ -530,13 +528,6 @@ div.scrollmenu li {
 
     older_date = d3v4.max(dataset_plot, d => Math.max(d.Time))
     console.log("older_date", older_date)
-
-    // dataset_plot.forEach(function(item,index){
-    //   console.log(index);
-    //   console.log(item["Time"])
-    //   console.log(x_plot(item["Time"]));
-    //   console.log("---------------------");
-    // });
 
     redraw_players();
 

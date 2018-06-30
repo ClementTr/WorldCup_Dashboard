@@ -126,7 +126,7 @@ def timeseries_players(request):
 #     return render(request, 'worldcup/match.html', context)
 #
 def engbel(request):
-    hashtag = "#BELENG"
+    hashtag = "#ENGBEL"
     our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>The second just before I knew I f*cked up <a href='https://twitter.com/hashtag/InternetUndefeated?src=hash&amp;ref_src=twsrc%5Etfw'>#InternetUndefeated</a> 😂 <a href='https://t.co/wAf5Wt6QvK'>pic.twitter.com/wAf5Wt6QvK</a></p>&mdash; Michy Batshuayi (@mbatshuayi) <a href='https://twitter.com/mbatshuayi/status/1012433791040794625?ref_src=twsrc%5Etfw'>28 juin 2018</a></blockquote>"
     goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Great goal from Januzaj - but Batshuayi has just immortalised himself in the form of internet memes. <a href='https://t.co/JXar2T5hFy'>pic.twitter.com/JXar2T5hFy</a></p>&mdash; Richard Conway (@richard_conway) <a href='https://twitter.com/richard_conway/status/1012415865290199040?ref_src=twsrc%5Etfw'>28 juin 2018</a></blockquote>"
     rnn_tweet = ""
