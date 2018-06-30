@@ -482,8 +482,6 @@ div.scrollmenu li {
 
     //let nse = response[0]
     let len_data_players = response.length
-    console.log("response0", response[0])
-    console.log("taille", response.length)
     Percentage_1 = response[len_data_players-1]["Percentage1"]
     Percentage_2 = response[len_data_players-1]["Percentage2"]
     Percentage_3 = response[len_data_players-1]["Percentage3"]
@@ -527,7 +525,6 @@ div.scrollmenu li {
               )]);
 
     older_date = d3v4.max(dataset_plot, d => Math.max(d.Time))
-    console.log("older_date", older_date)
 
     redraw_players();
 

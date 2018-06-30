@@ -111,11 +111,10 @@ div.scrollmenu li {
                   </div>
               </div>
 
-
-              <div class="col-lg-7">
-                  <div class="au-card au-card--bg-blue au-card-top-countries m-b-30">
+              <div class="col-lg-7" style="padding-left:7px;">
+                  <div class="au-card m-b-30" style="padding-left: 20px;">
                       <div class="au-card-inner">
-                        <h3 class="title-3 m-b-30 text-white">Top Buzz Players</h3>
+                          <h3 class="title-2 m-b-40">Top Buzz Players - Live</h3>
                           <div class="chart-wrapper" id="multi_playersChart"></div>
                       </div>
                   </div>
@@ -247,70 +246,124 @@ div.scrollmenu li {
   let Name_1, Name_2, Name_3, Name_4, Name_5;
   let Percentage_1, Percentage_2, Percentage_3, Percentage_4, Percentage_5;
   let Country_1, Country_2, Country_3, Country_4, Country_5;
+  let max_player1, max_player2, max_player3, max_player4, max_player5
 
   let matchname3 = "{{hashtag}}"
 
-  d3v4.csv("/static/worldcup/data/"+matchname3.slice(1,7)+"/"+matchname3.slice(1,7)+"_Timeseries_Players.csv")
-      /* On load les colonnes de notre csv */
-      .row(d => {
-          Percentage_1 = d.Percentage1;
-          Percentage_2 = d.Percentage2;
-          Percentage_3 = d.Percentage3;
-          Percentage_4 = d.Percentage4;
-          Percentage_5 = d.Percentage5;
-          Country_1 = d.Pays1;
-          Country_2 = d.Pays2;
-          Country_3 = d.Pays3;
-          Country_4 = d.Pays4;
-          Country_5 = d.Pays5;
-          Name_1 = d.Player1;
-          Name_2 = d.Player2;
-          Name_3 = d.Player3;
-          Name_4 = d.Player4;
-          Name_5 = d.Player5;
-          older_date = d.Time;
-          return {
-              Time: new Date(d.Time),
-              Player_Name_1: d.Player1,
-              Percentage1: +d.Percentage1,
-              Player_Name_2: d.Player2,
-              Percentage2: +d.Percentage2,
-              Player_Name_3: d.Player3,
-              Percentage3: +d.Percentage3,
-              Player_Name_4: d.Player4,
-              Percentage4: +d.Percentage4,
-              Player_Name_5: d.Player5,
-              Percentage5: +d.Percentage5
-          }
-      })
-      /* On les scale entre la plus petite et la plus grande valeur selon la taille de notre fenêtre */
-      .get((error, rows) => {
-          if (rows.length > 0) {
-              //x_players = d3v4.scaleTime()
-              //        .domain(d3v4.extent(rows, row => row.Time))
-             // y_players = d3v4.scaleLinear()
-               //       .domain([0, d3v4.max(rows, row => Math.max(row.Percentage1, row.Percentage2, row.Percentage3, row.Percentage4, row.Percentage5))])
 
-              dataset_players = rows
-              
-	      x_players = d3v4.scaleTime()
+
+  // d3v4.csv("/static/worldcup/data/"+matchname3.slice(1,7)+"/"+matchname3.slice(1,7)+"_Timeseries_Players.csv")
+  //     /* On load les colonnes de notre csv */
+  //     .row(d => {
+  //         Percentage_1 = d.Percentage1;
+  //         Percentage_2 = d.Percentage2;
+  //         Percentage_3 = d.Percentage3;
+  //         Percentage_4 = d.Percentage4;
+  //         Percentage_5 = d.Percentage5;
+  //         Country_1 = d.Pays1;
+  //         Country_2 = d.Pays2;
+  //         Country_3 = d.Pays3;
+  //         Country_4 = d.Pays4;
+  //         Country_5 = d.Pays5;
+  //         Name_1 = d.Player1;
+  //         Name_2 = d.Player2;
+  //         Name_3 = d.Player3;
+  //         Name_4 = d.Player4;
+  //         Name_5 = d.Player5;
+  //         older_date = d.Time;
+  //         return {
+  //             Time: new Date(d.Time),
+  //             Player_Name_1: d.Player1,
+  //             Percentage1: +d.Percentage1,
+  //             Player_Name_2: d.Player2,
+  //             Percentage2: +d.Percentage2,
+  //             Player_Name_3: d.Player3,
+  //             Percentage3: +d.Percentage3,
+  //             Player_Name_4: d.Player4,
+  //             Percentage4: +d.Percentage4,
+  //             Player_Name_5: d.Player5,
+  //             Percentage5: +d.Percentage5
+  //         }
+  //     })
+  //     /* On les scale entre la plus petite et la plus grande valeur selon la taille de notre fenêtre */
+  //     .get((error, rows) => {
+  //         if (rows.length > 0) {
+  //             console.log(rows['Percentage1'])
+  //             console.log("higher value", d3v4.max(rows, row => Math.max(row.Percentage1)))
+  //             x_players = d3v4.scaleTime()
+  //                             .domain(d3v4.extent(rows, row => row.Time))
+  //             y_players = d3v4.scaleLinear()
+  //                            .domain([0, d3v4.max(rows, row => Math.max(row.Percentage1, row.Percentage2, row.Percentage3, row.Percentage4, row.Percentage5))])
+  //
+  //             dataset_players = rows
+  //
+  //             console.log("older_date 1", older_date)
+  //             console.log("older_date trad", x_players(older_date))
+  //             redraw_players();
+  //
+  //         }
+  //     });
+
+  d3v4.json("/static/worldcup/data/"+matchname2.slice(1,7)+"/"+matchname2.slice(1,7)+"_Timeseries_Players.json", function(error, myData) {
+
+    let len_data_players = myData.length
+
+    Percentage_1 = myData[len_data_players-1]["Percentage1"]
+    Percentage_2 = myData[len_data_players-1]["Percentage2"]
+    Percentage_3 = myData[len_data_players-1]["Percentage3"]
+    Percentage_4 = myData[len_data_players-1]["Percentage4"]
+    Percentage_5 = myData[len_data_players-1]["Percentage5"]
+
+    Country_1 = myData[len_data_players-1]["Pays1"]
+    Country_2 = myData[len_data_players-1]["Pays2"]
+    Country_3 = myData[len_data_players-1]["Pays3"]
+    Country_4 = myData[len_data_players-1]["Pays4"]
+    Country_5 = myData[len_data_players-1]["Pays5"]
+
+    Name_1 = myData[len_data_players-1]["Player1"]
+    Name_2 = myData[len_data_players-1]["Player2"]
+    Name_3 = myData[len_data_players-1]["Player3"]
+    Name_4 = myData[len_data_players-1]["Player4"]
+    Name_5 = myData[len_data_players-1]["Player5"]
+
+    //data = response//JSON.parse(response);
+
+    myData.forEach(function(item, index){
+      date = new Date(item["Time"])
+      dataset_players.push({"Time": date,
+        "Percentage1": Number(item["Percentage1"]),
+        "Percentage2": Number(item["Percentage2"]),
+        "Percentage3": Number(item["Percentage3"]),
+        "Percentage4": Number(item["Percentage4"]),
+        "Percentage5": Number(item["Percentage5"])});
+    });
+
+    bisect_date_players = d3v4.bisector(function(d) { return d["Time"];}).left;
+
+    x_players = d3v4.scaleTime()
                     .domain(d3v4.extent(dataset_players, function(d) {
                     return d["Time"];
                   }));
-    		y_players = d3v4.scaleLinear()
-           	    .domain([0, d3v4.max(dataset_players,function(d) {
+    y_players = d3v4.scaleLinear()
+            .domain([0, d3v4.max(dataset_players,function(d) {
                 return Math.max(d["Percentage1"], d["Percentage2"], d["Percentage3"], d["Percentage4"], d["Percentage5"]);
                 }
               )]);
 
+    max_player1 = d3v4.max(dataset_players,function(d) {return Math.max(d["Percentage1"])})
+    max_player2 = d3v4.max(dataset_players,function(d) {return Math.max(d["Percentage2"])})
+    max_player3 = d3v4.max(dataset_players,function(d) {return Math.max(d["Percentage3"])})
+    max_player4 = d3v4.max(dataset_players,function(d) {return Math.max(d["Percentage4"])})
+    max_player5 = d3v4.max(dataset_players,function(d) {return Math.max(d["Percentage5"])})
 
-             //older_date = d3v4.max(rows, row => Math.max(row.Time))
-              console.log("older_date 1", older_date)
-              console.log("older_date trad", x_players(older_date))
-              redraw_players();
 
-          }
-      });
+    older_date = d3v4.max(dataset_plot, d => Math.max(d.Time))
+
+    redraw_players();
+
+  });
+
+
 </script>
 
 
