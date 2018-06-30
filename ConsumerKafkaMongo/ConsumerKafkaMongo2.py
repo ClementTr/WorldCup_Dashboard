@@ -14,7 +14,7 @@ import emoji
 from correspondance_emoji import *
 
 global hashtag, joueurs, db
-with open('../HASHTAG_FILE.txt') as f:
+with open('../HASHTAG_FILE2.txt') as f:
     hashtag = f.read()[1:7]
 
 # hashtag = str('#PORSPA')[1:]
@@ -172,9 +172,6 @@ def putDataToMongo(tweet):
         print('failed ondata,', str(e))
         pass
 init()
-consumer = KafkaConsumer("WorldCup", bootstrap_servers='localhost:9092',auto_offset_reset='earliest',value_deserializer=lambda m: json.loads(m.decode('ascii')))
+consumer = KafkaConsumer("WorldCup2", bootstrap_servers='localhost:9092',auto_offset_reset='earliest',value_deserializer=lambda m: json.loads(m.decode('ascii')))
 for msg in consumer:
     putDataToMongo(msg.value)
-
-
-

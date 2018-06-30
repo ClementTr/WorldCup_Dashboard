@@ -1,34 +1,34 @@
 ,Position,Equipe,Points,Group,Emoji,Buts_pour,Buts_contre
-0,1,Russia,6,A,russia,8,1
-1,2,Saudi Arabia,0,A,saudi-arabia,0,6
-2,3,Egypt,0,A,egypt,0,4
-3,4,Uruguay,6,A,uruguay,2,0
-4,1,Portugal,4,B,portugal,4,3
-5,2,Spain,4,B,spain,4,3
-6,3,Morocco,0,B,morocco,0,2
-7,4,Iran,3,B,iran,1,1
-8,1,France,6,C,france,3,1
-9,2,Australia,1,C,australia,2,3
-10,3,Peru,0,C,peru,0,2
-11,4,Denmark,4,C,denmark,2,1
-12,1,Argentina,1,D,argentina,1,4
-13,2,Iceland,1,D,iceland,1,3
-14,3,Croatia,6,D,croatia,5,0
-15,4,Nigeria,3,D,nigeria,2,2
-16,1,Brazil,4,E,brazil,3,1
-17,2,Switzerland,4,E,switzerland,3,2
-18,3,Costa Rica,0,E,costa-rica,0,3
-19,4,Serbia,3,E,serbia,2,2
-20,1,Germany,3,F,germany,2,2
-21,2,Mexico,6,F,mexico,3,1
-22,3,Sweden,3,F,sweden,2,2
-23,4,Korea Republic,0,F,south-korea,1,3
-24,1,Belgium,6,G,belgium,8,2
-25,2,Panama,0,G,panama,0,3
-26,3,Tunisia,0,G,tunisia,3,7
-27,4,England,3,G,england,2,0
-28,1,Poland,0,H,poland,1,2
-29,2,Senegal,3,H,senegal,2,1
-30,3,Colombia,0,H,colombia,1,2
-31,4,Japan,3,H,japan,2,1
+0,1,Russia,6,A,russia,8,4
+1,2,Saudi Arabia,3,A,saudi-arabia,2,7
+2,3,Egypt,0,A,egypt,2,6
+3,4,Uruguay,9,A,uruguay,5,0
+4,1,Portugal,5,B,portugal,5,4
+5,2,Spain,5,B,spain,6,5
+6,3,Morocco,1,B,morocco,2,4
+7,4,Iran,4,B,iran,2,2
+8,1,France,7,C,france,3,1
+9,2,Australia,1,C,australia,2,5
+10,3,Peru,3,C,peru,2,2
+11,4,Denmark,5,C,denmark,2,1
+12,1,Argentina,4,D,argentina,3,5
+13,2,Iceland,1,D,iceland,2,5
+14,3,Croatia,9,D,croatia,7,1
+15,4,Nigeria,3,D,nigeria,3,4
+16,1,Brazil,7,E,brazil,5,1
+17,2,Switzerland,5,E,switzerland,5,4
+18,3,Costa Rica,1,E,costa-rica,2,5
+19,4,Serbia,3,E,serbia,2,4
+20,1,Germany,3,F,germany,2,4
+21,2,Mexico,6,F,mexico,3,4
+22,3,Sweden,6,F,sweden,5,2
+23,4,Korea Republic,0,F,south-korea,3,3
+24,1,Belgium,9,G,belgium,9,2
+25,2,Panama,0,G,panama,2,11
+26,3,Tunisia,3,G,tunisia,5,8
+27,4,England,6,G,england,8,3
+28,1,Poland,3,H,poland,2,5
+29,2,Senegal,4,H,senegal,4,4
+30,3,Colombia,6,H,colombia,5,2
+31,4,Japan,4,H,japan,5,4
 
