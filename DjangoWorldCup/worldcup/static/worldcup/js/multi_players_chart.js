@@ -94,7 +94,7 @@ function draw_players(data, innerW, innerH) {
 
       /* On dessine la variable Player 2 */
       svg_players.append("path")
-              .data(data)
+              .data([data])
               .attr("class", "line")
               .attr("id", "player2")
               .attr("d", valueline_Player2)
@@ -108,7 +108,7 @@ function draw_players(data, innerW, innerH) {
 
       /* On dessine la variable Player 3 */
       svg_players.append("path")
-              .data(data)
+              .data([data])
               .attr("class", "line")
               .attr("id", "player3")
               .attr("d", valueline_Player3)
@@ -122,7 +122,7 @@ function draw_players(data, innerW, innerH) {
 
     /* On dessine la variable Player 4 */
     svg_players.append("path")
-            .data(data)
+            .data([data])
             .attr("class", "line")
             .attr("id", "player4")
             .attr("d", valueline_Player4)
@@ -136,7 +136,7 @@ function draw_players(data, innerW, innerH) {
 
     /* On dessine la variable Player 5 */
     svg_players.append("path")
-            .data(data)
+            .data([data])
             .attr("class", "line")
             .attr("id", "player5")
             .attr("d", valueline_Player5)
@@ -234,18 +234,18 @@ function draw_players(data, innerW, innerH) {
                                   .attr('id', 'clip-circle_player1')
                                   .append("circle")
                                   .attr("r", - 5 + (56/2))
-                                  .attr("cx", x_players(older_date) - 20 + (56/2))
+                                  .attr("cx", x_players(older_date) - 100 + (56/2))
                                   .attr("cy", y_players(Percentage_1) -30 + (56/2));
 
      console.log(x_players(older_date))
      svg_players.append("circle")
               .style("fill", dict_color[Country_1])
               .attr("r", -2 + (56/2))
-              .attr("cx", x_players(older_date) - 20 + (56/2))
+              .attr("cx", x_players(older_date) - 100 + (56/2))
               .attr("cy", y_players(Percentage_1) - 2);
 
       svg_players.append("image")
-               .attr("x", x_players(older_date) - 20)
+               .attr("x", x_players(older_date) - 100)
                .attr("y", y_players(Percentage_1) - 30)
                .attr("height", 56)
                .attr("width", 56)
@@ -260,17 +260,17 @@ function draw_players(data, innerW, innerH) {
                                   .attr('id', 'clip-circle_player2')
                                   .append("circle")
                                   .attr("r", - 5 + (56/2))
-                                  .attr("cx", x_players(older_date) - 20 + (56/2))
+                                  .attr("cx", x_players(older_date) - 100 + (56/2))
                                   .attr("cy", y_players(Percentage_2) -30 + (56/2));
 
      svg_players.append("circle")
               .style("fill", dict_color[Country_2])
               .attr("r", -2 + (56/2))
-              .attr("cx", x_players(older_date) - 20 + (56/2))
+              .attr("cx", x_players(older_date) - 100 + (56/2))
               .attr("cy", y_players(Percentage_2) - 2);
 
       svg_players.append("image")
-               .attr("x", x_players(older_date) - 20)
+               .attr("x", x_players(older_date) - 100)
                .attr("y", y_players(Percentage_2) - 30)
                .attr("height", 56)
                .attr("width", 56)
@@ -285,17 +285,17 @@ function draw_players(data, innerW, innerH) {
                                   .attr('id', 'clip-circle_player3')
                                   .append("circle")
                                   .attr("r", - 5 + (56/2))
-                                  .attr("cx", x_players(older_date) - 20 + (56/2))
+                                  .attr("cx", x_players(older_date) - 100 + (56/2))
                                   .attr("cy", y_players(Percentage_3) -30 + (56/2));
 
      svg_players.append("circle")
               .style("fill", dict_color[Country_3])
               .attr("r", -2 + (56/2))
-              .attr("cx", x_players(older_date) - 20 + (56/2))
+              .attr("cx", x_players(older_date) - 100 + (56/2))
               .attr("cy", y_players(Percentage_3) - 2);
 
       svg_players.append("image")
-               .attr("x", x_players(older_date) - 20)
+               .attr("x", x_players(older_date) - 100)
                .attr("y", y_players(Percentage_3) - 30)
                .attr("height", 56)
                .attr("width", 56)
@@ -310,17 +310,17 @@ function draw_players(data, innerW, innerH) {
                                   .attr('id', 'clip-circle_player4')
                                   .append("circle")
                                   .attr("r", - 5 + (56/2))
-                                  .attr("cx", x_players(older_date) - 20 + (56/2))
+                                  .attr("cx", x_players(older_date) - 100 + (56/2))
                                   .attr("cy", y_players(Percentage_4) -30 + (56/2));
 
      svg_players.append("circle")
               .style("fill", dict_color[Country_4])
               .attr("r", -2 + (56/2))
-              .attr("cx", x_players(older_date) - 20 + (56/2))
+              .attr("cx", x_players(older_date) - 100 + (56/2))
               .attr("cy", y_players(Percentage_4) - 2);
 
       svg_players.append("image")
-               .attr("x", x_players(older_date) - 20)
+               .attr("x", x_players(older_date) - 100)
                .attr("y", y_players(Percentage_4) - 30)
                .attr("height", 56)
                .attr("width", 56)
@@ -334,17 +334,17 @@ function draw_players(data, innerW, innerH) {
                                  .attr('id', 'clip-circle_player5')
                                  .append("circle")
                                  .attr("r", - 5 + (56/2))
-                                 .attr("cx", x_players(older_date) - 20 + (56/2))
+                                 .attr("cx", x_players(older_date) - 100 + (56/2))
                                  .attr("cy", y_players(Percentage_5) -30 + (56/2));
 
     svg_players.append("circle")
              .style("fill", dict_color[Country_5])
              .attr("r", -2 + (56/2))
-             .attr("cx", x_players(older_date) - 20 + (56/2))
+             .attr("cx", x_players(older_date) - 100 + (56/2))
              .attr("cy", y_players(Percentage_5) - 2);
 
      svg_players.append("image")
-              .attr("x", x_players(older_date) - 20)
+              .attr("x", x_players(older_date) - 100)
               .attr("y", y_players(Percentage_5) - 30)
               .attr("height", 56)
               .attr("width", 56)

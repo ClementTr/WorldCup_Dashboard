@@ -1,0 +1,685 @@
+{% extends 'worldcup/base.html' %}
+{% load static %}
+
+{% block head %}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114718272-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-114718272-3');
+</script>
+{% endblock head %}
+
+<!-- BLOCK MAIN  -->
+{% block main %}
+<style>
+div.scrollmenu {
+    background-color: white;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+div.scrollmenu li {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+</style>
+<div class="main-content" style="padding-top: 10px;">
+    <div class="section__content section__content--p10">
+        <div class="container-fluid">
+
+          <div class="row">
+
+            <!-- BLOCK TITLE MODIFY TITLE -->
+              <div class="col-lg-12">
+                <div class="au-card m-b-30" style="padding-bottom: 10px;">
+                  <img src="/static/worldcup/img/flags/{{ country_1 }}.png" class="rounded float-left" style="border:1px solid #021a40; height: 100px; width:90px; height:45px;" alt="...">
+                  <img src="/static/worldcup/img/flags/{{ country_2 }}.png" class="rounded float-right" style="border:1px solid #021a40; width:90px; height:45px;" alt="...">
+                  <center>
+                    <h3 class="title-2 m-b-30" style"vertical-align: middle;">Match of the day - {{hashtag}}</h3>
+                    <h4 class="title-3 m-b-30" style"vertical-align: middle;">{{date}}</h4>
+                  </center>
+                </div>
+              </div>
+
+
+
+              <div class="col-lg-12">
+                <div class="au-card m-b-30" style="padding-bottom: 20px;background: #007bff; padding-top: 20px;">
+                  <div class="scrollmenu" style="background: #007bff">
+                    {% for x in emojis %}
+                    <li><i class="em em-{{x.Emoji}}"></i> x{{x.Count}}</li>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-5">
+                  <div class="au-card m-b-30">
+                      <div class="au-card-inner">
+                          <h3 class="title-2 m-b-40">Buzz XI</h3>
+                          <div class="chart-wrapper" id="pitch_plot"></div>
+                      </div>
+                  </div>
+              </div>
+
+
+              <div class="col-lg-7">
+                  <div class="au-card m-b-30">
+                      <div class="au-card-inner">
+                          <h3 class="title-2 m-b-40">Players Buzz - Live</h3>
+                          <!-- <div class="card-body" id="pitch_plot"></div> -->
+                          <div class="chart-wrapper" id="multi_playersChart"></div>
+                      </div>
+                  </div>
+              </div>
+
+
+              <div class="col-lg-9">
+                  <div class="au-card m-b-30">
+                      <div class="au-card-inner">
+                          <h3 class="title-2 m-b-40">% of tweets by country</h3>
+                          <div class="card-body" id="container1"></div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-3">
+                  <div class="au-card au-card--bg-blue au-card-top-countries m-b-30">
+                        <div class="au-card-inner">
+                          <h4 class="title-3 m-b-30 text-white">Top Countries Tweets</h4>
+                            <div class="table-responsive">
+                                <table class="table table-top-countries text-white" id="data-table">
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                  </div>
+              </div>
+
+	     <div class="col-lg-6" style="padding-right:7px;">
+                  <div class="au-card m-b-30">
+                      <div class="au-card-inner">
+                          <h3 class="title-2 m-b-40">% of positives tweets by team</h3>
+                          <div class="chart-wrapper" id="bar_plot"></div>
+                      </div>
+                  </div>
+              </div>
+
+	     <div class="col-lg-6" style="padding-left:7px;">
+                  <div class="au-card m-b-30" style="padding-left: 20px;">
+                      <div class="au-card-inner">
+                          <h3 class="title-2 m-b-40">% of positives tweets during the match</h3>
+                          <div class="chart-wrapper" id="simple_plot"></div>
+                      </div>
+                  </div>
+              </div>
+
+
+              <div class="col-lg-4">
+                  <div class="au-card m-b-30">
+                      <div class="au-card-inner">
+                          <h3 class="title-2 m-b-40">Our favorite tweet</h3>
+                          {{our_tweet|safe}}
+                        </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-4">
+                <div class="au-card m-b-30">
+                      <div class="au-card-inner">
+                          <h3 class="title-2 m-b-40">Our favorite goal tweet</h3>
+                          {{goal_tweet|safe}}
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-4">
+                  <div class="au-card m-b-30">
+                      <div class="au-card-inner">
+                          <h3 class="title-2 m-b-40">Deertweet tweets by itself</h3>
+                          <blockquote class="twitter-tweet" data-lang="fr"><p lang="en" dir="ltr">Waiting for Data / RNN Training -&gt; I will tweet about this game tomorrow ! <a href="https://twitter.com/hashtag/RNN?src=hash&amp;ref_src=twsrc%5Etfw">#RNN</a> <a href="https://t.co/CyFV8F6JrZ">pic.twitter.com/CyFV8F6JrZ</a></p>&mdash; DataDeer (@DataDeer_) <a href="https://twitter.com/DataDeer_/status/1008694389596676097?ref_src=twsrc%5Etfw">18 juin 2018</a></blockquote>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+
+        </div>
+    </div>
+</div>
+<!-- END MAIN CONTENT-->
+{% endblock %}
+
+
+<!-- BLOCK D3V4 MODIFY D3 VERSION V4 CHARTS -->
+{% block d3v4 %}
+
+
+<!-- MULTI LINES CHART -->
+<script type="text/javascript">
+  d3v4 = d3
+
+  window.addEventListener("resize", redraw)
+  const margin_plot = {
+      top: 10,
+      right: 10,
+      bottom: 60,
+      left: 60,
+  };
+  let div_plot = document.getElementById("simple_plot");
+  let svg_plot_init = d3v4.select("#simple_plot").append("svg")
+
+  var format_date = d3v4.timeFormat("%H:%M");
+  let dataset_plot = []
+  let x_plot, y_plot;
+  let svg_plot;
+  let bisect_date_plot;
+
+
+
+  fetch("http://worldcup.datadeer.fr/positive_negative", {
+  method: 'get',
+  dataType: 'json',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  }
+  })
+  .then(response => response.json())
+  .then(response => {
+
+    data = JSON.parse(response);
+
+    data.forEach(function(item,index){
+      date = new Date(item["Time"])
+      dataset_plot.push({"Time": date,
+        "Positive":Number(item["Positive"]),
+        "Negative":Number(item["Negative"])});
+
+    });
+
+    bisect_date_plot = d3v4.bisector(function(d) { return d["Time"];}).left;
+
+    x_plot = d3v4.scaleTime()
+                 .domain(d3v4.extent(dataset_plot,function(d) {
+                      return d["Time"];
+                  }));
+
+    console.log(d3v4.extent(dataset_plot,function(d) {
+                      return d["Time"];
+                  }));
+
+    y_plot = d3v4.scaleLinear()
+            .domain([0, d3v4.max(dataset_plot,function(d) {
+                return Math.max(d["Positive"], d["Negative"]);
+                }
+              )]);
+
+
+    redraw();
+
+  });
+
+</script>
+
+<!-- BARPLOT CHART -->
+<script type="text/javascript">
+
+
+  const margin_barplot = {
+      top: 10,
+      right: 10,
+      bottom: 60,
+      left: 60,
+  };
+
+  var div_barplot = document.getElementById("bar_plot");
+  var svg_barplot_init = d3v4.select("#bar_plot").append("svg")
+  var svg_barplot;
+  var tooltip = d3v4.select("#bar_plot").append("div").attr("class", "toolTip");
+
+  var w = div_barplot.clientWidth;
+  var h = 250;
+
+  var x = d3v4.scaleLinear()
+  var y = d3v4.scaleBand()
+
+    // async function fetchData() {
+      // var test;
+    fetch("http://worldcup.datadeer.fr/data_positivite", {
+    method: 'get',
+    dataType: 'json',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(response => {
+    dataset_barplot = response;
+    redraw_barplot();
+  });
+
+  setInterval(function(){
+    fetch("http://worldcup.datadeer.fr/data_positivite", {
+      method: 'get',
+      dataType: 'json',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(response => {
+      dataset_barplot = response;
+      redraw_barplot();
+    })}, 60000);
+
+  window.addEventListener("resize", redraw_barplot);
+
+
+</script>
+
+<!-- PITCH PLOT -->
+<script type="text/javascript">
+  window.addEventListener("resize", redraw_pitch)
+
+  let div_pitchplot = document.getElementById("pitch_plot");
+  let svg_pitch_init = d3.select('#pitch_plot').append('svg')
+
+  let width_pitch = div_pitchplot.clientWidth;
+  let height_pitch = div_pitchplot.clientHeight;
+  let w_pitch
+  let h_pitch
+  let max_width_available = 0
+
+  let keeper_name
+  let keeper_country
+  let defenders_name
+  let midfielders_name
+  let midfielders_country
+  let attackers_name
+  let attackers_country
+
+  if (width_pitch/height_pitch < 1.6) {
+    w_pitch = width_pitch;
+    h_pitch = height_pitch;
+    max_width_available = w_pitch
+  }
+  else {
+    w_pitch = 536;
+    h_pitch = w_pitch/1.6;
+  }
+
+  fetch("http://worldcup.datadeer.fr/data_playersPosition", {
+    method: 'get',
+    dataType: 'json',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(response => {
+    keeper_name = response["Name"]["Keeper"][0]
+    keeper_country = response["Country"]["Keeper"][0]
+
+    defenders_name = response["Name"]["Defenders"]
+    defenders_country = response["Country"]["Defenders"]
+
+    midfielders_name = response["Name"]["Midfielders"]
+    midfielders_country = response["Country"]["Midfielders"]
+
+    attackers_name = response["Name"]["Attackers"]
+    attackers_country = response["Country"]["Attackers"]
+
+    redraw_pitch()
+  });
+
+  setInterval(function(){
+    var series;
+    fetch("http://worldcup.datadeer.fr/data_playersPosition", {
+      method: 'get',
+      dataType: 'json',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(response => {
+      document.getElementById("popup").remove();
+      keeper_name = response["Name"]["Keeper"][0]
+      keeper_country = response["Country"]["Keeper"][0]
+
+      defenders_name = response["Name"]["Defenders"]
+      defenders_country = response["Country"]["Defenders"]
+
+      midfielders_name = response["Name"]["Midfielders"]
+      midfielders_country = response["Country"]["Midfielders"]
+
+      attackers_name = response["Name"]["Attackers"]
+      attackers_country = response["Country"]["Attackers"]
+
+      redraw_pitch()
+    })}, 60000);
+
+  // window.d3 = null
+</script>
+
+<!-- MULTI PLAYERS CHART -->
+<script type="text/javascript">
+  window.addEventListener("resize", redraw_players)
+  const margin_players = {
+      top: 50,
+      right: 10,
+      bottom: 60,
+      left: 60,
+  };
+  let div_players = document.getElementById("multi_playersChart");
+  let svg_players_init = d3v4.select("#multi_playersChart").append("svg")
+
+  //var format_date_base = d3v4.timeFormat("% %H:%M");
+  //var format_date = d3v4.timeFormat("%H:%M");
+  let bisect_date_players = d3v4.bisector(d => d.Time).left;
+
+  let dataset_players = []
+  let x_players, y_players;
+  let svg_players;
+
+  let older_date;
+  let Name_1, Name_2, Name_3, Name_4, Name_5;
+  let Percentage_1, Percentage_2, Percentage_3, Percentage_4, Percentage_5;
+  let Country_1, Country_2, Country_3, Country_4, Country_5;
+
+  let matchname3 = "{{hashtag}}"
+
+  // d3v4.csv("/static/worldcup/data/"+matchname3.slice(1,7)+"/"+matchname3.slice(1,7)+"_Players_Agg.csv")
+  //     /* On load les colonnes de notre csv */
+  //     .row(d => {
+  //         Percentage_1 = d.Percentage1;
+  //         Percentage_2 = d.Percentage2;
+  //         Percentage_3 = d.Percentage3;
+  //         Percentage_4 = d.Percentage4;
+  //         Percentage_5 = d.Percentage5;
+  //         Country_1 = d.Country1;
+  //         Country_2 = d.Country2;
+  //         Country_3 = d.Country3;
+  //         Country_4 = d.Country4;
+  //         Country_5 = d.Country5;
+  //         Name_1 = d.Player1;
+  //         Name_2 = d.Player2;
+  //         Name_3 = d.Player3;
+  //         Name_4 = d.Player4;
+  //         Name_5 = d.Player5;
+  //         return {
+  //             Time: new Date(d.Time),
+  //             Player_Name_1: d.Player1,
+  //             Percentage1: +d.Percentage1,
+  //             Player_Name_2: d.Player2,
+  //             Percentage2: +d.Percentage2,
+  //             Player_Name_3: d.Player3,
+  //             Percentage3: +d.Percentage3,
+  //             Player_Name_4: d.Player4,
+  //             Percentage4: +d.Percentage4,
+  //             Player_Name_5: d.Player5,
+  //             Percentage5: +d.Percentage5
+  //         }
+  //     })
+  //     /* On les scale entre la plus petite et la plus grande valeur selon la taille de notre fenêtre */
+  //     .get((error, rows) => {
+  //         if (rows.length > 0) {
+  //             x_players = d3v4.scaleTime()
+  //                     .domain(d3v4.extent(rows, row => row.Time))
+  //             y_players = d3v4.scaleLinear()
+  //                     .domain([0, d3v4.max(rows, row => Math.max(row.Percentage1, row.Percentage2, row.Percentage3, row.Percentage4, row.Percentage5))])
+  //
+  //             dataset_players = rows
+  //             older_date = d3v4.max(rows, row => Math.max(row.Time))
+  //             redraw_players();
+  //
+  //         }
+  //     });
+
+  fetch("http://worldcup.datadeer.fr/timeseries_players", {
+  method: 'get',
+  dataType: 'json',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  }
+  })
+  .then(response => response.json())
+  .then(response => {
+
+    console.log("response", response)
+    console.log("percentage1", response[0]["Percentage1"])
+    let len_data_players = response[0]["Percentage1"].length
+     
+    Percentage_1 = response["Percentage1"][0][len_data_players-1]
+    Percentage_2 = response["Percentage2"][0][len_data_players-1]
+    Percentage_3 = response["Percentage3"][0][len_data_players-1]
+    Percentage_4 = response["Percentage4"][0][len_data_players-1]
+    Percentage_5 = response["Percentage5"][0][len_data_players-1]
+
+    Country_1 = response["Country1"][0]
+    Country_2 = response["Country2"][0]
+    Country_3 = response["Country3"][0]
+    Country_4 = response["Country4"][0]
+    Country_5 = response["Country5"][0]
+
+    Name_1 = response["Name1"][0]
+    Name_2 = response["Name2"][0]
+    Name_3 = response["Name3"][0]
+    Name_4 = response["Name4"][0]
+    Name_5 = response["Name5"][0]
+
+    data = JSON.parse(response);
+
+    data.forEach(function(item,index){
+      date = new Date(item["Time"])
+      dataset_players.push({"Time": date,
+        "Percentage1": Number(item["Percentage1"]),
+        "Percentage2": Number(item["Percentage2"]),
+        "Percentage3": Number(item["Percentage3"]),
+        "Percentage4": Number(item["Percentage4"]),
+        "Percentage5": Number(item["Percentage5"])});
+
+    });
+
+    bisect_date_players = d3v4.bisector(function(d) { return d["Time"];}).left;
+
+
+    x_players = d3v4.scaleTime()
+                    .domain(d3v4.extent(rows, row => row.Time))
+    y_players = d3v4.scaleLinear()
+                    .domain([0, d3v4.max(rows, row => Math.max(row.Percentage1, row.Percentage2, row.Percentage3, row.Percentage4, row.Percentage5))])
+
+    // dataset_plot.forEach(function(item,index){
+    //   console.log(index);
+    //   console.log(item["Time"])
+    //   console.log(x_plot(item["Time"]));
+    //   console.log("---------------------");
+    // });
+
+    redraw_players();
+
+  });
+</script>
+
+{% endblock d3v4 %}
+
+
+<!-- BLOCK D3 MODIFY D3 VERSION V3 MAP CHARTS -->
+{% block d3 %}
+<script>
+
+function loadTable(tableId, fields, data) {
+  //$('#' + tableId).empty(); //not really necessary
+  var rows = '';
+  $.each(data, function(index, item) {
+      var row = '<tr>';
+      $.each(fields, function(index, field) {
+        if(index == 0){
+          row += '<td>' + item[index] + '</td>';
+        }else{
+
+          row += '<td class=\"text-right\">' + item[index]+ "%" + '</td>';
+        }
+      });
+      rows += row + '<tr>';
+  });
+  $('#' + tableId).html(rows);
+}
+
+var map ;
+fetch("http://worldcup.datadeer.fr/datacountries", {
+  method: 'get',
+  dataType: 'json',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  }
+})
+.then(response => response.json())
+.then(response => {
+  // console.log(response);
+  var series = JSON.parse(response);
+
+
+  var top10_team = series.slice(0, 11);
+
+  loadTable('data-table', ['field1', 'field2'], top10_team);
+
+  // console.log(series)
+
+  var dataset = {};
+
+  var onlyValues = series.map(function(obj){ return obj[1]; });
+  var minValue = Math.min.apply(null, onlyValues),
+        maxValue = Math.max.apply(null, onlyValues);
+
+  var paletteScale = d3.scale.linear()
+        .domain([minValue,maxValue])
+        .range(["#EFEFFF","#02386F"]); // blue color
+
+  series.forEach(function(item){
+      var iso = item[0],
+              value = item[1];
+      dataset[iso] = { numberOfThings: value, fillColor: paletteScale(value) };
+  });
+
+  map = new Datamap({
+      element: document.getElementById('container1'),
+      projection: 'mercator',
+      fills: { defaultFill: '#F5F5F5' },
+      responsive: true,
+      geographyConfig: {
+        borderColor: '#DEDEDE',
+        highlightBorderWidth: 2,
+        highlightBorderColor: '#B7B7B7',
+        highlightFillColor: function(geo) {
+            return geo['fillColor'] || '#F5F5F5';
+        },
+        popupTemplate: function(geo, data) {
+            // don't show tooltip if country don't present in dataset
+            if (!data) { return ; }
+            // tooltip content
+            return ['<div class="hoverinfo">',
+                '<strong>', geo.properties.name, '</strong>',
+                '<br>Percentage of Tweets : <strong>', data.numberOfThings, '</strong>',
+                '</div>'].join('');
+        }
+      },
+      data: dataset
+  });
+});
+
+setInterval(function(){
+  var series;
+  fetch("http://worldcup.datadeer.fr/datacountries", {
+    method: 'get',
+    dataType: 'json',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(response => {
+    // console.log(response);
+    var series = JSON.parse(response);
+
+    var top10_team = series.slice(0, 11);
+
+    loadTable('data-table', ['field1', 'field2'], top10_team);
+
+    var onlyValues = series.map(function(obj){ return obj[1]; });
+    var minValue = Math.min.apply(null, onlyValues),
+        maxValue = Math.max.apply(null, onlyValues);
+
+    var paletteScale = d3.scale.linear()
+        .domain([minValue,maxValue])
+        .range(["#EFEFFF","#02386F"]); // blue color
+
+    // console.log(series)
+
+    var dataset = {};
+
+    series.forEach(function(item){
+        var iso = item[0],
+                value = item[1];
+        dataset[iso] = { numberOfThings: value, fillColor: paletteScale(value)  };
+    });
+
+  map.updateChoropleth(dataset, {reset: true});
+  window.addEventListener('resize', function(event) { map.resize(); });
+})}, 3000);
+
+</script>
+
+<script>
+
+fetch("http://worldcup.datadeer.fr/dataplayers", {
+  method: 'get',
+  dataType: 'json',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  }
+})
+.then(response => response.json())
+.then(response => {
+  // console.log(response);
+  var top10_players = JSON.parse(response).slice(0,6);
+  loadTable('players-table', ['field1', 'field2'], top10_players);
+  });
+
+
+setInterval(function(){
+  fetch("http://worldcup.datadeer.fr/dataplayers", {
+    method: 'get',
+    dataType: 'json',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(response => {
+    var top10_players = JSON.parse(response).slice(0,6);
+    loadTable('players-table', ['field1', 'field2'], top10_players);
+  })}, 3000);
+
+</script>
+{% endblock d3 %}

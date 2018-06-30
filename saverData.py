@@ -174,6 +174,29 @@ def saveTimeSeries(matchname):
 	data['Positive'] = np.ceil((data['Positive'].astype(int)/data['cumul'])*100)
 	data[["Time","Positive","Negative"]].drop_duplicates('Time').dropna().to_csv(matchname+"_Sentiments_Agg.csv",index=False)
 
+def playersTimeseriesCalculations(matchname):
+    collection_name = matchname + "_Timeseries_Players"
+    collection = db[collection_name]
+    data = pd.DataFrame(list(collection.find()))
+    data = data.reset_index()
+    data = data.drop(['_id','index'], axis=1)
+    data['Percentage'] = data['Percentage'].apply(lambda x : float(x))
+    data['Time'] = pd.to_datetime(data['Time'], infer_datetime_format=True)
+    top5_now_players = data.sort_values(by=["Time","Percentage"],ascending=False).iloc[:5,:]["Player"].values.tolist()
+    top5_now = data[data['Player'].isin(top5_now_players)]
+    topdf = []
+    for time, index in zip(top5_now["Time"].unique(),range(len(top5_now["Time"].unique()))):
+        time = pd.to_datetime(time, infer_datetime_format=True)
+        tmp = {}
+        tmp["Time"] = int(time.timestamp() * 1000)
+        for i,j in zip(top5_now[top5_now["Time"] == time].iterrows(),range(1,6)):
+            #tmp[i[1]['Player']] = {"Percentage":i[1]['Percentage'],"Pays":i[1]["Pays"]}
+            tmp['Player'+str(j)] = i[1]['Player']
+            tmp["Percentage"+str(j)] = i[1]['Percentage']
+            tmp["Pays"+str(j)] = i[1]['Pays']
+        topdf.append(tmp)
+    pd.DataFrame(topdf).to_csv(matchname + "_Timeseries_Players.csv",index=False)
+
 def saveEmojis(matchname):
     collection = db[matchname+"_Emojis"]
     data = pd.DataFrame(list(collection.find()))
@@ -191,7 +214,7 @@ def removeMongoCollections(hashtag):
 initMongo()
 # with open('HASHTAG_FILE.txt') as f:
 #     hashtag = f.read()
-hashtag = "#DENFRA"
+hashtag = "#FRAARG"
 matchname = str(hashtag[1:])
 saveCountriesData(matchname)
 saveTweets(matchname)
@@ -200,5 +223,6 @@ saveTimeSeries(matchname)
 saveTopPlayers(matchname)
 save11Players(matchname)
 saveEmojis(matchname)
+playersTimeseriesCalculations(matchname)
 #removeMongoCollections(matchname)
 client.close()
