@@ -237,6 +237,7 @@ function draw_players(data, innerW, innerH) {
                                   .attr("cx", x_players(older_date) - 100 + (56/2))
                                   .attr("cy", y_players(Percentage_1) -30 + (56/2));
 
+     console.log(older_date)
      console.log(x_players(older_date))
      svg_players.append("circle")
               .style("fill", dict_color[Country_1])

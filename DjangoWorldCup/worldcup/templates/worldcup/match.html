@@ -250,7 +250,7 @@ div.scrollmenu li {
 
   let matchname3 = "{{hashtag}}"
 
-  d3v4.csv("/static/worldcup/data/"+matchname3.slice(1,7)+"/"+matchname3.slice(1,7)+"_Players_Agg.csv")
+  d3v4.csv("/static/worldcup/data/"+matchname3.slice(1,7)+"/"+matchname3.slice(1,7)+"_Timeseries_Players.csv")
       /* On load les colonnes de notre csv */
       .row(d => {
           Percentage_1 = d.Percentage1;
@@ -258,16 +258,17 @@ div.scrollmenu li {
           Percentage_3 = d.Percentage3;
           Percentage_4 = d.Percentage4;
           Percentage_5 = d.Percentage5;
-          Country_1 = d.Country1;
-          Country_2 = d.Country2;
-          Country_3 = d.Country3;
-          Country_4 = d.Country4;
-          Country_5 = d.Country5;
+          Country_1 = d.Pays1;
+          Country_2 = d.Pays2;
+          Country_3 = d.Pays3;
+          Country_4 = d.Pays4;
+          Country_5 = d.Pays5;
           Name_1 = d.Player1;
           Name_2 = d.Player2;
           Name_3 = d.Player3;
           Name_4 = d.Player4;
           Name_5 = d.Player5;
+          older_date = d.Time;
           return {
               Time: new Date(d.Time),
               Player_Name_1: d.Player1,
@@ -291,7 +292,10 @@ div.scrollmenu li {
                       .domain([0, d3v4.max(rows, row => Math.max(row.Percentage1, row.Percentage2, row.Percentage3, row.Percentage4, row.Percentage5))])
 
               dataset_players = rows
-              older_date = d3v4.max(rows, row => Math.max(row.Time))
+              console.log("rows", dataset_players)
+             //older_date = d3v4.max(rows, row => Math.max(row.Time))
+              console.log("older_date 1", older_date)
+              console.log("older_date trad", x_players(older_date))
               redraw_players();
 
           }

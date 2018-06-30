@@ -57,7 +57,7 @@ def playersCalculations(hashtag_name):
 def playersTimeseriesCalculations(hashtag_name):
     client = MongoClient('localhost', 27017)
     db = client['WorldCup']
-    collection_name = "FRAARG_Timeseries_Players"#str(hashtag_name[1:]) + "_Timeseries_Players"
+    collection_name = str(hashtag_name[1:]) + "_Timeseries_Players"
     collection = db[collection_name]
     data = pd.DataFrame(list(collection.find()))
     client.close()
