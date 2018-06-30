@@ -286,13 +286,24 @@ div.scrollmenu li {
       /* On les scale entre la plus petite et la plus grande valeur selon la taille de notre fenêtre */
       .get((error, rows) => {
           if (rows.length > 0) {
-              x_players = d3v4.scaleTime()
-                      .domain(d3v4.extent(rows, row => row.Time))
-              y_players = d3v4.scaleLinear()
-                      .domain([0, d3v4.max(rows, row => Math.max(row.Percentage1, row.Percentage2, row.Percentage3, row.Percentage4, row.Percentage5))])
+              //x_players = d3v4.scaleTime()
+              //        .domain(d3v4.extent(rows, row => row.Time))
+             // y_players = d3v4.scaleLinear()
+               //       .domain([0, d3v4.max(rows, row => Math.max(row.Percentage1, row.Percentage2, row.Percentage3, row.Percentage4, row.Percentage5))])
 
               dataset_players = rows
-              console.log("rows", dataset_players)
+              
+	      x_players = d3v4.scaleTime()
+                    .domain(d3v4.extent(dataset_players, function(d) {
+                    return d["Time"];
+                  }));
+    		y_players = d3v4.scaleLinear()
+           	    .domain([0, d3v4.max(dataset_players,function(d) {
+                return Math.max(d["Percentage1"], d["Percentage2"], d["Percentage3"], d["Percentage4"], d["Percentage5"]);
+                }
+              )]);
+
+
              //older_date = d3v4.max(rows, row => Math.max(row.Time))
               console.log("older_date 1", older_date)
               console.log("older_date trad", x_players(older_date))

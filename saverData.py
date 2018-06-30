@@ -182,13 +182,14 @@ def playersTimeseriesCalculations(matchname):
     data = data.drop(['_id','index'], axis=1)
     data['Percentage'] = data['Percentage'].apply(lambda x : float(x))
     data['Time'] = pd.to_datetime(data['Time'], infer_datetime_format=True)
+    data["Time"] = data["Time"].apply(lambda x : x+timedelta(hours=2))
     top5_now_players = data.sort_values(by=["Time","Percentage"],ascending=False).iloc[:5,:]["Player"].values.tolist()
     top5_now = data[data['Player'].isin(top5_now_players)]
     topdf = []
     for time, index in zip(top5_now["Time"].unique(),range(len(top5_now["Time"].unique()))):
         time = pd.to_datetime(time, infer_datetime_format=True)
         tmp = {}
-        tmp["Time"] = int(time.timestamp() * 1000)
+        tmp["Time"] = time 
         for i,j in zip(top5_now[top5_now["Time"] == time].iterrows(),range(1,6)):
             #tmp[i[1]['Player']] = {"Percentage":i[1]['Percentage'],"Pays":i[1]["Pays"]}
             tmp['Player'+str(j)] = i[1]['Player']
@@ -216,13 +217,13 @@ initMongo()
 #     hashtag = f.read()
 hashtag = "#FRAARG"
 matchname = str(hashtag[1:])
-saveCountriesData(matchname)
-saveTweets(matchname)
-savePositivity(matchname)
-saveTimeSeries(matchname)
-saveTopPlayers(matchname)
-save11Players(matchname)
-saveEmojis(matchname)
+#saveCountriesData(matchname)
+#saveTweets(matchname)
+#savePositivity(matchname)
+#saveTimeSeries(matchname)
+#saveTopPlayers(matchname)
+#save11Players(matchname)
+#saveEmojis(matchname)
 playersTimeseriesCalculations(matchname)
 #removeMongoCollections(matchname)
 client.close()

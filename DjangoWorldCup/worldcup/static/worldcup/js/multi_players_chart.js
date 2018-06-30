@@ -75,8 +75,6 @@ function draw_players(data, innerW, innerH) {
               .attr("class", "axis")
               .call(d3v4.axisLeft(y_players));
 
-      console.log("data", data)
-      console.log("valueline_Player1", valueline_Player1)
 
       /* On dessine la variable Player 1 */
       svg_players.append("path")
@@ -228,8 +226,6 @@ function draw_players(data, innerW, innerH) {
       let pos_player1 = svg_players.append("defs")
                           .attr("id", "imgdefs")
 
-      console.log("1", y_players(Percentage_1))
-      console.log("2", Percentage_1)
       let clipPath_player1 = pos_player1.append('clipPath')
                                   .attr('id', 'clip-circle_player1')
                                   .append("circle")
