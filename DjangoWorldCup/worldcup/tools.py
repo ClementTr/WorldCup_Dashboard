@@ -21,7 +21,7 @@ PAYS_EN = {"Australia": 'AUS', "Belgium": 'BEL', "Brazil": 'BRA',
                         "Portugal": 'POR', "Russia": 'RUS', "Arabia": 'KSA',
                         "Serbia": 'SER', "Spain": 'SPA', "Sweden": 'SWE',
                         "Switzerland": 'SWI', "Tunisia": 'TUN','United_states':'USA',
-                        "Senegal": "SEN", "Uruguay": "URU"}
+                        "Senegal": "SEN", "Uruguay": "URU", "Argentina":"ARG"}
 
 
 # INV_PAYS = {v: k for k, v in PAYS.items()}
@@ -53,6 +53,28 @@ def playersCalculations(hashtag_name):
     data = data[["Nom", "Count"]]
     data['Percentage'] = np.ceil((data['Count']*100)/data['Count'].sum())
     return data[["Nom", "Percentage"]].to_json(orient='values')
+
+def playersTimeseriesCalculations(hashtag_name):
+    db = client['WorldCup']
+    collection_name = str(hashtag_name[1:]) + "_Timeseries_Players"
+    collection = db[collection_name]
+    data = pd.DataFrame(list(collection.find()))
+    client.close()
+    data = data.reset_index()
+    data = data.drop(['_id','index'], axis=1)
+    data['Time'] = pd.to_datetime(data['Time'], infer_datetime_format=True)
+    top5_now_players = data.sort_values(by=["Time","Percentage"],ascending=False).iloc[:5,:]["Player"].values.tolist()
+    top5_now = data[data['Player'].isin(Top5_now_players)]
+    topdf = []
+    for time, index in zip(top5_now["Time"].unique(),range(len(top5_now["Time"].unique()))):
+        time = pd.to_datetime(time, infer_datetime_format=True)
+        tmp = {}
+        tmp["Time"] = int(time.timestamp() * 1000)
+        for i in top5_now[top5_now["Time"] == time].iterrows():
+            tmp[i[1]['Player']] = {"Percentage":i[1]['Percentage'],"Pays":i[1]["Pays"]}
+        topdf.append(tmp)
+
+    return topdf
 
 def getDataSentiment(hashtag_name):
     client = MongoClient('localhost', 27017)
@@ -161,7 +183,7 @@ def getClassement():
     #print(data.head())
     for group in data['Group'].unique():
         tmp = data[data['Group'] == group]
-        tmp.sort_values(by="Points",inplace=True,ascending=False)
+        tmp.sort_values(by=["Points","Difference","Equipe"],inplace=True,ascending=False)
         tmp['Position'] = ["1","2","3","4"]
         teams.append(tmp.to_dict(orient='records'))
     return teams

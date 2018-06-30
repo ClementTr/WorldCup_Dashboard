@@ -12,7 +12,7 @@ PAYS = {"Australia": 'AUS', "Belgium": 'BEL', "Brazil": 'BRA',
                         "Morocco": 'MAR', "Peru": 'PER', "Poland": 'POL',
                         "Portugal": 'POR', "Russia": 'RUS', "Arabia": 'KSA',
                         "Serbia": 'SER', "Spain": 'SPA', "Sweden": 'SWE',"Uruguay": "URU",
-                        "Switzerland": 'SWI',"Senegal":"SEN","Tunisia": 'TUN','United_states':'USA'}
+                        "Switzerland": 'SWI',"Senegal":"SEN","Tunisia": 'TUN','United_states':'USA',"Argentina":"ARG"}
 INV_PAYS = {v: k for k, v in PAYS.items()}
 
 global db,client

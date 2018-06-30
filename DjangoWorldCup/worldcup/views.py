@@ -61,6 +61,10 @@ def positive_negative(request):
     data = positivity_negativity(MATCH_HASHTAG)
     return JsonResponse(data,safe=False)
 
+def timeseries_players(request):
+    data = playersTimeseriesCalculations(MATCH_HASHTAG)
+    return JsonResponse(data,safe=False)
+
 # def final(request):
 #     hashtag = "#"
 #     country_1, country_2 = getPays(hashtag)
