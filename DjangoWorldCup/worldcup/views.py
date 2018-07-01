@@ -4,7 +4,7 @@ from django.http import JsonResponse
 import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
-from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, get_Emojis, getEmojisClassement, playersTimeseriesCalculations
+from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, get_Emojis, getEmojisClassement, playersTimeseriesCalculations, getLiveScore
 MATCH_HASHTAG = '#URUPOR'
 
 def home(request):
@@ -63,6 +63,10 @@ def positive_negative(request):
 
 def timeseries_players(request):
     data = playersTimeseriesCalculations(MATCH_HASHTAG)
+    return JsonResponse(data,safe=False)
+
+def score_live(request):
+    data = getLiveScore(MATCH_HASHTAG)
     return JsonResponse(data,safe=False)
 
 # def final(request):
