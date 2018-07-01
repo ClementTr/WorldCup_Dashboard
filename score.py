@@ -30,13 +30,21 @@ while var == True:
     
     if "VS" in score:
         score1 , score2 = 0, 0
+
     else:
         score1 = int(score.split()[0])
         score2 = int(score.split()[-1])
-        
-    collection_Score.update_one({"Equipe":hashtag[:3]}, {"$inc": {"Score":score1}}, upsert=True)
-    collection_Score.update_one({"Equipe":hashtag[3:]}, {"$inc": {"Score":score2}}, upsert=True)
-    
-    print(str(score1) +" - "+str(score2))
+
+        equipe1 = hashtag[:3]
+        equipe2 = hashtag[3:]
+
+    for i in list(collection_Score.find()):
+        if i["Equipe"] == equipe1 :
+            if i["Score"] != score1 :
+                collection_Score.update_one({"Equipe":hashtag[:3]}, {"$set": {"Score":score1}}, upsert=True)
+
+        if i["Equipe"] == equipe2 :
+            if i["Score"] != score1 :
+                collection_Score.update_one({"Equipe":hashtag[3:]}, {"$set": {"Score":score2}}, upsert=True)
     
     time.sleep(60)
