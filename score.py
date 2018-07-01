@@ -26,14 +26,15 @@ collection_Score = db[hashtag+'_Score']
 while var == True:
     res = requests.get(url).content
     soup = BeautifulSoup(res, 'html.parser')
-    score = soup.find("span",attrs={"class":"score"}).text
+    score = soup.find("span",attrs={"class":"fi-s__scoreText"}).text
+    score = score.replace("\r\n","")
     
-    if "VS" in score:
+    if ":" in score:
         score1 , score2 = 0, 0
 
     else:
-        score1 = int(score.split()[0])
-        score2 = int(score.split()[-1])
+        score1 = int(score.split("-")[0])
+        score2 = int(score.split("-")[-1])
 
         equipe1 = hashtag[:3]
         equipe2 = hashtag[3:]
