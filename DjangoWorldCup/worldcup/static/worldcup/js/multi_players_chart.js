@@ -234,17 +234,17 @@ function draw_players(data, innerW, innerH) {
                                   .append("circle")
                                   .attr("r", - 5 + (56/2))
                                   .attr("cx", position_image-100 + (56/2))
-                                  .attr("cy", y_players(max_player1) -30 + (56/2));
+                                  .attr("cy", y_players(Percentage_1) -30 + (56/2));
 
      svg_players.append("circle")
               .style("fill", dict_color[Country_1])
               .attr("r", -2 + (56/2))
               .attr("cx", position_image-100 + (56/2))
-              .attr("cy", y_players(max_player1) - 2);
+              .attr("cy", y_players(Percentage_1) - 2);
 
       svg_players.append("image")
                .attr("x", position_image-100)
-               .attr("y", y_players(max_player1) - 30)
+               .attr("y", y_players(Percentage_1) - 30)
                .attr("height", 56)
                .attr("width", 56)
                .attr("xlink:href", "/static/worldcup/img/players/" + Country_1 + "/" + Name_1 + ".jpg")
@@ -260,19 +260,19 @@ function draw_players(data, innerW, innerH) {
                                   .attr("r", - 5 + (56/2))
                                   //.attr("cx", x_players(older_date) - 100 + (56/2))
                                   .attr("cx", position_image - 100 + (56/2))
-                                  .attr("cy", y_players(max_player2) -30 + (56/2));
+                                  .attr("cy", y_players(Percentage_2) -30 + (56/2));
 
      svg_players.append("circle")
               .style("fill", dict_color[Country_2])
               .attr("r", -2 + (56/2))
               //.attr("cx", x_players(older_date) - 100 + (56/2))
               .attr("cx", position_image - 100 + (56/2))
-              .attr("cy", y_players(max_player2) - 2);
+              .attr("cy", y_players(Percentage_2) - 2);
 
       svg_players.append("image")
                //.attr("x", x_players(older_date) - 100)
                .attr("x", position_image - 100)
-               .attr("y", y_players(max_player2) - 30)
+               .attr("y", y_players(Percentage_2) - 30)
                .attr("height", 56)
                .attr("width", 56)
                .attr("xlink:href", "/static/worldcup/img/players/" + Country_2 + "/" + Name_2 + ".jpg")
@@ -287,17 +287,17 @@ function draw_players(data, innerW, innerH) {
                                   .append("circle")
                                   .attr("r", - 5 + (56/2))
                                   .attr("cx", position_image - 100 + (56/2))
-                                  .attr("cy", y_players(max_player3) -30 + (56/2));
+                                  .attr("cy", y_players(Percentage_3) -30 + (56/2));
 
      svg_players.append("circle")
               .style("fill", dict_color[Country_3])
               .attr("r", -2 + (56/2))
               .attr("cx", position_image - 100 + (56/2))
-              .attr("cy", y_players(max_player3) - 2);
+              .attr("cy", y_players(Percentage_3) - 2);
 
       svg_players.append("image")
                .attr("x", position_image - 100)
-               .attr("y", y_players(max_player3) - 30)
+               .attr("y", y_players(Percentage_3) - 30)
                .attr("height", 56)
                .attr("width", 56)
                .attr("xlink:href", "/static/worldcup/img/players/" + Country_3 + "/" + Name_3 + ".jpg")
@@ -312,17 +312,17 @@ function draw_players(data, innerW, innerH) {
                                   .append("circle")
                                   .attr("r", - 5 + (56/2))
                                   .attr("cx", position_image - 100 + (56/2))
-                                  .attr("cy", y_players(max_player4) -30 + (56/2));
+                                  .attr("cy", y_players(Percentage_4) -30 + (56/2));
 
      svg_players.append("circle")
               .style("fill", dict_color[Country_4])
               .attr("r", -2 + (56/2))
               .attr("cx", position_image - 100 + (56/2))
-              .attr("cy", y_players(max_player4) - 2);
+              .attr("cy", y_players(Percentage_4) - 2);
 
       svg_players.append("image")
                .attr("x", position_image - 100)
-               .attr("y", y_players(max_player4) - 30)
+               .attr("y", y_players(Percentage_4) - 30)
                .attr("height", 56)
                .attr("width", 56)
                .attr("xlink:href", "/static/worldcup/img/players/" + Country_4 + "/" + Name_4 + ".jpg")
@@ -336,17 +336,17 @@ function draw_players(data, innerW, innerH) {
                                  .append("circle")
                                  .attr("r", - 5 + (56/2))
                                  .attr("cx", position_image - 100 + (56/2))
-                                 .attr("cy", y_players(max_player5) -30 + (56/2));
+                                 .attr("cy", y_players(Percentage_5) -30 + (56/2));
 
     svg_players.append("circle")
              .style("fill", dict_color[Country_5])
              .attr("r", -2 + (56/2))
              .attr("cx", position_image - 100 + (56/2))
-             .attr("cy", y_players(max_player5) - 2);
+             .attr("cy", y_players(Percentage_5) - 2);
 
      svg_players.append("image")
               .attr("x", position_image - 100)
-              .attr("y", y_players(max_player5) - 30)
+              .attr("y", y_players(Percentage_5) - 30)
               .attr("height", 56)
               .attr("width", 56)
               .attr("xlink:href", "/static/worldcup/img/players/" + Country_5 + "/" + Name_5 + ".jpg")

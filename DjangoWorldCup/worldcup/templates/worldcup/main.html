@@ -419,6 +419,7 @@ div.scrollmenu li {
   let Name_1, Name_2, Name_3, Name_4, Name_5;
   let Percentage_1, Percentage_2, Percentage_3, Percentage_4, Percentage_5;
   let Country_1, Country_2, Country_3, Country_4, Country_5;
+  let max_player1, max_player2, max_player3, max_player4, max_player5;
 
   let matchname3 = "{{hashtag}}"
 
@@ -524,6 +525,11 @@ div.scrollmenu li {
                 }
               )]);
 
+    max_player1 = d3v4.max(dataset_players,function(d) {return Math.max(d["Percentage1"])})
+    max_player2 = d3v4.max(dataset_players,function(d) {return Math.max(d["Percentage2"])})
+    max_player3 = d3v4.max(dataset_players,function(d) {return Math.max(d["Percentage3"])})
+    max_player4 = d3v4.max(dataset_players,function(d) {return Math.max(d["Percentage4"])})
+    max_player5 = d3v4.max(dataset_players,function(d) {return Math.max(d["Percentage5"])})
     older_date = d3v4.max(dataset_plot, d => Math.max(d.Time))
 
     redraw_players();
