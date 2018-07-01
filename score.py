@@ -22,6 +22,8 @@ client = MongoClient('localhost', 27017)
 db = client['WorldCup']
 collection_Score = db[hashtag+'_Score']
 
+collection_Score.update_one({"Equipe":hashtag[:3]}, {"$set": {"Score":0}}, upsert=True)
+collection_Score.update_one({"Equipe":hashtag[3:]}, {"$set": {"Score":0}}, upsert=True)
 
 while var == True:
     res = requests.get(url).content
