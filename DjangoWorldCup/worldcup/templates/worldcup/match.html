@@ -126,8 +126,8 @@ div.scrollmenu li {
                 </div>
 
 
-              <div class="col-lg-5">
-                  <div class="au-card m-b-30" style="padding-left: 25px;padding-right: 10px; padding-bottom:50px;">
+              <div class="col-lg-4">
+                  <div class="au-card m-b-30" style="padding-left: 25px;padding-right: 10px;">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40" >Buzz XI</h3>
                           <div class="chart-wrapper" id="pitch_plot"></div>
@@ -135,7 +135,7 @@ div.scrollmenu li {
                   </div>
               </div>
 
-              <div class="col-lg-7" style="padding-left:7px;">
+              <div class="col-lg-8" style="padding-left:7px;">
                   <div class="au-card m-b-30" style="padding-left: 20px;">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">Top Buzz Players - Live</h3>
@@ -378,7 +378,7 @@ div.scrollmenu li {
 <script type="text/javascript">
   window.addEventListener("resize", redraw_pitch)
   const margin_pitch = {
-      top: 10,
+      top: 0,
       right: 10,
       bottom: 0,
       left: 10,
@@ -388,7 +388,7 @@ div.scrollmenu li {
   let svg_pitch_init = d3.select('#pitch_plot').append('svg')
 
   let width_pitch = div_pitchplot.clientWidth;
-  let height_pitch = 600
+  let height_pitch = 610
   var x, y;
 
   let w_pitch
