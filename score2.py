@@ -11,7 +11,7 @@ args = parser.parse_args()
 url = args.url
 
 global hashtag
-with open('../HASHTAG_FILE2.txt') as f:
+with open('HASHTAG_FILE2.txt') as f:
     hashtag = f.read()[1:7]
 
 #hashtag = "SENCOL"

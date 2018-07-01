@@ -1,15 +1,17 @@
 #To Modify
 
 ## Kafka
-1) On check que les deux topics (WorldCup & WorldCup2) sont dans la liste : ./bin/kafka-topics.sh --zookeeper localhost:2181 --list
+1) Aller dans /home/ubuntu/kafka_2.11-1.1.0
 
-2) On supprime les deux topics : ./bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic WorldCup puis ./bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic WorldCup2
+2) On check que les deux topics (WorldCup & WorldCup2) sont dans la liste : ./bin/kafka-topics.sh --zookeeper localhost:2181 --list
 
-3) On check que les deux topics (WorldCup & WorldCup2) ne sont plus dans la liste : ./bin/kafka-topics.sh --zookeeper localhost:2181 --list
+3) On supprime les deux topics : ./bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic WorldCup puis ./bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic WorldCup2
 
-4) On recrée les deux topics : ./bin/kafka-topics.sh --zookeeper localhost:2181 --create --topic WorldCup --partitions 1 --replication-factor 1 puis kafka-topics.sh --zookeeper localhost:2181 --create --topic WorldCup2 --partitions 1 --replication-factor 1
+4) On check que les deux topics (WorldCup & WorldCup2) ne sont plus dans la liste : ./bin/kafka-topics.sh --zookeeper localhost:2181 --list
 
-5) On vérifie que les deux topics ont bien été créé : ./bin/kafka-topics.sh --zookeeper localhost:2181 --list
+5) On recrée les deux topics : ./bin/kafka-topics.sh --zookeeper localhost:2181 --create --topic WorldCup --partitions 1 --replication-factor 1 puis ./bin/kafka-topics.sh --zookeeper localhost:2181 --create --topic WorldCup2 --partitions 1 --replication-factor 1
+
+6) On vérifie que les deux topics ont bien été créé : ./bin/kafka-topics.sh --zookeeper localhost:2181 --list
 
 ## Backend Match 1
 
@@ -33,11 +35,8 @@
 1) Aller dans le dossier WorldCup_Dashboard
 2) nohup python Aggregate_LIVE.py &
 
-### Aggregate_Live
-1) Aller dans le dossier WorldCup_Dashboard
-2) nohup python Aggregate_LIVE.py &
 
-### Aggregate_Timeseries_Joueurs
+### Aggregate_Timeseries_Joueurs /!\ Voir quand demarrer
 1) Aller dans le dossier WorldCup_Dashboard
 2) nohup python Aggregate_Timeseries_Joueurs.py &
 
