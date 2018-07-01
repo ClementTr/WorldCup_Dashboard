@@ -5,7 +5,7 @@ import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
 from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, get_Emojis, getEmojisClassement, playersTimeseriesCalculations, getLiveScore
-MATCH_HASHTAG = '#URUPOR'
+MATCH_HASHTAG = '#SPARUS'
 
 def home(request):
     if (request.method == "POST"):
@@ -44,7 +44,7 @@ def data_playersPosition(request):
 
 
 def main(request):
-    date = "Saturday, June 30th - 20:00"
+    date = "Sunday, July 1st - 16:00"
     country_1, country_2 = getPays(MATCH_HASHTAG)
     emojis = get_Emojis(MATCH_HASHTAG)
     our_tweet = ""
@@ -122,11 +122,22 @@ def score_live(request):
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
 #     return render(request, 'worldcup/match.html', context)
-#
+
+def urupor(request):
+    hashtag = "#URUPOR"
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>When Ronaldo bumps into Messi at the airport. <a href='https://t.co/4Dhd5KfUyI'>pic.twitter.com/4Dhd5KfUyI</a></p>&mdash; Footy Humour (@FootyHumour) <a href='https://twitter.com/FootyHumour/status/1013148027870154753?ref_src=twsrc%5Etfw'>30 juin 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Good goal Cavani <a href='https://t.co/cyMGV6FXob'>pic.twitter.com/cyMGV6FXob</a></p>&mdash; Chelsea Bright (@AsensoBright1) <a href='https://twitter.com/AsensoBright1/status/1013158852735488005?ref_src=twsrc%5Etfw'>30 juin 2018</a></blockquote>"
+    rnn_tweet = ""
+    date = "Saturday, June 30th - 20:00"
+    country_1, country_2 = getPays(hashtag)
+    emojis = getEmojisClassement(hashtag[1:])
+    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis}
+    return render(request, 'worldcup/match.html', context)
+
 def fraarg(request):
     hashtag = "#FRAARG"
-    our_tweet = ""
-    goal_tweet = ""
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Kylian Mbappe, aged 13, in his bedroom - a shrine to his hero Ronaldo. Now, just 6yrs later, HE’S the new king of world football. The hero-worshipper becomes the hero. Amazing. <a href='https://t.co/eRfzjBnMBc'>pic.twitter.com/eRfzjBnMBc</a></p>&mdash; Piers Morgan (@piersmorgan) <a href='https://twitter.com/piersmorgan/status/1013321586496110593?ref_src=twsrc%5Etfw'>1 juillet 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>⚽Je ne me lasse pas de regarder  cette volée incroyable de <a href='https://twitter.com/BenPavard28?ref_src=twsrc%5Etfw'>@BenPavard28</a> 🇫🇷<br>Certainement le plus beau but de ce <a href='https://twitter.com/hashtag/Mondial2018?src=hash&amp;ref_src=twsrc%5Etfw'>#Mondial2018</a><a href='https://twitter.com/hashtag/Pavard?src=hash&amp;ref_src=twsrc%5Etfw'>#Pavard</a> <a href='https://t.co/jUIFeby1XV'>pic.twitter.com/jUIFeby1XV</a></p>&mdash; cheeper©️ (@CheeperOff) <a href='https://twitter.com/CheeperOff/status/1013304094700732417?ref_src=twsrc%5Etfw'>1 juillet 2018</a></blockquote>"
     rnn_tweet = ""
     date = "Saturday, June 30th - 16:00"
     country_1, country_2 = getPays(hashtag)
