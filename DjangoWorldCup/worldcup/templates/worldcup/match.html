@@ -39,7 +39,7 @@ div.scrollmenu li {
 
             <!-- BLOCK TITLE MODIFY TITLE -->
             <div class="col-lg-3">
-                <div class="au-card m-b-30" style="padding-bottom: 22px;">
+                <div class="au-card m-b-15" style="padding-bottom: 22px;">
                   <center>
                     <img src="/static/worldcup/img/flags/{{ country_1 }}.png" class="rounded" style="border:1px solid #021a40; height: 100px; width:90px; height:45px;" alt="...">
                     <h1 id="score0" style="margin-top: 10px;">{{score1}}</h1>
@@ -47,7 +47,7 @@ div.scrollmenu li {
                 </div>
               </div>
               <div class="col-lg-6">
-                <div class="au-card m-b-30" style="padding-bottom: 10px;">
+                <div class="au-card m-b-15" style="padding-bottom: 10px;">
                   <center>
                     <h3 class="title-2 m-b-30" style"vertical-align: middle;">Match of the day - {{hashtag}}</h3>
                     <h4 class="title-3 m-b-30" style"vertical-align: middle;">{{date}}</h4>
@@ -55,7 +55,7 @@ div.scrollmenu li {
                 </div>
               </div>
               <div class="col-lg-3">
-                <div class="au-card m-b-30" style="padding-bottom: 22px;">
+                <div class="au-card m-b-15" style="padding-bottom: 22px;">
                   <center>
                    <img src="/static/worldcup/img/flags/{{ country_2 }}.png" class="rounded" style="border:1px solid #021a40; width:90px; height:45px;" alt="...">
                    <h1 id="score1" style="margin-top: 10px;">{{score2}}</h1>
@@ -74,7 +74,7 @@ div.scrollmenu li {
               </div> -->
 
                <div class="col-lg-12">
-                <div class="au-card m-b-30" style="padding-bottom: 20px;background: #007bff; padding-top: 20px;">
+                <div class="au-card m-b-15" style="padding-bottom: 20px;background: #007bff; padding-top: 20px;">
                   <div class="scrollmenu" style="background: #007bff">
                     {% for x in emojis %}
                     <li><i class="em em-{{x.Emoji}}"></i> x{{x.Count}}</li>
@@ -84,7 +84,7 @@ div.scrollmenu li {
               </div>
 
               <div class="col-lg-6">
-                  <div class="au-card m-b-30" style="padding-right:7px;">
+                  <div class="au-card m-b-15" style="padding-right:7px;">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">Percentage of positives tweets by team</h3>
                           <div class="chart-wrapper" id="bar_plot"></div>
@@ -93,7 +93,7 @@ div.scrollmenu li {
               </div>
 
               <div class="col-lg-6" style="padding-left:7px;">
-                  <div class="au-card m-b-30" style="padding-left: 20px;">
+                  <div class="au-card m-b-15" style="padding-left: 20px;">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">Percentage of +/- tweets during the match</h3>
                           <div class="chart-wrapper" id="simple_plot"></div>
@@ -102,7 +102,7 @@ div.scrollmenu li {
               </div>
 
               <div class="col-lg-9">
-                  <div class="au-card m-b-30">
+                  <div class="au-card m-b-15">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">Percentage of tweets by country</h3>
                           <div class="card-body" id="container1"></div>
@@ -111,7 +111,7 @@ div.scrollmenu li {
               </div>
 
               <div class="col-lg-3">
-                    <div class="au-card au-card--bg-blue au-card-top-countries m-b-30">
+                    <div class="au-card au-card--bg-blue au-card-top-countries m-b-15">
                         <div class="au-card-inner">
                           <h3 class="title-3 m-b-30 text-white">Top Countries Tweets</h3>
                             <div class="table-responsive">
@@ -127,7 +127,7 @@ div.scrollmenu li {
 
 
               <div class="col-lg-4">
-                  <div class="au-card m-b-30" style="padding-left: 25px;padding-right: 10px;">
+                  <div class="au-card m-b-15" style="padding-left: 25px;padding-right: 10px;">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40" >Buzz XI</h3>
                           <div class="chart-wrapper" id="pitch_plot"></div>
@@ -136,7 +136,7 @@ div.scrollmenu li {
               </div>
 
               <div class="col-lg-8" style="padding-left:7px;">
-                  <div class="au-card m-b-30" style="padding-left: 20px;">
+                  <div class="au-card m-b-15" style="padding-left: 20px;">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">Top Buzz Players - Live</h3>
                           <div class="chart-wrapper" id="multi_playersChart"></div>
@@ -146,7 +146,7 @@ div.scrollmenu li {
 
 
               <div class="col-lg-4">
-                  <div class="au-card m-b-30">
+                  <div class="au-card m-b-15">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">Our favorite tweet</h3>
                           {{our_tweet|safe}}
@@ -154,8 +154,8 @@ div.scrollmenu li {
                   </div>
               </div>
 
-              <div class="col-lg-4">
-                <div class="au-card m-b-30">
+              <div class="col-lg-4" style="padding-left:7px;">
+                <div class="au-card m-b-15">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">Our favorite goal tweet</h3>
                           {{goal_tweet|safe}}
@@ -164,7 +164,7 @@ div.scrollmenu li {
               </div>
 
               <div class="col-lg-4">
-                  <div class="au-card m-b-30">
+                  <div class="au-card m-b-15">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">Deertweet tweets by itself</h3>
                           {{rnn_tweet|safe}}
