@@ -29,7 +29,7 @@
 
 ### Score
 1) Aller dans le dossier WorldCup_Dashboard
-2) nohup python score.py --url <URL_DU_MATCH_SUR_LE_SITE_TF1> & (Pour trouver le lien : https://www.tf1.fr/tf1/fifa-coupe-du-monde-de-football --> calendrier des matchs puis cliquer sur le match. Exemple d'url : https://www.tf1.fr/dossier/espagne-russie-coupe-du-monde-2018)
+2) nohup python score.py --url <URL_DU_MATCH_SUR_LE_SITE_FIFA> & (Pour trouver le lien : https://www.fifa.com/worldcup/matches/#knockoutphase --> puis cliquer sur le match. Exemple d'url : https://www.fifa.com/worldcup/matches/match/300331537/#motm)
 
 ### Aggregate_Live /!\ Il vaut mieux attendre quelques minutes avant de la démarrer
 1) Aller dans le dossier WorldCup_Dashboard
@@ -43,7 +43,7 @@
 ## Backend Match 2
 
 Faire même étapque que pour match1 mais avec un 2 à la fin de chaque script python.
-Exemple : ConsumerKafkaMongo.py devient ConsumerKafkaMongo2.py, loaderKafka.py devient loaderKafka2.py
+Exemple : ConsumerKafkaMongo.py devient ConsumerKafkaMongo2.py, loaderKafka.py devient loaderKafka2.py, ...
 
 
 ## Frontend
@@ -63,5 +63,17 @@ Changer our_tweet
 Changer goal_tweet
 ##### Match view
 Décommenter le match de la veille, ajouter les 3 tweets
+
+## Save Data
+
+1) Aller dans le dossier WorldCup_Dashboard
+
+2) vi saverData.py --> changer le hashtag
+
+3) python saverData.py
+
+4) mkdir DjangoWorldCup/worldcup/static/worldcup/data/<MATCH>
+
+5) mv <MATCH>_* DjangoWorldCup/worldcup/static/worldcup/data/<MATCH>/
 
 
