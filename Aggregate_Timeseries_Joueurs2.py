@@ -5,7 +5,7 @@ import datetime
 import numpy as np
 
 PAYS_EN = {"Australia": 'AUS', "Belgium": 'BEL', "Brazil": 'BRA',
-                        "Colombia": 'COL', "Costa": 'CRC', "Croatia": 'HRV',
+                        "Colombia": 'COL', "Costa": 'CRC', "Croatia": 'CRO',
                         "Denmark": 'DEN', "Egypt": 'EGY', "England": 'ENG',
                         "France": 'FRA', "Germany": 'GER', "Iran": 'IRN',
                         "Morocco": 'MAR', "Peru": 'PER', "Poland": 'POL',
