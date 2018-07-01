@@ -127,9 +127,9 @@ div.scrollmenu li {
 
 
               <div class="col-lg-5">
-                  <div class="au-card m-b-30" style="padding-left: 10px;">
+                  <div class="au-card m-b-30" style="padding-left: 25px;padding-right: 10px; padding-bottom:50px;">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40" style="padding-left: 40px;">Buzz XI</h3>
+                          <h3 class="title-2 m-b-40" >Buzz XI</h3>
                           <div class="chart-wrapper" id="pitch_plot"></div>
                       </div>
                   </div>
@@ -274,60 +274,6 @@ div.scrollmenu li {
 
   let matchname3 = "{{hashtag}}"
 
-
-
-  // d3v4.csv("/static/worldcup/data/"+matchname3.slice(1,7)+"/"+matchname3.slice(1,7)+"_Timeseries_Players.csv")
-  //     /* On load les colonnes de notre csv */
-  //     .row(d => {
-  //         Percentage_1 = d.Percentage1;
-  //         Percentage_2 = d.Percentage2;
-  //         Percentage_3 = d.Percentage3;
-  //         Percentage_4 = d.Percentage4;
-  //         Percentage_5 = d.Percentage5;
-  //         Country_1 = d.Pays1;
-  //         Country_2 = d.Pays2;
-  //         Country_3 = d.Pays3;
-  //         Country_4 = d.Pays4;
-  //         Country_5 = d.Pays5;
-  //         Name_1 = d.Player1;
-  //         Name_2 = d.Player2;
-  //         Name_3 = d.Player3;
-  //         Name_4 = d.Player4;
-  //         Name_5 = d.Player5;
-  //         older_date = d.Time;
-  //         return {
-  //             Time: new Date(d.Time),
-  //             Player_Name_1: d.Player1,
-  //             Percentage1: +d.Percentage1,
-  //             Player_Name_2: d.Player2,
-  //             Percentage2: +d.Percentage2,
-  //             Player_Name_3: d.Player3,
-  //             Percentage3: +d.Percentage3,
-  //             Player_Name_4: d.Player4,
-  //             Percentage4: +d.Percentage4,
-  //             Player_Name_5: d.Player5,
-  //             Percentage5: +d.Percentage5
-  //         }
-  //     })
-  //     /* On les scale entre la plus petite et la plus grande valeur selon la taille de notre fenêtre */
-  //     .get((error, rows) => {
-  //         if (rows.length > 0) {
-  //             console.log(rows['Percentage1'])
-  //             console.log("higher value", d3v4.max(rows, row => Math.max(row.Percentage1)))
-  //             x_players = d3v4.scaleTime()
-  //                             .domain(d3v4.extent(rows, row => row.Time))
-  //             y_players = d3v4.scaleLinear()
-  //                            .domain([0, d3v4.max(rows, row => Math.max(row.Percentage1, row.Percentage2, row.Percentage3, row.Percentage4, row.Percentage5))])
-  //
-  //             dataset_players = rows
-  //
-  //             console.log("older_date 1", older_date)
-  //             console.log("older_date trad", x_players(older_date))
-  //             redraw_players();
-  //
-  //         }
-  //     });
-
   d3v4.json("/static/worldcup/data/"+matchname2.slice(1,7)+"/"+matchname2.slice(1,7)+"_Timeseries_Players.json", function(error, myData) {
 
     let len_data_players = myData.length
@@ -431,12 +377,20 @@ div.scrollmenu li {
 <!-- PITCH PLOT -->
 <script type="text/javascript">
   window.addEventListener("resize", redraw_pitch)
+  const margin_pitch = {
+      top: 10,
+      right: 10,
+      bottom: 0,
+      left: 10,
+  };
 
   let div_pitchplot = document.getElementById("pitch_plot");
   let svg_pitch_init = d3.select('#pitch_plot').append('svg')
 
   let width_pitch = div_pitchplot.clientWidth;
-  let height_pitch = 500;//div_pitchplot.clientHeight;
+  let height_pitch = 600
+  var x, y;
+
   let w_pitch
   let h_pitch
   let max_width_available = 0
@@ -449,15 +403,6 @@ div.scrollmenu li {
   let attackers_name
   let attackers_country
 
-  if (width_pitch/height_pitch < 1.6) {
-    w_pitch = width_pitch;
-    h_pitch = height_pitch;
-    max_width_available = w_pitch
-  }
-  else {
-    w_pitch = 536;
-    h_pitch = w_pitch/1.6;
-  }
 
   let matchname = "{{hashtag}}"
 

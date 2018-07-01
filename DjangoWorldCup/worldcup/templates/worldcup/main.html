@@ -142,7 +142,7 @@ div.scrollmenu li {
                   </div>
               </div>
 
-	     <div class="col-lg-6" style="padding-right:7px;">
+	           <div class="col-lg-6" style="padding-right:7px;">
                   <div class="au-card m-b-30">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">% of positives tweets by team</h3>
@@ -151,7 +151,7 @@ div.scrollmenu li {
                   </div>
               </div>
 
-	     <div class="col-lg-6" style="padding-left:7px;">
+	           <div class="col-lg-6" style="padding-left:7px;">
                   <div class="au-card m-b-30" style="padding-left: 20px;">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">% of positives tweets during the match</h3>
@@ -482,53 +482,6 @@ div.scrollmenu li {
   let max_player1, max_player2, max_player3, max_player4, max_player5;
 
   let matchname3 = "{{hashtag}}"
-
-  // d3v4.csv("/static/worldcup/data/"+matchname3.slice(1,7)+"/"+matchname3.slice(1,7)+"_Players_Agg.csv")
-  //     /* On load les colonnes de notre csv */
-  //     .row(d => {
-  //         Percentage_1 = d.Percentage1;
-  //         Percentage_2 = d.Percentage2;
-  //         Percentage_3 = d.Percentage3;
-  //         Percentage_4 = d.Percentage4;
-  //         Percentage_5 = d.Percentage5;
-  //         Country_1 = d.Country1;
-  //         Country_2 = d.Country2;
-  //         Country_3 = d.Country3;
-  //         Country_4 = d.Country4;
-  //         Country_5 = d.Country5;
-  //         Name_1 = d.Player1;
-  //         Name_2 = d.Player2;
-  //         Name_3 = d.Player3;
-  //         Name_4 = d.Player4;
-  //         Name_5 = d.Player5;
-  //         return {
-  //             Time: new Date(d.Time),
-  //             Player_Name_1: d.Player1,
-  //             Percentage1: +d.Percentage1,
-  //             Player_Name_2: d.Player2,
-  //             Percentage2: +d.Percentage2,
-  //             Player_Name_3: d.Player3,
-  //             Percentage3: +d.Percentage3,
-  //             Player_Name_4: d.Player4,
-  //             Percentage4: +d.Percentage4,
-  //             Player_Name_5: d.Player5,
-  //             Percentage5: +d.Percentage5
-  //         }
-  //     })
-  //     /* On les scale entre la plus petite et la plus grande valeur selon la taille de notre fenêtre */
-  //     .get((error, rows) => {
-  //         if (rows.length > 0) {
-  //             x_players = d3v4.scaleTime()
-  //                     .domain(d3v4.extent(rows, row => row.Time))
-  //             y_players = d3v4.scaleLinear()
-  //                     .domain([0, d3v4.max(rows, row => Math.max(row.Percentage1, row.Percentage2, row.Percentage3, row.Percentage4, row.Percentage5))])
-  //
-  //             dataset_players = rows
-  //             older_date = d3v4.max(rows, row => Math.max(row.Time))
-  //             redraw_players();
-  //
-  //         }
-  //     });
 
   fetch("http://worldcup.datadeer.fr/timeseries_players", {
   method: 'get',
