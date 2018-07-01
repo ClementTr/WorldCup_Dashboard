@@ -46,7 +46,12 @@ p {
 
 
 .hover-line {
-    stroke: #000000;
-    stroke-width: 2px;
-    stroke-dasharray: 3,3;
+    fill: none;
+    stroke-width: 5px;
+}
+
+.out-line {
+    fill: none;
+    /*stroke-width: 2px;*/
+    opacity: 0.1;
 }

@@ -76,6 +76,20 @@ function draw_players(data, innerW, innerH) {
               .call(d3v4.axisLeft(y_players));
 
 
+      // svg_players.append("path")
+      //         .data([data])
+      //         .attr("class", "line")
+      //         .attr("id", "player1")
+      //         .attr("d", valueline_Player1)
+      //         .style("stroke", dict_color[Country_1])
+      //         .transition() // On ajoute ces lignes pour dessiner les courbes en direct
+      //         .duration(2000)
+      //         .attrTween("stroke-dasharray", function() {
+      //             var len = this.getTotalLength();
+      //             return function(t) { return (d3v4.interpolateString("0," + len, len + ",0"))(t) };
+      //         });
+
+
       /* On dessine la variable Player 1 */
       svg_players.append("path")
               .data([data])
@@ -153,77 +167,58 @@ function draw_players(data, innerW, innerH) {
       /* Une variable focus sera initialisée à null quand la souris sera sur le rectangle
       * puis mooifiée dans mousemove sinon elle sera null est donc non visible
       * Focus c'est le rond qu'on verra sur notre courbe */
-      svg_players.append("rect")
-              .attr("class", "overlay")
-              .attr("width", innerW)
-              .attr("height", innerH);
-              // .on("mouseover", () => (focus_player1.style("display", null)) & (focus_player2.style("display", null)) & (focus_player3.style("display", null)) & (focus_player4.style("display", null)) & (focus_player5.style("display", null)))
-              // .on("mouseout", () => (focus_player1.style("display", "none")) & (focus_player2.style("display", "none")) & (focus_player3.style("display", "none")) & (focus_player4.style("display", "none")) & (focus_player5.style("display", "none")))
-              // .on("mousemove", mousemove);
-
-      // Initialisation de focus
-      // let focus_player1 = svg_players.append("g")
-      //                                //.attr("class", "focus_deliveries")
-      //                                .style("stroke", "blue")
-      //                                .style("display", "none");
-      //
-      // let focus_player2 = svg_players.append("g")
-      //                                //.attr("class", "focus_deliveries")
-      //                                .style("stroke", "red")
-      //                                .style("display", "none");
-      //
-      // let focus_player3 = svg_players.append("g")
-      //                                //.attr("class", "focus_deliveries")
-      //                                .style("stroke", "green")
-      //                                .style("display", "none");
-      //
-      // let focus_player4 = svg_players.append("g")
-      //                                //.attr("class", "focus_deliveries")
-      //                                .style("stroke", "green")
-      //                                .style("display", "none");
-      //
-      // let focus_player5 = svg_players.append("g")
-      //                                //.attr("class", "focus_deliveries")
-      //                                .style("stroke", "green")
-      //                                .style("display", "none");
+      // svg_players.append("rect")
+      //         .attr("class", "overlay")
+      //         .attr("width", innerW)
+      //         .attr("height", innerH);
 
 
-      // Dessin de la variable focus comme étant un cercle de rayon 4.5 px
-      // focus_player1.append("circle")
-      //                 .attr("r", 4.5);
-      //
-      // focus_player1.append("text")
-      //                 .attr("x", 9)
-      //                 .attr("dy", ".35em");
-      //
-      // focus_player2.append("circle")
-      //                 .attr("r", 4.5);
-      //
-      // focus_player2.append("text")
-      //                 .attr("x", 9)
-      //                 .attr("dy", ".35em");
-      //
-      // focus_player3.append("circle")
-      //                 .attr("r", 4.5);
-      //
-      // focus_player3.append("text")
-      //                 .attr("x", 9)
-      //                 .attr("dy", ".35em");
-      //
-      // focus_player4.append("circle")
-      //                 .attr("r", 4.5);
-      //
-      // focus_player4.append("text")
-      //                 .attr("x", 9)
-      //                 .attr("dy", ".35em");
-      //
-      // focus_player5.append("circle")
-      //                 .attr("r", 4.5);
-      //
-      // focus_player5.append("text")
-      //                 .attr("x", 9)
-      //                 .attr("dy", ".35em");
 
+      /*MOUSEOVER*/
+      svg_players.append("path")
+                  .data([data])
+                  .attr("class", "out-line")
+                  .attr("id", "player1")
+                  .attr("d", valueline_Player1)
+                  .style("stroke", dict_color[Country_1])
+                  .on("mouseover", mouseover_1)
+                  .on("mouseout", mouseout_1);
+
+      svg_players.append("path")
+                  .data([data])
+                  .attr("class", "out-line")
+                  .attr("id", "player2")
+                  .attr("d", valueline_Player2)
+                  .style("stroke", dict_color[Country_2])
+                  .on("mouseover", mouseover_2)
+                  .on("mouseout", () => (d3.select("#player2").attr("class", "line")) );
+
+      svg_players.append("path")
+                  .data([data])
+                  .attr("class", "out-line")
+                  .attr("id", "player3")
+                  .attr("d", valueline_Player3)
+                  .style("stroke", dict_color[Country_3])
+                  .on("mouseover", mouseover_3)
+                  .on("mouseout", () => (d3.select("#player3").attr("class", "line")) );
+
+      svg_players.append("path")
+                  .data([data])
+                  .attr("class", "out-line")
+                  .attr("id", "player4")
+                  .attr("d", valueline_Player4)
+                  .style("stroke", dict_color[Country_4])
+                  .on("mouseover", mouseover_4)
+                  .on("mouseout", () => (d3.select("#player4").attr("class", "line")) );
+
+      svg_players.append("path")
+                  .data([data])
+                  .attr("class", "out-line")
+                  .attr("id", "player5")
+                  .attr("d", valueline_Player5)
+                  .style("stroke", dict_color[Country_5])
+                  .on("mouseover", mouseover_5)
+                  .on("mouseout", mouseout_5);
 
 
       let pos_player1 = svg_players.append("defs")
@@ -238,6 +233,7 @@ function draw_players(data, innerW, innerH) {
 
      svg_players.append("circle")
               .style("fill", dict_color[Country_1])
+              .attr("id", "circle1")
               .attr("r", -2 + (56/2))
               .attr("cx", position_image-100 + (56/2))
               .attr("cy", y_players(Percentage_1) - 2);
@@ -245,6 +241,7 @@ function draw_players(data, innerW, innerH) {
       svg_players.append("image")
                .attr("x", position_image-100)
                .attr("y", y_players(Percentage_1) - 30)
+               .attr('id', 'img-player1')
                .attr("height", 56)
                .attr("width", 56)
                .attr("xlink:href", "/static/worldcup/img/players/" + Country_1 + "/" + Name_1 + ".jpg")
@@ -264,15 +261,15 @@ function draw_players(data, innerW, innerH) {
 
      svg_players.append("circle")
               .style("fill", dict_color[Country_2])
+              .attr("id", "circle2")
               .attr("r", -2 + (56/2))
-              //.attr("cx", x_players(older_date) - 100 + (56/2))
               .attr("cx", position_image - 100 + (56/2))
               .attr("cy", y_players(Percentage_2) - 2);
 
       svg_players.append("image")
-               //.attr("x", x_players(older_date) - 100)
                .attr("x", position_image - 100)
                .attr("y", y_players(Percentage_2) - 30)
+               .attr('id', 'img-player2')
                .attr("height", 56)
                .attr("width", 56)
                .attr("xlink:href", "/static/worldcup/img/players/" + Country_2 + "/" + Name_2 + ".jpg")
@@ -291,6 +288,7 @@ function draw_players(data, innerW, innerH) {
 
      svg_players.append("circle")
               .style("fill", dict_color[Country_3])
+              .attr("id", "circle3")
               .attr("r", -2 + (56/2))
               .attr("cx", position_image - 100 + (56/2))
               .attr("cy", y_players(Percentage_3) - 2);
@@ -298,6 +296,7 @@ function draw_players(data, innerW, innerH) {
       svg_players.append("image")
                .attr("x", position_image - 100)
                .attr("y", y_players(Percentage_3) - 30)
+               .attr('id', 'img-player3')
                .attr("height", 56)
                .attr("width", 56)
                .attr("xlink:href", "/static/worldcup/img/players/" + Country_3 + "/" + Name_3 + ".jpg")
@@ -316,6 +315,7 @@ function draw_players(data, innerW, innerH) {
 
      svg_players.append("circle")
               .style("fill", dict_color[Country_4])
+              .attr("id", "circle4")
               .attr("r", -2 + (56/2))
               .attr("cx", position_image - 100 + (56/2))
               .attr("cy", y_players(Percentage_4) - 2);
@@ -323,6 +323,7 @@ function draw_players(data, innerW, innerH) {
       svg_players.append("image")
                .attr("x", position_image - 100)
                .attr("y", y_players(Percentage_4) - 30)
+               .attr('id', 'img-player4')
                .attr("height", 56)
                .attr("width", 56)
                .attr("xlink:href", "/static/worldcup/img/players/" + Country_4 + "/" + Name_4 + ".jpg")
@@ -340,6 +341,7 @@ function draw_players(data, innerW, innerH) {
 
     svg_players.append("circle")
              .style("fill", dict_color[Country_5])
+             .attr("id", "circle5")
              .attr("r", -2 + (56/2))
              .attr("cx", position_image - 100 + (56/2))
              .attr("cy", y_players(Percentage_5) - 2);
@@ -347,33 +349,65 @@ function draw_players(data, innerW, innerH) {
      svg_players.append("image")
               .attr("x", position_image - 100)
               .attr("y", y_players(Percentage_5) - 30)
+              .attr('id', 'img-player5')
               .attr("height", 56)
               .attr("width", 56)
               .attr("xlink:href", "/static/worldcup/img/players/" + Country_5 + "/" + Name_5 + ".jpg")
               .attr("clip-path", "url(#clip-circle_player5)");
 
-      /* La fonction mousemove */
-      function mousemove() {
-          let x0 = x_players.invert(d3v4.mouse(this)[0]),
-              i = bisect_date_players(data, x0, 1),
-              d0 = data[i - 1],
-              d1 = data[i],
-              d = x0 - d0.Time > d1.Time - x0 ? d1 : d0;
+      /* La fonctions mousemove */
+      function mouseover_1() {
+        d3.select("#player1").attr("class", "hover-line")
 
-          // focus_player1.attr("transform", "translate(" + x_players(d.Time) + "," + y_players(d.Percentage1) + ")");
-          // focus_player1.select("text").text(d.Percentage1);
-          //
-          // focus_player2.attr("transform", "translate(" + x_players(d.Time) + "," + y_players(d.Percentage2) + ")");
-          // focus_player2.select("text").text(d.Percentage2);
-          //
-          // focus_player3.attr("transform", "translate(" + x_players(d.Time) + "," + y_players(d.Percentage3) + ")");
-          // focus_player3.select("text").text(d.Percentage3);
-          //
-          // focus_player4.attr("transform", "translate(" + x_players(d.Time) + "," + y_players(d.Percentage4 )+ ")");
-          // focus_player4.select("text").text(d.Percentage4);
-          //
-          // focus_player5.attr("transform", "translate(" + x_players(d.Time) + "," + y_players(d.Percentage5) + ")");
-          // focus_player5.select("text").text(d.Percentage5);
+        d3.select("#player2").style("opacity", "0.1")
+        d3.select("#player3").style("opacity", "0.1")
+        d3.select("#player4").style("opacity", "0.1")
+        d3.select("#player5").style("opacity", "0.1")
+
+        d3.select("#circle2").attr("cx", 2000)
+        d3.select("#img-player2").attr("x", 2000)
+      }
+      function mouseout_1(){
+        d3.select("#player1").attr("class", "line")
+
+        d3.select("#player2").style("opacity", "1")
+        d3.select("#player3").style("opacity", "1")
+        d3.select("#player4").style("opacity", "1")
+        d3.select("#player5").style("opacity", "1")
+
+        d3.select("#circle2").attr("cx", position_image - 100 + (56/2))
+        d3.select("#img-player2").attr("x", position_image - 100)
+
+      }
+
+      
+      function mouseover_2() {
+        d3.select("#player2").attr("class", "hover-line")
+        //d3.select("#circle2").style("display", "none")
+        //d3.select("#img-player2").style("display", "none")
+      }
+      function mouseover_3() {
+        d3.select("#player3").attr("class", "hover-line")
+        //d3.select("#circle3").style("display", "none")
+        //d3.select("#img-player3").style("display", "none")
+      }
+      function mouseover_4() {
+        d3.select("#player4").attr("class", "hover-line")
+        //d3.select("#circle4").style("display", "none")
+        //d3.select("#img-player4").style("display", "none")
+      }
+      function mouseover_5() {
+        d3.select("#player5").attr("class", "hover-line")
+        //d3.select("#circle5").style("display", "none")
+        //d3.select("#img-player5").style("display", "none")
+      }
+      function mouseout_5(){
+        d3.select("#player5").attr("class", "line")
+
+        d3.select("#player1").style("opacity", "1")
+        d3.select("#player2").style("opacity", "1")
+        d3.select("#player3").style("opacity", "1")
+        d3.select("#player4").style("opacity", "1")
       }
 
   }
