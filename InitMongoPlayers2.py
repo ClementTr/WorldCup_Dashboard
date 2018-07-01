@@ -4,7 +4,7 @@ import datetime
 import numpy as np
 
 global hashtag
-with open('HASHTAG_FILE.txt') as f:
+with open('HASHTAG_FILE2.txt') as f:
    hashtag = f.read()[1:7]
 #hashtag = "FRAARG"
 

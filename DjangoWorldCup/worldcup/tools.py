@@ -180,6 +180,15 @@ def getPays(hashtag_name):
 
     return team1.capitalize(), team2.capitalize()
 
+def getLiveScore(hashtag_name):
+    client = MongoClient('localhost', 27017)
+    db = client['WorldCup']
+    collection_name = str(hashtag_name[1:]) + "_Score"
+    collection = db[collection_name]
+    data = pd.DataFrame(list(collection.find()))
+    client.close()
+    return data[['Equipe','Score']].to_json(orient="values")
+
 def getClassement():
     data = pd.read_csv(path_groups)
     #print(data.head())

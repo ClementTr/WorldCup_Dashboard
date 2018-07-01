@@ -11,6 +11,7 @@ urlpatterns = [
     path('data_positivite/',views.data_positivite, name='main'),
     path('positive_negative/',views.positive_negative, name='main'),
     path('timeseries_players/',views.timeseries_players, name='main'),
+    path('score_live/',views.score_live, name='main'),
 
 
     # path('final/', views.final, name='final'),

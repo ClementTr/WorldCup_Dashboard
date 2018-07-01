@@ -182,7 +182,7 @@ def playersTimeseriesCalculations(matchname):
     data = data.drop(['_id','index'], axis=1)
     data['Percentage'] = data['Percentage'].apply(lambda x : float(x))
     data['Time'] = pd.to_datetime(data['Time'], infer_datetime_format=True)
-    data["Time"] = data["Time"].apply(lambda x : x+timedelta(hours=2))
+    #data["Time"] = data["Time"].apply(lambda x : x+timedelta(hours=2))
     top5_now_players = data.sort_values(by=["Time","Percentage"],ascending=False).iloc[:5,:]["Player"].values.tolist()
     top5_now = data[data['Player'].isin(top5_now_players)]
     topdf = []
@@ -219,15 +219,15 @@ def removeMongoCollections(hashtag):
 initMongo()
 # with open('HASHTAG_FILE.txt') as f:
 #     hashtag = f.read()
-hashtag = "#FRAARG"
+hashtag = "#URUPOR"
 matchname = str(hashtag[1:])
-#saveCountriesData(matchname)
-#saveTweets(matchname)
-#savePositivity(matchname)
-#saveTimeSeries(matchname)
-#saveTopPlayers(matchname)
-#save11Players(matchname)
-#saveEmojis(matchname)
+saveCountriesData(matchname)
+saveTweets(matchname)
+savePositivity(matchname)
+saveTimeSeries(matchname)
+saveTopPlayers(matchname)
+save11Players(matchname)
+saveEmojis(matchname)
 playersTimeseriesCalculations(matchname)
 #removeMongoCollections(matchname)
 client.close()
