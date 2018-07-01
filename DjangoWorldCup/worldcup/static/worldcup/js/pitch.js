@@ -42,7 +42,7 @@ function draw_pitch(){
 
   w_pitch = w
   h_pitch = h
-  let footballer_img_size = w/7
+  let footballer_img_size = w/6.5
 
 
   svg_pitch.append("svg:image")
@@ -85,7 +85,7 @@ function draw_pitch(){
 
 
   // CB1
-  let x_cb1 = w_pitch/4
+  let x_cb1 = w_pitch/4.2
   let y_cb1 = h_pitch/1.35
   let defs_cb1 = svg_pitch.append("defs")
                    .attr("id", "imgdefs")
@@ -170,7 +170,7 @@ function draw_pitch(){
 
 
   // LB
-  let x_lb = w_pitch/15
+  let x_lb = w_pitch/20.5
   let y_lb = h_pitch/1.45
   let defs_lb = svg_pitch.append("defs")
                       .attr("id", "imgdefs")
