@@ -5,7 +5,7 @@ import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
 from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, get_Emojis, getEmojisClassement, playersTimeseriesCalculations, getLiveScore
-MATCH_HASHTAG = '#SPARUS'
+MATCH_HASHTAG = '#CRODEN'
 
 def home(request):
     if (request.method == "POST"):
@@ -44,7 +44,7 @@ def data_playersPosition(request):
 
 
 def main(request):
-    date = "Sunday, July 1st - 16:00"
+    date = "Sunday, July 1st - 20:00"
     country_1, country_2 = getPays(MATCH_HASHTAG)
     emojis = get_Emojis(MATCH_HASHTAG)
     our_tweet = ""
@@ -122,6 +122,17 @@ def score_live(request):
 #     country_1, country_2 = getPays(hashtag)
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
 #     return render(request, 'worldcup/match.html', context)
+
+def sparus(request):
+    hashtag = "#SPARUS"
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>&quot;De Gea  has delivered,  you can release his family now&quot; <a href='https://t.co/gBRVcraTO6'>pic.twitter.com/gBRVcraTO6</a></p>&mdash; Danny WelBeast (@WelBeast) <a href='https://twitter.com/WelBeast/status/1013464407408508929?ref_src=twsrc%5Etfw'>1 juillet 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Akinfeev saving that penalty with his feet like a BOSS <a href='https://twitter.com/hashtag/ESPRUS?src=hash&amp;ref_src=twsrc%5Etfw'>#ESPRUS</a> <a href='https://t.co/6yBK3r6N8f'>pic.twitter.com/6yBK3r6N8f</a></p>&mdash; Aman The World Cup🏆Fan (@AmanTsays) <a href='https://twitter.com/AmanTsays/status/1013463207179104256?ref_src=twsrc%5Etfw'>1 juillet 2018</a></blockquote>"
+    rnn_tweet = ""
+    date = "Sunday, July 1st - 16:00"
+    country_1, country_2 = getPays(hashtag)
+    emojis = getEmojisClassement(hashtag[1:])
+    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis}
+    return render(request, 'worldcup/match.html', context)
 
 def urupor(request):
     hashtag = "#URUPOR"
