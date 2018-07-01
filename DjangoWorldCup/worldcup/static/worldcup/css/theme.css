@@ -3253,7 +3253,7 @@ section {
     padding-right: 35px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
-    border-radius: 10px;
+    border-radius: 2px;
     background: #fff;
     overflow: hidden;
 }
