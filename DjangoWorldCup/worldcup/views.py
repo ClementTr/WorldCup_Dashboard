@@ -131,13 +131,15 @@ def sparus(request):
     date = "Sunday, July 1st - 16:00"
     country_1, country_2 = getPays(hashtag)
     emojis = getEmojisClassement(hashtag[1:])
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis}
+    score1 = 1
+    score2 = 1
+    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis,"score1":score1,"score2":score2}
     return render(request, 'worldcup/match.html', context)
 
 def urupor(request):
     hashtag = "#URUPOR"
     our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>When Ronaldo bumps into Messi at the airport. <a href='https://t.co/4Dhd5KfUyI'>pic.twitter.com/4Dhd5KfUyI</a></p>&mdash; Footy Humour (@FootyHumour) <a href='https://twitter.com/FootyHumour/status/1013148027870154753?ref_src=twsrc%5Etfw'>30 juin 2018</a></blockquote>"
-    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Good goal Cavani <a href='https://t.co/cyMGV6FXob'>pic.twitter.com/cyMGV6FXob</a></p>&mdash; Chelsea Bright (@AsensoBright1) <a href='https://twitter.com/AsensoBright1/status/1013158852735488005?ref_src=twsrc%5Etfw'>30 juin 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'><a href='https://twitter.com/hashtag/Portugal?src=hash&amp;ref_src=twsrc%5Etfw'>#Portugal</a> conceding an early goal was the worst possible situation. Now <a href='https://twitter.com/hashtag/Uruguay?src=hash&amp;ref_src=twsrc%5Etfw'>#Uruguay</a> can sit back even more, rely on very strong defense, and threaten on the counter through Suarez/Cavani. <a href='https://twitter.com/hashtag/POR?src=hash&amp;ref_src=twsrc%5Etfw'>#POR</a> often struggle when they have to break down defenses from possession. <a href='https://twitter.com/hashtag/URUPOR?src=hash&amp;ref_src=twsrc%5Etfw'>#URUPOR</a> <a href='https://twitter.com/hashtag/URU?src=hash&amp;ref_src=twsrc%5Etfw'>#URU</a> <a href='https://t.co/vaBIPTXQfa'>pic.twitter.com/vaBIPTXQfa</a></p>&mdash; Jason Foster (@JogaBonito_USA) <a href='https://twitter.com/JogaBonito_USA/status/1013123404046749697?ref_src=twsrc%5Etfw'>June 30, 2018</a></blockquote> <script async src='https://platform.twitter.com/widgets.js' charset='utf-8'></script>"
     rnn_tweet = ""
     date = "Saturday, June 30th - 20:00"
     country_1, country_2 = getPays(hashtag)
@@ -150,7 +152,7 @@ def urupor(request):
 def fraarg(request):
     hashtag = "#FRAARG"
     our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Kylian Mbappe, aged 13, in his bedroom - a shrine to his hero Ronaldo. Now, just 6yrs later, HE’S the new king of world football. The hero-worshipper becomes the hero. Amazing. <a href='https://t.co/eRfzjBnMBc'>pic.twitter.com/eRfzjBnMBc</a></p>&mdash; Piers Morgan (@piersmorgan) <a href='https://twitter.com/piersmorgan/status/1013321586496110593?ref_src=twsrc%5Etfw'>1 juillet 2018</a></blockquote>"
-    goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>⚽Je ne me lasse pas de regarder  cette volée incroyable de <a href='https://twitter.com/BenPavard28?ref_src=twsrc%5Etfw'>@BenPavard28</a> 🇫🇷<br>Certainement le plus beau but de ce <a href='https://twitter.com/hashtag/Mondial2018?src=hash&amp;ref_src=twsrc%5Etfw'>#Mondial2018</a><a href='https://twitter.com/hashtag/Pavard?src=hash&amp;ref_src=twsrc%5Etfw'>#Pavard</a> <a href='https://t.co/jUIFeby1XV'>pic.twitter.com/jUIFeby1XV</a></p>&mdash; cheeper©️ (@CheeperOff) <a href='https://twitter.com/CheeperOff/status/1013304094700732417?ref_src=twsrc%5Etfw'>1 juillet 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Pavard’s goal is best appreciated from this angle <a href='https://twitter.com/hashtag/FRAARG?src=hash&amp;ref_src=twsrc%5Etfw'>#FRAARG</a> <a href='https://twitter.com/hashtag/WorldCup?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCup</a> <a href='https://t.co/exRdHYpe6c'>pic.twitter.com/exRdHYpe6c</a></p>&mdash; FIFA WORLD CUP 2018⚽ (@_WorldCupStats) <a href='https://twitter.com/_WorldCupStats/status/1013084154550943745?ref_src=twsrc%5Etfw'>June 30, 2018</a></blockquote> <script async src='https://platform.twitter.com/widgets.js' charset='utf-8'></script>"
     rnn_tweet = ""
     date = "Saturday, June 30th - 16:00"
     country_1, country_2 = getPays(hashtag)
