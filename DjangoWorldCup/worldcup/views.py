@@ -5,7 +5,7 @@ import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
 from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, get_Emojis, getEmojisClassement, playersTimeseriesCalculations, getLiveScore
-MATCH_HASHTAG = '#BRAMEX'
+MATCH_HASHTAG = '#BELJPN'
 
 def home(request):
     if (request.method == "POST"):
@@ -117,6 +117,19 @@ def score_live(request):
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
 #     return render(request, 'worldcup/match.html', context)
 #
+
+def bramex(request):
+    hashtag = "#BRAMEX"
+    our_tweet = ""
+    goal_tweet = ""
+    rnn_tweet = ""
+    date = "Sunday, July 2nd - 16:00"
+    country_1, country_2 = getPays(hashtag)
+    emojis = getEmojisClassement(hashtag[1:])
+    score1 = 1
+    score2 = 1
+    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis,"score1":score1,"score2":score2}
+    return render(request, 'worldcup/match.html', context)
 
 def croden(request):
     hashtag = "#CRODEN"
