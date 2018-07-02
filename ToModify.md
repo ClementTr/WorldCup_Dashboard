@@ -77,3 +77,16 @@ Décommenter le match de la veille, ajouter les 3 tweets
 5) mv <MATCH>_* DjangoWorldCup/worldcup/static/worldcup/data/<MATCH>/
 
 
+## Bugs 
+### Si bug sur Timeseries_Players 
+#### Solution 1 (Si pas 5 joueurs au premier datetime)
+1) mongo
+2) use WorldCup
+3) check pour les datetimes si count = 5 (datetime example : 2018-07-02 17:02:56.538830): db.<MATCHNAME>_Timeseries_Players.find({"Time":"<DATETIME>"}).count()
+4) Si count != 5 : db.<MATCHNAME>_Timeseries_Players.remove({"Time":"DATETIME"})
+
+#### Solution 2 (Si pas 5 joueurs à plusieurs datetime)
+1) mongo
+2) use WorldCup
+3) check jusqu'ou les datetimes sont différents de count = 5 (datetime example : 2018-07-02 17:02:56.538830): db.<MATCHNAME>_Timeseries_Players.find({"Time":"<DATETIME>"}).count()
+4) On remove tout ce qui est inférieur à la date : db.<MATCHNAME>_Timeseries_Players.remove({"Time":{"$lg":"<DATETIME>"}})
