@@ -5,7 +5,7 @@ import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
 from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, get_Emojis, getEmojisClassement, playersTimeseriesCalculations, getLiveScore
-MATCH_HASHTAG = '#CRODEN'
+MATCH_HASHTAG = '#BRAMEX'
 
 def home(request):
     if (request.method == "POST"):
@@ -44,7 +44,7 @@ def data_playersPosition(request):
 
 
 def main(request):
-    date = "Sunday, July 1st - 20:00"
+    date = "Monday, July 2nd - 16:00"
     country_1, country_2 = getPays(MATCH_HASHTAG)
     emojis = get_Emojis(MATCH_HASHTAG)
     our_tweet = ""
@@ -117,11 +117,19 @@ def score_live(request):
 #     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
 #     return render(request, 'worldcup/match.html', context)
 #
-# def round_16_2(request):
-#     hashtag = "#"
-#     country_1, country_2 = getPays(hashtag)
-#     context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2}
-#     return render(request, 'worldcup/match.html', context)
+
+def croden(request):
+    hashtag = "#CRODEN"
+    our_tweet = ""
+    goal_tweet = ""
+    rnn_tweet = ""
+    date = "Sunday, July 1st - 20:00"
+    country_1, country_2 = getPays(hashtag)
+    emojis = getEmojisClassement(hashtag[1:])
+    score1 = 1
+    score2 = 1
+    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis,"score1":score1,"score2":score2}
+    return render(request, 'worldcup/match.html', context)
 
 def sparus(request):
     hashtag = "#SPARUS"
