@@ -13,7 +13,9 @@ url = args.url
 global hashtag
 with open('HASHTAG_FILE.txt') as f:
     hashtag = f.read()[1:7]
-
+    equipe1 = hashtag[:3]
+    equipe2 = hashtag[3:]
+    print(equipe1, equipe2)
 #hashtag = "SENCOL"
 
 var = True
@@ -30,9 +32,10 @@ while var == True:
     soup = BeautifulSoup(res, 'html.parser')
     score = soup.find("span",attrs={"class":"fi-s__scoreText"}).text
     score = score.replace("\r\n","")
-    
+    print(score)
     if ":" in score:
-        score1 , score2 = 0, 0
+        print("here")
+        score1, score2 = 0, 0
 
     else:
         score1 = int(score.split("-")[0])

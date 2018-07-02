@@ -6,13 +6,13 @@ import json
 from datetime import datetime, timedelta
 
 PAYS = {"Australia": 'AUS', "Belgium": 'BEL', "Brazil": 'BRA',
-                        "Colombia": 'COL', "Costa": 'CRC', "Croatia": 'HRV',
+                        "Colombia": 'COL', "Costa": 'CRC', "Croatia": 'CRO',
                         "Denmark": 'DEN', "Egypt": 'EGY', "England": 'ENG',
                         "France": 'FRA', "Germany": 'GER', "Iran": 'IRN',
                         "Morocco": 'MAR', "Peru": 'PER', "Poland": 'POL',
                         "Portugal": 'POR', "Russia": 'RUS', "Arabia": 'KSA',
                         "Serbia": 'SER', "Spain": 'SPA', "Sweden": 'SWE',"Uruguay": "URU",
-                        "Switzerland": 'SWI',"Senegal":"SEN","Tunisia": 'TUN','United_states':'USA',"Argentina":"ARG"}
+                        "Switzerland": 'SWI',"Senegal":"SEN","Tunisia": 'TUN','United_states':'USA',"Argentina":"ARG", "Mexico":"MEX"}
 INV_PAYS = {v: k for k, v in PAYS.items()}
 
 global db,client
@@ -219,15 +219,15 @@ def removeMongoCollections(hashtag):
 initMongo()
 # with open('HASHTAG_FILE.txt') as f:
 #     hashtag = f.read()
-hashtag = "#SPARUS"
+hashtag = "#CRODEN"
 matchname = str(hashtag[1:])
 saveCountriesData(matchname)
 saveTweets(matchname)
 savePositivity(matchname)
-saveTimeSeries(matchname)
+#saveTimeSeries(matchname)
 saveTopPlayers(matchname)
 save11Players(matchname)
 saveEmojis(matchname)
-playersTimeseriesCalculations(matchname)
+#playersTimeseriesCalculations(matchname)
 #removeMongoCollections(matchname)
 client.close()
