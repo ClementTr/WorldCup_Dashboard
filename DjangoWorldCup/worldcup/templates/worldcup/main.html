@@ -562,7 +562,7 @@ div.scrollmenu li {
                   }));
     y_players = d3v4.scaleLinear()
             .domain([0, d3v4.max(dataset_players,function(d) {
-                return Math.max(d["Percentage1"], d["Percentage2"], d["Percentage3"], d["Percentage4"], d["Percentage5"]);
+                return Math.max(d["Percentage1"], d["Percentage2"], d["Percentage3"], d["Percentage4"], d["Percentage5"])+2;
                 }
               )]);
 
