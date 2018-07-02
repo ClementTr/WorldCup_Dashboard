@@ -59,8 +59,8 @@ div.scrollmenu li {
               <div class="col-lg-6">
                 <div class="au-card m-b-15" style="padding-bottom: 10px;">
                   <center>
-                    <h3 class="title-2 m-b-30" style"vertical-align: middle;">Match of the day - {{hashtag}}</h3>
-                    <h4 class="title-3 m-b-30" style"vertical-align: middle;">{{date}}</h4>
+                    <h4 class="title-3 m-b-30" style"vertical-align: middle;">Live Twitter Analysis</h4>
+                    <div style"vertical-align: middle;">{{hashtag}}<br>{{date}}</div>
                   </center>
                 </div>
               </div>
@@ -85,7 +85,70 @@ div.scrollmenu li {
                 </div>
               </div>
 
+
               <div class="col-lg-4">
+                  <div class="au-card m-b-15" style="padding-left: 25px;padding-right: 10px;">
+                      <div class="au-card-inner">
+                          <h3 class="title-2 m-b-40">Twitter Buzz XI</h3>
+                          <div class="chart-wrapper" id="pitch_plot"></div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-8" style="padding-left:7px;">
+                  <div class="au-card m-b-15" style="padding-left: 20px;">
+                      <div class="au-card-inner">
+                          <h3 class="title-2 m-b-40">Most quoted players live</h3>
+                          <div class="chart-wrapper" id="multi_playersChart"></div>
+                      </div>
+                  </div>
+              </div>
+
+
+              <div class="col-lg-9">
+                  <div class="au-card m-b-15">
+                      <div class="au-card-inner">
+                          <h3 class="title-2 m-b-40">Where Do the Tweets come from ?</h3>
+                          <div class="card-body" id="container1"></div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-3">
+                    <div class="au-card au-card--bg-blue au-card-top-countries m-b-15">
+                        <div class="au-card-inner">
+                          <h3 class="title-3 m-b-30 text-white">Top Countries Tweets</h3>
+                            <div class="table-responsive">
+                                <table class="table table-top-countries text-white" id="data-table">
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+
+
+              <div class="col-lg-6">
+                  <div class="au-card m-b-15" style="padding-right:7px;">
+                      <div class="au-card-inner">
+                          <h3 class="title-2 m-b-40">Which Team Do Twitter Prefer ?</h3>
+                          <div class="chart-wrapper" id="bar_plot"></div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-6" style="padding-left:7px;">
+                  <div class="au-card m-b-15" style="padding-left: 20px;">
+                      <div class="au-card-inner">
+                          <h3 class="title-2 m-b-40">Popularity of the Game on Twitter</h3>
+                          <div class="chart-wrapper" id="simple_plot"></div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- <div class="col-lg-4">
                   <div class="au-card m-b-15">
                       <div class="au-card-inner">
                           <h3 class="title-2 m-b-40">Buzz XI</h3>
@@ -93,20 +156,6 @@ div.scrollmenu li {
                       </div>
                   </div>
               </div>
-
-              <!-- <div class="col-lg-7">
-                  <div class="au-card au-card--bg-blue au-card-top-countries m-b-30">
-                      <div class="au-card-inner">
-                        <h3 class="title-3 m-b-30 text-white">Top Buzz Players</h3>
-                          <div class="table-responsive">
-                              <table class="table table-top-countries text-white" id="players-table">
-
-                              </table>
-                          </div>
-                      </div>
-                  </div>
-              </div> -->
-
 
               <div class="col-lg-8" style="padding-left:7px;">
                   <div class="au-card m-b-15" style="padding-left: 20px;">
@@ -158,7 +207,7 @@ div.scrollmenu li {
                           <div class="chart-wrapper" id="simple_plot"></div>
                       </div>
                   </div>
-              </div>
+              </div> -->
 
 
               <div class="col-lg-4">
@@ -571,7 +620,7 @@ div.scrollmenu li {
     max_player3 = d3v4.max(dataset_players,function(d) {return Math.max(d["Percentage3"])})
     max_player4 = d3v4.max(dataset_players,function(d) {return Math.max(d["Percentage4"])})
     max_player5 = d3v4.max(dataset_players,function(d) {return Math.max(d["Percentage5"])})
-    older_date = d3v4.max(dataset_plot, d => Math.max(d.Time))
+    older_date = d3v4.max(dataset_players, d => Math.max(d.Time))
 
     redraw_players();
 

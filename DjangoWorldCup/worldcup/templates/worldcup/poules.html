@@ -276,6 +276,13 @@ div.scrollmenu li {
 <!-- PITCH PLOT -->
 <script type="text/javascript">
   window.addEventListener("resize", redraw_pitch)
+  
+  const margin_pitch = {
+      top: 10,
+      right: 10,
+      bottom: 0,
+      left: 10,
+  };
 
   let div_pitchplot = document.getElementById("pitch_plot");
   let svg_pitch_init = d3.select('#pitch_plot').append('svg')
