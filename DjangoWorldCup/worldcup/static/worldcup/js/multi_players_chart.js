@@ -396,7 +396,7 @@ function draw_players(data, innerW, innerH) {
                  .style("opacity", .9);
         div_ts_popup.html(name + "<br><center><img src='/static/worldcup/img/flags/"+country+".png' style='height:15px'/></center>")
                  .style("left", x-50 + "px")
-                 .style("top", y + "px");
+                 .style("top", y+20 + "px");
       }
       function mouseout_1(){
         d3.select("#player1").attr("class", "line")
@@ -446,7 +446,7 @@ function draw_players(data, innerW, innerH) {
                  .style("opacity", .9);
         div_ts_popup.html(name + "<br><center><img src='/static/worldcup/img/flags/"+country+".png' style='height:15px'/></center>")
                  .style("left", x-50 + "px")
-                 .style("top", y + "px");
+                 .style("top", y+20 + "px");
       }
       function mouseout_2(){
         d3.select("#player2").attr("class", "line")
@@ -496,7 +496,7 @@ function draw_players(data, innerW, innerH) {
                  .style("opacity", .9);
         div_ts_popup.html(name + "<br><center><img src='/static/worldcup/img/flags/"+country+".png' style='height:15px'/></center>")
                  .style("left", x-50 + "px")
-                 .style("top", y + "px");
+                 .style("top", y+20 + "px");
       }
       function mouseout_3(){
         d3.select("#player3").attr("class", "line")
@@ -546,7 +546,7 @@ function draw_players(data, innerW, innerH) {
                  .style("opacity", .9);
         div_ts_popup.html(name + "<br><center><img src='/static/worldcup/img/flags/"+country+".png' style='height:15px'/></center>")
                  .style("left", x-50 + "px")
-                 .style("top", y + "px");
+                 .style("top", y+20 + "px");
       }
       function mouseout_4(){
         d3.select("#player4").attr("class", "line")
@@ -596,7 +596,7 @@ function draw_players(data, innerW, innerH) {
                  .style("opacity", .9);
         div_ts_popup.html(name + "<br><center><img src='/static/worldcup/img/flags/"+country+".png' style='height:15px'/></center>")
                   .style("left", x-50 + "px")
-                  .style("top", y + "px");
+                  .style("top", y+20 + "px");
       }
       function mouseout_5(){
         d3.select("#player5").attr("class", "line")
