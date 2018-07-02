@@ -370,12 +370,29 @@ function draw_pitch(){
        function mousemove_pitch(country, name, x, y) {
           div_popup.transition()
                    .duration(200)
-		   .style("width", "100px")
+		               .style("width", "100px")
                    .style("height", "50px")
                    .style("opacity", .9);
           div_popup.html(name.charAt(0).toUpperCase() + name.slice(1) + " " + "<img src='/static/worldcup/img/flags/"+country+".png' style='height:15px'/>")
                    .style("left", x + "px")
                    .style("top", y + "px");
+
+          /**/
+          if (name == Name_1){
+            interaction(1)
+          }
+          if (name == Name_2){
+            interaction(2)
+          }
+          if (name == Name_3){
+            interaction(3)
+          }
+          if (name == Name_4){
+            interaction(4)
+          }
+          if (name == Name_5){
+            interaction(5)
+          }
        }
 
        /* La fonction mouseout */
@@ -384,5 +401,7 @@ function draw_pitch(){
                   .duration(500)
                   .style("height", 0)
                   .style("opacity", 0);
+
+         init_draw_players()
        }
 }

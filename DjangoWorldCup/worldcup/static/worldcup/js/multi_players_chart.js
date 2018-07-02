@@ -228,8 +228,8 @@ function draw_players(data, innerW, innerH) {
       let pos_player1 = svg_players.append("defs")
                           .attr("id", "imgdefs")
 
-      let x_circle_player = position_image-100 + (56/2)
-      let x_image_player = position_image-100
+      x_circle_player = position_image-100 + (56/2)
+      x_image_player = position_image-100
 
       let clipPath_player1 = pos_player1.append('clipPath')
                                   .attr('id', 'clip-circle_player1')
@@ -623,3 +623,122 @@ function draw_players(data, innerW, innerH) {
 
 
   }
+
+
+function interaction(int_player) {
+
+  if (int_player == 1){
+    d3.select("#player1").attr("class", "hover-line")
+
+    d3.select("#player2").style("opacity", "0.1")
+    d3.select("#player3").style("opacity", "0.1")
+    d3.select("#player4").style("opacity", "0.1")
+    d3.select("#player5").style("opacity", "0.1")
+
+    d3.select("#circle2").attr("cx", 2000)
+    d3.select("#img-player2").attr("x", 2000)
+    d3.select("#circle3").attr("cx", 2000)
+    d3.select("#img-player3").attr("x", 2000)
+    d3.select("#circle4").attr("cx", 2000)
+    d3.select("#img-player4").attr("x", 2000)
+    d3.select("#circle5").attr("cx", 2000)
+    d3.select("#img-player5").attr("x", 2000)
+  }
+
+  if (int_player == 2){
+    d3.select("#player2").attr("class", "hover-line")
+
+    d3.select("#player1").style("opacity", "0.1")
+    d3.select("#player3").style("opacity", "0.1")
+    d3.select("#player4").style("opacity", "0.1")
+    d3.select("#player5").style("opacity", "0.1")
+
+    d3.select("#circle1").attr("cx", 2000)
+    d3.select("#img-player1").attr("x", 2000)
+    d3.select("#circle3").attr("cx", 2000)
+    d3.select("#img-player3").attr("x", 2000)
+    d3.select("#circle4").attr("cx", 2000)
+    d3.select("#img-player4").attr("x", 2000)
+    d3.select("#circle5").attr("cx", 2000)
+    d3.select("#img-player5").attr("x", 2000)
+  }
+
+  if (int_player == 3){
+    d3.select("#player3").attr("class", "hover-line")
+
+    d3.select("#player1").style("opacity", "0.1")
+    d3.select("#player2").style("opacity", "0.1")
+    d3.select("#player4").style("opacity", "0.1")
+    d3.select("#player5").style("opacity", "0.1")
+
+    d3.select("#circle1").attr("cx", 2000)
+    d3.select("#img-player1").attr("x", 2000)
+    d3.select("#circle2").attr("cx", 2000)
+    d3.select("#img-player2").attr("x", 2000)
+    d3.select("#circle4").attr("cx", 2000)
+    d3.select("#img-player4").attr("x", 2000)
+    d3.select("#circle5").attr("cx", 2000)
+    d3.select("#img-player5").attr("x", 2000)
+  }
+
+  if (int_player == 4){
+    d3.select("#player4").attr("class", "hover-line")
+
+    d3.select("#player1").style("opacity", "0.1")
+    d3.select("#player2").style("opacity", "0.1")
+    d3.select("#player3").style("opacity", "0.1")
+    d3.select("#player5").style("opacity", "0.1")
+
+    d3.select("#circle1").attr("cx", 2000)
+    d3.select("#img-player1").attr("x", 2000)
+    d3.select("#circle2").attr("cx", 2000)
+    d3.select("#img-player2").attr("x", 2000)
+    d3.select("#circle3").attr("cx", 2000)
+    d3.select("#img-player3").attr("x", 2000)
+    d3.select("#circle5").attr("cx", 2000)
+    d3.select("#img-player5").attr("x", 2000)
+  }
+
+  if (int_player == 5){
+    d3.select("#player5").attr("class", "hover-line")
+
+    d3.select("#player1").style("opacity", "0.1")
+    d3.select("#player2").style("opacity", "0.1")
+    d3.select("#player3").style("opacity", "0.1")
+    d3.select("#player4").style("opacity", "0.1")
+
+    d3.select("#circle1").attr("cx", 2000)
+    d3.select("#img-player1").attr("x", 2000)
+    d3.select("#circle2").attr("cx", 2000)
+    d3.select("#img-player2").attr("x", 2000)
+    d3.select("#circle3").attr("cx", 2000)
+    d3.select("#img-player3").attr("x", 2000)
+    d3.select("#circle4").attr("cx", 2000)
+    d3.select("#img-player4").attr("x", 2000)
+  }
+}
+
+function init_draw_players(){
+  d3.select("#player1").attr("class", "line")
+  d3.select("#player2").attr("class", "line")
+  d3.select("#player3").attr("class", "line")
+  d3.select("#player4").attr("class", "line")
+  d3.select("#player5").attr("class", "line")
+
+  d3.select("#player1").style("opacity", "1")
+  d3.select("#player2").style("opacity", "1")
+  d3.select("#player3").style("opacity", "1")
+  d3.select("#player4").style("opacity", "1")
+  d3.select("#player5").style("opacity", "1")
+
+  d3.select("#circle1").attr("cx", x_circle_player)
+  d3.select("#img-player1").attr("x", x_image_player)
+  d3.select("#circle2").attr("cx", x_circle_player)
+  d3.select("#img-player2").attr("x", x_image_player)
+  d3.select("#circle3").attr("cx", x_circle_player)
+  d3.select("#img-player3").attr("x", x_image_player)
+  d3.select("#circle4").attr("cx", x_circle_player)
+  d3.select("#img-player4").attr("x", x_image_player)
+  d3.select("#circle5").attr("cx", x_circle_player)
+  d3.select("#img-player5").attr("x", x_image_player)
+}
