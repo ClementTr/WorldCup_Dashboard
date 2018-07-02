@@ -37,20 +37,35 @@ div.scrollmenu li {
 
           <div class="row">
 
-            <!-- BLOCK TITLE MODIFY TITLE -->
-              <div class="col-lg-12">
-                <div class="au-card m-b-30" style="padding-bottom: 10px;">
-                  <img src="/static/worldcup/img/flags/{{ country_1 }}.png" class="rounded float-left" style="border:1px solid #021a40; width:90px; height:45px;" alt="...">
-                  <img src="/static/worldcup/img/flags/{{ country_2 }}.png" class="rounded float-right" style="border:1px solid #021a40; width:90px; height:45px;" alt="...">
+              <!-- BLOCK TITLE MODIFY TITLE -->
+              <div class="col-lg-3">
+                  <div class="au-card m-b-15" style="padding-bottom: 22px;">
+                    <center>
+                      <img src="/static/worldcup/img/flags/{{ country_1 }}.png" class="rounded" style="border:1px solid #021a40; height: 100px; width:90px; height:45px;" alt="...">
+                      <h1 id="score0" style="margin-top: 10px;">{{score1}}</h1>
+                    </center>
+                  </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="au-card m-b-15" style="padding-bottom: 10px;">
                   <center>
-                    <h3 class="title-2 m-b-30" style"vertical-align: middle;">Match of the day - {{hashtag}}</h3>
-                    <h4 class="title-3 m-b-30" style"vertical-align: middle;">{{date}}</h4>
+                    <h4 class="title-3 m-b-30" style="vertical-align: middle;">Live Twitter Analysis</h4>
+                    <div style="vertical-align: middle;">{{hashtag}}<br>{{date}}</div>
+                  </center>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="au-card m-b-15" style="padding-bottom: 22px;">
+                  <center>
+                   <img src="/static/worldcup/img/flags/{{ country_2 }}.png" class="rounded" style="border:1px solid #021a40; width:90px; height:45px;" alt="...">
+                   <h1 id="score1" style="margin-top: 10px;">{{score2}}</h1>
                   </center>
                 </div>
               </div>
 
                <div class="col-lg-12">
-                <div class="au-card m-b-30" style="padding-bottom: 20px;background: #007bff; padding-top: 20px;">
+                <div class="au-card m-b-15" style="padding-bottom: 20px;background: #007bff; padding-top: 20px;">
+                  <div style="vertical-align: middle; color: #fff; margin-bottom: 0px">EMOJIS MOST USED</div>
                   <div class="scrollmenu" style="background: #007bff">
                     {% for x in emojis %}
                     <li><i class="em em-{{x.Emoji}}"></i> x{{x.Count}}</li>
@@ -60,34 +75,34 @@ div.scrollmenu li {
               </div>
 
               <div class="col-lg-6">
-                  <div class="au-card m-b-30" style="padding-right:7px;">
+                  <div class="au-card m-b-15" style="padding-right:7px;">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Percentage of positives tweets by team</h3>
+                          <h3 class="title-2 m-b-40">Which Team Does Twitter Support ?</h3>
                           <div class="chart-wrapper" id="bar_plot"></div>
                       </div>
                   </div>
               </div>
 
               <div class="col-lg-6" style="padding-left:7px;">
-                  <div class="au-card m-b-30" style="padding-left: 20px;">
+                  <div class="au-card m-b-15" style="padding-left: 20px;">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Percentage of +/- tweets during the match</h3>
+                          <h3 class="title-2 m-b-40">Popularity of the Game on Twitter</h3>
                           <div class="chart-wrapper" id="simple_plot"></div>
                       </div>
                   </div>
               </div>
 
               <div class="col-lg-9">
-                  <div class="au-card m-b-30">
+                  <div class="au-card m-b-15">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Percentage of tweets by country</h3>
+                          <h3 class="title-2 m-b-40">Where Do the Tweets come from ?</h3>
                           <div class="card-body" id="container1"></div>
                       </div>
                   </div>
               </div>
 
               <div class="col-lg-3">
-                    <div class="au-card au-card--bg-blue au-card-top-countries m-b-30">
+                    <div class="au-card au-card--bg-blue au-card-top-countries m-b-15">
                         <div class="au-card-inner">
                           <h3 class="title-3 m-b-30 text-white">Top Countries Tweets</h3>
                             <div class="table-responsive">
@@ -99,29 +114,29 @@ div.scrollmenu li {
                             </div>
                         </div>
                     </div>
-                </div>
+              </div>
 
 
-              <div class="col-lg-5">
-                  <div class="au-card m-b-30" style="padding-left: 10px;">
+              <div class="col-lg-4">
+                  <div class="au-card m-b-15" style="padding-left: 25px;padding-right: 10px;">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40" style="padding-left: 40px;">Buzz XI</h3>
+                          <h3 class="title-2 m-b-40">Twitter Buzz XI</h3>
                           <div class="chart-wrapper" id="pitch_plot"></div>
                       </div>
                   </div>
               </div>
 
-              <!-- <div class="col-lg-7">
-                  <div class="au-card m-b-30">
+              <!-- <div class="col-lg-8" style="padding-left:7px;">
+                  <div class="au-card m-b-15" style="padding-left: 20px;">
                       <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Buzz XI - Live</h3>
+                          <h3 class="title-2 m-b-40">Most quoted players live</h3>
                           <div class="chart-wrapper" id="multi_playersChart"></div>
                       </div>
                   </div>
               </div> -->
 
 
-              <div class="col-lg-7">
+              <div class="col-lg-8">
                   <div class="au-card au-card--bg-blue au-card-top-countries m-b-30">
                       <div class="au-card-inner">
                         <h3 class="title-3 m-b-30 text-white">Top Buzz Players</h3>
@@ -161,15 +176,6 @@ div.scrollmenu li {
                       </div>
                   </div>
               </div>
-
-              <!-- <div class="col-lg-12">
-                  <div class="au-card m-b-30">
-                      <div class="au-card-inner">
-                          <h3 class="title-2 m-b-40">Deertweet tweets by itself</h3>
-                          <div class="chart-wrapper" id="multi_playersChart"></div>
-                      </div>
-                  </div>
-              </div> -->
 
           </div>
 
@@ -276,7 +282,7 @@ div.scrollmenu li {
 <!-- PITCH PLOT -->
 <script type="text/javascript">
   window.addEventListener("resize", redraw_pitch)
-  
+
   const margin_pitch = {
       top: 10,
       right: 10,
