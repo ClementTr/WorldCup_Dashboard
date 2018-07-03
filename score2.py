@@ -13,6 +13,8 @@ url = args.url
 global hashtag
 with open('HASHTAG_FILE2.txt') as f:
     hashtag = f.read()[1:7]
+    equipe1 = hashtag[:3]
+    equipe2 = hashtag[3:]
 
 #hashtag = "SENCOL"
 
@@ -37,9 +39,6 @@ while var == True:
     else:
         score1 = int(score.split("-")[0])
         score2 = int(score.split("-")[-1])
-
-        equipe1 = hashtag[:3]
-        equipe2 = hashtag[3:]
 
     for i in list(collection_Score.find()):
         if i["Equipe"] == equipe1 :

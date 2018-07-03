@@ -42,7 +42,7 @@ def getPays():
                         "Morocco": 'MAR', "Peru": 'PER', "Poland": 'POL',
                         "Portugal": 'POR', "Russia": 'RUS', "Arabia": 'KSA',
                         "Serbia": 'SER', "Spain": 'SPA', "Sweden": 'SWE',
-                        "Switzerland": 'SWI', "Tunisia": 'TUN','United_States':'USA',"Senegal":'SEN',"Argentina":"ARG", "Mexico": "MEX"}
+                        "Switzerland": 'SWI', "Tunisia": 'TUN','United_States':'USA',"Senegal":'SEN',"Argentina":"ARG", "Mexico": "MEX", "Japan":"JPN"}
 
     inv_pays = {v: k for k, v in pays.items()}
     # print(hashtag[:3])
