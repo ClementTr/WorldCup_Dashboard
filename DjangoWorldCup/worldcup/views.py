@@ -5,7 +5,7 @@ import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
 from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, get_Emojis, getEmojisClassement, playersTimeseriesCalculations, getLiveScore
-MATCH_HASHTAG = '#SWESWI'
+MATCH_HASHTAG = '#COLENG'
 
 def home(request):
     if (request.method == "POST"):
@@ -44,12 +44,10 @@ def data_playersPosition(request):
 
 
 def main(request):
-    date = "Tuesday, July 3rd - 16:00"
+    date = "Tuesday, July 3rd - 20:00"
     country_1, country_2 = getPays(MATCH_HASHTAG)
     emojis = get_Emojis(MATCH_HASHTAG)
-    our_tweet = ""
-    goal_tweet = ""
-    context = {'hashtag': MATCH_HASHTAG, 'country_1': country_1, "country_2": country_2, "date":date, "our_tweet": our_tweet, "goal_tweet":goal_tweet, "emojis":emojis}
+    context = {'hashtag': MATCH_HASHTAG, 'country_1': country_1, "country_2": country_2, "date":date, "emojis":emojis}
     return render(request, 'worldcup/main.html', context)
 
 
@@ -69,12 +67,25 @@ def score_live(request):
     data = getLiveScore(MATCH_HASHTAG)
     return JsonResponse(data,safe=False)
 
+def sweswi(request):
+    hashtag = "#SWESWI"
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Sweden fans 😍😂 <a href='https://t.co/BYDrbz8XHV'>pic.twitter.com/BYDrbz8XHV</a></p>&mdash; Football Obsession (@Footy_Obsession) <a href='https://twitter.com/Footy_Obsession/status/1014185516374228992?ref_src=twsrc%5Etfw'>July 3, 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Sweden conquer Switzerland 🇸🇪 <a href='https://t.co/jNsqnKZfWH'>pic.twitter.com/jNsqnKZfWH</a></p>&mdash; B/R Football (@brfootball) <a href='https://twitter.com/brfootball/status/1014175230623911937?ref_src=twsrc%5Etfw'>July 3, 2018</a></blockquote>"
+    rnn_tweet = ""
+    date = "Tuesday, July 2nd - 16:00"
+    country_1, country_2 = getPays(hashtag)
+    emojis = getEmojisClassement(hashtag[1:])
+    score1, score2 = 1, 0
+    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis,"score1":score1,"score2":score2}
+    return render(request, 'worldcup/match.html', context)
+
+
 def beljpn(request):
     hashtag = "#BRAMEX"
     our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Knocked out of the World Cup and the Japanese fans are still staying behind after the game and tidying up the mess in the stadium, Japanese fans you are incredible. <a href='https://twitter.com/hashtag/JAP?src=hash&amp;ref_src=twsrc%5Etfw'>#JAP</a> <a href='https://twitter.com/hashtag/WorldCup?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCup</a> <a href='https://t.co/9Xg4qggURh'>pic.twitter.com/9Xg4qggURh</a></p>&mdash; FutbolBible |WorldCup (@FutbolBible) <a href='https://twitter.com/FutbolBible/status/1013880182711734272?ref_src=twsrc%5Etfw'>2 juillet 2018</a></blockquote>"
     goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Watch Lukaku&#39;s run. Drags the defender inside to create space for Meunier and then dummies it brilliantly for Chadli. Brilliant work. <a href='https://t.co/RKseQLdX7q'>pic.twitter.com/RKseQLdX7q</a></p>&mdash; Jake. (@YedIin) <a href='https://twitter.com/YedIin/status/1013877023046078471?ref_src=twsrc%5Etfw'>2 juillet 2018</a></blockquote>"
     rnn_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Japan team on fire won hearts after a thrilling comeback <a href='https://twitter.com/hashtag/BELJPN?src=hash&amp;ref_src=twsrc%5Etfw'>#BELJPN</a> <a href='https://twitter.com/hashtag/RNN?src=hash&amp;ref_src=twsrc%5Etfw'>#RNN</a> <a href='https://twitter.com/hashtag/DeepLearning?src=hash&amp;ref_src=twsrc%5Etfw'>#DeepLearning</a> <a href='https://twitter.com/hashtag/AI?src=hash&amp;ref_src=twsrc%5Etfw'>#AI</a> <a href='https://t.co/gmuwUh5YyH'>https://t.co/gmuwUh5YyH</a> <a href='https://t.co/rrVa3WKGSk'>pic.twitter.com/rrVa3WKGSk</a></p>&mdash; DataDeer (@DataDeer_) <a href='https://twitter.com/DataDeer_/status/1014142685077213185?ref_src=twsrc%5Etfw'>July 3, 2018</a></blockquote>"
-    date = "Sunday, July 2nd - 20:00"
+    date = "Monday, July 2nd - 20:00"
     country_1, country_2 = getPays(hashtag)
     emojis = getEmojisClassement(hashtag[1:])
     score1, score2 = 3, 2
@@ -86,7 +97,7 @@ def bramex(request):
     our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>If Neymar was a dog <a href='https://t.co/PPL9YIBsjo'>pic.twitter.com/PPL9YIBsjo</a></p>&mdash; Kevin J. Malingkas (@malingkas_kevin) <a href='https://twitter.com/malingkas_kevin/status/1013885070925369344?ref_src=twsrc%5Etfw'>2 juillet 2018</a></blockquote>"
     goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Neymar back heel, Willian cross, Neymar goal <a href='https://twitter.com/hashtag/BRAMEX?src=hash&amp;ref_src=twsrc%5Etfw'>#BRAMEX</a> <a href='https://t.co/RcOTSUl0fT'>pic.twitter.com/RcOTSUl0fT</a></p>&mdash; David Kappel (@kappilinho) <a href='https://twitter.com/kappilinho/status/1013802612515377153?ref_src=twsrc%5Etfw'>2 juillet 2018</a></blockquote>"
     rnn_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Neymar is hilarious actor somebody touches him <a href='https://twitter.com/hashtag/BRAMEX?src=hash&amp;ref_src=twsrc%5Etfw'>#BRAMEX</a> <a href='https://twitter.com/hashtag/RNN?src=hash&amp;ref_src=twsrc%5Etfw'>#RNN</a> <a href='https://twitter.com/hashtag/DeepLearning?src=hash&amp;ref_src=twsrc%5Etfw'>#DeepLearning</a> <a href='https://twitter.com/hashtag/AI?src=hash&amp;ref_src=twsrc%5Etfw'>#AI</a> <a href='https://t.co/y2h16TJTOD'>https://t.co/y2h16TJTOD</a> <a href='https://t.co/Cn9gg4fjTp'>pic.twitter.com/Cn9gg4fjTp</a></p>&mdash; DataDeer (@DataDeer_) <a href='https://twitter.com/DataDeer_/status/1014136479998795776?ref_src=twsrc%5Etfw'>July 3, 2018</a></blockquote>"
-    date = "Sunday, July 2nd - 16:00"
+    date = "Monday, July 2nd - 16:00"
     country_1, country_2 = getPays(hashtag)
     emojis = getEmojisClassement(hashtag[1:])
     score1, score2 = 2, 0
