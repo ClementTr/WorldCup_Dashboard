@@ -30,9 +30,6 @@ function draw_barplot(){
    svg_barplot.append("g")
            .call(d3v4.axisLeft(y));
 
-   // x.domain([0, d3v4.max(dataset_barplot, function(d) { return d.value; }) + 3]);
-   // y.domain(dataset_barplot.map(function(d) { return d.key; }));
-
    svg_barplot.selectAll(".bar")
            .data(dataset_barplot)
            .enter()
@@ -100,4 +97,3 @@ function draw_barplot(){
                .style("opacity", 0);
     }
 }
-

@@ -247,14 +247,6 @@ div.scrollmenu li {
                 return Math.max(d["Positive"], d["Negative"]);
                 }
               )]);
-
-    /*dataset_plot.forEach(function(item,index){
-      console.log(index);
-      console.log(item["Time"])
-      console.log(x_plot(item["Time"]));
-      console.log("---------------------");
-    });*/
-
     redraw();
 
   });
@@ -283,8 +275,6 @@ div.scrollmenu li {
   var x = d3v4.scaleLinear()
   var y = d3v4.scaleBand()
 
-    // async function fetchData() {
-      // var test;
     fetch("http://worldcup.datadeer.fr/data_positivite", {
     method: 'get',
     dataType: 'json',
@@ -346,37 +336,6 @@ div.scrollmenu li {
   let midfielders_country
   let attackers_name
   let attackers_country
-
-
-
-  // window.addEventListener("resize", redraw_pitch)
-  //
-  // let div_pitchplot = document.getElementById("pitch_plot");
-  // let svg_pitch_init = d3.select('#pitch_plot').append('svg')
-  //
-  // let width_pitch = div_pitchplot.clientWidth;
-  // let height_pitch = div_pitchplot.clientHeight;
-  // let w_pitch
-  // let h_pitch
-  // let max_width_available = 0
-  //
-  // let keeper_name
-  // let keeper_country
-  // let defenders_name
-  // let midfielders_name
-  // let midfielders_country
-  // let attackers_name
-  // let attackers_country
-  //
-  // if (width_pitch/height_pitch < 1.6) {
-  //   w_pitch = width_pitch;
-  //   h_pitch = height_pitch;
-  //   max_width_available = w_pitch
-  // }
-  // else {
-  //   w_pitch = 536;
-  //   h_pitch = w_pitch/1.6;
-  // }
 
   fetch("http://worldcup.datadeer.fr/data_playersPosition", {
     method: 'get',
@@ -540,7 +499,6 @@ div.scrollmenu li {
 <script>
 
 function loadTable(tableId, fields, data) {
-  //$('#' + tableId).empty(); //not really necessary
   var rows = '';
   $.each(data, function(index, item) {
       var row = '<tr>';
@@ -568,7 +526,6 @@ fetch("http://worldcup.datadeer.fr/datacountries", {
 })
 .then(response => response.json())
 .then(response => {
-  // console.log(response);
   var series = JSON.parse(response);
 
 
@@ -632,7 +589,6 @@ setInterval(function(){
   })
   .then(response => response.json())
   .then(response => {
-    // console.log(response);
     var series = JSON.parse(response);
 
     var top10_team = series.slice(0, 11);
@@ -646,8 +602,6 @@ setInterval(function(){
     var paletteScale = d3.scale.linear()
         .domain([minValue,maxValue])
         .range(["#EFEFFF","#02386F"]); // blue color
-
-    // console.log(series)
 
     var dataset = {};
 
@@ -675,7 +629,6 @@ fetch("http://worldcup.datadeer.fr/dataplayers", {
 })
 .then(response => response.json())
 .then(response => {
-  // console.log(response);
   var top10_players = JSON.parse(response).slice(0,6);
   loadTable('players-table', ['field1', 'field2'], top10_players);
   });

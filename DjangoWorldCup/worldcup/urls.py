@@ -13,12 +13,47 @@ urlpatterns = [
     path('timeseries_players/',views.timeseries_players, name='main'),
     path('score_live/',views.score_live, name='main'),
 
+    #############################################################
+    #                                                           #
+    #                         FINAL                             #
+    #                                                           #
+    #############################################################
 
-    # path('final/', views.final, name='final'),
-    # path('third/', views.third, name='third'),
-    # path('semi_final_2/', views.semi_final_2, name='semi_final_2'),
-    # path('semi_final_1/', views.semi_final_1, name='semi_final_1'),
-    # path('quarter_final_2/', views.quarter_final_2, name='quarter_final_2'),
+
+    #############################################################
+    #                                                           #
+    #                  PLAY-OFF FOR THIRD PLACE                 #
+    #                                                           #
+    #############################################################
+
+
+
+    #############################################################
+    #                                                           #
+    #                        SEMI-FINALS                        #
+    #                                                           #
+    #############################################################
+
+
+
+    #############################################################
+    #                                                           #
+    #                     QUARTER-FINALS                        #
+    #                                                           #
+    #############################################################
+
+    # path('ruscro/', views.ruscro, name='match'),
+    # path('sweeng/', views.sweeng, name='match'),
+    # path('brabel/', views.brabel, name='match'),
+    # path('urufra/', views.urufra, name='match'),
+
+    #############################################################
+    #                                                           #
+    #                      ROUND OF 16                          #
+    #                                                           #
+    #############################################################
+
+    path('coleng/', views.coleng, name='match'),
     path('sweswi/', views.sweswi, name='match'),
     path('beljpn/', views.beljpn, name='match'),
     path('bramex/', views.bramex, name='match'),
@@ -26,6 +61,13 @@ urlpatterns = [
     path('sparus/', views.sparus, name='match'),
     path('urupor/', views.urupor, name='match'),
     path('fraarg/', views.fraarg, name='match'),
+
+    #############################################################
+    #                                                           #
+    #                      GROUP PHASE                          #
+    #                                                           #
+    #############################################################
+
     path('engbel/', views.engbel, name='poules'),
     path('serbra/', views.serbra, name='poules'),
     path('denfra/', views.denfra, name='poules'),

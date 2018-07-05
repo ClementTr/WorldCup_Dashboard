@@ -203,7 +203,6 @@ div.scrollmenu li {
   let matchname2 = "{{hashtag}}"
 
   d3v4.csv("/static/worldcup/data/"+matchname2.slice(1,7)+"/"+matchname2.slice(1,7)+"_Sentiments_Agg.csv")
-      /* On load les colonnes de notre csv */
       .row(d => {
           return {
               Time: new Date(d.Time),
@@ -211,7 +210,6 @@ div.scrollmenu li {
               Positive: +d.Positive
           }
       })
-      /* On les scale entre la plus petite et la plus grande valeur selon la taille de notre fenêtre */
       .get((error, rows) => {
           if (rows.length > 0) {
 
@@ -242,8 +240,6 @@ div.scrollmenu li {
   let div_players = document.getElementById("multi_playersChart");
   let svg_players_init = d3v4.select("#multi_playersChart").append("svg")
 
-  //var format_date_base = d3v4.timeFormat("% %H:%M");
-  //var format_date = d3v4.timeFormat("%H:%M");
   let bisect_date_players = d3v4.bisector(d => d.Time).left;
 
   let dataset_players = []
@@ -282,8 +278,6 @@ div.scrollmenu li {
     Name_4 = myData[len_data_players-1]["Player4"]
     Name_5 = myData[len_data_players-1]["Player5"]
 
-    //data = response//JSON.parse(response);
-
     myData.forEach(function(item, index){
       date = new Date(item["Time"])
       dataset_players.push({"Time": date,
@@ -312,7 +306,6 @@ div.scrollmenu li {
     max_player4 = d3v4.max(dataset_players,function(d) {return Math.max(d["Percentage4"])})
     max_player5 = d3v4.max(dataset_players,function(d) {return Math.max(d["Percentage5"])})
 
-
     older_date = d3v4.max(dataset_plot, d => Math.max(d.Time))
 
     redraw_players();
@@ -338,7 +331,6 @@ div.scrollmenu li {
   let svg_barplot_init = d3v4.select("#bar_plot").append("svg")
   let svg_barplot
   let tooltip = d3v4.select("#bar_plot").append("div").attr("class", "toolTip");
-
   let w = div_barplot.clientWidth;
   let h = 250
   var x, y;
@@ -346,16 +338,10 @@ div.scrollmenu li {
   let dataset_barplot;
 
   d3v4.json("/static/worldcup/data/"+matchname2.slice(1,7)+"/"+matchname2.slice(1,7)+"_Sentiments.json", function(error, myData) {
-
     dataset_barplot = myData;
-
-    // console.log(dataset_barplot);
-
      x = d3v4.scaleLinear()
      y = d3v4.scaleBand()
-
     redraw_barplot()
-
   });
 
 </script>
@@ -491,11 +477,9 @@ function loadTable(tableId, fields, data) {
   window.addEventListener('resize', function(event) { map.resize(); });
 });
 </script>
+
 <script type="text/javascript">
-
-
   d3v4.json("/static/worldcup/data/"+matchname.slice(1,7)+"/"+matchname.slice(1,7)+"_TopPlayers.json", function(error, myData) {
-    // console.log(myData);
     var top10_players = myData.slice(0,6);
     loadTable('players-table', ['field1', 'field2'], top10_players);
   });

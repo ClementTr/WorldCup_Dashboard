@@ -5,7 +5,7 @@ import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
 from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, get_Emojis, getEmojisClassement, playersTimeseriesCalculations, getLiveScore
-MATCH_HASHTAG = '#COLENG'
+MATCH_HASHTAG = '#URUFRA'
 
 def home(request):
     if (request.method == "POST"):
@@ -42,14 +42,12 @@ def data_playersPosition(request):
       }
     },safe=False)
 
-
 def main(request):
     date = "Tuesday, July 3rd - 20:00"
     country_1, country_2 = getPays(MATCH_HASHTAG)
     emojis = get_Emojis(MATCH_HASHTAG)
     context = {'hashtag': MATCH_HASHTAG, 'country_1': country_1, "country_2": country_2, "date":date, "emojis":emojis}
     return render(request, 'worldcup/main.html', context)
-
 
 def data_positivite(request):
     data = barplot_positivity(MATCH_HASHTAG)
@@ -67,18 +65,127 @@ def score_live(request):
     data = getLiveScore(MATCH_HASHTAG)
     return JsonResponse(data,safe=False)
 
+
+#############################################################
+#                                                           #
+#                         FINAL                             #
+#                                                           #
+#############################################################
+
+
+
+
+#############################################################
+#                                                           #
+#                  PLAY-OFF FOR THIRD PLACE                 #
+#                                                           #
+#############################################################
+
+
+
+
+#############################################################
+#                                                           #
+#                        SEMI-FINALS                        #
+#                                                           #
+#############################################################
+
+
+
+
+#############################################################
+#                                                           #
+#                     QUARTER-FINALS                        #
+#                                                           #
+#############################################################
+
+# def ruscro(request):
+#     hashtag = "#RUSCRO"
+#     our_tweet = ""
+#     goal_tweet = ""
+#     rnn_tweet = ""
+#     date = "Saturday, July 7th - 20:00"
+#     country_1, country_2 = getPays(hashtag)
+#     emojis = getEmojisClassement(hashtag[1:])
+#     score1, score2 = 0, 0
+#     context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+#                'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
+#     return render(request, 'worldcup/match.html', context)
+
+# def sweeng(request):
+#     hashtag = "#SWEENG"
+#     our_tweet = ""
+#     goal_tweet = ""
+#     rnn_tweet = ""
+#     date = "Saturday, July 7th - 16:00"
+#     country_1, country_2 = getPays(hashtag)
+#     emojis = getEmojisClassement(hashtag[1:])
+#     score1, score2 = 0, 0
+#     context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+#                'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
+#     return render(request, 'worldcup/match.html', context)
+
+# def brabel(request):
+#     hashtag = "#BRABEL"
+#     our_tweet = ""
+#     goal_tweet = ""
+#     rnn_tweet = ""
+#     date = "Friday, July 6th - 20:00"
+#     country_1, country_2 = getPays(hashtag)
+#     emojis = getEmojisClassement(hashtag[1:])
+#     score1, score2 = 1, 1
+#     context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+#                'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
+#     return render(request, 'worldcup/match.html', context)
+
+# def urufra(request):
+#     hashtag = "#URUFRA"
+#     our_tweet = ""
+#     goal_tweet = ""
+#     rnn_tweet = ""
+#     date = "Friday, July 6th - 16:00"
+#     country_1, country_2 = getPays(hashtag)
+#     emojis = getEmojisClassement(hashtag[1:])
+#     score1, score2 = 0, 0
+#     context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+#                'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
+#     return render(request, 'worldcup/match.html', context)
+
+
+#############################################################
+#                                                           #
+#                      ROUND OF 16                          #
+#                                                           #
+#############################################################
+
+# Forsberg's shot takes deflection and finally a goal to quarter-finals
+# Mina scores his third consecutive head goal for Colombia
+
+def coleng(request):
+    hashtag = "#COLENG"
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>My favourite scene ever from Friends. <a href='https://t.co/i8irgHuECi'>pic.twitter.com/i8irgHuECi</a></p>&mdash; Mike Sanz (@mikesanz19) <a href='https://twitter.com/mikesanz19/status/1014275339000967171?ref_src=twsrc%5Etfw'>July 3, 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>World class save from Pickford<br> <a href='https://t.co/js8K5KoJE6'>pic.twitter.com/js8K5KoJE6</a></p>&mdash; ً (@KMbappe7) <a href='https://twitter.com/KMbappe7/status/1014524824285147136?ref_src=twsrc%5Etfw'>July 4, 2018</a></blockquote>"
+    rnn_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Mina scores his third consecutive head goal for Colombia. <a href='https://twitter.com/hashtag/COLENG?src=hash&amp;ref_src=twsrc%5Etfw'>#COLENG</a> <a href='https://twitter.com/hashtag/RNN?src=hash&amp;ref_src=twsrc%5Etfw'>#RNN</a> <a href='https://twitter.com/hashtag/DeepLearning?src=hash&amp;ref_src=twsrc%5Etfw'>#DeepLearning</a> <a href='https://twitter.com/hashtag/AI?src=hash&amp;ref_src=twsrc%5Etfw'>#AI</a> <a href='https://t.co/AZnjXW7SZK'>https://t.co/AZnjXW7SZK</a> <a href='https://t.co/n7pkE3bQdB'>pic.twitter.com/n7pkE3bQdB</a></p>&mdash; DataDeer (@DataDeer_) <a href='https://twitter.com/DataDeer_/status/1014930073911267328?ref_src=twsrc%5Etfw'>5 juillet 2018</a></blockquote>"
+    date = "Tuesday, July 3rd - 20:00"
+    country_1, country_2 = getPays(hashtag)
+    emojis = getEmojisClassement(hashtag[1:])
+    score1, score2 = 1, 1
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
+    return render(request, 'worldcup/match.html', context)
+
 def sweswi(request):
     hashtag = "#SWESWI"
     our_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Sweden fans 😍😂 <a href='https://t.co/BYDrbz8XHV'>pic.twitter.com/BYDrbz8XHV</a></p>&mdash; Football Obsession (@Footy_Obsession) <a href='https://twitter.com/Footy_Obsession/status/1014185516374228992?ref_src=twsrc%5Etfw'>July 3, 2018</a></blockquote>"
-    goal_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Sweden conquer Switzerland 🇸🇪 <a href='https://t.co/jNsqnKZfWH'>pic.twitter.com/jNsqnKZfWH</a></p>&mdash; B/R Football (@brfootball) <a href='https://twitter.com/brfootball/status/1014175230623911937?ref_src=twsrc%5Etfw'>July 3, 2018</a></blockquote>"
-    rnn_tweet = ""
-    date = "Tuesday, July 2nd - 16:00"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Forsberg chuta, a bola desvia em Akanji e entra <a href='https://twitter.com/hashtag/SWE?src=hash&amp;ref_src=twsrc%5Etfw'>#SWE</a> 1⃣✖️0⃣ <a href='https://twitter.com/hashtag/SUI?src=hash&amp;ref_src=twsrc%5Etfw'>#SUI</a> <a href='https://twitter.com/hashtag/Copa2018?src=hash&amp;ref_src=twsrc%5Etfw'>#Copa2018</a> <a href='https://twitter.com/hashtag/WorldCup?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCup</a> <a href='https://t.co/OjaPAbdgGj'>pic.twitter.com/OjaPAbdgGj</a></p>&mdash; gifsdacopa (@gifsdacopa) <a href='https://twitter.com/gifsdacopa/status/1014168783185948674?ref_src=twsrc%5Etfw'>July 3, 2018</a></blockquote>"
+    rnn_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Forsberg&#39;s shot takes deflection and finally a goal to quarter-finals. <a href='https://twitter.com/hashtag/SWESWI?src=hash&amp;ref_src=twsrc%5Etfw'>#SWESWI</a> <a href='https://twitter.com/hashtag/RNN?src=hash&amp;ref_src=twsrc%5Etfw'>#RNN</a> <a href='https://twitter.com/hashtag/DeepLearning?src=hash&amp;ref_src=twsrc%5Etfw'>#DeepLearning</a> <a href='https://twitter.com/hashtag/AI?src=hash&amp;ref_src=twsrc%5Etfw'>#AI</a> <a href='https://t.co/cR6fEwtBIU'>https://t.co/cR6fEwtBIU</a> <a href='https://t.co/MzsFysi88y'>pic.twitter.com/MzsFysi88y</a></p>&mdash; DataDeer (@DataDeer_) <a href='https://twitter.com/DataDeer_/status/1014925704939687936?ref_src=twsrc%5Etfw'>5 juillet 2018</a></blockquote>"
+    date = "Tuesday, July 3rd - 16:00"
     country_1, country_2 = getPays(hashtag)
     emojis = getEmojisClassement(hashtag[1:])
     score1, score2 = 1, 0
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis,"score1":score1,"score2":score2}
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/match.html', context)
-
 
 def beljpn(request):
     hashtag = "#BRAMEX"
@@ -89,7 +196,8 @@ def beljpn(request):
     country_1, country_2 = getPays(hashtag)
     emojis = getEmojisClassement(hashtag[1:])
     score1, score2 = 3, 2
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis,"score1":score1,"score2":score2}
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/match.html', context)
 
 def bramex(request):
@@ -101,7 +209,8 @@ def bramex(request):
     country_1, country_2 = getPays(hashtag)
     emojis = getEmojisClassement(hashtag[1:])
     score1, score2 = 2, 0
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis,"score1":score1,"score2":score2}
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/match.html', context)
 
 def croden(request):
@@ -113,7 +222,8 @@ def croden(request):
     country_1, country_2 = getPays(hashtag)
     emojis = getEmojisClassement(hashtag[1:])
     score1, score2 = 1, 1
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis,"score1":score1,"score2":score2}
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/match.html', context)
 
 def sparus(request):
@@ -125,7 +235,8 @@ def sparus(request):
     country_1, country_2 = getPays(hashtag)
     emojis = getEmojisClassement(hashtag[1:])
     score1, score2 = 1, 1
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis,"score1":score1,"score2":score2}
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/match.html', context)
 
 def urupor(request):
@@ -137,7 +248,8 @@ def urupor(request):
     country_1, country_2 = getPays(hashtag)
     emojis = getEmojisClassement(hashtag[1:])
     score1, score2 = 2, 1
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis,"score1":score1,"score2":score2}
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/match.html', context)
 
 def fraarg(request):
@@ -149,8 +261,17 @@ def fraarg(request):
     country_1, country_2 = getPays(hashtag)
     emojis = getEmojisClassement(hashtag[1:])
     score1, score2 = 4, 3
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis,"score1":score1,"score2":score2}
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/match.html', context)
+
+
+#############################################################
+#                                                           #
+#                      GROUP PHASE                          #
+#                                                           #
+#############################################################
+
 
 def engbel(request):
     hashtag = "#ENGBEL"
@@ -161,7 +282,8 @@ def engbel(request):
     country_1, country_2 = getPays(hashtag)
     score1, score2 = 0, 1
     emojis = getEmojisClassement(hashtag[1:])
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis, "score1":score1, "score2":score2}
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/poules.html', context)
 
 def serbra(request):
@@ -173,7 +295,8 @@ def serbra(request):
     country_1, country_2 = getPays(hashtag)
     score1, score2 = 0, 2
     emojis = getEmojisClassement(hashtag[1:])
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis, "score1":score1, "score2":score2}
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/poules.html', context)
 
 def denfra(request):
@@ -185,7 +308,8 @@ def denfra(request):
     country_1, country_2 = getPays(hashtag)
     score1, score2 = 0, 0
     emojis = getEmojisClassement(hashtag[1:])
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis, "score1":score1, "score2":score2}
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/poules.html', context)
 
 def ururus(request):
@@ -197,7 +321,8 @@ def ururus(request):
     country_1, country_2 = getPays(hashtag)
     score1, score2 = 3, 0
     emojis = getEmojisClassement(hashtag[1:])
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis, "score1":score1, "score2":score2}
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/poules.html', context)
 
 def polcol(request):
@@ -209,7 +334,8 @@ def polcol(request):
     country_1, country_2 = getPays(hashtag)
     score1, score2 = 0, 3
     emojis = getEmojisClassement(hashtag[1:])
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis, "score1":score1, "score2":score2}
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/poules.html', context)
 
 
@@ -222,7 +348,8 @@ def gerswe(request):
     country_1, country_2 = getPays(hashtag)
     score1, score2 = 2, 1
     emojis = getEmojisClassement(hashtag[1:])
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis, "score1":score1, "score2":score2}
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/poules.html', context)
 
 
@@ -235,7 +362,8 @@ def bracrc(request):
     country_1, country_2 = getPays(hashtag)
     score1, score2 = 2, 0
     emojis = getEmojisClassement(hashtag[1:])
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis, "score1":score1, "score2":score2}
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/poules.html', context)
 
 
@@ -248,7 +376,8 @@ def fraper(request):
     country_1, country_2 = getPays(hashtag)
     score1, score2 = 1, 0
     emojis = getEmojisClassement(hashtag[1:])
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis, "score1":score1, "score2":score2}
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/poules.html', context)
 
 def uruksa(request):
@@ -260,7 +389,8 @@ def uruksa(request):
     country_1, country_2 = getPays(hashtag)
     score1, score2 = 1, 0
     emojis = getEmojisClassement(hashtag[1:])
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis, "score1":score1, "score2":score2}
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/poules.html', context)
 
 
@@ -273,7 +403,8 @@ def polsen(request):
     country_1, country_2 = getPays(hashtag)
     score1, score2 = 1, 2
     emojis = getEmojisClassement(hashtag[1:])
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis, "score1":score1, "score2":score2}
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/poules.html', context)
 
 def tuneng(request):
@@ -285,9 +416,10 @@ def tuneng(request):
     country_1, country_2 = getPays(hashtag)
     score1, score2 = 1, 2
     emojis = getEmojisClassement(hashtag[1:])
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis, "score1":score1, "score2":score2}
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/poules.html', context)
-#
+
 def braswi(request):
     hashtag = "#BRASWI"
     our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>When Neymar was in school<br>(🎥:  <a href='https://twitter.com/kennynobrega?ref_src=twsrc%5Etfw'>@kennynobrega</a> )<a href='https://t.co/XQ8Ky418IH'>https://t.co/XQ8Ky418IH</a></p>&mdash; Troll Football Media (@Troll__Footbal) <a href='https://twitter.com/Troll__Footbal/status/1008436596809654274?ref_src=twsrc%5Etfw'>17 juin 2018</a></blockquote>"
@@ -297,7 +429,8 @@ def braswi(request):
     country_1, country_2 = getPays(hashtag)
     score1, score2 = 1, 1
     emojis = getEmojisClassement(hashtag[1:])
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis, "score1":score1, "score2":score2}
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/poules.html', context)
 
 
@@ -310,9 +443,10 @@ def fraaus(request):
     country_1, country_2 = getPays(hashtag)
     score1, score2 = 2, 1
     emojis = getEmojisClassement(hashtag[1:])
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis, "score1":score1, "score2":score2}
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/poules.html', context)
-#
+
 def porspa(request):
     hashtag = "#PORSPA"
     our_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Cristiano Ronaldo records today:<br><br>🔥 First player EVER to score in 8 consecutive major tournament<br>⭐️ Second highest goalscorer ever for any country<br>💪🏼 Oldest player EVER to score a hat-trick at the World Cup<br>🙌🏼 Fourth player to score in 4 World Cups<br><br>G.O.A.T. 👑🐐 <a href='https://t.co/cxX5BfnnNu'>pic.twitter.com/cxX5BfnnNu</a></p>&mdash; Futbol Stuff (@FutboIStuff) <a href='https://twitter.com/FutboIStuff/status/1007727337541169153?ref_src=twsrc%5Etfw'>June 15, 2018</a></blockquote> <script async src='https://platform.twitter.com/widgets.js' charset='utf-8'></script>"
@@ -322,9 +456,9 @@ def porspa(request):
     country_1, country_2 = getPays(hashtag)
     score1, score2 = 3, 3
     emojis = getEmojisClassement(hashtag[1:])
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2,"date":date,"our_tweet": our_tweet, "goal_tweet":goal_tweet, "rnn_tweet": rnn_tweet,"emojis":emojis, "score1":score1, "score2":score2}
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/poules.html', context)
-
 
 def rusara(request):
     hashtag = "#RUSARA"
@@ -335,5 +469,6 @@ def rusara(request):
     emojis = getEmojisClassement(hashtag[1:])
     country_1, country_2 = getPays(hashtag)
     score1, score2 = 4, 0
-    context = {'hashtag': hashtag, 'country_1': country_1, "country_2": country_2, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet":goal_tweet, "date":date, "emojis":emojis, "score1":score1, "score2":score2}
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/poules.html', context)

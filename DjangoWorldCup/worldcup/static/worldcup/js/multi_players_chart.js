@@ -79,21 +79,6 @@ function draw_players(data, innerW, innerH) {
               .attr("class", "axis")
               .call(d3v4.axisLeft(y_players));
 
-
-      // svg_players.append("path")
-      //         .data([data])
-      //         .attr("class", "line")
-      //         .attr("id", "player1")
-      //         .attr("d", valueline_Player1)
-      //         .style("stroke", dict_color[Country_1])
-      //         .transition() // On ajoute ces lignes pour dessiner les courbes en direct
-      //         .duration(2000)
-      //         .attrTween("stroke-dasharray", function() {
-      //             var len = this.getTotalLength();
-      //             return function(t) { return (d3v4.interpolateString("0," + len, len + ",0"))(t) };
-      //         });
-
-
       /* On dessine la variable Player 1 */
       svg_players.append("path")
               .data([data])
@@ -166,16 +151,6 @@ function draw_players(data, innerW, innerH) {
 
      let w_svg_in = document.getElementById("multi_playersChart")
      let position_image = w_svg_in.clientWidth
-
-      /* Par dessus le chart, on ajoute un rectangle invisible */
-      /* Une variable focus sera initialisée à null quand la souris sera sur le rectangle
-      * puis mooifiée dans mousemove sinon elle sera null est donc non visible
-      * Focus c'est le rond qu'on verra sur notre courbe */
-      // svg_players.append("rect")
-      //         .attr("class", "overlay")
-      //         .attr("width", innerW)
-      //         .attr("height", innerH);
-
 
 
       /*MOUSEOVER*/

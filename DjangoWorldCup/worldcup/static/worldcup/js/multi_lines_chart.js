@@ -24,12 +24,6 @@ function redraw(){
 
 
 function draw(data, innerW, innerH) {
-      /* On créé une variable courbe pour les sales */
-      // let valuelineSales = d3v4.line()
-      //                          .x(d => x_plot(d.Time))
-      //                          .y(d => y_plot(d.Negative))
-      //                          .curve(d3v4.curveCardinal); // Pour avoir des courbes linéaires
-      /* On créé une variable courbe pour les deliveries */
       let valuelineDelivered = d3v4.line()
                                    .x(d => x_plot(d.Time))
                                    .y(d => y_plot(d.Positive))
@@ -95,21 +89,6 @@ function draw(data, innerW, innerH) {
               .on("mousemove", mousemove);
 
       /* Initialisation de focus */
-      // let focus_sales = svg_plot.append("g")
-      //                           //.attr("class", "focus_sales")
-      //                           .style("stroke", "red")
-      //                           .style("display", "none");
-
-      //  Dessin de la variable focus comme étant un cercle de rayon 4.5 px
-      // focus_sales.append("circle")
-      //            .attr("r", 4.5);
-
-      // /* Ajout d'un texte sur focus */
-      // focus_sales.append("text")
-      //            .attr("x", 9)
-      //            .attr("dy", ".35em");
-
-      /* Initialisation de focus */
       let focus_deliveries = svg_plot.append("g")
                                      //.attr("class", "focus_deliveries")
                                      .style("stroke", "blue")
@@ -124,42 +103,13 @@ function draw(data, innerW, innerH) {
                       .attr("x", 9)
                       .attr("dy", ".35em");
 
-
-      /*vertical line*/
-      // svg_plot.append("text")
-      //       .attr("x", 5)
-      //       .attr("y", 5)
-      //       .attr("class", "legend")    // style the legend
-      //       .style("fill","blue")
-      //       .text("Positive");
-
-      // svg_plot.append("text")
-      //       .attr("x", 80)
-      //       .attr("y", 5)
-      //       .attr("class", "legend")    // style the legend
-      //       .style("fill","red")
-      //       .text("Negative");
-
       /* La fonction mousemove */
       function mousemove() {
           let x0 = x_plot.invert(d3v4.mouse(this)[0]),
               i = bisect_date_plot(data, x0, 1),
               d0 = data[i - 1],
               d1 = data[i],
-              d = x0 - d0.Time > d1.Time - x0 ? d1 : d0; // sorte de if pour trouver le point le plus proche
-          // focus_sales.attr("transform", "translate(" + x_plot(d.Time) + "," + y_plot(d.Negative) + ")");
-          // focus_sales.select("text").text(d.Negative);
-
-          // if (Math.max(d.Positive, d.Negative) == d.Positive) {
-          //   focus_deliveries.select(".x-hover-line").attr("y2", innerH - y_plot(d.Positive));
-          //   console.log("Positif")
-          // }
-          // else{
-          //   focus_sales.select(".x-hover-line").attr("y2", innerH - y_plot(d.Negative));
-          //   console.log("Negatif")
-          // }
-
-
+              d = x0 - d0.Time > d1.Time - x0 ? d1 : d0;
 
           focus_deliveries.attr("transform", "translate(" + x_plot(d.Time) + "," + y_plot(d.Positive) + ")");
           focus_deliveries.select("text").text(d.Positive);
