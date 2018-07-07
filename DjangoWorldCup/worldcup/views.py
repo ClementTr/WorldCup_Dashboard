@@ -5,7 +5,7 @@ import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
 from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, get_Emojis, getEmojisClassement, playersTimeseriesCalculations, getLiveScore
-MATCH_HASHTAG = '#BRABEL'
+MATCH_HASHTAG = '#SWEENG'
 
 def home(request):
     if (request.method == "POST"):
@@ -125,18 +125,18 @@ def score_live(request):
 #                'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
 #     return render(request, 'worldcup/match.html', context)
 
-# def brabel(request):
-#     hashtag = "#BRABEL"
-#     our_tweet = ""
-#     goal_tweet = ""
-#     rnn_tweet = ""
-#     date = "Friday, July 6th - 20:00"
-#     country_1, country_2 = getPays(hashtag)
-#     emojis = getEmojisClassement(hashtag[1:])
-#     score1, score2 = 1, 1
-#     context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
-#                'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
-#     return render(request, 'worldcup/match.html', context)
+def brabel(request):
+    hashtag = "#BRABEL"
+    our_tweet = ""
+    goal_tweet = ""
+    rnn_tweet = ""
+    date = "Friday, July 6th - 20:00"
+    country_1, country_2 = getPays(hashtag)
+    emojis = getEmojisClassement(hashtag[1:])
+    score1, score2 = 1, 2
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
+    return render(request, 'worldcup/match.html', context)
 
 def urufra(request):
     hashtag = "#URUFRA"
@@ -146,7 +146,7 @@ def urufra(request):
     date = "Friday, July 6th - 16:00"
     country_1, country_2 = getPays(hashtag)
     emojis = getEmojisClassement(hashtag[1:])
-    score1, score2 = 0, 0
+    score1, score2 = 0, 2
     context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
                'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/match.html', context)
