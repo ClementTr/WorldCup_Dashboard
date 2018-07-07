@@ -112,18 +112,18 @@ def score_live(request):
 #                'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
 #     return render(request, 'worldcup/match.html', context)
 
- def sweeng(request):
-     hashtag = "#SWEENG"
-     our_tweet = ""
-     goal_tweet = ""
-     rnn_tweet = ""
-     date = "Saturday, July 7th - 16:00"
-     country_1, country_2 = getPays(hashtag)
-     emojis = getEmojisClassement(hashtag[1:])
-     score1, score2 = 0, 2
-     context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
-                'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
-     return render(request, 'worldcup/match.html', context)
+def sweeng(request):
+    hashtag = "#SWEENG"
+    our_tweet = ""
+    goal_tweet = ""
+    rnn_tweet = ""
+    date = "Saturday, July 7th - 16:00"
+    country_1, country_2 = getPays(hashtag)
+    emojis = getEmojisClassement(hashtag[1:])
+    score1, score2 = 0, 2
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
+    return render(request, 'worldcup/match.html', context)
 
 def brabel(request):
     hashtag = "#BRABEL"
