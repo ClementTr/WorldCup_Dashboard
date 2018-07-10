@@ -34,7 +34,7 @@ urlpatterns = [
     #                                                           #
     #############################################################
 
-
+    #path('frabel/', views.frabel, name='match'),
 
     #############################################################
     #                                                           #
@@ -42,7 +42,7 @@ urlpatterns = [
     #                                                           #
     #############################################################
 
-    # path('ruscro/', views.ruscro, name='match'),
+    path('ruscro/', views.ruscro, name='match'),
     path('sweeng/', views.sweeng, name='match'),
     path('brabel/', views.brabel, name='match'),
     path('urufra/', views.urufra, name='match'),
