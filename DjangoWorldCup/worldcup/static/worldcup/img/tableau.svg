@@ -65,6 +65,15 @@
                 <text id="Belgium" font-family="Lato-Light, Lato" font-size="30" font-weight="300" fill="#000000">
                     <tspan x="160.48" y="489">Belgium</tspan>
                 </text>
+                <text id="Final" font-family="Lato-Semibold, Lato" font-size="30" font-weight="500" fill="#000000">
+                    <tspan x="560.2375" y="215">Final</tspan>
+                </text>
+                <text id="3rd-Place" font-family="Lato-Semibold, Lato" font-size="30" font-weight="500" fill="#000000">
+                    <tspan x="530.4925" y="463">3rd Place</tspan>
+                </text>
+                <text id="Belgium" font-family="Lato-Light, Lato" font-size="30" font-weight="300" fill="#000000">
+                    <tspan x="457.48" y="498">Belgium</tspan>
+                </text>
                 <text id="Belgium" font-family="Lato-Light, Lato" font-size="30" font-weight="300" fill="#000000">
                     <tspan x="313.48" y="417">Belgium</tspan>
                 </text>
@@ -117,6 +126,9 @@
                     <tspan x="173.3875" y="208">France</tspan>
                 </text>
                 <text id="France" font-family="Lato-Light, Lato" font-size="30" font-weight="300" fill="#000000">
+                    <tspan x="457.3875" y="271">France</tspan>
+                </text>
+                <text id="France" font-family="Lato-Light, Lato" font-size="30" font-weight="300" fill="#000000">
                     <tspan x="326.3875" y="131">France</tspan>
                 </text>
                 <text id="Portugal" font-family="Lato-Light, Lato" font-size="30" font-weight="300" fill="#000000">
@@ -136,6 +148,9 @@
                 </text>
                 <text id="Croatia" font-family="Lato-Light, Lato" font-size="30" font-weight="300" fill="#000000">
                     <tspan x="921.3725" y="208">Croatia</tspan>
+                </text>
+                <text id="Croatia" font-family="Lato-Light, Lato" font-size="30" font-weight="300" fill="#000000">
+                    <tspan x="762.3725" y="130">Croatia</tspan>
                 </text>
                 <text id="Denmark" font-family="Lato-Light, Lato" font-size="30" font-weight="300" fill="#000000">
                     <tspan x="1063.255" y="242">Denmark</tspan>
@@ -195,6 +210,18 @@
                         <tspan x="4.38" y="28">0</tspan>
                     </text>
                 </g>
+                <g id="Group-6" transform="translate(419.000000, 396.000000)">
+                    <rect id="Rectangle-2" fill="#000000" x="0" y="5" width="25" height="25"></rect>
+                    <text id="0" font-family="Lato-Light, Lato" font-size="28" font-weight="300" fill="#FFFFFF">
+                        <tspan x="4.38" y="28">0</tspan>
+                    </text>
+                </g>
+                <g id="Group-6" transform="translate(420.000000, 105.000000)">
+                    <rect id="Rectangle-2" fill="#000000" x="0" y="5" width="25" height="25"></rect>
+                    <text id="1" font-family="Lato-Light, Lato" font-size="28" font-weight="300" fill="#FFFFFF">
+                        <tspan x="4.38" y="28">1</tspan>
+                    </text>
+                </g>
                 <g id="Group-6" transform="translate(269.000000, 182.000000)">
                     <rect id="Rectangle-2" fill="#000000" x="0" y="5" width="25" height="25"></rect>
                     <text id="2" font-family="Lato-Light, Lato" font-size="28" font-weight="300" fill="#FFFFFF">
@@ -211,6 +238,18 @@
                     <rect id="Rectangle-2" fill="#000000" x="0" y="5" width="25" height="25"></rect>
                     <text id="2" font-family="Lato-Light, Lato" font-size="28" font-weight="300" fill="#FFFFFF">
                         <tspan x="4.38" y="28">2</tspan>
+                    </text>
+                </g>
+                <g id="Group-6" transform="translate(889.000000, 39.000000)">
+                    <rect id="Rectangle-2" fill="#000000" x="0" y="5" width="25" height="25"></rect>
+                    <text id="2" font-family="Lato-Light, Lato" font-size="28" font-weight="300" fill="#FFFFFF">
+                        <tspan x="0.38" y="28">2</tspan>
+                    </text>
+                </g>
+                <g id="Group-6" transform="translate(889.000000, 182.000000)">
+                    <rect id="Rectangle-2" fill="#000000" x="0" y="5" width="25" height="25"></rect>
+                    <text id="2" font-family="Lato-Light, Lato" font-size="28" font-weight="300" fill="#FFFFFF">
+                        <tspan x="0.38" y="28">2</tspan>
                     </text>
                 </g>
                 <g id="Group-6" transform="translate(270.000000, 323.000000)">
@@ -261,13 +300,19 @@
                         <tspan x="4.38" y="28">0</tspan>
                     </text>
                 </g>
-                <g id="Group-6" transform="translate(1035.000000, 10.000000)">
-                    <rect id="Rectangle-2" fill="#000000" x="0" y="5" width="25" height="25"></rect>
+                <g id="Group-6" transform="translate(904.000000, 10.000000)">
+                    <rect id="Rectangle-2" fill="#000000" x="131" y="5" width="25" height="25"></rect>
                     <text id="1" font-family="Lato-Light, Lato" font-size="28" font-weight="300" fill="#FFFFFF">
-                        <tspan x="0.38" y="28">1</tspan>
+                        <tspan x="131.38" y="28">1</tspan>
                     </text>
                     <text id="3" font-family="Lato-Light, Lato" font-size="16" font-weight="300" fill="#FFFFFF">
-                        <tspan x="14.86" y="18">3</tspan>
+                        <tspan x="145.86" y="18">3</tspan>
+                    </text>
+                    <text id="3" font-family="Lato-Light, Lato" font-size="16" font-weight="300" fill="#FFFFFF">
+                        <tspan x="0.36" y="47">3</tspan>
+                    </text>
+                    <text id="4" font-family="Lato-Light, Lato" font-size="16" font-weight="300" fill="#FFFFFF">
+                        <tspan x="0.36" y="191">4</tspan>
                     </text>
                 </g>
                 <g id="Group-6" transform="translate(1036.000000, 71.000000)">
