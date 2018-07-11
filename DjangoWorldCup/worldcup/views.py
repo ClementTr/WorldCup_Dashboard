@@ -5,7 +5,7 @@ import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
 from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, get_Emojis, getEmojisClassement, playersTimeseriesCalculations, getLiveScore
-MATCH_HASHTAG = '#ENGCRO'
+MATCH_HASHTAG = '#CROENG'
 
 def home(request):
     if (request.method == "POST"):
@@ -91,8 +91,8 @@ def score_live(request):
 #############################################################
 
 
-# def engcro(request):
-#     hashtag = "#ENGCRO"
+# def croeng(request):
+#     hashtag = "#CROENG"
 #     our_tweet = ""
 #     goal_tweet = ""
 #     rnn_tweet = ""
@@ -106,8 +106,8 @@ def score_live(request):
 
 def frabel(request):
     hashtag = "#FRABEL"
-    our_tweet = ""
-    goal_tweet = ""
+    our_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='fr' dir='ltr'>Plus qu’un match !!! 🇫🇷 <a href='https://t.co/VxyFIyYVUD'>pic.twitter.com/VxyFIyYVUD</a></p>&mdash; Antoine Griezmann (@AntoGriezmann) <a href='https://twitter.com/AntoGriezmann/status/1016797824531525640?ref_src=twsrc%5Etfw'>July 10, 2018</a></blockquote>"
+    goal_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Umtiti puts <a href='https://twitter.com/hashtag/FRA?src=hash&amp;ref_src=twsrc%5Etfw'>#FRA</a> on the board, nails the post-goal dance! <a href='https://twitter.com/hashtag/WorldCup?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCup</a> <a href='https://t.co/PYTT1PVZ7X'>pic.twitter.com/PYTT1PVZ7X</a></p>&mdash; Marcus Gilmer (@marcusgilmer) <a href='https://twitter.com/marcusgilmer/status/1016762181067722753?ref_src=twsrc%5Etfw'>July 10, 2018</a></blockquote>"
     rnn_tweet = ""
     date = "Tuesday, July 10th - 20:00"
     country_1, country_2 = getPays(hashtag)
