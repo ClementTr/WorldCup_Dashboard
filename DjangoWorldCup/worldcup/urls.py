@@ -34,11 +34,7 @@ urlpatterns = [
     #                                                           #
     #############################################################
 
-<<<<<<< HEAD
-    path('croeng/', views.croeng, name='match'),
-=======
-    #path('engcro/', views.engcro, name='match'),
->>>>>>> ae5e911f00cae283ab34396ab97a73dfe36017f5
+    #path('croeng/', views.croeng, name='match'),
     path('frabel/', views.frabel, name='match'),
 
     #############################################################
