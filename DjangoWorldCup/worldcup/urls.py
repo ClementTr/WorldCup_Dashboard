@@ -34,7 +34,8 @@ urlpatterns = [
     #                                                           #
     #############################################################
 
-    #path('frabel/', views.frabel, name='match'),
+    path('engcro/', views.engcro, name='match'),
+    path('frabel/', views.frabel, name='match'),
 
     #############################################################
     #                                                           #
