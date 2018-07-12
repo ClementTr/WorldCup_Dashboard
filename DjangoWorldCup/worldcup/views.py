@@ -73,6 +73,18 @@ def score_live(request):
 #############################################################
 
 
+# def fracro(request):
+#     hashtag = "#FRACRO"
+#     our_tweet = ""
+#     goal_tweet = ""
+#     rnn_tweet = ""
+#     date = "Sunday, July 15th - 17:00"
+#     country_1, country_2 = getPays(hashtag)
+#     emojis = getEmojisClassement(hashtag[1:])
+#     score1, score2 = 0, 0
+#     context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+#                'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
+#     return render(request, 'worldcup/match.html', context)
 
 
 #############################################################
@@ -82,6 +94,18 @@ def score_live(request):
 #############################################################
 
 
+# def beleng(request):
+#     hashtag = "#BELENG"
+#     our_tweet = ""
+#     goal_tweet = ""
+#     rnn_tweet = ""
+#     date = "Saturday, July 14th - 16:00"
+#     country_1, country_2 = getPays(hashtag)
+#     emojis = getEmojisClassement(hashtag[1:])
+#     score1, score2 = 0, 0
+#     context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+#                'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
+#     return render(request, 'worldcup/match.html', context)
 
 
 #############################################################
@@ -93,26 +117,28 @@ def score_live(request):
 
 # def croeng(request):
 #     hashtag = "#CROENG"
-#     our_tweet = ""
-#     goal_tweet = ""
+#     our_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Me deleting all my &quot;it&#39;s coming home&quot; tweets... <a href='https://t.co/tEF6Wc65es'>pic.twitter.com/tEF6Wc65es</a></p>&mdash; Mike Sanz (@mikesanz19) <a href='https://twitter.com/mikesanz19/status/1017145907979128834?ref_src=twsrc%5Etfw'>July 11, 2018</a></blockquote>"
+#     goal_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>What a beautiful angle of Trippier’s goal! <a href='https://t.co/DdFltq4cIO'>pic.twitter.com/DdFltq4cIO</a></p>&mdash; World Cup 18 (@WorldCupStuff18) <a href='https://twitter.com/WorldCupStuff18/status/1017123337129086977?ref_src=twsrc%5Etfw'>July 11, 2018</a></blockquote>"
 #     rnn_tweet = ""
 #     date = "Tuesday, July 11th - 20:00"
 #     country_1, country_2 = getPays(hashtag)
 #     emojis = getEmojisClassement(hashtag[1:])
-#     score1, score2 = 0, 0
+#     score1, score2 = 1, 1
 #     context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
 #                'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
 #     return render(request, 'worldcup/match.html', context)
+
+#Trippier perfect free kick for England take the lead #CROENG #RNN #DeepLearning #AI http://worldcup.datadeer.fr/croeng/
 
 def frabel(request):
     hashtag = "#FRABEL"
     our_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='fr' dir='ltr'>Plus qu’un match !!! 🇫🇷 <a href='https://t.co/VxyFIyYVUD'>pic.twitter.com/VxyFIyYVUD</a></p>&mdash; Antoine Griezmann (@AntoGriezmann) <a href='https://twitter.com/AntoGriezmann/status/1016797824531525640?ref_src=twsrc%5Etfw'>July 10, 2018</a></blockquote>"
     goal_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Umtiti puts <a href='https://twitter.com/hashtag/FRA?src=hash&amp;ref_src=twsrc%5Etfw'>#FRA</a> on the board, nails the post-goal dance! <a href='https://twitter.com/hashtag/WorldCup?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCup</a> <a href='https://t.co/PYTT1PVZ7X'>pic.twitter.com/PYTT1PVZ7X</a></p>&mdash; Marcus Gilmer (@marcusgilmer) <a href='https://twitter.com/marcusgilmer/status/1016762181067722753?ref_src=twsrc%5Etfw'>July 10, 2018</a></blockquote>"
-    rnn_tweet = ""
+    rnn_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='fr' dir='ltr'>Lloris fait un match incroyable le meilleur gardien de la compétition <a href='https://twitter.com/hashtag/FRABEL?src=hash&amp;ref_src=twsrc%5Etfw'>#FRABEL</a> <a href='https://twitter.com/hashtag/RNN?src=hash&amp;ref_src=twsrc%5Etfw'>#RNN</a> <a href='https://twitter.com/hashtag/DeepLearning?src=hash&amp;ref_src=twsrc%5Etfw'>#DeepLearning</a> <a href='https://twitter.com/hashtag/AI?src=hash&amp;ref_src=twsrc%5Etfw'>#AI</a> <a href='https://t.co/CEK692y26T'>https://t.co/CEK692y26T</a> <a href='https://t.co/yXfZWpWbMy'>pic.twitter.com/yXfZWpWbMy</a></p>&mdash; DataDeer (@DataDeer_) <a href='https://twitter.com/DataDeer_/status/1017347626600226816?ref_src=twsrc%5Etfw'>July 12, 2018</a></blockquote>"
     date = "Tuesday, July 10th - 20:00"
     country_1, country_2 = getPays(hashtag)
     emojis = getEmojisClassement(hashtag[1:])
-    score1, score2 = 0, 0
+    score1, score2 = 1, 0
     context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
                'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
     return render(request, 'worldcup/match.html', context)
@@ -124,11 +150,12 @@ def frabel(request):
 #                                                           #
 #############################################################
 
+
 def ruscro(request):
     hashtag = "#RUSCRO"
     our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>Encore un petit bijou signé <a href='https://twitter.com/zekiel79?ref_src=twsrc%5Etfw'>@zekiel79</a>. 😂😂😂 <a href='https://t.co/wPKuDWFlcu'>pic.twitter.com/wPKuDWFlcu</a></p>&mdash; Thierry Hubac (@ThierryHubac) <a href='https://twitter.com/ThierryHubac/status/1016044284603240449?ref_src=twsrc%5Etfw'>8 juillet 2018</a></blockquote>"
     goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>The hosts exit at the quarter-finals, but Denis <a href='https://twitter.com/Cheryshev?ref_src=twsrc%5Etfw'>@Cheryshev</a> signs off Russia 2018 with another fantastic goal 🚀<br><br>Do you think it should win <a href='https://twitter.com/Hyundai_Global?ref_src=twsrc%5Etfw'>@Hyundai_Global</a> <a href='https://twitter.com/hashtag/WorldCupGOT?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCupGOT</a>?<br><br>👀 TV listings 👉 <a href='https://t.co/xliHcxWvEO'>https://t.co/xliHcxWvEO</a>  <br>📺 Highlights 👉 <a href='https://t.co/LOdKDX2Cwn'>https://t.co/LOdKDX2Cwn</a> <a href='https://t.co/VEm9OnTCZS'>pic.twitter.com/VEm9OnTCZS</a></p>&mdash; FIFA World Cup 🏆 (@FIFAWorldCup) <a href='https://twitter.com/FIFAWorldCup/status/1015718629281796098?ref_src=twsrc%5Etfw'>7 juillet 2018</a></blockquote>"
-    rnn_tweet = ""
+    rnn_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Vida heads in like a bad guy that haircut <a href='https://twitter.com/hashtag/RUSCRO?src=hash&amp;ref_src=twsrc%5Etfw'>#RUSCRO</a> <a href='https://twitter.com/hashtag/RNN?src=hash&amp;ref_src=twsrc%5Etfw'>#RNN</a> <a href='https://twitter.com/hashtag/DeepLearning?src=hash&amp;ref_src=twsrc%5Etfw'>#DeepLearning</a> <a href='https://twitter.com/hashtag/AI?src=hash&amp;ref_src=twsrc%5Etfw'>#AI</a> <a href='https://t.co/wR1Nws2Lvb'>https://t.co/wR1Nws2Lvb</a> <a href='https://t.co/TLIXBw63i3'>pic.twitter.com/TLIXBw63i3</a></p>&mdash; DataDeer (@DataDeer_) <a href='https://twitter.com/DataDeer_/status/1017341330102603776?ref_src=twsrc%5Etfw'>July 12, 2018</a></blockquote>"
     date = "Saturday, July 7th - 20:00"
     country_1, country_2 = getPays(hashtag)
     emojis = getEmojisClassement(hashtag[1:])
@@ -141,7 +168,7 @@ def sweeng(request):
     hashtag = "#SWEENG"
     our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'><a href='https://twitter.com/hashtag/SWEENG?src=hash&amp;ref_src=twsrc%5Etfw'>#SWEENG</a><a href='https://twitter.com/hashtag/WorldCup?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCup</a><br><br>The Floor is scoring goals<br><br>Raheem Sterling: <a href='https://t.co/pLaQSCSCfI'>pic.twitter.com/pLaQSCSCfI</a></p>&mdash; Lerato (@AndImLee) <a href='https://twitter.com/AndImLee/status/1015608749686513664?ref_src=twsrc%5Etfw'>7 juillet 2018</a></blockquote>"
     goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'><a href='https://twitter.com/hashtag/England?src=hash&amp;ref_src=twsrc%5Etfw'>#England</a> actually score a goal from the run of play. Not a set piece, but yet another header as an unmarked Dele Alli nods in Jesse Lingard&#39;s cross at the back post. <a href='https://twitter.com/hashtag/Sweden?src=hash&amp;ref_src=twsrc%5Etfw'>#Sweden</a> in real trouble now, down 2-0.<a href='https://twitter.com/hashtag/SWEENG?src=hash&amp;ref_src=twsrc%5Etfw'>#SWEENG</a> <a href='https://twitter.com/hashtag/SWE?src=hash&amp;ref_src=twsrc%5Etfw'>#SWE</a> <a href='https://twitter.com/hashtag/ENG?src=hash&amp;ref_src=twsrc%5Etfw'>#ENG</a> <a href='https://t.co/1dE8f0zoBS'>pic.twitter.com/1dE8f0zoBS</a></p>&mdash; Jason Foster (@JogaBonito_USA) <a href='https://twitter.com/JogaBonito_USA/status/1015616124434644992?ref_src=twsrc%5Etfw'>7 juillet 2018</a></blockquote>"
-    rnn_tweet = ""
+    rnn_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Maguire scores with first international goal from a corner <a href='https://twitter.com/hashtag/SWEENG?src=hash&amp;ref_src=twsrc%5Etfw'>#SWEENG</a> <a href='https://twitter.com/hashtag/RNN?src=hash&amp;ref_src=twsrc%5Etfw'>#RNN</a> <a href='https://twitter.com/hashtag/DeepLearning?src=hash&amp;ref_src=twsrc%5Etfw'>#DeepLearning</a> <a href='https://twitter.com/hashtag/AI?src=hash&amp;ref_src=twsrc%5Etfw'>#AI</a> <a href='https://t.co/jfolxlxIIk'>https://t.co/jfolxlxIIk</a> <a href='https://t.co/r3jMYqOide'>pic.twitter.com/r3jMYqOide</a></p>&mdash; DataDeer (@DataDeer_) <a href='https://twitter.com/DataDeer_/status/1017337135106576385?ref_src=twsrc%5Etfw'>July 12, 2018</a></blockquote>"
     date = "Saturday, July 7th - 16:00"
     country_1, country_2 = getPays(hashtag)
     emojis = getEmojisClassement(hashtag[1:])
@@ -154,7 +181,7 @@ def brabel(request):
     hashtag = "#BRABEL"
     our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>&quot;Faute sur Neymar&quot; 😭😂🤣 Voilà bon. OK bye bye. <a href='https://twitter.com/hashtag/NeymarChallenge?src=hash&amp;ref_src=twsrc%5Etfw'>#NeymarChallenge</a> <a href='https://twitter.com/hashtag/BRABEL?src=hash&amp;ref_src=twsrc%5Etfw'>#BRABEL</a> 🇧🇪💪🏾⚽ <a href='https://t.co/1ilIXdztg4'>pic.twitter.com/1ilIXdztg4</a></p>&mdash; Vinz ⚽🏆🇧🇪🇸🇳🇫🇷 (@vinzradio) <a href='https://twitter.com/vinzradio/status/1015355200868093953?ref_src=twsrc%5Etfw'>6 juillet 2018</a></blockquote>"
     goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'><a href='https://twitter.com/hashtag/Bra?src=hash&amp;ref_src=twsrc%5Etfw'>#Bra</a> 0-2 <a href='https://twitter.com/hashtag/Bel?src=hash&amp;ref_src=twsrc%5Etfw'>#Bel</a> <br>Kevin De Bruyne 31&#39; <br>RT &amp; follow✔💥<a href='https://twitter.com/hashtag/WorldCup?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCup</a> <a href='https://twitter.com/hashtag/WorldCupRussia2018?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCupRussia2018</a> <a href='https://twitter.com/hashtag/WorldCup2018?src=hash&amp;ref_src=twsrc%5Etfw'>#WorldCup2018</a> <a href='https://t.co/jalhsTSqHG'>pic.twitter.com/jalhsTSqHG</a></p>&mdash; World Cup Goals🏆 (@WCgoalsHD) <a href='https://twitter.com/WCgoalsHD/status/1015304429229281280?ref_src=twsrc%5Etfw'>6 juillet 2018</a></blockquote>"
-    rnn_tweet = ""
+    rnn_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Neymar is rolling home the World Cup like <a href='https://twitter.com/hashtag/BRABEL?src=hash&amp;ref_src=twsrc%5Etfw'>#BRABEL</a> <a href='https://twitter.com/hashtag/RNN?src=hash&amp;ref_src=twsrc%5Etfw'>#RNN</a> <a href='https://twitter.com/hashtag/DeepLearning?src=hash&amp;ref_src=twsrc%5Etfw'>#DeepLearning</a> <a href='https://twitter.com/hashtag/AI?src=hash&amp;ref_src=twsrc%5Etfw'>#AI</a> <a href='https://t.co/0tlJ2BcPfh'>https://t.co/0tlJ2BcPfh</a> <a href='https://t.co/5mhLhJnYys'>pic.twitter.com/5mhLhJnYys</a></p>&mdash; DataDeer (@DataDeer_) <a href='https://twitter.com/DataDeer_/status/1017173197387640838?ref_src=twsrc%5Etfw'>July 11, 2018</a></blockquote>"
     date = "Friday, July 6th - 20:00"
     country_1, country_2 = getPays(hashtag)
     emojis = getEmojisClassement(hashtag[1:])
@@ -167,7 +194,7 @@ def urufra(request):
     hashtag = "#URUFRA"
     our_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='und' dir='ltr'><a href='https://twitter.com/hashtag/FRAURU?src=hash&amp;ref_src=twsrc%5Etfw'>#FRAURU</a> <a href='https://t.co/SKd5aYiSlQ'>pic.twitter.com/SKd5aYiSlQ</a></p>&mdash; Shanta 🇨🇲🤪 (@mcrs_10) <a href='https://twitter.com/mcrs_10/status/1015250314310627330?ref_src=twsrc%5Etfw'>6 juillet 2018</a></blockquote>"
     goal_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='fr' dir='ltr'>Homme du match <a href='https://twitter.com/hashtag/Lloris?src=hash&amp;ref_src=twsrc%5Etfw'>#Lloris</a>. <a href='https://twitter.com/hashtag/URUFRA?src=hash&amp;ref_src=twsrc%5Etfw'>#URUFRA</a> <a href='https://t.co/oE8Ly66RLP'>pic.twitter.com/oE8Ly66RLP</a></p>&mdash; Axel Failla (@faillaaxel) <a href='https://twitter.com/faillaaxel/status/1015263237351395333?ref_src=twsrc%5Etfw'>6 juillet 2018</a></blockquote>"
-    rnn_tweet = ""
+    rnn_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='fr' dir='ltr'>Mbappe tombe tout sur l&#39;action absolument seul ! <a href='https://twitter.com/hashtag/URUFRA?src=hash&amp;ref_src=twsrc%5Etfw'>#URUFRA</a> <a href='https://twitter.com/hashtag/RNN?src=hash&amp;ref_src=twsrc%5Etfw'>#RNN</a> <a href='https://twitter.com/hashtag/DeepLearning?src=hash&amp;ref_src=twsrc%5Etfw'>#DeepLearning</a> <a href='https://twitter.com/hashtag/AI?src=hash&amp;ref_src=twsrc%5Etfw'>#AI</a> <a href='https://t.co/kXNB2e5ATo'>https://t.co/kXNB2e5ATo</a> <a href='https://t.co/LBb29jK4ai'>pic.twitter.com/LBb29jK4ai</a></p>&mdash; DataDeer (@DataDeer_) <a href='https://twitter.com/DataDeer_/status/1017169785807831040?ref_src=twsrc%5Etfw'>July 11, 2018</a></blockquote>"
     date = "Friday, July 6th - 16:00"
     country_1, country_2 = getPays(hashtag)
     emojis = getEmojisClassement(hashtag[1:])
@@ -182,6 +209,7 @@ def urufra(request):
 #                      ROUND OF 16                          #
 #                                                           #
 #############################################################
+
 
 def coleng(request):
     hashtag = "#COLENG"
