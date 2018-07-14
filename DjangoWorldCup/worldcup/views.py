@@ -43,7 +43,7 @@ def data_playersPosition(request):
     },safe=False)
 
 def main(request):
-    date = "Tuesday, July 10th - 20:00"
+    date = "Saturday, July 14th - 16:00"
     country_1, country_2 = getPays(MATCH_HASHTAG)
     emojis = get_Emojis(MATCH_HASHTAG)
     context = {'hashtag': MATCH_HASHTAG, 'country_1': country_1, "country_2": country_2, "date":date, "emojis":emojis}
