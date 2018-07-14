@@ -5,7 +5,7 @@ import os
 # django project name is adleads, replace adleads with your project name
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adleads.settings")
 from .tools import countriesCalculations, playersCalculations, players_postCalculations, getPays, getTables, barplot_positivity, positivity_negativity, get_Emojis, getEmojisClassement, playersTimeseriesCalculations, getLiveScore
-MATCH_HASHTAG = '#BELENG'
+MATCH_HASHTAG = '#FRACRO'
 
 def home(request):
     if (request.method == "POST"):
@@ -43,7 +43,7 @@ def data_playersPosition(request):
     },safe=False)
 
 def main(request):
-    date = "Saturday, July 14th - 16:00"
+    date = "Sunday, July 15th - 17:00"
     country_1, country_2 = getPays(MATCH_HASHTAG)
     emojis = get_Emojis(MATCH_HASHTAG)
     context = {'hashtag': MATCH_HASHTAG, 'country_1': country_1, "country_2": country_2, "date":date, "emojis":emojis}
@@ -94,18 +94,18 @@ def score_live(request):
 #############################################################
 
 
-# def beleng(request):
-#     hashtag = "#BELENG"
-#     our_tweet = ""
-#     goal_tweet = ""
-#     rnn_tweet = ""
-#     date = "Saturday, July 14th - 16:00"
-#     country_1, country_2 = getPays(hashtag)
-#     emojis = getEmojisClassement(hashtag[1:])
-#     score1, score2 = 0, 0
-#     context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
-#                'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
-#     return render(request, 'worldcup/match.html', context)
+def beleng(request):
+    hashtag = "#BELENG"
+    our_tweet = ""
+    goal_tweet = ""
+    rnn_tweet = ""
+    date = "Saturday, July 14th - 16:00"
+    country_1, country_2 = getPays(hashtag)
+    emojis = getEmojisClassement(hashtag[1:])
+    score1, score2 = 0, 0
+    context = {'hashtag': hashtag, "our_tweet": our_tweet, "rnn_tweet": rnn_tweet, "goal_tweet": goal_tweet,
+               'country_1': country_1, "country_2": country_2, "date": date, "emojis": emojis, "score1": score1, "score2": score2}
+    return render(request, 'worldcup/match.html', context)
 
 
 #############################################################
