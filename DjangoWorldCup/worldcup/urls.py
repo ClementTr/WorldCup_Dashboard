@@ -35,7 +35,7 @@ urlpatterns = [
     #                                                           #
     #############################################################
 
-    #path('croeng/', views.croeng, name='match'),
+    path('croeng/', views.croeng, name='match'),
     path('frabel/', views.frabel, name='match'),
 
     #############################################################
