@@ -120,7 +120,7 @@ def croeng(request):
     our_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Me deleting all my &quot;it&#39;s coming home&quot; tweets... <a href='https://t.co/tEF6Wc65es'>pic.twitter.com/tEF6Wc65es</a></p>&mdash; Mike Sanz (@mikesanz19) <a href='https://twitter.com/mikesanz19/status/1017145907979128834?ref_src=twsrc%5Etfw'>July 11, 2018</a></blockquote>"
     goal_tweet = "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>What a beautiful angle of Trippier’s goal! <a href='https://t.co/DdFltq4cIO'>pic.twitter.com/DdFltq4cIO</a></p>&mdash; World Cup 18 (@WorldCupStuff18) <a href='https://twitter.com/WorldCupStuff18/status/1017123337129086977?ref_src=twsrc%5Etfw'>July 11, 2018</a></blockquote>"
     rnn_tweet = "<blockquote class='twitter-tweet' data-lang='fr'><p lang='en' dir='ltr'>Trippier perfect free kick for England take the lead <a href='https://twitter.com/hashtag/CROENG?src=hash&amp;ref_src=twsrc%5Etfw'>#CROENG</a> <a href='https://twitter.com/hashtag/RNN?src=hash&amp;ref_src=twsrc%5Etfw'>#RNN</a> <a href='https://twitter.com/hashtag/DeepLearning?src=hash&amp;ref_src=twsrc%5Etfw'>#DeepLearning</a> <a href='https://twitter.com/hashtag/AI?src=hash&amp;ref_src=twsrc%5Etfw'>#AI</a> <a href='https://t.co/mRTIIBBAOJ'>https://t.co/mRTIIBBAOJ</a> <a href='https://t.co/BbrVQU3pSE'>pic.twitter.com/BbrVQU3pSE</a></p>&mdash; DataDeer (@DataDeer_) <a href='https://twitter.com/DataDeer_/status/1018062453433950208?ref_src=twsrc%5Etfw'>14 juillet 2018</a></blockquote>"
-    date = "Tuesday, July 11th - 20:00"
+    date = "Wednesday, July 11th - 20:00"
     country_1, country_2 = getPays(hashtag)
     emojis = getEmojisClassement(hashtag[1:])
     score1, score2 = 2, 1
