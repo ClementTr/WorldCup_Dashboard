@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Russian World Cup - Data">
+    <meta name="author" content="DataDeer">
+    <meta name="keywords" content="Data Science Analysis Big World Cup Football">
+
+    <!-- Title Page-->
+    <title>World Cup Dashboard</title>
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+
+    <!-- Fontfaces CSS-->
+    <link href="./css/font-face.css" rel="stylesheet" media="all">
+    <link href="./vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="./vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="./vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="./vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="./vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="./vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="./vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="./vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="./vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="./vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="./vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link href="./css/emoji.css" rel="stylesheet">
+
+    <!-- Main CSS-->
+    <link href="./css/theme.css" rel="stylesheet" media="all">
+
+    <!-- Simple Plot CSS -->
+    <link href="./css/simple_plot.css" rel="stylesheet" media="all">
+    <style>
+      .toolTip {
+      	position: absolute;
+        display: none;
+        min-width: 80px;
+        height: auto;
+        background: none repeat scroll 0 0 #ffffff;
+        border: 1px solid #6F257F;
+        padding: 14px;
+        text-align: center;
+      }
+      .tooltip {
+        position: absolute;
+        text-align: center;
+        width: 0px;
+        height: 0px;
+        padding: 2px;
+        font: 12px sans-serif;
+        background: #E5E5E5;
+        border: 0px;
+        border-radius: 8px;
+        pointer-events: none;
+      }
+      .tooltipshow {
+        position: absolute;
+        text-align: center;
+        width: 100px;
+        height: 50px;
+        padding: 2px;
+        font: 12px sans-serif;
+        background: #E5E5E5;
+        border: 0px;
+        border-radius: 8px;
+        pointer-events: none;
+      }
+
+      div.scrollmenu {
+          background-color: white;
+          overflow: auto;
+          white-space: nowrap;
+      }
+
+      div.scrollmenu li {
+          display: inline-block;
+          color: white;
+          text-align: center;
+          padding: 14px;
+          text-decoration: none;
+      }
+
+     </style>
+
+     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114718272-3"></script>
+     <script>
+       window.dataLayer = window.dataLayer || [];
+       function gtag(){dataLayer.push(arguments);}
+       gtag('js', new Date());
+
+       gtag('config', 'UA-114718272-3');
+     </script>
+
+
+</head>
+
+
+<body class="animsition">
+  <div class="page-wrapper">
+
+
+        <!-- HEADER MOBILE-->
+        <!-- <header class="header-mobile d-block d-lg-none">
+            <div class="header-mobile__bar">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                        <a class="logo" href="http://www.datadeer.fr">
+                            <img src="./img/datadeer_mobile.png" alt="DataDeer"/>
+                        </a>
+                        <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar-mobile">
+                <div class="container-fluid">
+                    <ul class="navbar-mobile__list list-unstyled">
+
+                      <li>
+                        <a href="/fracro/">
+                          <i class="fa fa-trophy" aria-hidden="true"></i>Final
+                        </a>
+                      </li>
+
+                      <li>
+                        <a href="/beleng/">
+                          <i class="fa fa-heart" aria-hidden="true"></i>Play-off for third place
+                        </a>
+                      </li>
+
+                      <li class="has-sub">
+                          <a class="js-arrow" href="#">
+                              <i class="fa fa-thermometer-full"></i>Semi-finals
+                          </a>
+                          <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                            <li>
+                               <a href="/engcro/">#CROENG</a>
+                            </li>
+                            <li>
+                               <a href="/frabel/">#FRABEL</a>
+                            </li>
+                            <li>
+                          </ul>
+                      </li>
+
+                      <li class="has-sub">
+                          <a class="js-arrow" href="#">
+                              <i class="fa fa-thermometer-three-quarters"></i>Quarter-finals
+                          </a>
+                          <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                            <li>
+                               <a href="/ruscro/">#RUSCRO</a>
+                            </li>
+                            <li>
+                               <a href="/sweeng/">#SWEENG</a>
+                            </li>
+                            <li>
+                               <a href="/brabel/">#BRABEL</a>
+                            </li>
+                            <li>
+                               <a href="/urufra/">#URUFRA</a>
+                            </li>
+                          </ul>
+                      </li>
+
+                      <li class="has-sub">
+                          <a class="js-arrow" href="#">
+                              <i class="fa fa-thermometer-quarter"></i>Round of 16
+                          </a>
+                          <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                            <li>
+                               <a href="/coleng/">#COLENG</a>
+                            </li>
+                            <li>
+                               <a href="/sweswi/">#SWESWI</a>
+                            </li>
+                            <li>
+                               <a href="/beljpn/">#BELJPN</a>
+                            </li>
+                            <li>
+                               <a href="/bramex/">#BRAMEX</a>
+                            </li>
+                            <li>
+                               <a href="/croden/">#CRODEN</a>
+                            </li>
+                            <li>
+                               <a href="/sparus/">#SPARUS</a>
+                            </li>
+                            <li>
+                                <a href="/urupor/">#URUPOR</a>
+                            </li>
+                            <li>
+                                <a href="/fraarg/">#FRAARG</a>
+                            </li>
+                          </ul>
+                      </li>
+
+
+
+                      <li class="has-sub">
+                          <a class="js-arrow" href="#">
+                              <i class="fa fa-users"></i>Group Phase
+                          </a>
+                          <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                              <li>
+                                  <a href="/engbel/">#ENGBEL</a>
+                              </li>
+                              <li>
+                                  <a href="/serbra/">#SERBRA</a>
+                              </li>
+                              <li>
+                                  <a href="/denfra/">#DENFRA</a>
+                              </li>
+                              <li>
+                                  <a href="/ururus/">#URURUS</a>
+                              </li>
+                              <li>
+                                  <a href="/polcol/">#POLCOL</a>
+                              </li>
+                              <li>
+                                  <a href="/gerswe/">#GERSWE</a>
+                              </li>
+                              <li>
+                                  <a href="/bracrc/">#BRACRC</a>
+                              </li>
+                              <li>
+                                  <a href="/fraper/">#FRAPER</a>
+                              </li>
+                              <li>
+                                  <a href="/uruksa/">#URUKSA</a>
+                              </li>
+                              <li>
+                                  <a href="/polsen/">#POLSEN</a>
+                              </li>
+                              <li>
+                                  <a href="/tuneng/">#TUNENG</a>
+                              </li>
+                              <li>
+                                  <a href="/braswi/">#BRASWI</a>
+                              </li>
+                              <li>
+                                  <a href="/fraaus/">#FRAAUS</a>
+                              </li>
+                              <li>
+                                  <a href="/porspa/">#PORSPA</a>
+                              </li>
+                              <li>
+                                  <a href="/rusara/">#RUSARA</a>
+                              </li>
+                          </ul>
+                      </li>
+
+
+                        <li>
+                            <a href="/table">
+                              <i class="fas fa-table"></i>Fixtures
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header> -->
+        <!-- END HEADER MOBILE-->
+
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar d-none d-lg-block" style="width: 220px;">
+            <div class="logo">
+                <a href="http://www.datadeer.fr">
+                     <img src="./img/datadeer.png" alt="DataDeer"/>
+                </a>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+
+                      <li>
+                        <a href="#Final" onclick="show_final()">
+                          <i class="fa fa-trophy" aria-hidden="true"></i>Final
+                        </a>
+                      </li>
+
+                      <li>
+                        <a href="#beleng" onclick="show_beleng()">
+                          <i class="fa fa-heart" aria-hidden="true"></i>Play-off for third place
+                        </a>
+                      </li>
+
+                      <li class="has-sub">
+                          <a class="js-arrow" href="#">
+                              <i class="fa fa-thermometer-full"></i>Semi-finals
+                          </a>
+                          <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                            <li>
+                               <a href="#croeng" onclick="show_croeng()">#CROENG</a>
+                            </li>
+                            <li>
+                               <a href="#frabel" onclick="show_frabel()">#FRABEL</a>
+                            </li>
+                            <li>
+                          </ul>
+                      </li>
+
+                      <li class="has-sub">
+                          <a class="js-arrow" href="#">
+                              <i class="fa fa-thermometer-three-quarters"></i>Quarter-finals
+                          </a>
+                          <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                            <li>
+                               <a href="#ruscro" onclick="show_ruscro()">#RUSCRO</a>
+                            </li>
+                            <li>
+                               <a href="#sweeng" onclick="show_sweeng()">#SWEENG</a>
+                            </li>
+                            <li>
+                               <a href="#brabel" onclick="show_brabel()">#BRABEL</a>
+                            </li>
+                            <li>
+                               <a href="#urufra" onclick="show_urufra()">#URUFRA</a>
+                            </li>
+                          </ul>
+                      </li>
+
+                      <li class="has-sub">
+                          <a class="js-arrow" href="#">
+                              <i class="fa fa-thermometer-quarter"></i>Round of 16
+                          </a>
+                          <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                            <li>
+                               <a href="#coleng" onclick="show_coleng()">#COLENG</a>
+                            </li>
+                            <li>
+                               <a href="#sweswi" onclick="show_sweswi()">#SWESWI</a>
+                            </li>
+                            <li>
+                               <a href="#beljpn" onclick="show_beljpn()">#BELJPN</a>
+                            </li>
+                            <li>
+                               <a href="#bramex" onclick="show_bramex()">#BRAMEX</a>
+                            </li>
+                            <li>
+                               <a href="#croden" onclick="show_croden()">#CRODEN</a>
+                            </li>
+                            <li>
+                               <a href="#sparus" onclick="show_sparus()">#SPARUS</a>
+                            </li>
+                             <li>
+                                <a href="#urupor" onclick="show_urupor()">#URUPOR</a>
+                             </li>
+                              <li>
+                                  <a href="#fraarg" onclick="show_fraarg()">#FRAARG</a>
+                              </li>
+                          </ul>
+                      </li>
+
+
+                      <li class="has-sub">
+                          <a class="js-arrow" href="#">
+                              <i class="fa fa-users"></i>Group Phase
+                          </a>
+                          <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                              <li>
+                                  <a href="#engbel" onclick="show_engbel()">#ENGBEL</a>
+                              </li>
+                              <li>
+                                  <a href="#serbra" onclick="show_serbra()">#SERBRA</a>
+                              </li>
+                              <li>
+                                  <a href="#denfra" onclick="show_denfra()">#DENFRA</a>
+                              </li>
+                              <li>
+                                  <a href="#ururus" onclick="show_ururus()">#URURUS</a>
+                              </li>
+                              <li>
+                                  <a href="#polcol" onclick="show_polcol()">#POLCOL</a>
+                              </li>
+                              <li>
+                                  <a href="#gerswe" onclick="show_gerswe()">#GERSWE</a>
+                              </li>
+                              <li>
+                                  <a href="#bracrc" onclick="show_bracrc()">#BRACRC</a>
+                              </li>
+                              <li>
+                                  <a href="#fraper" onclick="show_fraper()">#FRAPER</a>
+                              </li>
+                              <li>
+                                  <a href="#uruksa" onclick="show_uruksa()">#URUKSA</a>
+                              </li>
+                              <li>
+                                  <a href="#polsen" onclick="show_polsen()">#POLSEN</a>
+                              </li>
+                              <li>
+                                  <a href="#tuneng" onclick="show_tuneng()">#TUNENG</a>
+                              </li>
+                              <li>
+                                  <a href="#braswi" onclick="show_braswi()">#BRASWI</a>
+                              </li>
+                              <li>
+                                  <a href="#fraaus" onclick="show_fraaus()">#FRAAUS</a>
+                              </li>
+                              <li>
+                                  <a href="#porspa" onclick="show_porspa()">#PORSPA</a>
+                              </li>
+                              <li>
+                                  <a href="#rusara" onclick="show_rusara()">#RUSARA</a>
+                              </li>
+                          </ul>
+                      </li>
+
+
+                      <li>
+                          <a href=".table.html">
+                              <i class="fas fa-table"></i>Fixtures
+                          </a>
+                      </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR-->
+
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+
+          <!-- MAIN CONTENT-->
+          <div class="main-content" style="padding-top: 10px;">
+              <div class="section__content section__content--p10">
+                  <div class="container-fluid">
+                          <div class="row">
+                              <div class="col-lg-12">
+                                  <div class="au-card m-b-10" style="padding-bottom: 0px;">
+                                      <center>
+                                      <h3 class="title-2 m-b-40">Knockout Phase</h3>
+                                      </center>
+                                  </div>
+                              </div>
+                              <div class="col-lg-12">
+                                  <div class="au-card m-b-10" style="padding-bottom: 0px;">
+                                      <center>
+                                      <img src="/static/worldcup/img/tableau.svg" alt="...">
+                                  </center>
+                                  </div>
+                              </div>
+                          </div>
+
+                          {% for teams,group,matchs,index in classement %}
+                          <div class="row">
+                          <!-- BLOCK TITLE MODIFY TITLE -->
+                              <div class="col-lg-12">
+                                  <div class="au-card m-b-10" style="padding-bottom: 0px;">
+                                      <center>
+                                      <h3 class="title-2 m-b-40">{{group}}</h3>
+                                      </center>
+                                  </div>
+                              </div>
+                              <div class="col-lg-12">
+                                  <div class="table-responsive table--no-card m-b-30 text-center">
+                                      <table class="table table-borderless table-striped table-earning">
+                                          <thead>
+                                              <tr>
+                                                  <th>Position</th>
+                                                  <th>Teams</th>
+                                                  <th>Points</th>
+                                                  <th>Goals For</th>
+                                                  <th>Goals Against</th>
+                                                  <th>Goal Difference</th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                              {% for team in teams %}
+                                              <tr>
+                                                  <td>{{team.Position}}</td>
+                                                  <td><img  src="/static/worldcup/img/emoji/{{team.Emoji}}.png" style="width: 15px"/>{{team.Equipe}}</td>
+                                                  <td>{{team.Points}}</td>
+                                                  <td>{{team.Buts_pour}}</td>
+                                                  <td>{{team.Buts_contre}}</td>
+                                                  <td>{{team.Difference}}</td>
+                                              </tr>
+                                              {% endfor %}
+                                          </tbody>
+                                      </table>
+                                  </div>
+                              </div>
+                              <div class="col-lg-12">
+                                  <div id="accordion">
+                                      <div class="card">
+                                          <div class="card-header" id="headingOne">
+                                              <h5 class="mb-0 text-center">
+                                                  <button class="btn btn-link text-center" data-toggle="collapse" data-target="#collapse{{index}}" aria-expanded="true" aria-controls="collapseOne">
+                                                      Program & Results
+                                                  </button>
+                                              </h5>
+                                          </div>
+                                      </div>
+                                      <div id="collapse{{index}}" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
+                                          <div class="table-responsive table--no-card m-b-30">
+                                              <table class="table table-borderless table-striped table-earning text-center">
+                                                  <thead>
+                                                      <tr>
+                                                          <th>Day</th>
+                                                          <th>Hour</th>
+                                                          <th></th>
+                                                          <th>Match</th>
+                                                          <th></th>
+                                                      </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                      {% for match in matchs %}
+                                                      <tr>
+                                                          <td>{{match.Jour}}</td>
+                                                          <td>{{match.Heure}}</td>
+                                                          <td>{{match.Equipe_1}}</td>
+                                                          <td>{{match.Score}}</td>
+                                                           <td>{{match.Equipe_2}}</td>
+                                                      </tr>
+                                                      {% endfor %}
+                                                  </tbody>
+                                              </table>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          {% endfor %}
+
+                  </div>
+              </div>
+          </div>
+
+
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="copyright">
+                      <p>© 2018, Créé par DataDeer - <a href="http://datadeer.fr/cgu.html">CGU</a> | <a href="http://datadeer.fr/mentions_legales.html">Mentions légales</a>.</p>
+                  </div>
+              </div>
+          </div>
+
+        </div>
+        <!-- END PAGE CONTAINER-->
+
+  </div>
+</body>
+
+<script src="./js/twitter_displayer.js"></script>
+
+<!-- Jquery JS-->
+<script src="./vendor/jquery-3.2.1.min.js"></script>
+<!-- Bootstrap JS-->
+<script src="./vendor/bootstrap-4.1/popper.min.js"></script>
+<script src="./vendor/bootstrap-4.1/bootstrap.min.js"></script>
+<!-- Vendor JS       -->
+<script src="./vendor/slick/slick.min.js">
+</script>
+<script src="./vendor/wow/wow.min.js"></script>
+<script src="./vendor/animsition/animsition.min.js"></script>
+<script src="./vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+</script>
+<script src="./vendor/counter-up/jquery.waypoints.min.js"></script>
+<script src="./vendor/counter-up/jquery.counterup.min.js">
+</script>
+<script src="./vendor/circle-progress/circle-progress.min.js"></script>
+<script src="./vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="./vendor/chartjs/Chart.bundle.min.js"></script>
+<script src="./vendor/select2/select2.min.js"></script>
